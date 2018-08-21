@@ -7,8 +7,6 @@ mod:SetEncounterID(2076)
 mod:SetZone()
 --mod:SetBossHPInfoToHighest()
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7)
-mod:SetHotfixNoticeRev(16962)
-mod:SetMinSyncRevision(16962)
 mod.respawnTime = 29
 mod:DisableRegenDetection()--Prevent false combat when fighting trash
 

@@ -6,7 +6,6 @@ mod:SetCreatureID(108879)
 mod:SetEncounterID(1917)
 mod:SetReCombatTime(20)
 mod:SetZone()
---mod:SetMinSyncRevision(11969)
 
 mod:RegisterCombat("combat")
 
