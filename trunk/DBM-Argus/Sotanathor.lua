@@ -6,7 +6,6 @@ mod:SetCreatureID(124555)
 --mod:SetEncounterID(1952)--Does not have one
 --mod:SetReCombatTime(20)
 mod:SetZone()
---mod:SetMinSyncRevision(11969)
 
 mod:RegisterCombat("combat_yell", L.Pull)
 
