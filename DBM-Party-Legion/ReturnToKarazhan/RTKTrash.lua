@@ -64,7 +64,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnFinalCurtain:Show()
 		specWarnFinalCurtain:Play("runout")
 	elseif spellId == 227966 and self:AntiSpam(3, 2) then
-		specWarnFlashlight:Show()
+		specWarnFlashlight:Show(args.sourceName)
 		specWarnFlashlight:Play("turnaway")
 	end
 end

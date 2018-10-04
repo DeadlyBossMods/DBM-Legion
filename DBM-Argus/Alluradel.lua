@@ -43,7 +43,7 @@ end
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
 	if spellId == 247549 then
-		specWarnBeguilingCharm:Show()
+		specWarnBeguilingCharm:Show(args.sourceName)
 		specWarnBeguilingCharm:Play("turnaway")
 		timerBeguilingCharmCD:Start()
 		countdownBeguilingCharm:Start()
