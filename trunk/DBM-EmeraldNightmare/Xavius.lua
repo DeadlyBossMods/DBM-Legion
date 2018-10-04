@@ -394,6 +394,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 208431 and args:IsPlayer() then
 		yellDescentIntoMadness:Cancel()
 	elseif spellId == 211802 then
+		bladesTarget[args.destName] = nil
 		if self.Options.SetIconOnBlades then
 			self:SetIcon(args.destName, 0)
 		end

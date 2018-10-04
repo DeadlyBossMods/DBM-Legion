@@ -338,7 +338,7 @@ function mod:SPELL_CAST_START(args)
 			countdownFelNova:Start()
 		end
 	elseif spellId == 207720 then
-		specWarnWitnessVoid:Show()
+		specWarnWitnessVoid:Show(args.sourceName)
 		specWarnWitnessVoid:Play("turnaway")
 		timerWitnessVoid:Start(nil, args.sourceGUID)
 		if self:IsMythic() then
