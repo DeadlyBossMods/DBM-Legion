@@ -145,7 +145,7 @@ function mod:OnCombatStart(delay)
 	self.vb.chilledIcon = 1
 	self.vb.glareIcon = 4
 	self.vb.touchCosmosCast = 0
-	self.vb.interruptBehavior = "Three"
+	self.vb.interruptBehavior = self.Options.InterruptBehavior--Default should be users setting
 	self.vb.ignoreFirstInterrupt = false
 	self.vb.firstCastHappend = false
 	if self:IsMythic() then
