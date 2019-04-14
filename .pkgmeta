@@ -1,0 +1,12 @@
+package-as: DBM-Legion
+enable-nolib-creation: no
+
+move-folders:
+    DBM-Legion/DBM-AntorusBurningThrone: DBM-AntorusBurningThrone
+    DBM-Legion/DBM-Argus: DBM-Argus
+    DBM-Legion/DBM-BrokenIsles: DBM-BrokenIsles
+    DBM-Legion/DBM-EmeraldNightmare: DBM-EmeraldNightmare
+    DBM-Legion/DBM-Nighthold: DBM-Nighthold
+    DBM-Legion/DBM-TombofSargeras: TombofSargeras
+    DBM-Legion/DBM-TrialofValor: TrialofValor
+    
