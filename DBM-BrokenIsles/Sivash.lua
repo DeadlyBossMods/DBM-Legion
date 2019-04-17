@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(1885, "DBM-BrokenIsles", nil, 822)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(117470)
 --mod:SetEncounterID(1880)--Bosses don't fire BOSS_KILL or have encounter IDs at time of this update
 mod:SetReCombatTime(20)
