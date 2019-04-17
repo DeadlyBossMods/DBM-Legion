@@ -1,12 +1,12 @@
-package-as: DBM-Legion
+package-as: DBM-BrokenIsles
 enable-nolib-creation: no
 
 move-folders:
-    DBM-Legion/DBM-AntorusBurningThrone: DBM-AntorusBurningThrone
-    DBM-Legion/DBM-Argus: DBM-Argus
-    DBM-Legion/DBM-BrokenIsles: DBM-BrokenIsles
-    DBM-Legion/DBM-EmeraldNightmare: DBM-EmeraldNightmare
-    DBM-Legion/DBM-Nighthold: DBM-Nighthold
-    DBM-Legion/DBM-TombofSargeras: TombofSargeras
-    DBM-Legion/DBM-TrialofValor: TrialofValor
+    DBM-BrokenIsles/DBM-AntorusBurningThrone: DBM-AntorusBurningThrone
+    DBM-BrokenIsles/DBM-Argus: DBM-Argus
+    DBM-BrokenIsles/DBM-BrokenIsles: DBM-BrokenIsles
+    DBM-BrokenIsles/DBM-EmeraldNightmare: DBM-EmeraldNightmare
+    DBM-BrokenIsles/DBM-Nighthold: DBM-Nighthold
+    DBM-BrokenIsles/DBM-TombofSargeras: TombofSargeras
+    DBM-BrokenIsles/DBM-TrialofValor: TrialofValor
     
