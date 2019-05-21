@@ -167,7 +167,7 @@ end
 function mod:TestFunction(time)
 	timerForgingStrikeCD:AddTime(time, 1)
 	timerDiabolicBombCD:AddTime(time)
-	timerRuinerCD:AddTime(time, self.vb.ruinerCast+1)
+	timerRuinerCD:AddTime(time, 1)
 	timerReverberatingStrikeCD:AddTime(time, 1)
 end
 
