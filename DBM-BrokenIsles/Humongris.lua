@@ -38,8 +38,6 @@ local timerSnowCD				= mod:NewCDTimer(35, 216467, nil, nil, nil, 2)
 local timerGoBangCD				= mod:NewCDTimer(24.4, 216817, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
 local timerGoBangStarts			= mod:NewTargetTimer(12, 216817, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
 
-local countdownBangEnds			= mod:NewCountdown("Alt12", 216817)
-
 --mod:AddReadyCheckOption(37460, false)
 mod:AddRangeFrameOption(8, 216432)
 
@@ -118,7 +116,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellGoBang:Schedule(11, 1)
 			yellGoBang:Schedule(10, 2)
 			yellGoBang:Schedule(9, 3)
-			countdownBangEnds:Start()
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(25)
 			end
@@ -135,7 +132,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerGoBangStarts:Stop(args.destName)
 		if args:IsPlayer() then
 			yellGoBang:Cancel()
-			countdownBangEnds:Cancel()
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(8)
 			end
