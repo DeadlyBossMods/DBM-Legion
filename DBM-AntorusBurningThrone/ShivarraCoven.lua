@@ -112,7 +112,7 @@ mod:AddSetIconOption("SetIconOnChilledBlood2", 245586, false)
 mod:AddSetIconOption("SetIconOnCosmicGlare", 250757, true)
 mod:AddInfoFrameOption(245586, true)
 mod:AddNamePlateOption("NPAuraOnVisageofTitan", 249863)
-mod:AddBoolOption("SetLighting", true)
+--mod:AddBoolOption("SetLighting", true)
 mod:AddBoolOption("IgnoreFirstKick", false)
 mod:AddMiscLine(DBM_CORE_OPTION_CATEGORY_DROPDOWNS)
 mod:AddDropdownOption("InterruptBehavior", {"Three", "Four", "Five"}, "Three", "misc")
@@ -158,11 +158,11 @@ function mod:OnCombatStart(delay)
 	if self.Options.NPAuraOnVisageofTitan then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
-	if self.Options.SetLighting then
-		CVAR1, CVAR2 = GetCVar("graphicsLightingQuality") or 3, GetCVar("raidGraphicsLightingQuality") or 2--Non raid cvar is nil if 3 (default) and raid one is nil if 2 (default)
-		SetCVar("graphicsLightingQuality", 1)
-		SetCVar("raidGraphicsLightingQuality", 1)
-	end
+--	if self.Options.SetLighting then
+--		CVAR1, CVAR2 = GetCVar("graphicsLightingQuality") or 3, GetCVar("raidGraphicsLightingQuality") or 2--Non raid cvar is nil if 3 (default) and raid one is nil if 2 (default)
+--		SetCVar("graphicsLightingQuality", 1)
+--		SetCVar("raidGraphicsLightingQuality", 1)
+--	end
 	if UnitIsGroupLeader("player") and not self:IsLFR() then
 		if self.Options.InterruptBehavior == "Three" then
 			self:SendSync("Three", self.Options.IgnoreFirstKick)
@@ -183,21 +183,21 @@ function mod:OnCombatEnd()
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)
 	end
 	--Attempt restore right away
-	if (CVAR1 or CVAR2) and not InCombatLockdown() then
-		SetCVar("graphicsLightingQuality", CVAR1)
-		SetCVar("raidGraphicsLightingQuality", CVAR2)
-		CVAR1, CVAR2 = nil, nil
+--	if (CVAR1 or CVAR2) and not InCombatLockdown() then
+--		SetCVar("graphicsLightingQuality", CVAR1)
+--		SetCVar("raidGraphicsLightingQuality", CVAR2)
+--		CVAR1, CVAR2 = nil, nil
 	end
 end
 
 --Backup check on leaving combat if OnCombatEnd wasn't successful
-function mod:OnLeavingCombat()
-	if CVAR1 or CVAR2 then
-		SetCVar("graphicsLightingQuality", CVAR1)
-		SetCVar("raidGraphicsLightingQuality", CVAR2)
-		CVAR1, CVAR2 = nil, nil
-	end
-end
+--function mod:OnLeavingCombat()
+--	if CVAR1 or CVAR2 then
+--		SetCVar("graphicsLightingQuality", CVAR1)
+--		SetCVar("raidGraphicsLightingQuality", CVAR2)
+--		CVAR1, CVAR2 = nil, nil
+--	end
+--end
 
 function mod:OnTimerRecovery()
 	if self:IsMythic() then
