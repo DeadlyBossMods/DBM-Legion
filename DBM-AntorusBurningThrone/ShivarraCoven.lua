@@ -187,7 +187,7 @@ function mod:OnCombatEnd()
 --		SetCVar("graphicsLightingQuality", CVAR1)
 --		SetCVar("raidGraphicsLightingQuality", CVAR2)
 --		CVAR1, CVAR2 = nil, nil
-	end
+--	end
 end
 
 --Backup check on leaving combat if OnCombatEnd wasn't successful
