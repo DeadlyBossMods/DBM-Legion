@@ -169,7 +169,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFelInfusion:Show(self:IconNumToTexture(4))
 			specWarnFelInfusion:Play("felinfusion")
 			if spellId == 235213 then--Not LFR
-				yellInfusion:Yell(4, "", 4)
+				yellInfusion:Yell(4, "")
 			end
 		end
 		local uId = DBM:GetRaidUnitId(args.destName)
@@ -181,7 +181,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnLightInfusion:Show(self:IconNumToTexture(1))
 			specWarnLightInfusion:Play("lightinfusion")
 			if spellId == 235213 then--Not LFR
-				yellInfusion:Yell(1, "", 1)
+				yellInfusion:Yell(1, "")
 			end
 		end
 		local uId = DBM:GetRaidUnitId(args.destName)
