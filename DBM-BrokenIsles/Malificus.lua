@@ -23,7 +23,6 @@ local warnIncitePanic				= mod:NewSpellAnnounce(233568, 2, nil, false)--Off caus
 local warnShadowBarrage				= mod:NewSpellAnnounce(234452, 2)
 
 local specWarnIncitePanic			= mod:NewSpecialWarningYou(233568, nil, nil, nil, 2, 2)
-local yellIncitePanic				= mod:NewYell(233568)
 local specWarnIncitePanicNear		= mod:NewSpecialWarningClose(233568, nil, nil, nil, 1, 2)
 local specWarnVirulentInfection		= mod:NewSpecialWarningMove(233850, nil, nil, nil, 1, 2)
 
@@ -85,7 +84,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnIncitePanic:Show()
 			specWarnIncitePanic:Play("scatter")
-			yellIncitePanic:Yell()
 		elseif self:CheckNearby(10, args.destName) and not DBM:UnitDebuff("player", args.spellName) then
 			specWarnIncitePanicNear:CombinedShow(0.5, args.destName)
 			if self:AntiSpam(3, 1) then

@@ -23,7 +23,6 @@ local specWarnClovenSoul		= mod:NewSpecialWarningTaunt(247444, nil, nil, nil, 1,
 
 local specWarnWakeofDestruction	= mod:NewSpecialWarningSpell(247432, nil, nil, nil, 2, 2)--Used for both warnings that trigger it
 local specWarnSeedofDestruction	= mod:NewSpecialWarningYou(247437, nil, nil, nil, 3, 4)
-local yellSeedsofDestruction	= mod:NewYell(247437)
 
 local timerSilenceCD			= mod:NewCDTimer(24.4, 247698, nil, nil, nil, 2, nil, DBM_CORE_HEALER_ICON)
 local timerSoulCleaveCD			= mod:NewCDTimer(25.5, 247410, nil, nil, nil, 5, nil, DBM_CORE_TANK_ICON)
@@ -82,7 +81,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnSeedofDestruction:Show()
 			specWarnSeedofDestruction:Play("runout")
-			yellSeedsofDestruction:Yell()
 		end
 		if self:AntiSpam(5, 2) then
 			self:Schedule(3.5, warnWake, self)

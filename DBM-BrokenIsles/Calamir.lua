@@ -28,7 +28,6 @@ local warnIcyComet				= mod:NewSpellAnnounce(217925, 2)
 local warnAncientRageArcane		= mod:NewSpellAnnounce(217834, 2)
 
 local specBurningBomb			= mod:NewSpecialWarningYou(217877, nil, nil, nil, 1, 2)--You warning because you don't have to run out unless healer is afk. However still warn in case they are
-local yellBurningBomb			= mod:NewFadesYell(217877)
 local specWrathfulFlames		= mod:NewSpecialWarningDodge(217893, nil, nil, nil, 1, 2)
 local specWrathfulFlamesGTFO	= mod:NewSpecialWarningMove(217907, nil, nil, nil, 1, 2)
 local specArcaneDesolation		= mod:NewSpecialWarningSpell(217986, nil, nil, nil, 2, 2)
@@ -94,9 +93,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specBurningBomb:Show()
 			specBurningBomb:Play("targetyou")
-			yellBurningBomb:Schedule(7, 1)
-			yellBurningBomb:Schedule(6, 2)
-			yellBurningBomb:Schedule(5, 3)
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(10)
 			end
@@ -108,7 +104,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 217877 then
 		if args:IsPlayer() then
-			yellBurningBomb:Cancel()
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Hide()
 			end
