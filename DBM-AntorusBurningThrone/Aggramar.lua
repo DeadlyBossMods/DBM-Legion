@@ -144,12 +144,12 @@ do
 					addLine(L.Current, DBM_CORE_DEADLY_ICON_SMALL..L.Tempest)
 					if mod.vb.firstCombo == "Foe" then--L.Foe, L.Tempest, L.Rend, L.Foe, L.Rend
 						addLine(mod.vb.comboCount+1, DBM_CORE_IMPORTANT_ICON_SMALL..L.Rend)
-						comboUsed[1] = true
+						--comboUsed[1] = true
 						comboDebugCounter = comboDebugCounter + 1
 						comboDebug[comboDebugCounter] = L.Foe..", "..L.Tempest..", "..L.Rend..", "..L.Foe..", "..L.Rend
 					elseif mod.vb.firstCombo == "Rend" then--L.Rend, L.Tempest, L.Foe, L.Foe, L.Rend
 						addLine(mod.vb.comboCount+1, DBM_CORE_TANK_ICON_SMALL..L.Foe)
-						comboUsed[3] = true
+						--comboUsed[3] = true
 						comboDebugCounter = comboDebugCounter + 1
 						comboDebug[comboDebugCounter] = L.Rend..", "..L.Tempest..", "..L.Foe..", "..L.Foe..", "..L.Rend
 					end
@@ -159,14 +159,14 @@ do
 					addLine(L.Current, DBM_CORE_TANK_ICON_SMALL..L.Foe)
 					addLine(mod.vb.comboCount+1, DBM_CORE_TANK_ICON_SMALL..L.Foe.."(2)")
 					addLine(mod.vb.comboCount+2, DBM_CORE_DEADLY_ICON_SMALL..L.Tempest)
-					comboUsed[4] = true
+					--comboUsed[4] = true
 					comboDebugCounter = comboDebugCounter + 1
 					comboDebug[comboDebugCounter] = L.Rend..", "..L.Foe..", "..L.Foe..", "..L.Tempest..", "..L.Rend
 				elseif mod.vb.secondCombo == "Rend" then--L.Foe, L.Rend, L.Tempest, L.Foe, L.Rend
 					addLine(L.Current, DBM_CORE_IMPORTANT_ICON_SMALL..L.Rend)
 					addLine(mod.vb.comboCount+1, DBM_CORE_DEADLY_ICON_SMALL..L.Tempest)
 					addLine(mod.vb.comboCount+2, DBM_CORE_TANK_ICON_SMALL..L.Foe.."(2)")
-					comboUsed[2] = true
+					--comboUsed[2] = true
 					comboDebugCounter = comboDebugCounter + 1
 					comboDebug[comboDebugCounter] = L.Foe..", "..L.Rend..", "..L.Tempest..", "..L.Foe..", "..L.Rend
 				end
@@ -278,10 +278,10 @@ function mod:OnCombatStart(delay)
 	--self.vb.incompleteCombo = false
 	table.wipe(unitTracked)
 	if self:IsMythic() then
-		comboUsed[1] = false
-		comboUsed[2] = false
-		comboUsed[3] = false
-		comboUsed[4] = false
+		--comboUsed[1] = false
+		--comboUsed[2] = false
+		--comboUsed[3] = false
+		--comboUsed[4] = false
 		timerRavenousBlazeCD:Start(4-delay)
 		timerWakeofFlameCD:Start(10.7-delay)--Health based?
 		timerTaeshalachTechCD:Start(14.3-delay, 1)--Health based?

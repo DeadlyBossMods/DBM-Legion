@@ -267,7 +267,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 205344 then
 		if args:IsPlayer() then
 			yellOrbDestro:Cancel()
-		end		
+		end
 	end
 end
 
@@ -301,4 +301,3 @@ function mod:OnBWSync(msg)
 		DBM:Debug("Recieved Right Beam Sync")
 	end
 end
-	

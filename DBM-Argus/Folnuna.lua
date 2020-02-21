@@ -54,7 +54,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
-			if amount % 3 == 0 then 
+			if amount % 3 == 0 then
 				if amount >= 6 then--Lasts 30 seconds, cast every 5 seconds, swapping will be at 6
 					if args:IsPlayer() then--At this point the other tank SHOULD be clear.
 						specWarnInfectedClaws:Show(amount)

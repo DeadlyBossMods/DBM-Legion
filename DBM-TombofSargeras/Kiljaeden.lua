@@ -467,7 +467,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnEruptingRelections:CombinedShow(0.3, args.destName)
 		local icon = self.vb.eruptingReflectionIcon
 		if args:IsPlayer() then
-			
 			if self:IsMythic() then
 				specWarnSRErupting:Show(self:IconNumToTexture(icon))
 				specWarnSRErupting:Play("mm"..icon)
@@ -652,8 +651,8 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 				DBM.RangeCheck:Show(5, nil, nil, nil, nil, 6)
 			end
 		end
-		local target = DBM:GetUnitFullName(target)
 		if target then
+			target = DBM:GetUnitFullName(target)
 			if target == UnitName("player") then
 				specWarnFocusedDreadflame:Show()
 				specWarnFocusedDreadflame:Play("targetyou")

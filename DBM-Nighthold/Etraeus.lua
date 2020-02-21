@@ -593,7 +593,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
 			timerIcyEjectionCD:Start(23.3, 1)
 		end
 	elseif spellId == 222133 then--Phase 3 Conversation
-		
 		self.vb.phase = 3
 		self.vb.isPhaseChanging = true
 		self.vb.felEjectionCount = 0

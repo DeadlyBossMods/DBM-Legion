@@ -341,7 +341,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
 			timerHydraShotCD:Stop()
 			timerBurdenofPainCD:Stop()
 			timerFromtheAbyssCD:Stop()
-			
 			timerInkCD:Start(11.6)
 			if self.Options.TauntOnPainSuccess then
 				timerBurdenofPainCD:Start(26, self.vb.burdenCount+1)
@@ -365,7 +364,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
 			timerBurdenofPainCD:Stop()
 			timerDevouringMawCD:Stop()
 			timerFromtheAbyssCD:Stop()
-			
 			timerInkCD:Start(11.6)
 			if self.Options.TauntOnPainSuccess then
 				timerBurdenofPainCD:Start(26, self.vb.burdenCount+1)

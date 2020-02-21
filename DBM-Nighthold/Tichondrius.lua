@@ -301,7 +301,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timer = P3SharedCastTimers[self.vb.brandOfArgusCast+1]
 		end
-		if timer then 
+		if timer then
 			timerBrandOfArgusCD:Start(timer, self.vb.brandOfArgusCast+1)
 		end
 	elseif spellId == 208230 then

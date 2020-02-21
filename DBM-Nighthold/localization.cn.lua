@@ -41,7 +41,7 @@ L:SetMiscLocalization({
 	First				= "第一",
 	Second				= "第二",
 	Third				= "第三",
-	Adds1				= "我的部下们！进来！", 
+	Adds1				= "我的部下们！进来！",
 	Adds2				= "让这些僭越者看看应该怎么战斗！"
 })
 

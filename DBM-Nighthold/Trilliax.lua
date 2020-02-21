@@ -24,9 +24,9 @@ mod:RegisterEventsInCombat(
 )
 
 --[[
-(ability.id = 207513 or ability.id = 206788 or ability.id = 207502 or ability.id = 214672 or ability.id = 206820) and type = "begincast" or
-(ability.id = 206560 or ability.id = 206557 or ability.id = 206559 or ability.id = 206641 or ability.id = 207630) and type = "cast" or 
-(ability.id = 211615 or ability.id = 208910) and type = "applydebuff"
+(ability.id = 207513 or ability.id = 206788 or ability.id = 207502 or ability.id = 214672 or ability.id = 206820) and type = "begincast"
+ or (ability.id = 206560 or ability.id = 206557 or ability.id = 206559 or ability.id = 206641 or ability.id = 207630) and type = "cast"
+ or (ability.id = 211615 or ability.id = 208910) and type = "applydebuff"
 --]]
 --General
 local warnArcanoSlash				= mod:NewStackAnnounce(206641, 3, nil, "Tank")

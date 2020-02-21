@@ -251,7 +251,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			timerFelBombardmentCD:Start(20.7)
 		end
 	elseif spellId == 245124 then
-		if self.vb.annihilatorHaywire and self.vb.lastCannon == 2 then 
+		if self.vb.annihilatorHaywire and self.vb.lastCannon == 2 then
 			self.vb.lastCannon = 1
 			specWarnAnnihilation:Show()
 			specWarnAnnihilation:Play("helpsoak")

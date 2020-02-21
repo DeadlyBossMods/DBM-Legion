@@ -539,7 +539,7 @@ function mod:OnSync(msg, firstInterrupt)
 		self.vb.interruptBehavior = "Four"
 	elseif msg == "Five" then
 		self.vb.interruptBehavior = "Five"
-	end	
+	end
 	if firstInterrupt then
 		self.vb.ignoreFirstInterrupt = firstInterrupt == "true" and true or false
 	end

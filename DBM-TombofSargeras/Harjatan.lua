@@ -272,7 +272,7 @@ function mod:UNIT_DIED(args)
 	--elseif cid == 117522 then--Darkscale Taskmaster
 		--timerFrostySpittleCD:Stop(args.destGUID)
 	elseif cid == 120545 then--Incubated Egg
-		
+
 	end
 end
 
