@@ -1,11 +1,6 @@
 if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
----------------
--- Skorpyron --
----------------
-L= DBM:GetModLocalization(1706)
-
 --------------------------
 -- Anomalía cronomática --
 --------------------------
@@ -16,16 +11,6 @@ L:SetOptionLocalization({
 	TimeRelease			= "Jugadores afectados por Liberación temporal",
 	TimeBomb			= "Jugadores afectados por Bomba de relojería"
 })
-
---------------
--- Trilliax --
---------------
-L= DBM:GetModLocalization(1731)
-
------------------------------
--- Hoja de hechizo Aluriel --
------------------------------
-L= DBM:GetModLocalization(1751)
 
 -----------------
 -- Tichondrius --

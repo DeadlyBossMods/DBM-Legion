@@ -2,39 +2,22 @@ if GetLocale() ~= "koKR" then return end
 local L
 
 ---------------------------
--- Goroth --
----------------------------
-L= DBM:GetModLocalization(1862)
-
----------------------------
--- Demonic Inquisition --
----------------------------
-L= DBM:GetModLocalization(1867)
-
----------------------------
--- Harjatan the Bludger --
----------------------------
-L= DBM:GetModLocalization(1856)
-
----------------------------
 -- Mistress Sassz'ine --
 ---------------------------
 L= DBM:GetModLocalization(1861)
 
----------------------------
--- Sisters of the Moon --
----------------------------
-L= DBM:GetModLocalization(1903)
+L:SetOptionLocalization({
+	TauntOnPainSuccess	= "Sync timers and taunt warning to Burden of Pain cast SUCCESS instead of START (for certain mythic strats where you let burden tick once on purpose, otherwise it's NOT recommended to use this options)"--TRANSLATE
+})
 
 ---------------------------
 -- The Desolate Host --
 ---------------------------
 L= DBM:GetModLocalization(1896)
 
----------------------------
--- Maiden of Vigilance --
----------------------------
-L= DBM:GetModLocalization(1897)
+L:SetOptionLocalization({
+	IgnoreTemplarOn3Tank	= "Ignore Reanimated Templars for Bone Armor infoframe/announces/nameplates when using 3 or more tanks (do not change this mid combat, it will break counts)"--TRANSLATE
+})
 
 ---------------------------
 -- Fallen Avatar --

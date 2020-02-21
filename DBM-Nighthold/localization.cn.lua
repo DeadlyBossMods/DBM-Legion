@@ -6,31 +6,16 @@
 if GetLocale() ~= "zhCN" then return end
 local L
 
----------------
--- Skorpyron --
----------------
-L= DBM:GetModLocalization(1706)
+---------------------------
+-- Chronomatic Anomaly --
+---------------------------
+L= DBM:GetModLocalization(1725)
 
 L:SetOptionLocalization({
 	InfoFrameBehavior	= "在战斗中显示信息窗",
 	TimeRelease			= "显示被时间释放影响的玩家",
 	TimeBomb			= "显示被时间炸弹影响的玩家"
 })
-
----------------------------
--- Chronomatic Anomaly --
----------------------------
-L= DBM:GetModLocalization(1725)
-
----------------------------
--- Trilliax --
----------------------------
-L= DBM:GetModLocalization(1731)
-
-------------------
--- Spellblade Aluriel --
-------------------
-L= DBM:GetModLocalization(1751)
 
 ------------------
 -- Tichondrius --

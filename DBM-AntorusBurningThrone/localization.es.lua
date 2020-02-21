@@ -1,20 +1,6 @@
 if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
--------------------------
--- Rompemundos garothi --
--------------------------
-L= DBM:GetModLocalization(1992)
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
-L:SetMiscLocalization({
-})
-
 ---------------------------------
 -- Canes manáfagos de Sargeras --
 ---------------------------------
@@ -23,11 +9,6 @@ L= DBM:GetModLocalization(1987)
 L:SetOptionLocalization({
 	SequenceTimers =	"Secuenciar los temporizadores en función al último lanzamiento de cada habilidad en lugar del siguiente para reducir el desajuste de temporizadores a cambio de una leve pérdida de precisión (uno o dos segundos de margen de error)"
 })
-
-------------------------
--- Alto Mando antoran --
-------------------------
-L= DBM:GetModLocalization(1997)
 
 ----------------------------------
 -- Eonar, la Patrona de la Vida --
@@ -89,11 +70,6 @@ L:SetOptionLocalization({
 	InfoFrame =	"Mostrar marco de información con una vista general del combate",
 	UseAddTime = "Mostrar temporizadores de la fase de despligue durante la fase de construcción"
 })
-
------------------
--- Varimathras --
------------------
-L= DBM:GetModLocalization(1983)
 
 ------------------------
 -- Aquelarre shivarra --

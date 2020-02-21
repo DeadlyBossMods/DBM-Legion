@@ -1,11 +1,6 @@
 if GetLocale() ~= "koKR" then return end
 local L
 
----------------
--- Skorpyron --
----------------
-L= DBM:GetModLocalization(1706)
-
 ---------------------------
 -- Chronomatic Anomaly --
 ---------------------------
@@ -16,16 +11,6 @@ L:SetOptionLocalization({
 	TimeRelease			= "시간 방출 대상자 표시",
 	TimeBomb			= "시한 폭탄 대상자 표시"
 })
-
----------------------------
--- Trilliax --
----------------------------
-L= DBM:GetModLocalization(1731)
-
-------------------
--- Spellblade Aluriel --
-------------------
-L= DBM:GetModLocalization(1751)
 
 ------------------
 -- Tichondrius --

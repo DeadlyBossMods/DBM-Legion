@@ -1,11 +1,6 @@
 ﻿if GetLocale() ~= "deDE" then return end
 local L
 
----------------
--- Skorpyron --
----------------
-L= DBM:GetModLocalization(1706)
-
 ---------------------------
 -- Chronomatic Anomaly --
 ---------------------------
@@ -16,16 +11,6 @@ L:SetOptionLocalization({
 	TimeRelease			= "Zeige Spieler, die von Zeitentfesselung betroffen sind",
 	TimeBomb			= "Zeige Spieler, die von Zeitbombe betroffen sind"
 })
-
----------------------------
--- Trilliax --
----------------------------
-L= DBM:GetModLocalization(1731)
-
-------------------
--- Spellblade Aluriel --
-------------------
-L= DBM:GetModLocalization(1751)
 
 ------------------
 -- Tichondrius --

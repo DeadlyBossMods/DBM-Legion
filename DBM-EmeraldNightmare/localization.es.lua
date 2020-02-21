@@ -1,23 +1,6 @@
 if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
----------------
--- Nythendra --
----------------
-L= DBM:GetModLocalization(1703)
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
-L:SetMiscLocalization({
-})
-
 -----------------------------------------
 -- Il'gynoth, Corazón de la Corrupción --
 -----------------------------------------
@@ -55,11 +38,6 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	SoakersText		=	"Interceptores asignados: %s"
 })
-
-------------------------------
--- Dragones de la Pesadilla --
-------------------------------
-L= DBM:GetModLocalization(1704)
 
 --------------
 -- Cenarius --
