@@ -23,10 +23,6 @@
 ## X-Curse-Project-ID: 301324
 ## X-WoWI-ID: 24905
 ## Version: @project-version@
-
-localization.en.lua
-localization.de.lua
-localization.tw.lua
 AnaMouz.lua
 Apocron.lua
 Brutallus.lua

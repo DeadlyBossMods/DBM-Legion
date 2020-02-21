@@ -86,12 +86,12 @@ local comboDebug = {}
 local comboDebugCounter = 0
 local unitTracked = {}
 
-local comboUsed = {
-	[1] = false,--L.Foe, L.Tempest, L.Rend, L.Foe, L.Rend
-	[2] = false,--L.Foe, L.Rend, L.Tempest, L.Foe, L.Rend
-	[3] = false,--L.Rend, L.Tempest, L.Foe, L.Foe, L.Rend
-	[4] = false--L.Rend, L.Foe, L.Foe, L.Tempest, L.Rend
-}
+--local comboUsed = {
+--	[1] = false,--L.Foe, L.Tempest, L.Rend, L.Foe, L.Rend
+--	[2] = false,--L.Foe, L.Rend, L.Tempest, L.Foe, L.Rend
+--	[3] = false,--L.Rend, L.Tempest, L.Foe, L.Foe, L.Rend
+--	[4] = false--L.Rend, L.Foe, L.Foe, L.Tempest, L.Rend
+--}
 
 local updateInfoFrame
 do
@@ -617,10 +617,10 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			--Reset combo and tech count if needed
 			if self.vb.techCount == 5 then
 				self.vb.techCount = 1
-				comboUsed[1] = false
-				comboUsed[2] = false
-				comboUsed[3] = false
-				comboUsed[4] = false
+				--comboUsed[1] = false
+				--comboUsed[2] = false
+				--comboUsed[3] = false
+				--comboUsed[4] = false
 			end
 		else
 			--Set sequence
