@@ -25,11 +25,11 @@ local specWarnSearingGaze				= mod:NewSpecialWarningInterrupt(247320, "HasInterr
 local specWarnPhantasm					= mod:NewSpecialWarningDodge(247393, nil, nil, nil, 2, 2)
 local specWarnEyeSore					= mod:NewSpecialWarningTarget(247330, "Healer", nil, nil, 1, 2)
 
-local timerGushingWoundCD				= mod:NewCDTimer(8.5, 247318, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
-local timerLashCD						= mod:NewCDTimer(15.9, 247325, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
-local timerSearingGazeCD				= mod:NewCDTimer(7.3, 247320, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)
-local timerPhantasmCD					= mod:NewCDTimer(31.9, 247393, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)
-local timerEyeSoreCD					= mod:NewCDTimer(23.0, 247330, nil, "Healer", nil, 3, nil, DBM_CORE_HEALER_ICON)
+local timerGushingWoundCD				= mod:NewCDTimer(8.5, 247318, nil, "Tank", nil, 5, nil, DBM_CORE_L.TANK_ICON)
+local timerLashCD						= mod:NewCDTimer(15.9, 247325, nil, "Tank", nil, 5, nil, DBM_CORE_L.TANK_ICON)
+local timerSearingGazeCD				= mod:NewCDTimer(7.3, 247320, nil, nil, nil, 4, nil, DBM_CORE_L.INTERRUPT_ICON)
+local timerPhantasmCD					= mod:NewCDTimer(31.9, 247393, nil, nil, nil, 3, nil, DBM_CORE_L.DEADLY_ICON)
+local timerEyeSoreCD					= mod:NewCDTimer(23.0, 247330, nil, "Healer", nil, 3, nil, DBM_CORE_L.HEALER_ICON)
 
 mod:AddReadyCheckOption(49195, false)
 

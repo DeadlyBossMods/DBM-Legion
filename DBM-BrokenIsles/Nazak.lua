@@ -21,7 +21,7 @@ local warnWebWrap				= mod:NewTargetAnnounce(219865, 2)
 local specWarnFoundation		= mod:NewSpecialWarningSpell(219591)
 local specWarnWebWrap			= mod:NewSpecialWarningSwitch(219865, "Dps")--Overkill? maybe just melee or just ranged or off by default
 
-local timerCorrodingSprayCD		= mod:NewCDTimer(23.2, 219349, nil, nil, nil, 5, nil, DBM_CORE_TANK_ICON)
+local timerCorrodingSprayCD		= mod:NewCDTimer(23.2, 219349, nil, nil, nil, 5, nil, DBM_CORE_L.TANK_ICON)
 local timerFoundatoinCD			= mod:NewAITimer(90, 219591, nil, nil, nil, 6)
 local timerWebWrapCD			= mod:NewCDTimer(36.9, 219865, nil, nil, nil, 3)
 
