@@ -332,9 +332,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnParasiticFixate:Show()
 			specWarnParasiticFixate:Play("targetyou")
-		end
-		if self.Options.NPAuraOnFixate then
-			DBM.Nameplate:Show(true, args.sourceGUID, spellId)
+			if self.Options.NPAuraOnFixate then
+				DBM.Nameplate:Show(true, args.sourceGUID, spellId)
+			end
 		end
 --	elseif spellId == 219009 then
 --		local targetName = args.destName
@@ -463,7 +463,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnFetter and not self:IsLFR() then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif spellId == 218342 then
+	elseif spellId == 218342 and args:IsPlayer() then
 		if self.Options.NPAuraOnFixate then
 			DBM.Nameplate:Hide(true, args.sourceGUID, spellId)
 		end
