@@ -68,7 +68,7 @@ mod:AddTimerLine(BOSS)
 local timerUncheckedRageCD			= mod:NewNextCountTimer(20, 231854, nil, nil, nil, 2, nil, nil, nil, 1, 4)--5 power per second heroic, 20 seconds for 100 energy
 local timerDrawInCD					= mod:NewNextTimer(59, 232061, nil, nil, nil, 6)
 local timerCommandingRoarCD			= mod:NewNextTimer(31.8, 232192, nil, nil, nil, 1)
-mod:AddTimerLine(DBM_ADDS)
+mod:AddTimerLine(DBM_CORE_L.ADDS)
 --Razorjaw Wavemender
 local timerAqueousBurstCD			= mod:NewCDTimer(6, 231729, nil, false, nil, 3)--6-8
 --Razorjaw Gladiator
