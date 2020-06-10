@@ -426,7 +426,7 @@ function mod:SPELL_CAST_START(args)
 			end
 		end
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_NO_DEBUFF:format(timeStopBuff))
+			DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(timeStopBuff))
 			DBM.InfoFrame:Show(10, "playergooddebuff", timeStopBuff)
 		end
 	elseif spellId == 221408 then
@@ -436,7 +436,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnPurifiedEssence:Play("movetimebubble")
 		timerPurifiedEssence:Start()
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_NO_DEBUFF:format(timeStopBuff))
+			DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(timeStopBuff))
 			DBM.InfoFrame:Show(10, "playergooddebuff", timeStopBuff)
 		end
 	end

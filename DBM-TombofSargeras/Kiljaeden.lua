@@ -239,7 +239,7 @@ function mod:SPELL_CAST_START(args)
 		else--Move to rift
 			specWarnDarknessofSouls:Show(riftName)
 			if self.Options.InfoFrame then
-				DBM.InfoFrame:SetHeader(DBM_NO_DEBUFF:format(DBM_CORE_L.SAFE))
+				DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(DBM_CORE_L.SAFE))
 				DBM.InfoFrame:Show(10, "playergooddebuff", gravitySqueezeBuff)
 			end
 			self:Schedule(28.5, ObeliskWarning, self)

@@ -101,7 +101,7 @@ function mod:OnCombatStart(delay)
 	timerPhaseChange:Start(45)--Maniac
 	--On combat start he starts in a custom cleaner mode (206570) that doesn't have sterilize or cleansing rage abilities but casts cake and ArcaneSlashs more often
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(DBM_NO_DEBUFF:format(spellName))
+		DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(spellName))
 		DBM.InfoFrame:Show(10, "playergooddebuff", spellName, true)
 	end
 	if self:IsMythic() then
