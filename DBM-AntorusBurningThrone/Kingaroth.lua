@@ -128,7 +128,7 @@ local function warnDemolishTargets(self, spellId)
 		end
 	end
 	if not DBM:UnitDebuff("player", spellId) and not self:IsTank() then
-		specWarnDemolishOther:Show(DBM_ALLY)
+		specWarnDemolishOther:Show(DBM_CORE_L.ALLY)
 		specWarnDemolishOther:Play("gathershare")
 	end
 end

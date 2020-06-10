@@ -134,7 +134,7 @@ local function warnDarkMarkTargets(self, spellName)
 		end
 	end
 	if not DBM:UnitDebuff("player", spellName) then
-		specWarnDarkMarkOther:Show(DBM_ALLY)
+		specWarnDarkMarkOther:Show(DBM_CORE_L.ALLY)
 		specWarnDarkMarkOther:Play("gathershare")
 	end
 end

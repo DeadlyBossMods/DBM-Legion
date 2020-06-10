@@ -669,7 +669,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 257931 then
 		warnSargFear:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
-			specWarnSargFear:Show(DBM_ALLY)
+			specWarnSargFear:Show(DBM_CORE_L.ALLY)
 			specWarnSargFear:Play("gathershare")
 			yellSargFear:Yell()
 			fearCheck(self)

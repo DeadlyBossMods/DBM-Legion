@@ -244,7 +244,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 248819 then--Siphoned
 		warnSiphoned:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
-			specWarnSiphoned:Show(DBM_ALLY)
+			specWarnSiphoned:Show(DBM_CORE_L.ALLY)
 			specWarnSiphoned:Play("gathershare")
 			yellSiphoned:Countdown(4)
 			if self.Options.RangeFrame then
@@ -254,7 +254,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 254429 then
 		warnWeightofDarkness:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
-			specWarnWeightOfDarkness:Show(DBM_ALLY)
+			specWarnWeightOfDarkness:Show(DBM_CORE_L.ALLY)
 			specWarnWeightOfDarkness:Play("gathershare")
 			yellWeightOfDarkness:Yell()
 			yellWeightOfDarknessFades:Countdown(5)
