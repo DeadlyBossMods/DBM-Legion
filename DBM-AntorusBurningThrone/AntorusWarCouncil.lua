@@ -4,7 +4,6 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(122369, 122333, 122367)--Chief Engineer Ishkar, General Erodus, Admiral Svirax
 mod:SetEncounterID(2070)
-mod:SetZone()
 mod:SetBossHPInfoToHighest()
 mod:SetUsedIcons(7, 8)
 mod:SetHotfixNoticeRev(16939)

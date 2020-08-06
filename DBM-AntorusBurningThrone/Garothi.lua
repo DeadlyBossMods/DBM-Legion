@@ -4,7 +4,6 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(122450)
 mod:SetEncounterID(2076)
-mod:SetZone()
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7)
 mod.respawnTime = 29
 mod:DisableRegenDetection()--Prevent false combat when fighting trash

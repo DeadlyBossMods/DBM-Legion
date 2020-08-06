@@ -4,7 +4,6 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(118460, 118462, 119072)--118460 Engine of Souls, 118462 Soul Queen Dajahna, 119072 The Desolate Host
 mod:SetEncounterID(2054)
-mod:SetZone()
 mod:SetBossHPInfoToHighest()
 mod:SetUsedIcons(3, 4)
 mod.respawnTime = 40

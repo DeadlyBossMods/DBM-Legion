@@ -4,7 +4,6 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(118289)
 mod:SetEncounterID(2052)
-mod:SetZone()
 mod:SetUsedIcons(4, 1)
 mod:SetHotfixNoticeRev(16509)
 mod.respawnTime = 30
