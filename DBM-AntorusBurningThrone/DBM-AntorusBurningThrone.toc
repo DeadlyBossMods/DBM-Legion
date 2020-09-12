@@ -16,6 +16,7 @@
 ## X-DBM-Mod-Sort: 501
 ## X-DBM-Mod-MapID: 1712
 ## X-DBM-Mod-MinCoreRevision: 20200524142133
+## X-DBM-Mod-MinExpansion: 6
 ## X-Curse-Project-ID: 301324
 ## X-WoWI-ID: 24905
 ## Version: @project-version@
