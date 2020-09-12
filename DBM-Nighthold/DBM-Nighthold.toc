@@ -14,7 +14,7 @@
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: LEG
-## X-DBM-Mod-Has-Mythic : 1
+## X-DBM-StatTypes: normal,heroic,mythic,lfr
 ## X-DBM-Mod-Sort: 505
 ## X-DBM-Mod-MapID: 1530
 ## X-DBM-Mod-MinCoreRevision: 20200524142133
