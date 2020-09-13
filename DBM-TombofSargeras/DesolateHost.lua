@@ -382,7 +382,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		self.vb.soulboundCast = 0
 		--timerSoulbindCD:Start(12, 1)--5-14, too variable to start timer for first cast after souls
 		--timerWitherCD:Start(19.7)
-		timerWailingSoulsCD:Start(58, self.vb.wailingSoulsCast+1)
+		timerWailingSoulsCD:Start(50, 1)
 	elseif spellId == 235732 then
 		playersNotInSpirit[#playersNotInSpirit+1] = args.destName
 		tDeleteItem(playersInSpirit, args.destName)
