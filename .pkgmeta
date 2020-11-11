@@ -3,10 +3,9 @@ enable-nolib-creation: no
 
 move-folders:
     DBM-BrokenIsles/DBM-AntorusBurningThrone: DBM-AntorusBurningThrone
-    DBM-BrokenIsles/DBM-Argus: DBM-Argus
     DBM-BrokenIsles/DBM-BrokenIsles: DBM-BrokenIsles
     DBM-BrokenIsles/DBM-EmeraldNightmare: DBM-EmeraldNightmare
     DBM-BrokenIsles/DBM-Nighthold: DBM-Nighthold
     DBM-BrokenIsles/DBM-TombofSargeras: DBM-TombofSargeras
     DBM-BrokenIsles/DBM-TrialofValor: DBM-TrialofValor
-    
+
