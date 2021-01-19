@@ -87,7 +87,7 @@ _G["DBMUpdateKrosusBeam"] = function(wasLeft)
 end
 
 function mod:OnCombatStart(delay)
-	if self:IsTrivial(120) or self:IsLFR() then
+	if self:IsTrivial() or self:IsLFR() then
 		minAmount, maxAmount = 8, 16
 	elseif self:IsNormal() then
 		minAmount, maxAmount = 4, 8
