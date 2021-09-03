@@ -69,6 +69,7 @@ mod:AddInfoFrameOption(244688, true)
 mod:AddRangeFrameOption("6", nil, "Ranged")
 mod:AddNamePlateOption("NPAuraOnPresence", 244903)
 mod:AddBoolOption("ignoreThreeTank", true)
+mod:AddBoolOption("skipMarked", true)
 
 mod.vb.phase = 1
 mod.vb.techCount = 0
@@ -526,7 +527,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerFlameRendCD:Stop()
 		timerTempestCD:Stop()
 		if self.Options.SetIconOnAdds then
-			self:ScheduleMethod(2, "ScanForMobs", 122532, 1, 1, 5, 0.1, 12, "SetIconOnAdds", nil, nil, true)
+			self:ScheduleMethod(2, "ScanForMobs", 122532, 1, 1, 5, 0.1, 12, "SetIconOnAdds", nil, nil, self.Options.skipMarked)
 		end
 		if self.Options.RangeFrame and not self:IsTank() then
 			DBM.RangeCheck:Hide()
