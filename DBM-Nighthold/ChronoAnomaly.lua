@@ -179,8 +179,7 @@ local function delayedOrbs(self, time, count)
 	timerTemporalOrbsCD:Start(time, count)
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 207012 then--Speed: Normal
 		self.vb.currentPhase = 2
 		self.vb.interruptCount = 0
@@ -458,8 +457,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
 	end
 end
 
-function mod:UNIT_SPELLCAST_CHANNEL_STOP(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_CHANNEL_STOP(uId, _, spellId)
 	if spellId == 211927 then--Power Overwhelming
 		self.vb.interruptCount = self.vb.interruptCount + 1
 		if self.vb.currentPhase == 1 then--slow

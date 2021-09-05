@@ -300,8 +300,7 @@ function mod:SPELL_DAMAGE(sourceGUID, _, _, _, _, _, _, _, spellId)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 230227 and self:AntiSpam(3, 3) then
 		warnFromtheAbyss:Show()
 		timerFromtheAbyssCD:Start()

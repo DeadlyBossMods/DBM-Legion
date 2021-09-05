@@ -722,8 +722,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 161121 then--Assumed this is a script like felseeker
 		self.vb.stormCast = self.vb.stormCast + 1
 		specWarnStormOfDestroyer:Show()

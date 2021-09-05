@@ -598,8 +598,7 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 228372 then--Mists of Helheim (Phase 2)
 		self.vb.phase = 2
 		timerTentacleStrikeCD:Stop()

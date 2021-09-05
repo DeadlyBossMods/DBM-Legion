@@ -393,8 +393,7 @@ function mod:PARTY_KILL(args)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 211647 then--Time Stop
 		self.vb.transitionActive = true
 		self.vb.phase = self.vb.phase + 1

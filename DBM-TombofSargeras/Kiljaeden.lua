@@ -733,8 +733,7 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, bfaSpellId, _, legacySpellId)
-	local spellId = legacySpellId or bfaSpellId
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 242377 then--Kil'jaeden Take Off Sound (intermission 1)
 		self.vb.phase = 1.5
 		self.vb.armageddonCast = 0
