@@ -289,7 +289,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 			if cid == 116569 then--Razorjaw Wavemender
 				--timerAqueousBurstCD:Start(1, GUID)
 				if self.Options.SetIconOnWavemender then
-					self:ScanForMobs(GUID, 0, 8, 2, 0.2, 12, "SetIconOnWavemender")
+					self:ScanForMobs(GUID, 0, 8, 2, nil, 12, "SetIconOnWavemender")
 				end
 			end
 		end

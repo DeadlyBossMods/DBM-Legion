@@ -527,7 +527,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerFlameRendCD:Stop()
 		timerTempestCD:Stop()
 		if self.Options.SetIconOnAdds then
-			self:ScheduleMethod(2, "ScanForMobs", 122532, 1, 1, 5, 0.1, 12, "SetIconOnAdds", nil, nil, self.Options.skipMarked)
+			self:ScheduleMethod(2, "ScanForMobs", 122532, 1, 1, 5, nil, 12, "SetIconOnAdds", nil, self.Options.skipMarked)
 		end
 		if self.Options.RangeFrame and not self:IsTank() then
 			DBM.RangeCheck:Hide()

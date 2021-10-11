@@ -193,7 +193,7 @@ function mod:SPELL_CAST_START(args)
 				DBM.RangeCheck:Show(5)
 			end
 			if self.Options.SetIconOnAdds then
-				self:ScanForMobs(args.sourceGUID, 0, 8, 8, 0.1, 15, "SetIconOnAdds")
+				self:ScanForMobs(args.sourceGUID, 0, 8, 8, nil, 15, "SetIconOnAdds")
 			end
 		end
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then

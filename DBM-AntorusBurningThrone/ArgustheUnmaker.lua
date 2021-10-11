@@ -643,19 +643,19 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if self.Options.SetIconOnVulnerability then
 			if spellId == 255433 then--Arcane
-				self:ScanForMobs(args.destGUID, 2, 5, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 5, 1, nil, 15)
 			elseif spellId == 255430 then--Shadow
-				self:ScanForMobs(args.destGUID, 2, 3, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 3, 1, nil, 15)
 			elseif spellId == 255429 then--Fire
-				self:ScanForMobs(args.destGUID, 2, 2, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 2, 1, nil, 15)
 			elseif spellId == 255425 then--Frost
-				self:ScanForMobs(args.destGUID, 2, 6, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 6, 1, nil, 15)
 			elseif spellId == 255422 then--Nature
-				self:ScanForMobs(args.destGUID, 2, 4, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 4, 1, nil, 15)
 			elseif spellId == 255419 then--Holy
-				self:ScanForMobs(args.destGUID, 2, 1, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 1, 1, nil, 15)
 			elseif spellId == 255418 then--Melee
-				self:ScanForMobs(args.destGUID, 2, 7, 1, 0.2, 15)
+				self:ScanForMobs(args.destGUID, 2, 7, 1, nil, 15)
 			end
 		end
 	elseif spellId == 257869 then

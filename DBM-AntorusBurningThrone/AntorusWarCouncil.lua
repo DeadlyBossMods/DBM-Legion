@@ -291,7 +291,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		specWarnSummonReinforcements:Play("killmob")
 		timerSummonReinforcementsCD:Start(35)
 		if self.Options.SetIconOnAdds then
-			self:ScanForMobs(122890, 0, self.vb.lastIcon, 1, 0.1, 12, "SetIconOnAdds")
+			self:ScanForMobs(122890, 0, self.vb.lastIcon, 1, nil, 12, "SetIconOnAdds")
 		end
 		if self.vb.lastIcon == 8 then
 			self.vb.lastIcon = 7

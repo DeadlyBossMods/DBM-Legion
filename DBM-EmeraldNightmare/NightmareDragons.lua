@@ -275,10 +275,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self.Options.SetIconOnOozes then
 			if self.vb.alternateOozes then
 				--6 and 5 used
-				self:ScanForMobs(103691, 0, 6, 2, 0.1, 10, "SetIconOnOozes")
+				self:ScanForMobs(103691, 0, 6, 2, nil, 10, "SetIconOnOozes")
 			else
 				--8 and 7 used
-				self:ScanForMobs(103691, 0, 8, 2, 0.1, 10, "SetIconOnOozes")
+				self:ScanForMobs(103691, 0, 8, 2, nil, 10, "SetIconOnOozes")
 			end
 		end
 		self.vb.alternateOozes = not self.vb.alternateOozes
