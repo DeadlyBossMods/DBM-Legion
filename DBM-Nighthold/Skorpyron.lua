@@ -186,7 +186,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.volatileScorpCount = self.vb.volatileScorpCount + 1
 		if self.Options.SetIconOnVolatileScorpion then
 			local icon = 9 - self.vb.volatileScorpCount
-			self:ScanForMobs(args.destGUID, 0, icon, 1, nil, 10, "SetIconOnVolatileScorpion")
+			self:ScanForMobs(args.destGUID, 2, icon, 1, nil, 10, "SetIconOnVolatileScorpion")
 		end
 	elseif spellId == 204744 and args:IsPlayer() and self:AntiSpam(2, 3) then
 		specWarnToxicChit:Show()
