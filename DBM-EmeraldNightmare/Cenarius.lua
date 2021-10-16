@@ -179,7 +179,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif spellId == 211471 and self:AntiSpam(5, 1) then
 		timerScornedTouchCD:Start(nil, args.sourceGUID)
 	elseif spellId == 212726 then
-		--Wisps don't fire IEEU so done here inste3ad
+		--Wisps don't fire IEEU so done here instead
 		if self.Options.SetIconOnWisps then
 			self:ScanForMobs(106304, 0, 8, 5, {[106304] = true, [106659] = true,}, 20, "SetIconOnWisps", false)--Double ID scan for wisps
 		end
