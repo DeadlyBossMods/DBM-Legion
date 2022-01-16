@@ -124,7 +124,7 @@ function mod:SPELL_CAST_START(args)
 			end
 		end
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(goodDebuff))
+			DBM.InfoFrame:SetHeader(DBM_COMMON_L.NO_DEBUFF:format(goodDebuff))
 			DBM.InfoFrame:Show(5, "playergooddebuff", goodDebuff)
 		end
 	elseif spellId == 204471 then

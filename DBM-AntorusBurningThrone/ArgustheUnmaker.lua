@@ -236,7 +236,7 @@ end
 --]]
 
 local function delayedBoonCheck(self)
-	specWarnSoulbombMoveTo:Show(DBM_CORE_L.ROOM_EDGE)
+	specWarnSoulbombMoveTo:Show(DBM_COMMON_L.EDGE)
 	specWarnSoulbombMoveTo:Play("bombnow")--Detonate Soon makes more sense than "run to edge" which is still too assumptive
 end
 
@@ -668,7 +668,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 257931 then
 		warnSargFear:CombinedShow(0.3, args.destName)
 		if args:IsPlayer() then
-			specWarnSargFear:Show(DBM_CORE_L.ALLY)
+			specWarnSargFear:Show(DBM_COMMON_L.ALLY)
 			specWarnSargFear:Play("gathershare")
 			yellSargFear:Yell()
 			fearCheck(self)

@@ -168,7 +168,7 @@ function mod:SPELL_CAST_START(args)
 			specWarnBurdenofPain:Play("defensive")
 		else
 			if not self.Options.TauntOnPainSuccess then
-				local targetName = UnitName("boss1target") or DBM_CORE_L.UNKNOWN
+				local targetName = UnitName("boss1target") or DBM_COMMON_L.UNKNOWN
 				if self:AntiSpam(5, targetName) and UnitName("player") ~= targetName then
 					specWarnBurdenofPainTaunt:Show(targetName)
 					specWarnBurdenofPainTaunt:Play("tauntboss")

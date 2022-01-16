@@ -142,7 +142,7 @@ local timerVisionsofDarkTitanCD		= mod:NewCDCountTimer(9, 227008, nil, nil, nil,
 local timerFlameCrashCD				= mod:NewCDCountTimer(20, 227071, nil, nil, nil, 3, nil, nil, nil, mod:IsTank() and 3, 6)
 local timerSummonNightorbCD			= mod:NewCDCountTimer(10.9, 227283, nil, nil, nil, 1, 225133)
 --Shard
-mod:AddTimerLine(DBM_CORE_L.ADDS)
+mod:AddTimerLine(DBM_COMMON_L.ADDS)
 local timerManifestAzzinothCD		= mod:NewCDCountTimer(10.9, 221149, nil, nil, nil, 1, 236237)
 local timerChaosSeedCD				= mod:NewCDTimer(10.9, 221336, nil, nil, nil, 3)
 local timerBulwarkofAzzinothCD		= mod:NewCDTimer(10.9, 221408, nil, nil, nil, 6)
@@ -386,7 +386,7 @@ function mod:SPELL_CAST_START(args)
 				specWarnBondsofFel:Play("carefly")
 			end
 		else
-			local targetName = UnitName("boss1target") or DBM_CORE_L.UNKNOWN
+			local targetName = UnitName("boss1target") or DBM_COMMON_L.UNKNOWN
 			if not UnitIsUnit("player", "boss1target") then--the very first bonds of fel, threat is broken and not available yet, so we need an additional filter
 				if self:AntiSpam(5, targetName) then
 					specWarnBondsofFelTank:Show(targetName)
@@ -425,7 +425,7 @@ function mod:SPELL_CAST_START(args)
 			end
 		end
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(timeStopBuff))
+			DBM.InfoFrame:SetHeader(DBM_COMMON_L.NO_DEBUFF:format(timeStopBuff))
 			DBM.InfoFrame:Show(10, "playergooddebuff", timeStopBuff)
 		end
 	elseif spellId == 221408 then
@@ -435,7 +435,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnPurifiedEssence:Play("movetimebubble")
 		timerPurifiedEssence:Start()
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_CORE_L.NO_DEBUFF:format(timeStopBuff))
+			DBM.InfoFrame:SetHeader(DBM_COMMON_L.NO_DEBUFF:format(timeStopBuff))
 			DBM.InfoFrame:Show(10, "playergooddebuff", timeStopBuff)
 		end
 	end

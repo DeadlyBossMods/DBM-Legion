@@ -70,7 +70,7 @@ local timerRuinerCD						= mod:NewCDCountTimer(28.8, 246840, nil, nil, nil, 3, n
 --local timerShatteringStrikeCD			= mod:NewCDTimer(30, 248375, nil, nil, nil, 2)
 local timerApocProtocolCD				= mod:NewCDCountTimer(77, 246516, nil, nil, nil, 6, nil, nil, nil, 1, 4)
 --Stage: Construction
-mod:AddTimerLine(DBM_CORE_L.ADDS)
+mod:AddTimerLine(DBM_COMMON_L.ADDS)
 local timerInitializing					= mod:NewCastTimer(30, 246504, nil, nil, nil, 6)
 local timerDecimationCD					= mod:NewCDTimer(10.9, 246687, nil, nil, nil, 3)
 local timerAnnihilationCD				= mod:NewCDTimer(15.4, 245807, nil, nil, nil, 3)
@@ -127,7 +127,7 @@ local function warnDemolishTargets(self, spellId)
 		end
 	end
 	if not DBM:UnitDebuff("player", spellId) and not self:IsTank() then
-		specWarnDemolishOther:Show(DBM_CORE_L.ALLY)
+		specWarnDemolishOther:Show(DBM_COMMON_L.ALLY)
 		specWarnDemolishOther:Play("gathershare")
 	end
 end

@@ -128,7 +128,7 @@ local seenMobs = {}
 177.493	Striking Tentacle 10 begins casting Tentacle Strike (melee)
 181.444	Striking Tentacle 11 begins casting Tentacle Strike (melee)
 --]]
-local mythicTentacleSpawns = {"2x"..DBM_CORE_L.FRONT, "1x"..DBM_CORE_L.FRONT.."/1x"..DBM_CORE_L.BACK, "2x"..DBM_CORE_L.BACK, "2x"..DBM_CORE_L.BACK.."/1x"..DBM_CORE_L.FRONT, "2x"..DBM_CORE_L.FRONT}
+local mythicTentacleSpawns = {"2x"..DBM_COMMON_L.FRONT, "1x"..DBM_COMMON_L.FRONT.."/1x"..DBM_COMMON_L.BACK, "2x"..DBM_COMMON_L.BACK, "2x"..DBM_COMMON_L.BACK.."/1x"..DBM_COMMON_L.FRONT, "2x"..DBM_COMMON_L.FRONT}
 local phase3MythicOrbs = {6, 13.0, 13.0, 27.1, 10.7, 13.0, 25.0, 13.0, 13.0, 25.0, 13.0, 17.6, 19.5, 13.0, 13.0, 12.0, 12.0, 15, 8.2}--last being 8.2 in one log, but 13 in another. leaving 8.2 for now
 local phase3MythicTaint = {0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 17, 14, 11, 11}--Assumed that rest are 11 (if you someone survive past berserk)
 
@@ -525,7 +525,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 				if text then
 					specWarnTentacleStrike:Show(text)
 				else
-					specWarnTentacleStrike:Show(DBM_CORE_L.UNKNOWN)
+					specWarnTentacleStrike:Show(DBM_COMMON_L.UNKNOWN)
 				end
 			else
 				timerTentacleStrikeCD:Start(42.5, self.vb.tentacleSetCount+1)
@@ -534,24 +534,24 @@ function mod:RAID_BOSS_EMOTE(msg)
 		if msg:find(L.near) then
 			self.vb.tentacleCount = self.vb.tentacleCount + 1
 			if not self:IsMythic() then
-				specWarnTentacleStrike:Show(DBM_CORE_L.FRONT)
+				specWarnTentacleStrike:Show(DBM_COMMON_L.FRONT)
 			end
-			local subtext = self:IsMythic() and DBM_CORE_L.FRONT.." ("..self.vb.tentacleCount..")" or DBM_CORE_L.FRONT
+			local subtext = self:IsMythic() and DBM_COMMON_L.FRONT.." ("..self.vb.tentacleCount..")" or DBM_COMMON_L.FRONT
 			timerTentacleStrike:Start(subtext)
 		elseif msg:find(L.far) then
 			self.vb.tentacleCount = self.vb.tentacleCount + 1
 			if not self:IsMythic() then
-				specWarnTentacleStrike:Show(DBM_CORE_L.BACK)
+				specWarnTentacleStrike:Show(DBM_COMMON_L.BACK)
 			end
-			local subtext = self:IsMythic() and DBM_CORE_L.BACK.." ("..self.vb.tentacleCount..")" or DBM_CORE_L.BACK
+			local subtext = self:IsMythic() and DBM_COMMON_L.BACK.." ("..self.vb.tentacleCount..")" or DBM_COMMON_L.BACK
 			timerTentacleStrike:Start(subtext)
 		--Backup for the like 8 languages dbm doesn't have translators for
 		else
 			self.vb.tentacleCount = self.vb.tentacleCount + 1
 			if not self:IsMythic() then
-				specWarnTentacleStrike:Show(DBM_CORE_L.UNKNOWN)
+				specWarnTentacleStrike:Show(DBM_COMMON_L.UNKNOWN)
 			end
-			local subtext = self:IsMythic() and DBM_CORE_L.UNKNOWN.." ("..self.vb.tentacleCount..")" or DBM_CORE_L.UNKNOWN
+			local subtext = self:IsMythic() and DBM_COMMON_L.UNKNOWN.." ("..self.vb.tentacleCount..")" or DBM_COMMON_L.UNKNOWN
 			timerTentacleStrike:Start(subtext)
 		end
 	end
@@ -562,21 +562,21 @@ function mod:RAID_BOSS_WHISPER(msg)
 		specWarnOrbOfCorruption:Show()
 		specWarnOrbOfCorruption:Play("orbrun")
 		if self:IsTank() then
-			yellOrbOfCorruption:Yell(2, DBM_CORE_L.ORB, 2)
+			yellOrbOfCorruption:Yell(2, DBM_COMMON_L.ORB, 2)
 		elseif self:IsHealer() then--LFR/Normal doesn't choose a healer, just tank/damage
-			yellOrbOfCorruption:Yell(1, DBM_CORE_L.ORB, 1)
+			yellOrbOfCorruption:Yell(1, DBM_COMMON_L.ORB, 1)
 		else
-			yellOrbOfCorruption:Yell(3, DBM_CORE_L.ORB, 3)
+			yellOrbOfCorruption:Yell(3, DBM_COMMON_L.ORB, 3)
 		end
 	elseif msg:find("spell:228058") then
 		specWarnOrbOfCorrosion:Show()
 		specWarnOrbOfCorrosion:Play("orbrun")
 		if self:IsTank() then
-			yellOrbOfCorrosion:Yell(2, DBM_CORE_L.ORB, 2)
+			yellOrbOfCorrosion:Yell(2, DBM_COMMON_L.ORB, 2)
 		elseif self:IsHealer() then--LFR/Normal doesn't choose a healer, just tank/damage
-			yellOrbOfCorrosion:Yell(1, DBM_CORE_L.ORB, 1)
+			yellOrbOfCorrosion:Yell(1, DBM_COMMON_L.ORB, 1)
 		else
-			yellOrbOfCorrosion:Yell(3, DBM_CORE_L.ORB, 3)
+			yellOrbOfCorrosion:Yell(3, DBM_COMMON_L.ORB, 3)
 		end
 	end
 end

@@ -36,7 +36,7 @@ local specWarnFelBurst				= mod:NewSpecialWarningInterrupt(206351, "HasInterrupt
 
 local timerSearingBrand				= mod:NewTargetTimer(20, 206677, nil, "Tank", nil, 5)
 local timerFelBeamCD				= mod:NewNextCountTimer(16, 205368, 173303, nil, nil, 3)--Short text "Beam"
-local timerOrbDestroCD				= mod:NewNextCountTimer(16, 205344, DBM_CORE_L.ORB, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)--Shor timer text "Orb"
+local timerOrbDestroCD				= mod:NewNextCountTimer(16, 205344, DBM_COMMON_L.ORB, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)--Shor timer text "Orb"
 local timerBurningPitchCD			= mod:NewNextCountTimer(16, 205420, nil, nil, 2, 5)
 local timerSlamCD					= mod:NewNextCountTimer(30, 205862, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
 
