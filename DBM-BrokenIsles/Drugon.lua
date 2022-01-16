@@ -34,7 +34,7 @@ mod:AddReadyCheckOption(43448, false)
 
 function mod:AvaTarget(targetname, uId)
 	if not targetname then
-		warnAvalanche:Show(DBM_CORE_L.UNKNOWN)
+		warnAvalanche:Show(DBM_COMMON_L.UNKNOWN)
 		return
 	end
 	if targetname == UnitName("player") then

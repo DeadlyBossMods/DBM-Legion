@@ -44,7 +44,7 @@ local yellDecimationFades				= mod:NewShortFadesYell(244410)
 --Annihilator
 local specWarnAnnihilation				= mod:NewSpecialWarningSpell(244761, nil, nil, nil, 1, 2)
 
-local timerFelBombardmentCD				= mod:NewNextTimer(20.7, 246220, nil, "Tank", nil, 5, nil, DBM_CORE_L.TANK_ICON, nil, 2, 4)
+local timerFelBombardmentCD				= mod:NewNextTimer(20.7, 246220, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerApocDriveCast				= mod:NewCastTimer(30, 244152, nil, nil, nil, 6)
 local timerSpecialCD					= mod:NewNextSpecialTimer(20, nil, nil, nil, nil, 3, nil, nil, nil, 1, 4)--When cannon unknown
 mod:AddTimerLine(Decimator)

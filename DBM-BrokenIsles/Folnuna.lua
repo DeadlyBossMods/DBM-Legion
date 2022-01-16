@@ -23,8 +23,8 @@ local specWarnInfectedClaws				= mod:NewSpecialWarningStack(247361, nil, 6, nil,
 local specWarnInfectedClawsOther		= mod:NewSpecialWarningTaunt(247361, nil, nil, nil, 1, 2)
 local specWarnSlumberingGasp			= mod:NewSpecialWarningDodge(247379, nil, nil, nil, 2, 2)
 
---local timerInfectedClawsCD				= mod:NewAITimer(13.4, 247361, nil, "Tank", nil, 5, nil, DBM_CORE_L.TANK_ICON)
-local timerSlumberingGaspCD				= mod:NewCDTimer(54.7, 247379, nil, nil, nil, 3, nil, DBM_CORE_L.IMPORTANT_ICON)
+--local timerInfectedClawsCD				= mod:NewAITimer(13.4, 247361, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerSlumberingGaspCD				= mod:NewCDTimer(54.7, 247379, nil, nil, nil, 3, nil, DBM_COMMON_L.IMPORTANT_ICON)
 local timerGrotesqueSpawnCD				= mod:NewCDTimer(32.8, 247443, nil, nil, nil, 1)
 
 mod:AddReadyCheckOption(49199, false)

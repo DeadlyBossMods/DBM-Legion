@@ -59,13 +59,13 @@ local specWarnTorment				= mod:NewSpecialWarningStack(233104, nil, 75, nil, nil,
 
 --Atrigan
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(14645))
-local timerScytheSweepCD			= mod:NewCDCountTimer(23, 233426, nil, "Tank", 2, 5, nil, DBM_CORE_L.TANK_ICON)
+local timerScytheSweepCD			= mod:NewCDCountTimer(23, 233426, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerCalcifiedQuillsCD		= mod:NewCDTimer(20.2, 233431, nil, nil, nil, 3)--20.2-20.5 unless delayed by scythe, or bone saw
 local timerBoneSawCD				= mod:NewCDCountTimer(45.4, 233441, nil, nil, nil, 2, nil, nil, nil, 1, 4)
 local timerBoneSaw					= mod:NewBuffActiveTimer(15, 233441, nil, nil, nil, 2)
 --Belac
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(14646))
-local timerEchoingAnguishCD			= mod:NewCDTimer(22.9, 233983, nil, nil, nil, 3, nil, DBM_CORE_L.MAGIC_ICON)
+local timerEchoingAnguishCD			= mod:NewCDTimer(22.9, 233983, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerSuffocatingDarkCD		= mod:NewCDTimer(24, 233894, nil, nil, nil, 3)
 local timerTormentingBurstCD		= mod:NewCDCountTimer(17.0, 234015, nil, nil, nil, 2)
 local timerFelSquallCD				= mod:NewCDCountTimer(45.7, 235230, nil, nil, nil, 2)
