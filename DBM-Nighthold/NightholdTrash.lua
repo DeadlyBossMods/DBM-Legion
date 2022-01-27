@@ -84,7 +84,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnProtectiveShield:Play("runout")
 	elseif spellId == 224246 then
 		specWarnArcWell:Show()
-		specWarnArcWell:Play("killtotem")
+		specWarnArcWell:Play("attacktotem")
 	end
 end
 
