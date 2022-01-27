@@ -18,7 +18,7 @@ mod:RegisterEventsInCombat(
 local warnSeedofDestruction		= mod:NewTargetAnnounce(247437, 4)
 
 local specSilence				= mod:NewSpecialWarningSpell(247698, nil, nil, nil, 2, 2)
-local specWarnSoulCleave		= mod:NewSpecialWarningSpell(247410, "Melee", nil, nil, 1, 5)
+local specWarnSoulCleave		= mod:NewSpecialWarningSpell(247410, "Melee", nil, nil, 1, 12)
 local specWarnClovenSoul		= mod:NewSpecialWarningTaunt(247444, nil, nil, nil, 1, 5)
 
 local specWarnWakeofDestruction	= mod:NewSpecialWarningSpell(247432, nil, nil, nil, 2, 2)--Used for both warnings that trigger it
@@ -52,7 +52,7 @@ function mod:SPELL_CAST_START(args)
 		timerSilenceCD:Start()
 	elseif spellId == 247410 then
 		specWarnSoulCleave:Show()
-		specWarnSoulCleave:Play("179406")
+		specWarnSoulCleave:Play("soulcleave")
 		timerSoulCleaveCD:Start()
 	end
 end

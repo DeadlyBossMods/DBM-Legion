@@ -66,7 +66,7 @@ local specWarnFlashfreeze				= mod:NewSpecialWarningStack(245518, nil, 2, nil, n
 local specWarnFlashfreezeOther			= mod:NewSpecialWarningTaunt(245518, nil, nil, nil, 1, 2)
 local yellFlashfreeze					= mod:NewYell(245518, nil, false)
 local specWarnChilledBlood				= mod:NewSpecialWarningTarget(245586, "Healer", nil, nil, 1, 2)
-local specWarnOrbofFrost				= mod:NewSpecialWarningDodge(253650, nil, nil, nil, 1, 2)
+local specWarnOrbofFrost				= mod:NewSpecialWarningDodge(253650, nil, nil, nil, 1, 12)
 --Thu'raya, Mother of the Cosmos (Mythic)
 local specWarnTouchoftheCosmos			= mod:NewSpecialWarningInterruptCount(250648, "HasInterrupt", nil, nil, 1, 2)
 local specWarnCosmicGlare				= mod:NewSpecialWarningYou(250757, nil, nil, nil, 1, 2)
@@ -218,7 +218,7 @@ function mod:SPELL_CAST_START(args)
 		timerStormofDarknessCD:Start(56.8, self.vb.stormCount+1)
 	elseif spellId == 253650 then
 		specWarnOrbofFrost:Show()
-		specWarnOrbofFrost:Play("161411")
+		specWarnOrbofFrost:Play("iceorbmove")
 		timerOrbofFrostCD:Start()
 	elseif spellId == 250095 and self:AntiSpam(3, 1) then
 		timerMachinationsofAman:Start()

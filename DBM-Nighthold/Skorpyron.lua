@@ -36,7 +36,7 @@ local warnRed						= mod:NewSpellAnnounce(214661, 2)
 local warnGreen						= mod:NewSpellAnnounce(214652, 2)
 local warnBlue						= mod:NewSpellAnnounce(204292, 2)
 
-local specWarnTether				= mod:NewSpecialWarningYou(204531, nil, nil, nil, 1, 2)
+local specWarnTether				= mod:NewSpecialWarningYou(204531, nil, nil, nil, 1, 12)
 local specWarnArcanoslash			= mod:NewSpecialWarningDefensive(204275, "Tank", nil, nil, 1, 2)
 local specWarnCallofScorp			= mod:NewSpecialWarningSwitch(204372, "Tank", nil, nil, 1, 2)--Determine common strat for dps switching
 local specWarnFocusedBlast			= mod:NewSpecialWarningDodge(204471, nil, nil, nil, 2, 2)
@@ -153,7 +153,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if spellId == 204531 then
 		if args:IsPlayer() then
 			specWarnTether:Show()
-			specWarnTether:Play("180880")
+			specWarnTether:Play("breakchain")
 		end
 	elseif spellId == 204459 then
 		if self.Options.SpecWarn204459switch then
