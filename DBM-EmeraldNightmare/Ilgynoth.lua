@@ -194,7 +194,7 @@ do
 			end
 		end
 		if lowestUnitID then
-			SetRaidTarget(lowestUnitID, 8)
+			self:SetIcon(lowestUnitID, 8)
 			found = true
 		end
 		if found and self.Options.SetIconOnlyOnce2 then

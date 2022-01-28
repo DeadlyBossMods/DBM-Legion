@@ -119,7 +119,7 @@ local function findNaturalistOnPull(self)
 		if UnitExists(bossUnitID) then
 			local cid = self:GetCIDFromGUID(UnitGUID(bossUnitID))
 			if cid == 109041 then
-				SetRaidTarget(bossUnitID, 8)
+				self:SetIcon(bossUnitID, 8)
 				break
 			end
 		end
