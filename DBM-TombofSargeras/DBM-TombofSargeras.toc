@@ -23,6 +23,7 @@
 ## Version: @project-version@
 
 localization.en.lua
+localization.ru.lua
 localization.kr.lua
 localization.de.lua
 localization.cn.lua
