@@ -30,6 +30,7 @@
 ## X-Wago-ID: lQNlbaKe
 ## Version: @project-version@
 localization.en.lua
+localization.ru.lua
 localization.cn.lua
 localization.de.lua
 localization.kr.lua
