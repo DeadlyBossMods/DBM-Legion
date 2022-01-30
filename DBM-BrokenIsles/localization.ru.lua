@@ -52,5 +52,5 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(2015)
 
 L:SetMiscLocalization({
-	Pull				= "Все миры сгорят в пламени!
+	Pull				= "Все миры сгорят в пламени!"
 })
