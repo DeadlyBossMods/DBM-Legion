@@ -809,7 +809,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		local count = self.vb.azzCount
 		specWarnManifestAzzinoth:Show(count)
 		specWarnManifestAzzinoth:Play("bigmob")
-		specWarnManifestAzzinoth:ScheduleVoice(1.2, nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack.."\\count\\"..count..".ogg")
+		specWarnManifestAzzinoth:ScheduleVoice(1.2, nil, "Interface\\AddOns\\DBM-VP"..DBM.Options.ChosenVoicePack2.."\\count\\"..count..".ogg")
 		timerBulwarkofAzzinothCD:Start(15)
 		timerManifestAzzinothCD:Start(40, count+1)
 	elseif spellId == 227071 then -- Flame Crash
