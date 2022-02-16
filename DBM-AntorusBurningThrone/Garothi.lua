@@ -37,26 +37,26 @@ local specWarnFelBombardmentTaunt		= mod:NewSpecialWarningTaunt(246220, nil, nil
 local specWarnApocDrive					= mod:NewSpecialWarningSwitch(244152, nil, nil, nil, 1, 2)
 local specWarnEradication				= mod:NewSpecialWarningRun(244969, nil, nil, nil, 4, 2)
 --local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
---Decimator
-local specWarnDecimation				= mod:NewSpecialWarningMoveAway(244410, nil, nil, nil, 1, 2)
-local yellDecimation					= mod:NewShortYell(244410)
-local yellDecimationFades				= mod:NewShortFadesYell(244410)
---Annihilator
-local specWarnAnnihilation				= mod:NewSpecialWarningSpell(244761, nil, nil, nil, 1, 2)
 
 local timerFelBombardmentCD				= mod:NewNextTimer(20.7, 246220, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerApocDriveCast				= mod:NewCastTimer(30, 244152, nil, nil, nil, 6)
 local timerSpecialCD					= mod:NewNextSpecialTimer(20, nil, nil, nil, nil, 3, nil, nil, nil, 1, 4)--When cannon unknown
-mod:AddTimerLine(Decimator)
-local timerDecimationCD					= mod:NewNextTimer(31.6, 244410, nil, nil, nil, 3, nil, nil, nil, 1, 4)
-mod:AddTimerLine(annihilator)
-local timerAnnihilationCD				= mod:NewNextTimer(31.6, 244761, nil, nil, nil, 3, nil, nil, nil, 1, 4)
-
---local berserkTimer					= mod:NewBerserkTimer(600)
 
 mod:AddSetIconOption("SetIconOnDecimation", 244410, true)
 mod:AddSetIconOption("SetIconOnBombardment", 246220, true)
 mod:AddRangeFrameOption("7/17")
+--Decimator
+mod:AddTimerLine(Decimator)
+local specWarnDecimation				= mod:NewSpecialWarningMoveAway(244410, nil, nil, nil, 1, 2)
+local yellDecimation					= mod:NewShortYell(244410)
+local yellDecimationFades				= mod:NewShortFadesYell(244410)
+
+local timerDecimationCD					= mod:NewNextTimer(31.6, 244410, nil, nil, nil, 3, nil, nil, nil, 1, 4)
+--Annihilator
+mod:AddTimerLine(annihilator)
+local specWarnAnnihilation				= mod:NewSpecialWarningSpell(244761, nil, nil, nil, 1, 2)
+
+local timerAnnihilationCD				= mod:NewNextTimer(31.6, 244761, nil, nil, nil, 3, nil, nil, nil, 1, 4)
 
 mod.vb.deciminationActive = 0
 mod.vb.FelBombardmentActive = 0
