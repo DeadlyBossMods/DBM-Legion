@@ -582,7 +582,7 @@ function mod:RAID_BOSS_WHISPER(msg)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not self.vb.phase == 2 then
+	if self.vb.phase ~= 2 then
 		self:UnregisterShortTermEvents()
 		return
 	end
