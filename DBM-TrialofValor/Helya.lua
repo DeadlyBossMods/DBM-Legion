@@ -322,7 +322,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self:IsHealer(uId) then--On All difficulties as of Dec 6th, a tank isn't chosen, just 1 healer and 2 dps
 				self:SetIcon(args.destName, 1)--Star
 			else
-				self:SetSortedIcon(1, args.destName, 2, 2)--Circle and Diamond
+				self:SetSortedIcon("roster", 1, args.destName, 2, 2)--Circle and Diamond
 			end
 		end
 	elseif spellId == 227982 then
