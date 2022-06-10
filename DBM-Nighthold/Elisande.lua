@@ -99,7 +99,7 @@ local berserkTimer					= mod:NewBerserkTimer(240)
 
 mod:AddRangeFrameOption(8, 209973)
 mod:AddInfoFrameOption(209598)
-mod:AddSetIconOption("SetIconOnConflexiveBurst", 209598)
+mod:AddSetIconOption("SetIconOnConflexiveBurst", 209598, true, 6)
 
 --Exists in phases 1-3
 local heroicSlowElementalTimers = {5, 49, 52, 60}--Heroic Jan 18
