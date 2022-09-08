@@ -25,7 +25,7 @@ mod:RegisterEventsInCombat(
  or ability.id = 244894 and (type = "applybuff" or type = "removebuff")
  or (ability.id = 245994 or ability.id = 254452) and type = "applydebuff"
 --]]
-local warnPhase							= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, nil, 2)
+local warnPhase							= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
 local berserkTimer						= mod:NewBerserkTimer(600)
 --Stage One: Wrath of Aggramar

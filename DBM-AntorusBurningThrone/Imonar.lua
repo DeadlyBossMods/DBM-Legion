@@ -30,7 +30,7 @@ mod:RegisterEventsInCombat(
  or (ability.id = 247367 or ability.id = 250255 or ability.id = 247552 or ability.id = 247687 or ability.id = 254244) and type = "cast"
  or (ability.id = 248233 or ability.id = 250135) and (type = "applybuff" or type = "removebuff")
 --]]
-local warnPhase							= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, nil, 2)
+local warnPhase							= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
 local berserkTimer						= mod:NewBerserkTimer(420)
 
