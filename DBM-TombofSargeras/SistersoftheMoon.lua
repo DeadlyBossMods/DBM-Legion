@@ -391,7 +391,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		timerTwilightVolleyCD:Start(10.9)
 		timerRapidShotCD:Start(15.8)--Review
 		--Phase 2 ability: Eclipse. Next phase ability used on heroic+: Glaive
-		if elapsedMoon and totalMoon then
+		if totalMoon and totalMoon ~= 0 then
 			if self:IsEasy() then--Eclipse starts
 				timerEmbraceofEclipseCD:Update(elapsedMoon, totalMoon)
 			else--eclipse already running and glaive starts
@@ -415,7 +415,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		timerTwilightVolleyCD:Start(15.8)
 		timerLunarBeaconCD:Start(18)
 		--Phase 3 ability: Glaive. Next phase ability used on heroic+ (rolled around to phase 1): Incorpereal Shot
-		if elapsedMoon and totalMoon then
+		if totalMoon and totalMoon ~= 0 then
 			if self:IsEasy() then--Glaive starts
 				timerGlaiveStormCD:Update(elapsedMoon, totalMoon)
 			else
