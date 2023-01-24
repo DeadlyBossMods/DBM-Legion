@@ -468,8 +468,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if args:IsPlayer() then
 			updateRangeFrame(self)
 		end
-	elseif spellId == 227503 then--Draw power, assumed
-		timerDrawPower:Stop()
 	elseif spellId == 227490 or spellId == 227491 or spellId == 227498 or spellId == 227499 or spellId == 227500 then--Branded (Draw Power Runes)
 		drawTable[spellId] = nil
 		if self.Options.InfoFrame then

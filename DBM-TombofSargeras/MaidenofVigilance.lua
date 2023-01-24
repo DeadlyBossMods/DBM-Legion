@@ -160,11 +160,11 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
-	if spellId == 235240 or spellId == 240210 then--Fel Infusion
+	if spellId == 235240 or spellId == 240219 then--Fel Infusion
 		if args:IsPlayer() then
 			specWarnFelInfusion:Show(self:IconNumToTexture(4))
 			specWarnFelInfusion:Play("felinfusion")
-			if spellId == 235213 then--Not LFR
+			if spellId == 235240 then--Not LFR
 				yellInfusion:Yell(4, "")
 			end
 		end

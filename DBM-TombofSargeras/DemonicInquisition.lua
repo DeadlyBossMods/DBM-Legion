@@ -289,7 +289,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnQuills then
 			self:SetIcon(args.destName, 5)
 		end
-	elseif spellId == 208802 then
+	elseif spellId == 248713 then
 		local amount = args.amount or 1
 		if args:IsPlayer() and amount >= 10 then
 			specWarnSoulCorruption:Show(amount)
