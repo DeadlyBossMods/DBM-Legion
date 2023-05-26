@@ -7,7 +7,7 @@ local L
 L= DBM:GetModLocalization(1861)
 
 L:SetOptionLocalization({
-	TauntOnPainSuccess	= "Sync timers and taunt warning to Burden of Pain cast SUCCESS instead of START (for certain mythic strats where you let burden tick once on purpose, otherwise it's NOT recommended to use this options)"
+	TauntOnPainSuccess	= "Таймеры синхронизации и предупреждение о таунте для применения 'Бремя боли' вместо «СТАРТ» (для некоторых мифических стратегий, где Вы специально позволяете бремени тикать один раз, в противном случае НЕ рекомендуется использовать эту опцию)"
 })
 
 ---------------------------
@@ -25,7 +25,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1873)
 
 L:SetOptionLocalization({
-	InfoFrame =	"Show InfoFrame for fight overview"
+	InfoFrame =	"Показать инфофрейм для обзора боя"
 })
 
 L:SetMiscLocalization({
@@ -38,7 +38,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1898)
 
 L:SetWarningLocalization({
-	warnSingularitySoon		= "Knockback in %ds"
+	warnSingularitySoon		= "Отбрасывание в %ds"
 })
 
 L:SetOptionLocalization({
