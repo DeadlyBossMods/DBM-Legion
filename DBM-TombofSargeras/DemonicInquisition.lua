@@ -21,7 +21,7 @@ mod:RegisterEventsInCombat(
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_DIED",
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2",
-	"UNIT_POWER_FREQUENT player"
+	"UNIT_POWER_UPDATE player"
 )
 
 --[[
@@ -334,7 +334,7 @@ end
 
 do
 	local warned = false
-	function mod:UNIT_POWER_FREQUENT(uId, type)
+	function mod:UNIT_POWER_UPDATE(uId, type)
 		if type == "ALTERNATE" then
 			local playerPower = UnitPower("player", 10)
 			if not warned and playerPower >= 75 then
