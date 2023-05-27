@@ -7,7 +7,7 @@ local L
 L= DBM:GetModLocalization(1738)
 
 L:SetOptionLocalization({
-	SetIconOnlyOnce2	= "Set icon only once per ooze scan then disable until at least one blows up (experimental)",
+	SetIconOnlyOnce2	= "Устанавливать метку только один раз за сканирование слизи, затем отключить, пока хотя бы одна не взорвется (экспериментально)",
 	InfoFrameBehavior	= "Информация, отображаемая в информационном окне во время боя",
 	Fixates				= "Показывать игроков с Сосредоточением внимания",
 	Adds				= "Показывать количество для всех типов аддов"
@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Disable all auto soaking related warnings/arrows/HUDs for Focused Gaze"
+	NoAutoSoaking2		= "Отключите все предупреждения/стрелки/HUD, связанные с автоматическим поглощением, для 'Пристального взгляда'"
 })
 
 L:SetMiscLocalization({
