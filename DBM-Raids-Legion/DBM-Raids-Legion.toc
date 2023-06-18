@@ -1,6 +1,7 @@
 ## Interface: 100100
 ## X-Min-Interface: 80000
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Legion)|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Рейды (Легион)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -13,6 +14,7 @@
 ## X-DBM-StatTypes: lfr,normal,heroic,mythic
 ## X-DBM-Mod-SubCategoriesID: 1712, 1676, 1530, 1648, 1520
 ## X-DBM-Mod-Name: Raids (Legion)
+## X-DBM-Mod-Name-ruRU: Рейды (Легион)
 ## X-DBM-Mod-Sort: 501
 ## X-DBM-Mod-MapID: 1712, 1676, 1530, 1648, 1520
 ## X-DBM-Mod-MinCoreRevision: 20230617000000
