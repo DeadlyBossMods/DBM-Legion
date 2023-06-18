@@ -545,7 +545,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		end
 	elseif spellId == 241721 and args:IsPlayer() then
 		timerSightlessGaze:Stop()
-	elseif spellId == 239932 and not self.vb.phase ~= 1.5 then--Felclaws ended
+	elseif spellId == 239932 and self.vb.phase ~= 1.5 then--Felclaws ended
 		if (self.vb.lastTankHit ~= playerName) and self:AntiSpam(3, self.vb.lastTankHit) then
 			specWarnFelclawsOther:Show(self.vb.lastTankHit)
 			specWarnFelclawsOther:Play("tauntboss")
