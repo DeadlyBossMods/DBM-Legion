@@ -1,0 +1,81 @@
+## Interface: 100100
+## X-Min-Interface: 80000
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Legion)|r
+## Author: MysticalOS
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMRaidsLegion_AllSavedVars
+## SavedVariablesPerCharacter: DBMRaidsLegion_SavedStats
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
+## X-DBM-Mod-Category: LEG
+## X-DBM-StatTypes: lfr,normal,heroic,mythic
+## X-DBM-Mod-SubCategoriesID: 1712, 1676, 1530, 1648, 1520
+## X-DBM-Mod-Name: Raids (Legion)
+## X-DBM-Mod-Sort: 501
+## X-DBM-Mod-MapID: 1712, 1676, 1530, 1648, 1520
+## X-DBM-Mod-MinCoreRevision: 20230617000000
+## X-DBM-Mod-MinExpansion: 6
+## X-Curse-Project-ID: 301324
+## X-WoWI-ID: 24905
+## X-Wago-ID: lQNlbaKe
+## Version: @project-version@
+
+localization.en.lua
+localization.cn.lua
+localization.de.lua
+localization.tw.lua
+localization.es.lua
+localization.kr.lua
+localization.ru.lua
+
+AntorusBurningThrone\Garothi.lua
+AntorusBurningThrone\HoundsofSargeras.lua
+AntorusBurningThrone\AntorusWarCouncil.lua
+AntorusBurningThrone\Eonar.lua
+AntorusBurningThrone\Hasabel.lua
+AntorusBurningThrone\Imonar.lua
+AntorusBurningThrone\Kingaroth.lua
+AntorusBurningThrone\Varimathras.lua
+AntorusBurningThrone\ShivarraCoven.lua
+AntorusBurningThrone\Aggramar.lua
+AntorusBurningThrone\ArgustheUnmaker.lua
+AntorusBurningThrone\AntorusTrash.lua
+
+TombofSargeras\Goroth.lua
+TombofSargeras\DemonicInquisition.lua
+TombofSargeras\Harjatan.lua
+TombofSargeras\Sasszine.lua
+TombofSargeras\SistersoftheMoon.lua
+TombofSargeras\DesolateHost.lua
+TombofSargeras\MaidenofVigilance.lua
+TombofSargeras\FallenAvatar.lua
+TombofSargeras\Kiljaeden.lua
+TombofSargeras\TombSargTrash.lua
+
+Nighthold\Skorpyron.lua
+Nighthold\ChronoAnomaly.lua
+Nighthold\Trilliax.lua
+Nighthold\Aluriel.lua
+Nighthold\Tichondrius.lua
+Nighthold\Krosus.lua
+Nighthold\Telarn.lua
+Nighthold\Etraeus.lua
+Nighthold\Elisande.lua
+Nighthold\Guldan.lua
+Nighthold\NightholdTrash.lua
+
+TrialofValor\Odyn.lua
+TrialofValor\Guarm.lua
+TrialofValor\Helya.lua
+TrialofValor\TrialofValorTrash.lua
+
+EmeraldNightmare\Nythendra.lua
+EmeraldNightmare\Ilgynoth.lua
+EmeraldNightmare\Renferal.lua
+EmeraldNightmare\Ursok.lua
+EmeraldNightmare\NightmareDragons.lua
+EmeraldNightmare\Cenarius.lua
+EmeraldNightmare\Xavius.lua
+EmeraldNightmare\NightmareTrash.lua
