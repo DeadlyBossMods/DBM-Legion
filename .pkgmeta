@@ -1,6 +1,6 @@
-package-as: DBM-BrokenIsles
+package-as: DBM-Raids-Legion
 enable-nolib-creation: no
 
 move-folders:
-    DBM-BrokenIsles/DBM-BrokenIsles: DBM-BrokenIsles
-    DBM-BrokenIsles/DBM-Raids-Legion: DBM-Raids-Legion
+    DBM-Raids-Legion/DBM-BrokenIsles: DBM-BrokenIsles
+    DBM-Raids-Legion/DBM-Raids-Legion: DBM-Raids-Legion
