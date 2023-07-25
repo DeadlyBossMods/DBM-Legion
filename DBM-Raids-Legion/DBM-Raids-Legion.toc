@@ -1,7 +1,7 @@
 ## Interface: 100105
 ## X-Min-Interface: 80000
-## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Legion)|r
-## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Рейды (Легион)|r
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cffff6010 (Legion)|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cffff6010Рейды (Легион)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
