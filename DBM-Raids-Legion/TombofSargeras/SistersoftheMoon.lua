@@ -234,7 +234,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
-	if (spellId == 234995 or spellId == 234996) and args:IsPlayer() then
+	if (spellId == 234995 or spellId == 234996) and args:IsPlayer() and not self:IsTrivial() then
 		local amount = args.amount or 1
 		if amount >= 12 and amount % 4 == 0 then
 			specWarnFontofElune:Show(amount)
