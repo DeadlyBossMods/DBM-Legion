@@ -14,7 +14,7 @@
 ## SavedVariablesPerCharacter: DBMBrokenIsles_SavedStats
 ## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
 ## X-DBM-Mod: 1
-## X-DBM-Mod-Type: RAID
+## X-DBM-Mod-Type: WORLDBOSS
 ## X-DBM-Mod-Category: LEG
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 1220,1779
