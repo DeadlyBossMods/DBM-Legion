@@ -50,6 +50,7 @@ local timerNextPhase				= mod:NewPhaseTimer(74)--Used anywhere phase change is N
 
 mod:AddRangeFrameOption(10, 206617)
 mod:AddInfoFrameOption(206610)
+mod:AddMiscLine(DBM_CORE_L.OPTION_CATEGORY_DROPDOWNS)
 mod:AddDropdownOption("InfoFrameBehavior", {"TimeRelease", "TimeBomb"}, "TimeRelease", "misc")
 
 mod.vb.normCount = 0
