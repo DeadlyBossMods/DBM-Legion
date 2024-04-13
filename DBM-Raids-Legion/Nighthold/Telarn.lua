@@ -66,7 +66,7 @@ local yellCoN						= mod:NewPosYell(218809)
 --Stage 1: The High Botanist
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local timerControlledChaosCD		= mod:NewNextTimer(35, 218438, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
-local timerParasiticFetterCD		= mod:NewNextTimer(35, 218304, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON, nil, not mod:IsTank() and 2, 4)--Technically can also be made add timer instead of targetted
+local timerParasiticFetterCD		= mod:NewNextTimer(35, 218304, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON, nil, not mod:IsTank() and 2 or nil, 4)--Technically can also be made add timer instead of targetted
 local timerSolarCollapseCD			= mod:NewNextTimer(35, 218148, nil, nil, nil, 3)
 
 --Stage 2: Nightosis
@@ -77,10 +77,10 @@ local timerFlareCD					= mod:NewCDTimer(8.5, 218806, nil, "Melee", nil, 5, nil, 
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local timerToxicSporesCD			= mod:NewCDTimer(8, 219049, nil, nil, nil, 3)--Exception to 35, 40, 50 rule
 local timerGraceOfNatureCD			= mod:NewNextTimer(48, 218927, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)--48-51
-local timerCoNCD					= mod:NewNextTimer(50, 218809, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 3, 4)
+local timerCoNCD					= mod:NewNextTimer(50, 218809, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 3 or nil, 4)
 mod:AddTimerLine(PLAYER_DIFFICULTY6)
 local timerSummonChaosSpheresCD		= mod:NewNextTimer(35, 223034, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
-local timerCollapseofNightCD		= mod:NewNextTimer(35, 223437, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, not mod:IsTank() and 3, 4)
+local timerCollapseofNightCD		= mod:NewNextTimer(35, 223437, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, not mod:IsTank() and 3 or nil, 4)
 local timerChaotiSpheresofNatureCD	= mod:NewNextTimer(35, 223219, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 
 local berserkTimer					= mod:NewBerserkTimer(480)
@@ -473,7 +473,7 @@ function mod:UNIT_HEALTH(uId)
 	local cid = self:GetUnitCreatureId(uId)
 	if cid == 109804 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
 		local guid = UnitGUID(uId)
-		if not sentLowHP[guid] then
+		if guid and not sentLowHP[guid] then
 			sentLowHP[guid] = true
 			self:SendSync("lowhealth", guid)
 		end
