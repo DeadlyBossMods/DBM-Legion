@@ -131,9 +131,9 @@ function mod:SPELL_CAST_START(args)
 	elseif (spellId == 211073 or spellId == 226821) and self:AntiSpam(10, args.sourceGUID) then
 		warnDesiccatingStomp:Show()
 		if self:IsMythic() then
-			timerDisiccatingStompCD:Start(29, args.SourceGUID)
+			timerDisiccatingStompCD:Start(29, args.sourceGUID)
 		else
-			timerDisiccatingStompCD:Start(nil, args.SourceGUID)
+			timerDisiccatingStompCD:Start(nil, args.sourceGUID)
 		end
 	elseif spellId == 211368 then
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then

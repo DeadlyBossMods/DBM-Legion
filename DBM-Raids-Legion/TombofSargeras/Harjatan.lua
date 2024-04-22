@@ -131,7 +131,7 @@ function mod:SPELL_CAST_START(args)
 		timerCommandingRoarCD:Start(17.1)
 		timerUncheckedRageCD:Start(21.1, 1)--21.1-23.5
 		specWarnUncheckedRage:Schedule(17, 1)
-		specWarnUncheckedRage:Play(17, "gathershare")
+		specWarnUncheckedRage:ScheduleVoice(17, "gathershare")
 		timerDrawInCD:Start()
 		if self:IsMythic() then
 			timerHatchingCD:Start(30)

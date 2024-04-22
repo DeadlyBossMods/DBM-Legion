@@ -55,7 +55,7 @@ local timerFlameRendCD					= mod:NewNextCountTimer(6.1, 245463, nil, nil, nil, 5
 local timerTempestCD					= mod:NewNextTimer(6.1, 245301, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerScorchingBlazeCD				= mod:NewCDTimer(6.5, 245994, nil, nil, nil, 3)--6.5-8
 local timerRavenousBlazeCD				= mod:NewCDTimer(22.2, 254452, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)
-local timerWakeofFlameCD				= mod:NewCDTimer(24.3, 244693, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 3, 4)
+local timerWakeofFlameCD				= mod:NewCDTimer(24.3, 244693, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 3 or nil, 4)
 
 mod:AddSetIconOption("SetIconOnBlaze2", 254452, false)--Both off by default, both conflit with one another
 mod:AddInfoFrameOption(244688, true)
@@ -303,7 +303,7 @@ function mod:OnCombatStart(delay)
 				local UnitID = "nameplate"..i
 				local GUID = UnitGUID(UnitID)
 				local cid = self:GetCIDFromGUID(GUID)
-				if cid == 122532 then
+				if GUID and cid == 122532 then
 					local unitPower = UnitPower(UnitID)
 					if not unitTracked[GUID] then unitTracked[GUID] = "None" end
 					if (unitPower < 35) then

@@ -80,7 +80,7 @@ local timerCorruptedMatrixCD		= mod:NewNextTimer(40, 233556, nil, nil, nil, 5, n
 local timerCorruptedMatrix			= mod:NewCastTimer(10, 233556, nil, nil, nil, 5)
 --Stage Two: An Avatar Awakened
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local timerDarkMarkCD				= mod:NewNextCountTimer(34, 239739, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 2, 4)
+local timerDarkMarkCD				= mod:NewNextCountTimer(34, 239739, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
 local timerRainoftheDestroyerCD		= mod:NewNextCountTimer(35, 240396, nil, nil, nil, 3)
 local timerRainoftheDestroyer		= mod:NewCastTimer(5.5, 240396, 206577, nil, nil, 3, nil, nil, nil, 3, 4)--Shortname: Comet Impact
 

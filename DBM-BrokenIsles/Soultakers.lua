@@ -30,7 +30,7 @@ local warnMaraudingMists			= mod:NewCastAnnounce(213665, 3)
 local specWarnCursedCrew			= mod:NewSpecialWarningSwitch(213522, "-Healer", nil, nil, 1, 2)
 --Reaver Jdorn
 local specWarnScuttle				= mod:NewSpecialWarningYou(213584, nil, nil, nil, 1, 2)
-local specWarnExpelSoul				= mod:NewSpecialWarningMoveAway(213625, 1, nil, nil, 1, 2)
+local specWarnExpelSoul				= mod:NewSpecialWarningMoveAway(213625, nil, nil, nil, 1, 2)
 local specWarnMaraudingMists		= mod:NewSpecialWarningRun(213665, "Melee", nil, nil, 4, 2)
 --Soultrapper Mevra
 local specWarnSoulRend				= mod:NewSpecialWarningDodge(213606, nil, nil, nil, 2, 2)

@@ -58,7 +58,7 @@ local yellFulminatingPulse				= mod:NewFadesYell(253520)
 
 local timerFieryStrikeCD				= mod:NewCDTimer(10.5, 244899, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerWhirlingSaberCD				= mod:NewNextTimer(35.1, 245627, nil, nil, nil, 3)--35-45
-local timerFulminatingPulseCD			= mod:NewNextTimer(40.1, 253520, nil, nil, nil, 3, nil, nil, nil, mod:IsHealer() and 2, 4)
+local timerFulminatingPulseCD			= mod:NewNextTimer(40.1, 253520, nil, nil, nil, 3, nil, nil, nil, mod:IsHealer() and 2 or nil, 4)
 
 mod:AddSetIconOption("SetIconOnFulminatingPulse2", 253520, false)
 --Asara, Mother of Night

@@ -151,7 +151,7 @@ local specWarnDeadlyScytheTaunt		= mod:NewSpecialWarningTaunt(258039, nil, nil, 
 local specWarnReorgModule			= mod:NewSpecialWarningSwitchCount(256389, "RangedDps", nil, nil, 1, 2)--Ranged only?
 
 local timerDeadlyScytheCD			= mod:NewCDTimer(5.5, 258039, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerReorgModuleCD			= mod:NewCDCountTimer(48.1, 256389, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2, 4)
+local timerReorgModuleCD			= mod:NewCDCountTimer(48.1, 256389, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
 
 local playerAvatar = false
 mod.vb.phase = 1

@@ -107,23 +107,23 @@ local timerLiquidHellfireCD			= mod:NewNextCountTimer(25, 206219, nil, nil, nil,
 local timerFelEffluxCD				= mod:NewCDCountTimer(10.7, 206514, nil, nil, nil, 3)--10.7-13.5 (14-15 on normal)
 ----Fel Lord Kuraz'mal
 mod:AddTimerLine(Kurazmal)
-local timerFelLordKurazCD			= mod:NewCastTimer(16, "ej13121", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2, 4)
+local timerFelLordKurazCD			= mod:NewCastTimer(16, "ej13121", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerShatterEssenceCD			= mod:NewCDTimer(54, 206675, nil, "Tank", nil, 5, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)
 local timerFelObeliskCD				= mod:NewCDTimer(16, 206841, nil, nil, nil, 3)
 ----Inquisitor Vethriz
 mod:AddTimerLine(Vethriz)
-local timerVethrizCD				= mod:NewCastTimer(25, "ej13124", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2, 4)
+local timerVethrizCD				= mod:NewCastTimer(25, "ej13124", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerGazeofVethrizCD			= mod:NewCDTimer(4.7, 206840, nil, nil, nil, 3)
 ----D'zorykx the Trapper
 mod:AddTimerLine(Dzorykx)
-local timerDzorykxCD				= mod:NewCastTimer(35, "ej13129", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2, 4)
+local timerDzorykxCD				= mod:NewCastTimer(35, "ej13129", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerSoulVortexCD				= mod:NewCDTimer(21, 206883, nil, nil, nil, 3)--34-36
 --Stage Two: The Ritual of Aman'thul
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local timerTransition				= mod:NewPhaseTimer(19)
-local timerHandofGuldanCD			= mod:NewNextCountTimer(58.5, 212258, nil, nil, nil, 1, nil, nil, nil, mod:IsTank() and 2, 4)
+local timerHandofGuldanCD			= mod:NewNextCountTimer(58.5, 212258, nil, nil, nil, 1, nil, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerBondsofFelCD				= mod:NewNextCountTimer(50, 206222, nil, nil, nil, 3, nil, nil, nil, 1, 4)
-local timerEyeofGuldanCD			= mod:NewNextCountTimer(60, 209270, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2, 4)
+local timerEyeofGuldanCD			= mod:NewNextCountTimer(60, 209270, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
 --Stage Three: The Master's Power
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, 15643, nil, nil, 3)
@@ -136,10 +136,10 @@ local timerWindsCD					= mod:NewCDCountTimer(39, 199446, nil, nil, nil, 2)
 local timerWilloftheDemonWithin		= mod:NewCastTimer(43, 211439, nil, nil, nil, 2)
 local timerParasiticWoundCD			= mod:NewCDTimer(36, 206847, nil, nil, nil, 3)
 local timerWounded					= mod:NewBuffActiveTimer(36, 227009, nil, nil, nil, 6)
-local timerSoulSeverCD				= mod:NewCDCountTimer(36, 220957, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, mod:IsTank() and 2, 6)
+local timerSoulSeverCD				= mod:NewCDCountTimer(36, 220957, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, mod:IsTank() and 2 or nil, 6)
 local timerVisionsofDarkTitan		= mod:NewCastTimer(9, 227008, nil, nil, nil, 2)
 local timerVisionsofDarkTitanCD		= mod:NewCDCountTimer(9, 227008, nil, nil, nil, 2, nil, nil, nil, 1, 6)
-local timerFlameCrashCD				= mod:NewCDCountTimer(20, 227071, nil, nil, nil, 3, nil, nil, nil, mod:IsTank() and 3, 6)
+local timerFlameCrashCD				= mod:NewCDCountTimer(20, 227071, nil, nil, nil, 3, nil, nil, nil, mod:IsTank() and 3 or nil, 6)
 local timerSummonNightorbCD			= mod:NewCDCountTimer(10.9, 227283, nil, nil, nil, 1, 225133)
 --Shard
 mod:AddTimerLine(DBM_COMMON_L.ADDS)

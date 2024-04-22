@@ -45,7 +45,7 @@ local timerCrashingComet				= mod:NewBuffFadesTimer(5, 232249, nil, nil, nil, 5,
 local timerCrashingCometCD				= mod:NewCDTimer(18.2, 232249, nil, nil, nil, 3)--18.2-24.7
 local timerInfernalSpikeCD				= mod:NewCDTimer(16, 233055, nil, nil, nil, 3)--16.2-20.7
 local timerBurningArmorCD				= mod:NewCDCountTimer(24.3, 231363, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerBurningArmor					= mod:NewBuffFadesTimer(6, 231363, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON, nil, mod:IsTank() and 2, 4)
+local timerBurningArmor					= mod:NewBuffFadesTimer(6, 231363, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON, nil, mod:IsTank() and 2 or nil, 4)
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerRainofBrimstoneCD			= mod:NewCDCountTimer(31, 238587, nil, nil, nil, 5, nil, DBM_COMMON_L.HEROIC_ICON)
 local timerRainofBrimstone				= mod:NewCastTimer(8, 238587, 87701, nil, nil, 5, nil, DBM_COMMON_L.HEROIC_ICON)

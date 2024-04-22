@@ -57,7 +57,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if spellId == 219591 then
 		specWarnFoundation:Show()
 --		specWarnFoundation:Play("")
-		timerFoundatoinCD:start()
+		timerFoundatoinCD:Start()
 	elseif spellId == 219865 then
 		warnWebWrap:CombinedShow(0.3, args.destName)
 	end

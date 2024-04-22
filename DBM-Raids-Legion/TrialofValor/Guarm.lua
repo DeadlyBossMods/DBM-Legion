@@ -359,6 +359,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 end
 
 function mod:OnSync(msg)
+---@diagnostic disable-next-line: dbm-sync-checker
 	if msg == "YellActualRaidIcon" then
 		DBM:Debug("YellRealIcons = true", 2)
 		self.vb.YellRealIcons = true

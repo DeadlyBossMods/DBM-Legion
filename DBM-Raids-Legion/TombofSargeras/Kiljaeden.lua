@@ -65,7 +65,7 @@ local yellFocusedDreadflame			= mod:NewShortYell(238502)
 local yellFocusedDreadflameFades	= mod:NewFadesYell(238502)
 local specWarnFocusedDreadflameOther= mod:NewSpecialWarningTarget(238502, nil, nil, nil, 1, 2)
 local specWarnBurstingDreadflame	= mod:NewSpecialWarningMoveAway(238430, nil, nil, nil, 1, 2)
-local yellBurstingDreadflame		= mod:NewPosYell(238430, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION2)
+local yellBurstingDreadflame		= mod:NewShortPosYell(238430)
 local yellBurstingDreadflameFades	= mod:NewShortFadesYell(238430, nil, false)
 --Stage Two: Reflected Souls
 local specWarnSRHopeless			= mod:NewSpecialWarningYou(237590, nil, nil, 2, 3, 2)

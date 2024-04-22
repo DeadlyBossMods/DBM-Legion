@@ -51,10 +51,10 @@ local warnOrbOfCorrosion			= mod:NewTargetAnnounce(230267, 3)
 
 --Stage One: Low Tide
 local specWarnOrbOfCorruption		= mod:NewSpecialWarningYou(229119, nil, nil, nil, 1, 5)
-local yellOrbOfCorruption			= mod:NewPosYell(229119, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION2)
+local yellOrbOfCorruption			= mod:NewShortPosYell(229119)
 local specWarnTaintofSeaPre			= mod:NewSpecialWarningYou(228088, "false", nil, nil, 1, 2)
 local specWarnTaintofSea			= mod:NewSpecialWarningDodge(228088, nil, nil, nil, 1, 2)
-local yellTaint						= mod:NewPosYell(228088, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION, false)
+local yellTaint						= mod:NewShortPosYell(228088, nil, false)
 local specWarnBilewaterBreath		= mod:NewSpecialWarningCount(227967, nil, nil, nil, 2, 2)
 local specWarnBilewaterRedox		= mod:NewSpecialWarningTaunt(227982, nil, nil, nil, 1, 2)
 local specWarnBilewaterCorrosion	= mod:NewSpecialWarningMove(227998, nil, nil, nil, 1, 2)
@@ -75,7 +75,7 @@ local specWarnGiveNoQuarter			= mod:NewSpecialWarningDodge(228633, nil, nil, nil
 --Stage Three: Helheim's Last Stand
 local specWarnCorruptedBreath		= mod:NewSpecialWarningCount(228565, nil, nil, nil, 2)
 local specWarnOrbOfCorrosion		= mod:NewSpecialWarningYou(230267, nil, nil, nil, 1, 5)
-local yellOrbOfCorrosion			= mod:NewPosYell(230267, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION2)
+local yellOrbOfCorrosion			= mod:NewShortPosYell(230267)
 
 --Stage One: Low Tide
 mod:AddTimerLine(SCENARIO_STAGE:format(1))

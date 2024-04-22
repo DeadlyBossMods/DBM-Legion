@@ -146,7 +146,7 @@ do
 					text = SPELL_FAILED_OUT_OF_RANGE
 				else
 					local debuffTime = expires - GetTime()
-					text = floor(debuffTime)
+					text = tostring(floor(debuffTime))
 				end
 			end
 			if DBM:UnitDebuff(uId, spellName2) then
@@ -361,7 +361,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 	for i = 1, 5 do
 		local unitID = "boss"..i
 		local unitGUID = UnitGUID(unitID)
-		if UnitExists(unitID) and not activeBossGUIDS[unitGUID] then
+		if unitGUID and UnitExists(unitID) and not activeBossGUIDS[unitGUID] then
 			activeBossGUIDS[unitGUID] = true
 			local bossName = UnitName(unitID)
 			local cid = self:GetUnitCreatureId(unitID)
