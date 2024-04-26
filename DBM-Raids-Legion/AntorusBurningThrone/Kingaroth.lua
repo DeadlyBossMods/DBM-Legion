@@ -126,7 +126,6 @@ local function warnDemolishTargets(self, spellId)
 	end
 end
 
-local demolishDebuff = DBM:GetSpellInfo(246692)
 local updateInfoFrame
 do
 	local lines = {}

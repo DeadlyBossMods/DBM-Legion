@@ -107,8 +107,8 @@ mod.vb.realityCount = 0
 mod.vb.rainCount = 0
 local darkMarkTargets = {}
 local playerName = UnitName("player")
-local beamName = DBM:GetSpellInfo(238244)
-local touch, rupture, unbound, shadowy, shieldName = DBM:GetSpellInfo(239207), DBM:GetSpellInfo(239132), DBM:GetSpellInfo(234059), DBM:GetSpellInfo(236571), DBM:GetSpellInfo(241008)
+local beamName = DBM:GetSpellName(238244)
+local touch, rupture, unbound, shadowy, shieldName = DBM:GetSpellName(239207), DBM:GetSpellName(239132), DBM:GetSpellName(234059), DBM:GetSpellName(236571), DBM:GetSpellName(241008)
 local showTouchofSarg = true
 
 local function warnDarkMarkTargets(self, spellName)

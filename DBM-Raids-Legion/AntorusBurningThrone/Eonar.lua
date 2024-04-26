@@ -141,7 +141,7 @@ local addCountToLocationLFR = {
 	["Dest"] = {DBM_COMMON_L.MIDDLE, DBM_COMMON_L.BOTTOM, DBM_COMMON_L.TOP, DBM_COMMON_L.MIDDLE, DBM_COMMON_L.BOTTOM, DBM_COMMON_L.TOP, DBM_COMMON_L.BOTTOM, DBM_COMMON_L.TOP, DBM_COMMON_L.BOTTOM}
 }
 
-local lifeForceName = DBM:GetSpellInfo(250048)
+local lifeForceName = DBM:GetSpellName(250048)
 local updateInfoFrame
 do
 	local lines = {}

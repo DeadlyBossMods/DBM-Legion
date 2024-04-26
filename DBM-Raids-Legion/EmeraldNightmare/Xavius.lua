@@ -90,7 +90,7 @@ mod:AddSetIconOption("SetIconOnMeteor", 206308)
 
 local lurkingTimers = {17, 20.5, 41, 20.5, 20.5}--{13.6, 26.3, 47.4, 20.7, 25.9} old. TODO, get more data, if all but one are 20.5, just code smarter without table
 local corruptionName = DBM:EJ_GetSectionInfo(12970)
-local darkSoul, blackSoul, dreamDebuff, blackened = DBM:GetSpellInfo(206651), DBM:GetSpellInfo(209158), DBM:GetSpellInfo(206005), DBM:GetSpellInfo(205612)
+local darkSoul, blackSoul, dreamDebuff, blackened = DBM:GetSpellName(206651), DBM:GetSpellName(209158), DBM:GetSpellName(206005), DBM:GetSpellName(205612)
 local bladesTarget = {}
 local gatherTarget = {}
 local playerName = UnitName("player")

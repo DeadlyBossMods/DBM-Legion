@@ -83,7 +83,7 @@ local specWarnDemonicChargeYou			= mod:NewSpecialWarningYou(253040, nil, nil, ni
 local specWarnDemonicCharge				= mod:NewSpecialWarningClose(253040, nil, nil, nil, 1, 2)
 local yellDemonicCharge					= mod:NewYell(253040)
 
-local felShield = DBM:GetSpellInfo(244910)
+local felShield = DBM:GetSpellName(244910)
 mod.vb.FusilladeCount = 0
 mod.vb.lastIcon = 8
 

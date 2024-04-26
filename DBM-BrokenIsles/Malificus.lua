@@ -32,7 +32,7 @@ local timerShadowBarrageCD			= mod:NewCDTimer(16.7, 234452, nil, nil, nil, 2)
 
 --mod:AddReadyCheckOption(37460, false)
 mod:AddRangeFrameOption(8, 233568)
-local PanicDebuff = DBM:GetSpellInfo(233568)
+local PanicDebuff = DBM:GetSpellName(233568)
 
 local debuffFilter
 do
@@ -44,7 +44,7 @@ do
 end
 
 function mod:OnCombatStart(delay, yellTriggered)
-	PanicDebuff = DBM:GetSpellInfo(233568)
+	PanicDebuff = DBM:GetSpellName(233568)
 	if yellTriggered then
 
 	end

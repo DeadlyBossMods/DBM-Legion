@@ -56,14 +56,14 @@ local specViolentWinds				= mod:NewSpecialWarningYou(218124, nil, nil, nil, 3, 2
 local yellViolentWinds				= mod:NewYell(218124)
 
 --Spider Form
-mod:AddTimerLine(DBM:GetSpellInfo(210326))
+mod:AddTimerLine(DBM:GetSpellName(210326))
 local timerSpiderFormCD				= mod:NewNextTimer(132, 210326, nil, nil, nil, 6, nil, nil, nil, 1, 4)
 local timerFeedingTimeCD			= mod:NewNextCountTimer(50, 212364, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerNecroticVenomCD			= mod:NewNextCountTimer(21.8, 215443, nil, nil, nil, 3, nil, nil, nil, 3, 4)--This only targets ranged, but melee/tanks need to be sure to also move away from them
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerNightmareSpawnCD			= mod:NewNextTimer(10, 218630, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 --Roc Form
-mod:AddTimerLine(DBM:GetSpellInfo(210308))
+mod:AddTimerLine(DBM:GetSpellName(210308))
 local timerRocFormCD				= mod:NewNextTimer(47, 210308, nil, nil, nil, 6, nil, nil, nil, 1, 4)
 local timerGatheringCloudsCD		= mod:NewNextTimer(15.8, 212707, nil, nil, nil, 2)
 local timerDarkStormCD				= mod:NewNextTimer(26, 210948, nil, nil, nil, 2)
@@ -87,7 +87,7 @@ mod.vb.razorWingCast = 0
 mod.vb.windsCast = 0
 mod.vb.platformCount = 1
 mod.vb.ViolentWindsPlat = false
-local eyeOfStorm = DBM:GetSpellInfo(211127)
+local eyeOfStorm = DBM:GetSpellName(211127)
 local scanTime = 0
 local playerGUID = UnitGUID("player")
 

@@ -101,7 +101,7 @@ mod.vb.moonTalonCount = 0
 mod.vb.pulltime = 0
 mod.vb.specialCount = 0
 mod.vb.lastBeacon = false
-local astralPurge = DBM:GetSpellInfo(234998)
+local astralPurge = DBM:GetSpellName(234998)
 
 function mod:VolleyTarget(targetname, uId)
 	if not targetname then return end

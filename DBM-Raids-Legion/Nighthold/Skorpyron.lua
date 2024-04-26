@@ -56,7 +56,7 @@ mod:AddInfoFrameOption(204284)
 
 mod.vb.volatileScorpCount = 0
 
-local shardName, goodDebuff = DBM:GetSpellInfo(204292), DBM:GetSpellInfo(204284)
+local shardName, goodDebuff = DBM:GetSpellName(204292), DBM:GetSpellName(204284)
 
 function mod:OnCombatStart(delay)
 	self.vb.volatileScorpCount = 0

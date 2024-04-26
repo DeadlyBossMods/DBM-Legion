@@ -77,7 +77,7 @@ mod.vb.addsCount = 0
 mod.vb.sisterCount = 0
 local scornedWarned = false
 local seenMobs = {}
-local debuffName, infoframeName = DBM:GetSpellInfo(211471), DBM:GetSpellInfo(210279)
+local debuffName, infoframeName = DBM:GetSpellName(211471), DBM:GetSpellName(210279)
 
 function mod:BreathTarget(targetname, uId)
 	if not targetname then return end

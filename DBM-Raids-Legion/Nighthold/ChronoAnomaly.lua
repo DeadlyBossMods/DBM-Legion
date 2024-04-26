@@ -58,8 +58,8 @@ mod.vb.slowCount = 0
 mod.vb.currentPhase = 2
 mod.vb.interruptCount = 0
 mod.vb.timeBombDebuffCount = 0
-local timeBombDebuff = DBM:GetSpellInfo(206617)
-local timeRelease = DBM:GetSpellInfo(206610)
+local timeBombDebuff = DBM:GetSpellName(206617)
+local timeRelease = DBM:GetSpellName(206610)
 local function updateTimeBomb(self)
 	local _, _, _, _, _, expires = DBM:UnitDebuff("player", timeBombDebuff)
 	if expires then

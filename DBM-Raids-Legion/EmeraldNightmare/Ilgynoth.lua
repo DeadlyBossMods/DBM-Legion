@@ -124,7 +124,7 @@ local phase2DeathBlossom = {80, 75}--VERIFIED Oct 16
 local autoMarkScannerActive = false
 local autoMarkBlocked = false
 local autoMarkFilter = {}
-local infoFrameSpell = DBM:GetSpellInfo(210099)
+local infoFrameSpell = DBM:GetSpellName(210099)
 
 local updateInfoFrame
 do

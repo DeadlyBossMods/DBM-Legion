@@ -635,7 +635,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		warnTaeshalachTech:Show(self.vb.techCount)
 		timerTaeshalachTechCD:Start(nil, self.vb.techCount+1)
 		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(spellId))
+			DBM.InfoFrame:SetHeader(DBM:GetSpellName(spellId))
 			DBM.InfoFrame:Show(5, "function", updateInfoFrame, false, false, true)
 		end
 	elseif spellId == 244792 and self.vb.techActive then--Burning Will of Taeshalach (technique ended)

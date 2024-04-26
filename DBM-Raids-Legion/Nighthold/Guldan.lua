@@ -189,7 +189,7 @@ local p3EmpoweredEyeTimers = {39.1, 62.5, 62.5, 25, 100}--100 is confirmed
 local p3EmpoweredEyeTimersMythic = {35.1, 52.6, 53.3, 20.4, 84.2, 52.6}--Credit to JustWait
 local bondsIcons = {}
 local flamesIcons = {}
-local timeStopBuff, parasiteName = DBM:GetSpellInfo(206310), DBM:GetSpellInfo(206847)
+local timeStopBuff, parasiteName = DBM:GetSpellName(206310), DBM:GetSpellName(206847)
 
 local function upValueCapsAreStupid(self)
 	self.vb.phase = 3

@@ -57,7 +57,7 @@ mod:AddSetIconOption("SetIconOnRot", 203096, true, 6)--Of course I'll probably b
 mod:AddRangeFrameOption(30, 204463)--Range not actually known, 30 used for now
 mod:AddInfoFrameOption(204506)
 
-local debuffName, stackDebuff = DBM:GetSpellInfo(204463), DBM:GetSpellInfo(204506)
+local debuffName, stackDebuff = DBM:GetSpellName(204463), DBM:GetSpellName(204506)
 
 mod.vb.breathCount = 0
 mod.vb.rotCast = 0

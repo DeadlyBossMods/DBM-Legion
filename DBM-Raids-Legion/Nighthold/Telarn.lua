@@ -97,7 +97,7 @@ mod.vb.globalTimer = 35
 
 local sentLowHP = {}
 local warnedLowHP = {}
-local callOfNightName = DBM:GetSpellInfo(218809)
+local callOfNightName = DBM:GetSpellName(218809)
 local hasCoN, noCoN
 do
 	--hasCoN not used

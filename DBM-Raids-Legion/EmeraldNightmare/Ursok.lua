@@ -50,7 +50,7 @@ mod.vb.roarCount = 0
 mod.vb.chargeCount = 0
 mod.vb.tankCount = 2
 mod.vb.rendCount = 0
-local unbalancedName, focusedGazeName, rendFlesh, overWhelm, momentum = DBM:GetSpellInfo(198108), DBM:GetSpellInfo(198006), DBM:GetSpellInfo(204859), DBM:GetSpellInfo(197943), DBM:GetSpellInfo(198108)
+local unbalancedName, focusedGazeName, rendFlesh, overWhelm, momentum = DBM:GetSpellName(198108), DBM:GetSpellName(198006), DBM:GetSpellName(204859), DBM:GetSpellName(197943), DBM:GetSpellName(198108)
 
 --Doesn't assign a soaker who'll die from it.
 --Doesn't assign tanks or the targeted player themselves.

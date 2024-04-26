@@ -386,7 +386,7 @@ end
 
 do
 	local playerName = UnitName("player")
-	local sleepCanister = DBM:GetSpellInfo(254244)
+	local sleepCanister = DBM:GetSpellName(254244)
 	function mod:OnTranscriptorSync(msg, targetName)
 		if msg:find("spell:254244") then
 			targetName = Ambiguate(targetName, "none")
