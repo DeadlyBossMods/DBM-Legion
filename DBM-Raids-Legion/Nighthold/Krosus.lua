@@ -43,7 +43,7 @@ local timerSlamCD					= mod:NewNextCountTimer(30, 205862, nil, nil, nil, 3, nil,
 local berserkTimer					= mod:NewBerserkTimer(360)--technically not a berserk, but raid instantly wipes during final bridge smash, at 6 minutes.
 
 mod:AddRangeFrameOption(5, 206351)
-mod:AddSetIconOption("SetIconOnAdds", "ej12914", true, true)
+mod:AddSetIconOption("SetIconOnAdds", "ej12914", true, 5)
 mod:AddArrowOption("ArrowOnBeam3", 205368, true)
 
 local burningPitchDebuff = DBM:GetSpellName(215944)

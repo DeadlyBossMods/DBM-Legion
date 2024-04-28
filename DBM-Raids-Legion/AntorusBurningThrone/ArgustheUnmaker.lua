@@ -118,7 +118,7 @@ local timerCosmicRayCD				= mod:NewCDTimer(19.9, 252729, nil, nil, nil, 3)--All 
 local timerCosmicBeaconCD			= mod:NewCDTimer(19.9, 252616, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)--All adds seem to cast it at same time, so one timer for all
 local timerDiscsofNorg				= mod:NewCastTimer(12, 252516, nil, nil, nil, 6)
 
-mod:AddSetIconOption("SetIconOnVulnerability", 255418, true, true)--1-7
+mod:AddSetIconOption("SetIconOnVulnerability", 255418, true, 5)--1-7
 mod:AddNamePlateOption("NPAuraOnInevitability", 253021)
 mod:AddNamePlateOption("NPAuraOnCosmosSword", 255496)
 mod:AddNamePlateOption("NPAuraOnEternalBlades", 255478)

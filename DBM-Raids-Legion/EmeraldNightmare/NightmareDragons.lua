@@ -90,7 +90,7 @@ local timerBellowingRoarCD			= mod:NewCDTimer(44.5, 204078, 118699, nil, nil, 2)
 
 mod:AddRangeFrameOption(10, 203787)
 mod:AddSetIconOption("SetIconOnInfection", 203787, false)
-mod:AddSetIconOption("SetIconOnOozes", 205298, false, true)
+mod:AddSetIconOption("SetIconOnOozes", 205298, false, 5)
 mod:AddInfoFrameOption("ej12809")
 
 mod.vb.volatileInfectionIcon = 1

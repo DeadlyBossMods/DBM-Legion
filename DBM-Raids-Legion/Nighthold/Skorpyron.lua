@@ -51,7 +51,7 @@ local timerShockwaveCD				= mod:NewCDTimer(57.9, 204316, nil, nil, nil, 2, nil, 
 local timerFocusedBlastCD			= mod:NewCDTimer(30.4, 204471, nil, nil, nil, 3, nil, nil, nil, 3, 4)--30-34 (32.8 NEW data)
 local timerVulnerable				= mod:NewBuffFadesTimer(15, 204459, nil, nil, nil, 6)
 
-mod:AddSetIconOption("SetIconOnVolatileScorpion", 204697, true, true)
+mod:AddSetIconOption("SetIconOnVolatileScorpion", 204697, true, 5)
 mod:AddInfoFrameOption(204284)
 
 mod.vb.volatileScorpCount = 0

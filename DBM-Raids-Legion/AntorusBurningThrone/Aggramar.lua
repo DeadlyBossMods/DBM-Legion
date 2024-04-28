@@ -66,7 +66,7 @@ local specWarnFlare						= mod:NewSpecialWarningDodge(245983, "-Melee", nil, 2, 
 
 local timerFlareCD						= mod:NewCDTimer(15, 245983, nil, "-Melee", 2, 3, nil, nil, nil, 2, 4)
 
-mod:AddSetIconOption("SetIconOnAdds", 244903, false, true)--Both off by default, both conflit with one another
+mod:AddSetIconOption("SetIconOnAdds", 244903, false, 5)--Both off by default, both conflit with one another
 mod:AddNamePlateOption("NPAuraOnPresence", 244903)
 mod:AddBoolOption("skipMarked", true)
 

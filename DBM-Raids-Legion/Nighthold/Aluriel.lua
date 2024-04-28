@@ -106,10 +106,10 @@ local timerFelLashCD				= mod:NewNextCountTimer(25, 230403, nil, nil, nil, 2, ni
 local berserkTimer					= mod:NewBerserkTimer(600)--480
 
 mod:AddRangeFrameOption("8")
-mod:AddSetIconOption("SetIconOnFrozenTempest", 213083, true, true)
-mod:AddSetIconOption("SetIconOnSearingDetonate", 213275, true)
-mod:AddSetIconOption("SetIconOnBurstOfFlame", 213760, true, true)
-mod:AddSetIconOption("SetIconOnBurstOfMagic", 213808, true, true)
+mod:AddSetIconOption("SetIconOnFrozenTempest", 213083, true, 5)
+mod:AddSetIconOption("SetIconOnSearingDetonate", 213275, true, 0)
+mod:AddSetIconOption("SetIconOnBurstOfFlame", 213760, true, 5)
+mod:AddSetIconOption("SetIconOnBurstOfMagic", 213808, true, 5)
 mod:AddInfoFrameOption(212647)
 
 mod.vb.annihilateCount = 0

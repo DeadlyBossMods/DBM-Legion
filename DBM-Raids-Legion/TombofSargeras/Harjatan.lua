@@ -84,7 +84,7 @@ local berserkTimer					= mod:NewBerserkTimer(360)
 --mod:AddRangeFrameOption("5/8/15")
 mod:AddNamePlateOption("NPAuraOnSicklyFixate", 241600)
 mod:AddNamePlateOption("NPAuraOnDrivenAssault", 234016)
-mod:AddSetIconOption("SetIconOnWavemender", "ej14555", true, true)
+mod:AddSetIconOption("SetIconOnWavemender", "ej14555", true, 5)
 
 mod.vb.rageCount = 0
 local seenMobs = {}

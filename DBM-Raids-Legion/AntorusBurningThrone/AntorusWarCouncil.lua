@@ -76,7 +76,7 @@ local specWarnSummonReinforcements		= mod:NewSpecialWarningSwitch(245546, nil, n
 
 local timerSummonReinforcementsCD		= mod:NewNextTimer(8.4, 245546, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON, nil, 1, 4)
 
-mod:AddSetIconOption("SetIconOnAdds", 245546, true, true)
+mod:AddSetIconOption("SetIconOnAdds", 245546, true, 5)
 -------Adds
 local specWarnPyroblast					= mod:NewSpecialWarningInterrupt(246505, "HasInterrupt", nil, nil, 1, 2)
 local specWarnDemonicChargeYou			= mod:NewSpecialWarningYou(253040, nil, nil, nil, 1, 2)

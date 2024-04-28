@@ -69,7 +69,7 @@ local timerRottenBreathCD			= mod:NewCDTimer(24.3, 211192, nil, nil, nil, 3)
 local timerDisiccatingStompCD		= mod:NewCDTimer(32, 211073, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
 
 mod:AddRangeFrameOption(8, 211471)
-mod:AddSetIconOption("SetIconOnWisps", "ej13348", false, true)
+mod:AddSetIconOption("SetIconOnWisps", "ej13348", false, 5)
 mod:AddInfoFrameOption(210279)
 
 mod.vb.phase = 1

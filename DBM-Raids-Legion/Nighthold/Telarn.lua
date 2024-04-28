@@ -88,7 +88,7 @@ local berserkTimer					= mod:NewBerserkTimer(480)
 mod:AddRangeFrameOption(8, 218807)
 mod:AddSetIconOption("SetIconOnFetter", 218304, true)
 mod:AddSetIconOption("SetIconOnCoN", 218807, true)
-mod:AddSetIconOption("SetIconOnNaturalist", "ej13684", true, true)
+mod:AddSetIconOption("SetIconOnNaturalist", "ej13684", true, 5)
 mod:AddNamePlateOption("NPAuraOnFixate", 218342)
 
 mod.vb.CoNIcon = 1
