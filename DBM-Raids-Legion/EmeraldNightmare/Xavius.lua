@@ -193,7 +193,7 @@ function mod:SPELL_CAST_START(args)
 			warnNightmareInfusion:Show()
 		else
 			--Player has dream buff and current tank does NOT so TAUNT warning.
-			if playerHasDream and not DBM:UnitDebuff(uId, dreamDebuff) then
+			if playerHasDream and uId and not DBM:UnitDebuff(uId, dreamDebuff) then
 				specWarnNightmareInfusionOther:Show(targetName)
 				specWarnNightmareInfusionOther:Play("tauntboss")
 			end
