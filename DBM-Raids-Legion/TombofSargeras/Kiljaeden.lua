@@ -661,7 +661,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 				specWarnFocusedDreadflameOther:Show(target)
 				specWarnFocusedDreadflameOther:Play("helpsoak")
 			end
-			if self.Options.SetIconOnFocusedDread then
+			if target and self.Options.SetIconOnFocusedDread then
 				self:SetIcon(target, 2, 6)
 			end
 		end

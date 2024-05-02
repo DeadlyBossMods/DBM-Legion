@@ -531,7 +531,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if self.Options.SetIconOnBondsOfFel then
-			self:SetIcon(name, count)
+			self:SetIcon(args.destName, count)
 		end
 	elseif spellId == 221891 then
 		warnSoulSiphon:CombinedShow(0.3, args.destName)
@@ -579,7 +579,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if self.Options.SetIconOnBondsOfFlames and count < 9 then
-			self:SetIcon(name, count)--Should start at icon 4 and go up from there (because icons 1-3 are used by bonds of fel)
+			self:SetIcon(args.destName, count)--Should start at icon 4 and go up from there (because icons 1-3 are used by bonds of fel)
 		end
 	elseif spellId == 221603 or spellId == 221785 or spellId == 221784 or spellId == 212686 then--4 different duration versions of Flames of sargeras?
 		if args:IsPlayer() then

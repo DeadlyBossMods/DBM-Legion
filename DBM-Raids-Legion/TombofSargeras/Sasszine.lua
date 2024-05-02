@@ -224,10 +224,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnDeliciousBufferfish:Show()
 		end
 	elseif spellId == 230139 then
-		local isPlayer = args:IsPlayer()
-		local name = args.destName
-		if not tContains(hydraIcons, name) then
-			hydraIcons[#hydraIcons+1] = name
+		if not tContains(hydraIcons, args.destName) then
+			hydraIcons[#hydraIcons+1] = args.destName
 		end
 		local count = #hydraIcons
 		warnHydraShot:CombinedShow(0.3, self.vb.hydraShotCount, args.destName)
@@ -242,7 +240,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellHydraShotFades:Countdown(6, nil, count)
 		end
 		if self.Options.SetIconOnHydraShot then
-			self:SetIcon(name, count)
+			self:SetIcon(args.destName, count)
 		end
 	elseif spellId == 230201 then
 		if not args:IsPlayer() and self:AntiSpam(5, args.destName) then
