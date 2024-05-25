@@ -45,7 +45,7 @@ local warnGloom						= mod:NewSpellAnnounce(205329, 2)
 local warnShadowBurst				= mod:NewTargetAnnounce(204040, 3)
 
 --All
-local specWarnMark					= mod:NewSpecialWarningStack("ej12809", nil, 7, nil, 2, 1, 6)
+local specWarnMark					= mod:NewSpecialWarningStack(-12809, nil, 7, nil, 2, 1, 6)
 local specWarnDragon				= mod:NewSpecialWarningTarget(204720, "Tank", nil, nil, 1, 2)
 --Ysondre
 --local specWarnNightmareBlast		= mod:NewSpecialWarningSpell(203153, nil, nil, nil, 2)
@@ -68,7 +68,7 @@ local specWarnShadesOfTaerar		= mod:NewSpecialWarningSwitch(204100, "Tank", nil,
 local specWarnBellowingRoar			= mod:NewSpecialWarningSpell(204078, nil, nil, nil, 2, 6)
 
 --All
-local timerMarkCD					= mod:NewNextTimer(7, "ej12809", 28836, false, 2, 3, 203102)--Now off by default, to further reduce timer clutter, plus sometimes it's wrong because in rare cases the dragons desync for some reason
+local timerMarkCD					= mod:NewNextTimer(7, -12809, 28836, false, 2, 3, 203102)--Now off by default, to further reduce timer clutter, plus sometimes it's wrong because in rare cases the dragons desync for some reason
 local timerBreathCD					= mod:NewCDSourceTimer(27, 203028, 21131, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--27-34 for Ysondre, Cohorts 27-29.
 --Ysondre
 mod:AddTimerLine(Ysondre)
@@ -91,7 +91,7 @@ local timerBellowingRoarCD			= mod:NewCDTimer(44.5, 204078, 118699, nil, nil, 2)
 mod:AddRangeFrameOption(10, 203787)
 mod:AddSetIconOption("SetIconOnInfection", 203787, false)
 mod:AddSetIconOption("SetIconOnOozes", 205298, false, 5)
-mod:AddInfoFrameOption("ej12809")
+mod:AddInfoFrameOption(-12809)
 
 mod.vb.volatileInfectionIcon = 1
 mod.vb.alternateOozes = false
