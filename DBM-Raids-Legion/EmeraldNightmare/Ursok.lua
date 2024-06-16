@@ -189,6 +189,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			icon = 4
 			secondCount = 1
 		end
+		---@diagnostic disable-next-line: param-type-mismatch
 		warnFocusedGaze:Show(self.vb.chargeCount.."-"..secondCount, args.destName)
 		if args:IsPlayer() then
 			specWarnFocusedGaze:Show()
