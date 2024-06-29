@@ -34,7 +34,7 @@ local warnPhase						= mod:NewPhaseChangeAnnounce()
 
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(248167, nil, nil, nil, 1, 2)
 
-local timerNextPhase				= mod:NewPhaseTimer(74)
+local timerNextPhase				= mod:NewStageTimer(74)
 
 local berserkTimer					= mod:NewBerserkTimer(600)
 

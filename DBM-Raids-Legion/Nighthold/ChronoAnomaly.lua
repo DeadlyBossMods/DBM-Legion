@@ -46,7 +46,7 @@ local timerBurstofTimeCD			= mod:NewNextCountTimer(30, 206614, nil, nil, nil, 3)
 local timerTimeReleaseCD			= mod:NewNextCountTimer(30, 206610, nil, "Healer", nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerChronoPartCD				= mod:NewCDTimer(5, 206607, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerBigAddCD					= mod:NewNextCountTimer(30, 206700, nil, nil, nil, 1, nil, nil, nil, 1, 4)--Switch to waning time particle when section info known
-local timerNextPhase				= mod:NewPhaseTimer(74)--Used anywhere phase change is NOT immediately after power overwhelming
+local timerNextPhase				= mod:NewStageTimer(74)--Used anywhere phase change is NOT immediately after power overwhelming
 
 mod:AddRangeFrameOption(10, 206617)
 mod:AddInfoFrameOption(206610)

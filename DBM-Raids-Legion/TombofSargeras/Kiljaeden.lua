@@ -90,7 +90,7 @@ local timerArmageddon				= mod:NewCastTimer(9, 234295, nil, nil, nil, 2)--Armage
 local timerShadReflectionEruptingCD	= mod:NewCDTimer(35, 236710, 236711, nil, nil, 3, nil, DBM_COMMON_L.DAMAGE_ICON)--Shortname : Erupting Reflection
 --Intermission: Eternal Flame
 --mod:AddTimerLine(SCENARIO_STAGE:format(1.5))
-local timerTransition				= mod:NewPhaseTimer(57.9)
+local timerTransition				= mod:NewStageTimer(57.9)
 local timerFocusedDreadflameCD		= mod:NewCDCountTimer(31, 238502, nil, nil, nil, 3, nil, nil, nil, 3, 4)
 local timerBurstingDreadflameCD		= mod:NewCDCountTimer(31, 238430, nil, nil, nil, 3)
 --Stage Two: Reflected Souls
