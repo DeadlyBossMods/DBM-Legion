@@ -5,7 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(104154)--The Demon Within (111022)
 mod:SetEncounterID(1866)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6)
-mod:SetHotfixNoticeRev(16172)
+mod:SetHotfixNoticeRev(20240708000000)
+mod:SetMinSyncRevision(20240708000000)
 mod.respawnTime = 29
 
 mod:RegisterCombat("combat")
@@ -153,7 +154,6 @@ mod:AddSetIconOption("SetIconOnBondsOfFlames", 221783, true)
 mod:AddSetIconOption("SetIconOnBondsOfFel", 206222, true)
 mod:AddInfoFrameOption(206310)
 
-mod.vb.phase = 1
 mod.vb.addsDied = 0
 mod.vb.liquidHellfireCast = 0
 mod.vb.felEffluxCast = 0
@@ -192,7 +192,8 @@ local flamesIcons = {}
 local timeStopBuff, parasiteName = DBM:GetSpellName(206310), DBM:GetSpellName(206847)
 
 local function upValueCapsAreStupid(self)
-	self.vb.phase = 3
+	self:SetStage(3)
+	self:SetWipeTime(30)
 	timerWindsCD:Stop()
 	self:SetBossHPInfoToHighest()
 	specWarnWilloftheDemonWithin:Show()
@@ -212,7 +213,7 @@ local function upValueCapsAreStupid(self)
 end
 
 function mod:OnCombatStart(delay)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.addsDied = 0
 	self.vb.liquidHellfireCast = 0
 	self.vb.felEffluxCast = 0
@@ -588,7 +589,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif spellId == 206516 then--The Eye of Aman'Thul (phase 1 buff)
-		self.vb.phase = 1.5
+		self:SetStage(1.5)
 		timerLiquidHellfireCD:Stop()
 		timerFelEffluxCD:Stop()
 		timerLiquidHellfireCD:Start(5, self.vb.liquidHellfireCast+1)
@@ -602,7 +603,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerWellOfSouls:Start(15)
 		self.vb.eyeCast = 0
 		if self:IsMythic() then
-			self.vb.phase = 2
+			self:SetStage(2)
 			warnPhase2:Show()
 			warnPhase2:Play("ptwo")
 			timerDzorykxCD:Stop()
@@ -612,7 +613,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerBlackHarvestCD:Start(55.7, 1)
 			timerStormOfDestroyerCD:Start(72.6, 1)
 		else
-			self.vb.phase = 3
+			self:SetStage(3)
 			warnPhase3:Show()
 			warnPhase3:Play("pthree")
 			timerBlackHarvestCD:Start(self:IsLFR() and 73 or 63, 1)
@@ -781,7 +782,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			end
 			if self.vb.addsDied == 3 and not self:IsMythic() then
 				--This probably needs refactoring for mythic since phase 1 and 2 happen at same time
-				self.vb.phase = 2
+				self:SetStage(2)
 				self.vb.liquidHellfireCast = 0
 				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
@@ -841,6 +842,7 @@ function mod:OnSync(msg)
 	end
 	if not self:IsInCombat() then return end
 	if msg == "mythicPhase3" and self:IsMythic() then
+		self:SetWipeTime(50)
 		warnPhase3Soon:Show()
 		timerWilloftheDemonWithin:Start(43)
 	end
