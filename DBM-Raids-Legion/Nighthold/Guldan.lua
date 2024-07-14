@@ -526,7 +526,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self:IsTanking(uId, "boss1") and not self:IsTanking("player", "boss1", nil, true) then
 				--secondary warning, in case first one didn't go through
 				if self:AntiSpam(5, name) then
-					specWarnBondsofFelTank:Show(name)
+					specWarnBondsofFelTank:Show(args.destName)
 					specWarnBondsofFelTank:Play("tauntboss")
 				end
 			end
@@ -575,7 +575,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			local uId = DBM:GetRaidUnitId(name)
 			if self:IsTanking(uId, "boss1") then
-				specWarnFlamesOfSargerasTank:Show(name)
+				specWarnFlamesOfSargerasTank:Show(args.destName)
 				specWarnFlamesOfSargerasTank:Play("tauntboss")
 			end
 		end

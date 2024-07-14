@@ -61,7 +61,7 @@ local specWarnCorruptionMeteorAway		= mod:NewSpecialWarningDodge(206308, "-Tank"
 local specWarnCorruptionMeteorTo		= mod:NewSpecialWarningMoveTo(206308, "-Tank", nil, nil, 1, 2)--Has dream, definitely should help
 local specWarnBlackeningSoulYou			= mod:NewSpecialWarningStack(209158, nil, 3, nil, 2, 1, 6)
 local specWarnBlackeningSoulOther		= mod:NewSpecialWarningTaunt(209158, nil, nil, nil, 1, 2)
-local specWarnInconHorror				= mod:NewSpecialWarningSwitch("ej13162", "-Healer", nil, nil, 1, 2)
+local specWarnInconHorror				= mod:NewSpecialWarningSwitchCount("ej13162", "-Healer", nil, nil, 1, 2)
 
 --Stage One: The Decent Into Madness
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
@@ -178,7 +178,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 207830 then
 		timerCorruptingNovaCD:Start(nil, args.sourceGUID)
 		if self:AntiSpam(2, 1) then
-			specWarnCorruptingNova:Show(args.sourceName)
+			specWarnCorruptingNova:Show()
 			specWarnCorruptingNova:Play("aesoon")
 		end
 	elseif spellId == 209443 then
@@ -194,7 +194,7 @@ function mod:SPELL_CAST_START(args)
 		else
 			--Player has dream buff and current tank does NOT so TAUNT warning.
 			if playerHasDream and uId and not DBM:UnitDebuff(uId, dreamDebuff) then
-				specWarnNightmareInfusionOther:Show(targetName)
+				specWarnNightmareInfusionOther:Show(targetName or DBM_COMMON_L.UNKNOWN)
 				specWarnNightmareInfusionOther:Play("tauntboss")
 			end
 		end

@@ -78,7 +78,7 @@ local specWarnMalignantAnguish		= mod:NewSpecialWarningInterrupt(236597, "HasInt
 --Stage Three: Darkness of A Thousand Souls
 local specWarnDarknessofSouls		= mod:NewSpecialWarningMoveTo(238999, nil, nil, nil, 3, 2)
 local specWarnObelisk				= mod:NewSpecialWarningCount(239785, nil, nil, nil, 2, 2)
-local specWarnFlamingOrbSpawn		= mod:NewSpecialWarningDodge(239253, nil, nil, nil, 2, 2)--Spawn warning
+local specWarnFlamingOrbSpawn		= mod:NewSpecialWarningDodgeCount(239253, nil, nil, nil, 2, 2)--Spawn warning
 
 --Stage One: The Betrayer
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
@@ -651,7 +651,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			end
 		end
 		if target then
-			target = DBM:GetUnitFullName(target)
+			target = DBM:GetUnitFullName(target) or target
 			if target == UnitName("player") then
 				specWarnFocusedDreadflame:Show()
 				specWarnFocusedDreadflame:Play("targetyou")

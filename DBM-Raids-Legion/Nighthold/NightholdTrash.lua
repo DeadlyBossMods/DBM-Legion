@@ -158,7 +158,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 225845 then
 		warnChosenFate:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
-			specWarnChosenFate:Show()
+			specWarnChosenFate:Show(args.destName)
 			specWarnChosenFate:Play("stopattack")
 		end
 	elseif spellId == 222079 then

@@ -496,7 +496,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnRavenousBlaze:CombinedShow(0.3, args.destName)
 		local icon = self.vb.blazeIcon
 		if args:IsPlayer() then
-			specWarnRavenousBlaze:Show(self:IconNumToTexture(icon))
+			specWarnRavenousBlaze:Show()
 			specWarnRavenousBlaze:Play("scatter")
 			yellRavenousBlaze:Yell(icon, args.spellName, icon)
 			warnRavenousBlazeCount:Schedule(2, 5)

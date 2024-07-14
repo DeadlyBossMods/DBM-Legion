@@ -35,12 +35,12 @@ local warnBurningSoul				= mod:NewTargetAnnounce(216040, 4)
 local warnRingOfShadow				= mod:NewSpellAnnounce(216723, 3)
 
 local specWarnCarrionPlague			= mod:NewSpecialWarningMoveAway(206480, nil, nil, nil, 1, 2)
-local specWarnSeekerSwarm			= mod:NewSpecialWarningDodge(213238, nil, nil, nil, 2, 6)
+local specWarnSeekerSwarm			= mod:NewSpecialWarningDodgeCount(213238, nil, nil, nil, 2, 6)
 local yellSeekerSwarm				= mod:NewYell(213238)--Carrion plague targets yell when it's relevant. On seeker swarm cast
 local yellBrandOfArgus				= mod:NewPosYell(212794, 156225)--"Branded" short text
 local specWarnFeastOfBlood			= mod:NewSpecialWarningRun(208230, nil, nil, nil, 1, 2)--Move away, or run? neither one really says "get 30 yards from boss"
 local specWarnFeastOfBloodOther		= mod:NewSpecialWarningTaunt(208230, nil, nil, nil, 1, 2)
-local specWarnEchoesOfVoid			= mod:NewSpecialWarningDodge(213531, nil, nil, nil, 3, 2)
+local specWarnEchoesOfVoid			= mod:NewSpecialWarningDodgeCount(213531, nil, nil, nil, 3, 2)
 local specWarnCarrionNightmare 		= mod:NewSpecialWarningDodge(215988, nil, nil, nil, 1, 2)
 local specWarnAdds					= mod:NewSpecialWarningAdds(216726, "-Healer", nil, nil, 1, 2)
 --Nightborne

@@ -54,7 +54,7 @@ local specWarnAnnihilation			= mod:NewSpecialWarningDodge(207630, nil, nil, nil,
 --Caretaker
 local specWarnTidyUp				= mod:NewSpecialWarningDodge(207513, nil, nil, nil, 2, 2)--Maybe switch to mob name instead of "tidy up"
 --Mythic
-local specWarnEchoDuder				= mod:NewSpecialWarningSwitchCount(214880, nil, nil, nil, 1, 2)
+local specWarnEchoDuder				= mod:NewSpecialWarningSwitchCustom(214880, nil, nil, nil, 1, 2)
 
 --General
 local timerArcaneSlashCD			= mod:NewCDTimer(9, 206641, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
@@ -278,8 +278,8 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 	for i = 1, 5 do
 		local unitID = "boss"..i
 		local GUID = UnitGUID(unitID)
-		local name = UnitName(unitID)
 		if GUID and not seenMobs[GUID] then
+			local name = UnitName(unitID) or DBM_COMMON_L.UNKNOWN
 			seenMobs[GUID] = true
 			local cid = self:GetCIDFromGUID(GUID)
 			if cid == 108144 then--Maniac Imprint
