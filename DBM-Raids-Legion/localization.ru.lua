@@ -341,12 +341,12 @@ L:SetTimerLocalization({
 
 L:SetOptionLocalization({
 	timerBossIncoming	= "Показать таймер смены следующего босса",
-	TauntBehavior		= "Установить поведение таунта для смены танков",
+	TauntBehavior		= "Установить режим таунта для смены танков",
 	TwoMythicThreeNon	= "Меняться по 2 стака на эпохальной сложности, по 3 стака на других сложностях",--По умолчанию
 	TwoAlways			= "Всегда меняться по 2 стака независимо от сложности",
 	ThreeAlways			= "Всегда меняться по 3 стака независимо от сложности",
 	SetLighting			= "Automatically turn lighting setting to low when coven is engaged and restore on combat end",
-	InterruptBehavior	= "Установить поведение прерывания для рейда (требуется лидер рейда)",
+	InterruptBehavior	= "Установить режим прерывания для рейда (требуется лидер рейда)",
 	Three				= "Ротация из 3 человек ",--По умолчанию
 	Four				= "Ротация из 4 человек ",
 	Five				= "Ротация из 5 человек ",
