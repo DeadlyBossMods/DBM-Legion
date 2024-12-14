@@ -72,17 +72,17 @@ mod:AddInfoFrameOption(212794)
 --Brand of Argus: pull:15.0, 25.0, 35.0, 25.0, 75.0, 25.5, 32.5, 30.0, 75.0, 25.6, 36.1, 22.5, 56.1, 25.6",
 --Feast of Blood: pull:20.0, 25.0, 35.0, 25.0, 75.0, 25.5, 37.5, 25.0, 75.1, 25.6, 36.2, 22.5, 56.1, 25.6"
 --Carrion Plague, feast of blood, Seeker Swarm, brand of argus All Same in Phase 1
-local P1SharedCastTimers = {0, 25, 35, 24.5}
+local P1SharedCastTimers = {0.000001, 25, 35, 24.5}
 --Phase 2 they start to fragment
-local P2CarrionTimers = {0, 25.5, 35.6, 26.9}
-local P2SeekerBloodTimers = {0, 25.5, 37.5, 25.0}--Seeker and Feast of Blood
-local P2BrandTimers = {0, 25.5, 32.5, 30.0}
+local P2CarrionTimers = {0.000001, 25.5, 35.6, 26.9}
+local P2SeekerBloodTimers = {0.000001, 25.5, 37.5, 25.0}--Seeker and Feast of Blood
+local P2BrandTimers = {0.000001, 25.5, 32.5, 30.0}
 --less fragmented in phase 3
-local P3CarrionTimers = {0, 25.6, 40.6, 20.5}
-local P3SharedCastTimers = {0, 25.6, 36.1, 22.5}--Seeker, Brand, Feast
+local P3CarrionTimers = {0.000001, 25.6, 40.6, 20.5}
+local P3SharedCastTimers = {0.000001, 25.6, 36.1, 22.5}--Seeker, Brand, Feast
 
 --Normal/LFR HAD different timers. Normal now matches heroic so assume LFR also does for now
---local sharedCastTimersFaster = {0, 15, 25, 14.5}--Carrion Plague, feast of blood, Seeker Swarm (faster on normal/LFR since no brand of argus)
+--local sharedCastTimersFaster = {0.000001, 15, 25, 14.5}--Carrion Plague, feast of blood, Seeker Swarm (faster on normal/LFR since no brand of argus)
 local argusTargets = {}
 local carrionDebuff, argusDebuff, batsName, essenceOfNightDebuff = DBM:GetSpellName(206480), DBM:GetSpellName(212794), DBM:EJ_GetSectionInfo(13528), DBM:GetSpellName(206466)
 mod.vb.phase = 1
