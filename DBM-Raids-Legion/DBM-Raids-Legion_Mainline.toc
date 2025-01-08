@@ -1,7 +1,7 @@
 ## Interface: 110007, 110100
 ## X-Min-Interface: 80000
 ## Category: DBM
-## Group: DBM Raids
+
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Legion)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (Легион)|r
 ## Author: MysticalOS
