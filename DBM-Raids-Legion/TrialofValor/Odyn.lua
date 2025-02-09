@@ -26,80 +26,80 @@ mod:RegisterEventsInCombat(
 
 --TODO, phase 3 storms (area of affect). not in combat log or even transcriptor. appears every 30 seconds give or take. verify in more attempts and add scheduler for it
 --TODO, Cleansing flame timers/target announces?
---Stage 1: Halls of Valor was merely a set back
 local hymdall = DBM:EJ_GetSectionInfo(14005)
 local hyrja = DBM:EJ_GetSectionInfo(14006)
 
-local warnDancingBlade				= mod:NewCountAnnounce(228003, 3)--Change if target scanning works, but considering it doesn't in 5 man version of this spell, omitting for now
-local warnRevivify					= mod:NewCastAnnounce(228171, 4)
-local warnExpelLight				= mod:NewTargetAnnounce(228028, 3)
-local warnShieldofLight				= mod:NewTargetCountAnnounce(228270, 3, nil, nil, nil, nil, nil, nil, true)
---Stage 2: Stuff
-local warnPhase2					= mod:NewPhaseAnnounce(2, 2)
---Stage 3: Odyn immitates lei shen
-local warnPhase3					= mod:NewPhaseAnnounce(3, 2)
-local warnStormofJustice			= mod:NewTargetAnnounce(227807, 3)
-
+mod:AddRangeFrameOption("5/8/15")
 --Stage 1: Halls of Valor was merely a set back
+mod:AddTimerLine(SCENARIO_STAGE:format(1))
+local warnRevivify					= mod:NewCastAnnounce(228171, 4)
+
+local specWarnBranded				= mod:NewSpecialWarningMoveTo(227503, nil, nil, nil, 3, 6)
+local yellBranded					= mod:NewPosYell(227490, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
+
+local timerDrawPowerCD				= mod:NewNextTimer(70, 227503, nil, nil, nil, 6, nil, nil, nil, 1, 4)
+local timerDrawPower				= mod:NewCastTimer(33, 227629, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
+
+mod:AddInfoFrameOption(227503, true)
+mod:AddNamePlateOption("NPAuraOnBranded", 227503, true)
+mod:AddTimerLine(hymdall)
+local warnDancingBlade				= mod:NewCountAnnounce(228003, 3)--Change if target scanning works, but considering it doesn't in 5 man version of this spell, omitting for now
+
+local specWarnHornOfValor			= mod:NewSpecialWarningMoveAway(228012, nil, nil, nil, 1, 2)
 local specWarnDancingBlade			= mod:NewSpecialWarningMove(228003, nil, nil, nil, 1, 2)
 --local yellDancingBlade			= mod:NewYell(228003)
-local specWarnHornOfValor			= mod:NewSpecialWarningMoveAway(228012, nil, nil, nil, 1, 2)
+
+local timerDancingBladeCD			= mod:NewNextTimer(31, 228003, nil, nil, nil, 3)--Alternating two times
+local timerHornOfValorCD			= mod:NewNextCountTimer(32, 228012, nil, nil, nil, 2, nil, nil, nil, 2, 4)--Alternating two times
+mod:AddTimerLine(hyrja)
+local warnExpelLight				= mod:NewTargetAnnounce(228028, 3)
+local warnShieldofLight				= mod:NewTargetCountAnnounce(228270, 3, nil, nil, nil, nil, nil, nil, true)
+
 local specWarnExpelLight			= mod:NewSpecialWarningMoveAway(228028, nil, nil, nil, 1, 2)
 local yellExpelLight				= mod:NewYell(228028)
 local specWarnShieldofLight			= mod:NewSpecialWarningYou(228270, nil, nil, nil, 1, 2)
 local yellShieldofLightFades		= mod:NewFadesYell(228270)
-local specWarnBranded				= mod:NewSpecialWarningMoveTo(227503, nil, nil, nil, 3, 6)
-local yellBranded					= mod:NewPosYell(227490, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
---Stage 2: Odyn immitates margok
+
+local timerExpelLightCD				= mod:NewNextTimer(32, 228028, nil, nil, nil, 3)--Alternating two times
+local timerShieldofLightCD			= mod:NewNextCountTimer(32, 228270, nil, nil, nil, 3, nil, nil, nil, 3, 4)--Alternating two times
+
+mod:AddSetIconOption("SetIconOnShield", 228270, true)
+--Stage 2: Stuff
+mod:AddTimerLine(SCENARIO_STAGE:format(2))
+local warnPhase2					= mod:NewPhaseAnnounce(2, 2)
+
 local specWarnOdynsTest				= mod:NewSpecialWarningCount(227626, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.stack:format(5, 159515), nil, 1, 2)
 local specWarnOdynsTestOther		= mod:NewSpecialWarningTaunt(227626, nil, nil, nil, 1, 2)
 local specWarnShatterSpears			= mod:NewSpecialWarningDodge(231013, false, nil, 2, 2, 2)--Every 8 seconds, so off by default
 local specWarnHyrja					= mod:NewSpecialWarningSwitch("ej14006", nil, nil, nil, 1, 2)
 local specWarnHymall				= mod:NewSpecialWarningSwitch("ej14005", nil, nil, nil, 1, 2)
 
---Stage 3: Odyn immitates lei shen
-local specWarnStormofJustice		= mod:NewSpecialWarningMoveAway(227807, nil, nil, nil, 1, 2)
-local yellStormofJustice			= mod:NewYell(227807)
-local specWarnStormforgedSpear		= mod:NewSpecialWarningRun(228918, nil, nil, nil, 4, 2)
-local specWarnStormforgedSpearOther	= mod:NewSpecialWarningTaunt(228918, nil, nil, nil, 1, 2)
-local specWarnCleansingFlame		= mod:NewSpecialWarningMove(228683, nil, nil, nil, 1, 2)
---Mythic
-local specWarnRunicBrand			= mod:NewSpecialWarningYouPos(231297, nil, nil, 2, 3, 6)
-local yellRunicBrand				= mod:NewPosYell(231297, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
-
---Adds (stage 1 and 2)
-mod:AddTimerLine(hymdall)
-local timerDancingBladeCD			= mod:NewNextTimer(31, 228003, nil, nil, nil, 3)--Alternating two times
-local timerHornOfValorCD			= mod:NewNextCountTimer(32, 228012, nil, nil, nil, 2, nil, nil, nil, 2, 4)--Alternating two times
-mod:AddTimerLine(hyrja)
-local timerExpelLightCD				= mod:NewNextTimer(32, 228028, nil, nil, nil, 3)--Alternating two times
-local timerShieldofLightCD			= mod:NewNextCountTimer(32, 228270, nil, nil, nil, 3, nil, nil, nil, 3, 4)--Alternating two times
---Stage 1: Halls of Valor was merely a set back
-mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local timerDrawPowerCD				= mod:NewNextTimer(70, 227503, nil, nil, nil, 6, nil, nil, nil, 1, 4)
-local timerDrawPower				= mod:NewCastTimer(33, 227629, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
---Stage 2: Odyn immitates margok
-mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local timerSpearCD					= mod:NewNextTimer(8, 227697, nil, nil, nil, 3)
 local timerHymdallCD				= mod:NewNextTimer(70, "ej14005", nil, nil, nil, 1, 228012, DBM_COMMON_L.DAMAGE_ICON)
 local timerHyrjaCD					= mod:NewNextTimer(70, "ej14006", nil, nil, nil, 1, 228270, DBM_COMMON_L.DAMAGE_ICON)
 --Stage 3: Odyn immitates lei shen
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
+local warnPhase3					= mod:NewPhaseAnnounce(3, 2)
+local warnStormofJustice			= mod:NewTargetAnnounce(227807, 3)
+
+local specWarnStormofJustice		= mod:NewSpecialWarningMoveAway(227807, nil, nil, nil, 1, 2)
+local yellStormofJustice			= mod:NewYell(227807)
+local specWarnStormforgedSpear		= mod:NewSpecialWarningRun(228918, nil, nil, nil, 4, 2)
+local specWarnStormforgedSpearOther	= mod:NewSpecialWarningTaunt(228918, nil, nil, nil, 1, 2)
+local specWarnCleansingFlame		= mod:NewSpecialWarningMove(228683, nil, nil, nil, 1, 2)
+
 local timerStormOfJusticeCD			= mod:NewNextTimer(10.9, 227807, nil, nil, nil, 3)
 local timerStormforgedSpearCD		= mod:NewNextTimer(10.9, 228918, 71466, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.DEADLY_ICON, nil, 2, 4)
 --Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
+local specWarnRunicBrand			= mod:NewSpecialWarningYouPos(231297, nil, nil, 2, 3, 6)
+local yellRunicBrand				= mod:NewPosYell(231297, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
+
 local timerRunicBrandCD				= mod:NewNextTimer(35, 231297, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, 1, 4)
 local timerRadiantSmite				= mod:NewCastTimer(7.5, 231350, nil, nil, nil, 2, nil, DBM_COMMON_L.HEROIC_ICON)
 
 --local berserkTimer				= mod:NewBerserkTimer(300)
 
-mod:AddSetIconOption("SetIconOnShield", 228270, true)
-mod:AddInfoFrameOption(227503, true)
-mod:AddRangeFrameOption("5/8/15")
-mod:AddNamePlateOption("NPAuraOnBranded", 227503, true)
-
-mod.vb.phase = 1
 mod.vb.hornCasting = false
 mod.vb.hornCast = 0
 mod.vb.shieldCast = 0
@@ -183,7 +183,7 @@ do
 end
 
 function mod:OnCombatStart(delay)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.hornCasting = false
 	self.vb.hornCast = 0
 	self.vb.shieldCast = 0
@@ -235,7 +235,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 228003 then
 		self.vb.dancingBladeCast = self.vb.dancingBladeCast + 1
 		warnDancingBlade:Show(self.vb.dancingBladeCast)
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = dancingBladeTimers[self.vb.dancingBladeCast+1]
 				if timer then
@@ -262,7 +262,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.hornCast = self.vb.hornCast + 1
 		specWarnHornOfValor:Show()
 		specWarnHornOfValor:Play("scatter")
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = hornTimers[self.vb.hornCast+1]
 				if timer then
@@ -300,7 +300,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		updateRangeFrame(self)
 	elseif spellId == 228028 then
 		self.vb.expelLightCast = self.vb.expelLightCast + 1
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = expelLightTimers[self.vb.expelLightCast+1]
 				if timer then
@@ -503,7 +503,7 @@ mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 	if msg:find("spell:228162") then
 		self.vb.shieldCast = self.vb.shieldCast + 1
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = shieldTimers[self.vb.shieldCast+1]
 				if timer then
@@ -573,7 +573,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		else
 			timerDrawPowerCD:Start()
 		end
-		--if self.vb.phase == 2 then
+		--if self:GetStage(2) then
 		--	timerSpearCD:Stop()
 		--	timerSpearCD:Start(35)
 		--end
@@ -610,11 +610,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			DBM.InfoFrame:Hide()
 		end
 	elseif spellId == 227882 then--Jump into Battle (phase 2 begin)
-		self.vb.phase = 2
+		self:SetStage(2)
 		if not self:IsEasy() then
 			timerHyrjaCD:Start(16)
 		end
-	elseif spellId == 34098 and self.vb.phase == 2 then--ClearAllDebuffs (any of bosses leaving)
+	elseif spellId == 34098 and self:GetStage(2) then--ClearAllDebuffs (any of bosses leaving)
 		local cid = self:GetUnitCreatureId(uId)
 		if cid == 114361 then--Hymdall
 			timerDancingBladeCD:Stop()
@@ -635,7 +635,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	--"<489.60 21:38:04> [UNIT_SPELLCAST_SUCCEEDED] Odyn(??) [[boss1:Spear Transition - Thunder::3-2012-1648-3815-228740-00058AC2FC:228740]]", -- [2940]
 	--"<489.60 21:38:04> [UNIT_SPELLCAST_SUCCEEDED] Odyn(??) [[boss1:Arcing Storm::3-2012-1648-3815-229254-00060AC2FC:229254]]", -- [2941]
 	elseif spellId == 228740 then--Spear Transition - Thunder (Phase 3 begin)
-		self.vb.phase = 3
+		self:SetStage(3)
 		timerHymdallCD:Stop()
 		timerHyrjaCD:Stop()
 		timerDrawPower:Stop()

@@ -43,13 +43,13 @@ local specWarnInfestedMind			= mod:NewSpecialWarningSwitch(205043, "Dps", nil, n
 local specWarnSpreadInfestation		= mod:NewSpecialWarningInterrupt(205070, "HasInterrupt", nil, nil, 1, 2)
 local specWarnInfestedStack			= mod:NewSpecialWarningStack(204504, nil, 7, nil, 2, 1, 6)
 
-local timerBreathCD					= mod:NewCDCountTimer(36, 202977, nil, nil, nil, 3)--36-42
-local timerVolatileRotCD			= mod:NewCDCountTimer(20.5, 204463, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--20.5-24 variation non mythic. 22-30 mythic
+local timerBreathCD					= mod:NewVarCountTimer("v36-42", 202977, nil, nil, nil, 3)--36-42
+local timerVolatileRotCD			= mod:NewVarCountTimer("v20.5-24", 204463, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--20.5-24 variation non mythic. 22-30 mythic
 local timerRotCD					= mod:NewCDCountTimer(15.3, 203096, nil, nil, nil, 3)
 local timerSwarm					= mod:NewBuffActiveTimer(23, 203552, nil, nil, nil, 6)
 local timerSwarmCD					= mod:NewCDCountTimer(98, 203552, nil, nil, nil, 6)--Needs new sample size
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
-local timerInfestingMindCD			= mod:NewNextTimer(10, 205043, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)--36-42
+local timerInfestingMindCD			= mod:NewNextTimer(10, 205043, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)
 
 local berserkTimer					= mod:NewBerserkTimer(600)
 
@@ -81,9 +81,9 @@ function mod:OnCombatStart(delay)
 	self.vb.swarmCast = 0
 	--Only start timers if boss isn't starting at 0 energy
 	timerRotCD:Start(5.2-delay, 1)
-	timerVolatileRotCD:Start(20-delay, 1)--20-25.8
-	timerBreathCD:Start(35-delay, 1)--35-40
-	timerSwarmCD:Start(86-delay, 1)--86-91
+	timerVolatileRotCD:Start("v20-25", 1)--20-25.8
+	timerBreathCD:Start("v35-40", 1)--35-40
+	timerSwarmCD:Start("v86-91", 1)--86-91
 	if self:IsEasy() then
 		berserkTimer:Start(-delay)
 	else
@@ -241,7 +241,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		self.vb.rotCast = 0
 		self.vb.volatileRotCast = 0
 		timerRotCD:Start(12, 1)
-		timerVolatileRotCD:Start(28, 1)--28-31
+		timerVolatileRotCD:Start("v28-31", 1)--28-31
 		timerBreathCD:Start(43, 1)
 		timerSwarmCD:Start(nil, self.vb.swarmCast+1)
 	elseif spellId == 204504 and args:IsPlayer() then

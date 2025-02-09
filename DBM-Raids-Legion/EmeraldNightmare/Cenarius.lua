@@ -55,7 +55,7 @@ mod:AddTimerLine(L.name)
 local timerNightmareBramblesCD		= mod:NewCDTimer(30, 210290, nil, "-Tank", 2, 3, nil, nil, nil, 3, 4)--On for all, for now. Doesn't target melee but melee still have to be aware. Just not AS aware.
 local timerDreadThornsCD			= mod:NewCDTimer(34, 210346, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON)--Optional but off by default
 local timerNightmareBlastCD			= mod:NewNextTimer(32.5, 213162, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
-local timerForcesOfNightmareCD		= mod:NewCDCountTimer(77.6, 212726, nil, nil, nil, 1, nil, nil, nil, 1, 4)--77.8-80
+local timerForcesOfNightmareCD		= mod:NewVarCountTimer("v77.6-80", 212726, nil, nil, nil, 1, nil, nil, nil, 1, 4)--77.8-80
 local timerSpearOfNightmaresCD		= mod:NewCDTimer(18.2, 214529, nil, "Melee|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerBeastsOfNightmareCD		= mod:NewCDTimer(30, 214876, nil, nil, 2, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerEntanglingNightmareCD	= mod:NewNextTimer(51, 214505, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)

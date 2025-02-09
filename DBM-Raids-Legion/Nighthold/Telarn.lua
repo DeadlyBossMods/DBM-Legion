@@ -29,24 +29,17 @@ mod:RegisterEventsInCombat(
  or ability.id = 222021 or ability.id = 222010 or ability.id = 222020
 --]]
 --or self:IsMythic() and self.vb.phase == 1--Ready to go in case my theory is correct
+local berserkTimer					= mod:NewBerserkTimer(480)
+
+mod:AddSetIconOption("SetIconOnNaturalist", "ej13684", true, 5)
 --Stage 1: The High Botanist
+mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnRecursiveStrikes			= mod:NewStackAnnounce(218503, 2, nil, "Tank")
 local warnControlledChaos			= mod:NewCountAnnounce(218438, 3)--Not currently functional
 local warnSummonChaosSpheres		= mod:NewSpellAnnounce(223034, 2)
 local warnParasiticFetter			= mod:NewTargetAnnounce(218304, 3)
 local warnParasiticFixate			= mod:NewTargetAnnounce(218342, 4, nil, false)--Spammy if things go to shit, so off by default
---Stage 2: Nightosis
-local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
-local warnFlare						= mod:NewSpellAnnounce(218806, 2, nil, "Tank")
-local warnPlasmaSpheres				= mod:NewSpellAnnounce(218774, 2)
---Stage 3: Pure Forms
-local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
-local warnToxicSpores				= mod:NewSpellAnnounce(219049, 3)
-local warnCoN						= mod:NewTargetAnnounce(218809, 4)
-local warnGraceofNature				= mod:NewSoonAnnounce(218927, 4, nil, "Tank")
-local warnChaosSpheresOfNature		= mod:NewSpellAnnounce(223219, 4)
 
---Stage 1: The High Botanist
 local specWarnRecursiveStrikes		= mod:NewSpecialWarningTaunt(218503, nil, nil, nil, 1, 2)
 local specWarnControlledChaos		= mod:NewSpecialWarningDodge(218438, nil, nil, nil, 2, 2)
 local specWarnLasher				= mod:NewSpecialWarningSwitch("ej13699", "RangedDps", nil, 2, 1, 2)
@@ -54,27 +47,35 @@ local yellParasiticFetter			= mod:NewYell(218304)
 local specWarnParasiticFetter		= mod:NewSpecialWarningClose(218304, nil, nil, nil, 1, 2)
 local specWarnParasiticFixate		= mod:NewSpecialWarningRun(218342, nil, nil, nil, 4, 2)
 local specWarnSolarCollapse			= mod:NewSpecialWarningDodge(218148, nil, nil, nil, 2, 2)
---Stage 2: Nightosis
-local specwarnStarLow				= mod:NewSpecialWarning("warnStarLow", "Tank|Healer", nil, nil, 2, 2)--aesoon?
---Stage 3: Pure Forms
-local specWarnGraceOfNature			= mod:NewSpecialWarningMove(218927, "Tank", nil, nil, 3, 2)
-local specWarnCoN					= mod:NewSpecialWarningYouPos(218809, nil, nil, nil, 1, 5)
-local yellCoN						= mod:NewPosYell(218809)
 
---All abilities have same cd. 35 seconds in phase 1, 40 in phase 2 and 50 in phase 3
---Mythic is unknown but I suspect it's inversed. Needs to be revetted with new changes
---Stage 1: The High Botanist
-mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local timerControlledChaosCD		= mod:NewNextTimer(35, 218438, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
 local timerParasiticFetterCD		= mod:NewNextTimer(35, 218304, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON, nil, not mod:IsTank() and 2 or nil, 4)--Technically can also be made add timer instead of targetted
 local timerSolarCollapseCD			= mod:NewNextTimer(35, 218148, nil, nil, nil, 3)
 
+mod:AddSetIconOption("SetIconOnFetter", 218304, true)
+mod:AddNamePlateOption("NPAuraOnFixate", 218342)
 --Stage 2: Nightosis
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
+local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
+local warnFlare						= mod:NewSpellAnnounce(218806, 2, nil, "Tank")
+local warnPlasmaSpheres				= mod:NewSpellAnnounce(218774, 2)
+
+local specwarnStarLow				= mod:NewSpecialWarning("warnStarLow", "Tank|Healer", nil, nil, 2, 2)--aesoon?
+
 local timerPlasmaSpheresCD			= mod:NewNextTimer(55, 218774, nil, nil, nil, 1)
 local timerFlareCD					= mod:NewCDTimer(8.5, 218806, nil, "Melee", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Exception to 35, 40, 50 rule
 --Stage 3: Pure Forms
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
+local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
+local warnToxicSpores				= mod:NewSpellAnnounce(219049, 3)
+local warnCoN						= mod:NewTargetAnnounce(218809, 4)
+local warnGraceofNature				= mod:NewSoonAnnounce(218927, 4, nil, "Tank")
+local warnChaosSpheresOfNature		= mod:NewSpellAnnounce(223219, 4)
+
+local specWarnGraceOfNature			= mod:NewSpecialWarningMove(218927, "Tank", nil, nil, 3, 2)
+local specWarnCoN					= mod:NewSpecialWarningYouPos(218809, nil, nil, nil, 1, 5)
+local yellCoN						= mod:NewPosYell(218809)
+
 local timerToxicSporesCD			= mod:NewCDTimer(8, 219049, nil, nil, nil, 3)--Exception to 35, 40, 50 rule
 local timerGraceOfNatureCD			= mod:NewNextTimer(48, 218927, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)--48-51
 local timerCoNCD					= mod:NewNextTimer(50, 218809, nil, nil, nil, 3, nil, nil, nil, not mod:IsTank() and 3 or nil, 4)
@@ -83,13 +84,8 @@ local timerSummonChaosSpheresCD		= mod:NewNextTimer(35, 223034, nil, nil, nil, 1
 local timerCollapseofNightCD		= mod:NewNextTimer(35, 223437, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, not mod:IsTank() and 3 or nil, 4)
 local timerChaotiSpheresofNatureCD	= mod:NewNextTimer(35, 223219, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 
-local berserkTimer					= mod:NewBerserkTimer(480)
-
 mod:AddRangeFrameOption(8, 218807)
-mod:AddSetIconOption("SetIconOnFetter", 218304, true)
 mod:AddSetIconOption("SetIconOnCoN", 218807, true)
-mod:AddSetIconOption("SetIconOnNaturalist", "ej13684", true, 5)
-mod:AddNamePlateOption("NPAuraOnFixate", 218342)
 
 mod.vb.CoNIcon = 1
 mod.vb.phase = 1
@@ -98,14 +94,15 @@ mod.vb.globalTimer = 35
 local sentLowHP = {}
 local warnedLowHP = {}
 local callOfNightName = DBM:GetSpellName(218809)
-local hasCoN, noCoN
+local noCoN
+--local hasCoN
 do
 	--hasCoN not used
-	hasCoN = function(uId)
-		if DBM:UnitDebuff(uId, callOfNightName) then
-			return true
-		end
-	end
+	--hasCoN = function(uId)
+	--	if DBM:UnitDebuff(uId, callOfNightName) then
+	--		return true
+	--	end
+	--end
 	noCoN = function(uId)
 		if not DBM:UnitDebuff(uId, callOfNightName) then
 			return true

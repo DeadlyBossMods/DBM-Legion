@@ -39,54 +39,86 @@ local Kurazmal = DBM:EJ_GetSectionInfo(13121)
 local Vethriz = DBM:EJ_GetSectionInfo(13124)
 local Dzorykx = DBM:EJ_GetSectionInfo(13129)
 
+local timerRP						= mod:NewRPTimer(78)
 --Stage One: The Council of Elders
-----Gul'dan
-local warnLiquidHellfire			= mod:NewCastAnnounce(206219, 3)
-----Inquisitor Vethriz
-local warnGazeofVethriz				= mod:NewSpellAnnounce(206840, 3)
-local warnShadowblink				= mod:NewSpellAnnounce(207938, 2)
-----D'zorykx the Trapper
-local warnSoulVortex				= mod:NewTargetAnnounce(206883, 3)
-local warnAnguishedSpirits			= mod:NewSpellAnnounce(208545, 2)
---Stage Two: The Ritual of Aman'thul
-local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
-local warnBondsofFel				= mod:NewTargetAnnounce(206222, 3)
-local warnEmpBondsofFel				= mod:NewTargetAnnounce(209086, 4)
---Stage Three: The Master's Power
-local warnPhase3Soon				= mod:NewPrePhaseAnnounce(3, 2)
-local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
-local warnSoulSiphon				= mod:NewTargetAnnounce(221891, 3, nil, "Healer")
-local warnFlamesofSargeras			= mod:NewTargetAnnounce(221606, 4)
---Mythic Only
-local warnParasiticWound			= mod:NewTargetAnnounce(206847, 3)
-local warnShadowyGaze				= mod:NewTargetAnnounce(206983, 3)
-local warnWounded					= mod:NewSpellAnnounce(227009, 1)
-
---Stage One: The Council of Elders
+mod:AddTimerLine(SCENARIO_STAGE:format(1))
 ----Gul'dan
 local specWarnLiquidHellfire		= mod:NewSpecialWarningDodge(206219, nil, nil, nil, 1, 2)
 local specWarnFelEfflux				= mod:NewSpecialWarningDodge(206514, nil, nil, nil, 1, 12)
+
+local timerLiquidHellfireCD			= mod:NewNextCountTimer(25, 206219, nil, nil, nil, 3)
+local timerFelEffluxCD				= mod:NewCDCountTimer(10.7, 206514, nil, nil, nil, 3)--10.7-13.5 (14-15 on normal)
 ----Fel Lord Kuraz'mal
+mod:AddTimerLine(Kurazmal)
 local specWarnShatterEssence		= mod:NewSpecialWarningDefensive(206675, nil, nil, nil, 3, 2)
 local specWarnFelObelisk			= mod:NewSpecialWarningDodge(229945, nil, nil, nil, 1, 2)
+
+local timerFelLordKurazCD			= mod:NewCastTimer(16, "ej13121", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerShatterEssenceCD			= mod:NewCDTimer(54, 206675, nil, "Tank", nil, 5, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)
+local timerFelObeliskCD				= mod:NewCDTimer(16, 206841, nil, nil, nil, 3)
+----Inquisitor Vethriz
+mod:AddTimerLine(Vethriz)
+local warnGazeofVethriz				= mod:NewSpellAnnounce(206840, 3)
+local warnShadowblink				= mod:NewSpellAnnounce(207938, 2)
+
+local timerVethrizCD				= mod:NewCastTimer(25, "ej13124", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerGazeofVethrizCD			= mod:NewCDTimer(4.7, 206840, nil, nil, nil, 3)
 ----D'zorykx the Trapper
+mod:AddTimerLine(Dzorykx)
+local warnSoulVortex				= mod:NewTargetAnnounce(206883, 3)
+local warnAnguishedSpirits			= mod:NewSpellAnnounce(208545, 2)
+
 local specWarnSoulVortex			= mod:NewSpecialWarningSpell(206883, nil, nil, nil, 2, 2)
 local yellSoulVortex				= mod:NewYell(206883)
+
+local timerDzorykxCD				= mod:NewCastTimer(35, "ej13129", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerSoulVortexCD				= mod:NewCDTimer(21, 206883, nil, nil, nil, 3)--34-36
 --Stage Two: The Ritual of Aman'thul
+mod:AddTimerLine(SCENARIO_STAGE:format(2))
+local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
+local warnBondsofFel				= mod:NewTargetAnnounce(206222, 3)
+local warnEmpBondsofFel				= mod:NewTargetAnnounce(209086, 4)
+
 local specWarnBondsofFel			= mod:NewSpecialWarningYou(206222, nil, nil, nil, 1, 2)
 local specWarnBondsofFelTank		= mod:NewSpecialWarningTaunt(206222, nil, nil, nil, 1, 2)
 local yellBondsofFel				= mod:NewPosYell(206222)
 local specWarnHandofGuldan			= mod:NewSpecialWarningSwitch(212258, "-Healer", nil, nil, 1, 2)
 local specWarnEyeofGuldan			= mod:NewSpecialWarningSwitchCount(209270, "Dps", nil, nil, 1, 2)
 local specWarnCarrionWave			= mod:NewSpecialWarningInterrupt(208672, "HasInterrupt", nil, nil, 1, 2)
+
+local timerTransition				= mod:NewStageTimer(19)
+local timerHandofGuldanCD			= mod:NewNextCountTimer(58.5, 212258, nil, nil, nil, 1, nil, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerBondsofFelCD				= mod:NewNextCountTimer(50, 206222, nil, nil, nil, 3, nil, nil, nil, 1, 4)
+local timerEyeofGuldanCD			= mod:NewNextCountTimer(60, 209270, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
+
+mod:AddSetIconOption("SetIconOnBondsOfFel", 206222, true)
 --Stage Three: The Master's Power
+mod:AddTimerLine(SCENARIO_STAGE:format(3))
+local warnPhase3Soon				= mod:NewPrePhaseAnnounce(3, 2)
+local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
+local warnSoulSiphon				= mod:NewTargetAnnounce(221891, 3, nil, "Healer")
+local warnFlamesofSargeras			= mod:NewTargetAnnounce(221606, 4)
+
 local specWarnStormOfDestroyer		= mod:NewSpecialWarningDodge(161121, nil, nil, nil, 2, 2)
 local specWarnSoulCorrosion			= mod:NewSpecialWarningStack(208802, nil, 5, nil, nil, 1, 6)--stack guessed
 local specWarnBlackHarvest			= mod:NewSpecialWarningCount(206744, nil, nil, nil, 2, 2)
 local specWarnFlamesOfSargeras		= mod:NewSpecialWarningMoveAway(221606, nil, nil, nil, 3, 2)
 local yellFlamesofSargeras			= mod:NewPosYell(221606, 15643)
 local specWarnFlamesOfSargerasTank	= mod:NewSpecialWarningTaunt(221606, nil, nil, nil, 1, 2)
+
+local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, 15643, nil, nil, 3)
+local timerStormOfDestroyerCD		= mod:NewNextCountTimer(16, 161121, 196871, nil, nil, 3)
+local timerWellOfSouls				= mod:NewCastTimer(16, 206939, nil, nil, nil, 5)
+local timerBlackHarvestCD			= mod:NewNextCountTimer(83, 206744, nil, nil, nil, 2, nil, nil, nil, 3, 4)
+
+mod:AddSetIconOption("SetIconOnBondsOfFlames", 221783, true)
+mod:AddRangeFrameOption(8, 221606)
 --Mythic Only
+mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
+local warnParasiticWound			= mod:NewTargetAnnounce(206847, 3)
+local warnShadowyGaze				= mod:NewTargetAnnounce(206983, 3)
+local warnWounded					= mod:NewSpellAnnounce(227009, 1)
+
 local specWarnWilloftheDemonWithin	= mod:NewSpecialWarningSpell(211439, nil, nil, nil, 1, 2)
 local specWarnParasiticWound		= mod:NewSpecialWarningMoveAway(206847, nil, nil, nil, 3, 2)
 local yellParasiticWound			= mod:NewYell(206847, 36469)
@@ -95,44 +127,7 @@ local yellParasiticWoundFades		= mod:NewFadesYell(206847, 36469)
 local specWarnSoulsever				= mod:NewSpecialWarningCount(220957, nil, nil, nil, 3, 2)--Needs voice, but what?
 local specWarnVisionsofDarkTitan	= mod:NewSpecialWarningMoveTo(227008, nil, nil, nil, 3, 7)
 local specWarnSummonNightorb		= mod:NewSpecialWarningCount(227283, "Dps", nil, nil, 1, 2)
---Shard
-local specWarnManifestAzzinoth		= mod:NewSpecialWarningSwitchCount(221149, "-Healer", nil, nil, 1, 2)
-local specWarnBulwarkofAzzinoth		= mod:NewSpecialWarningSpell(221408, nil, nil, nil, 1)--Needs voice, but what?
-local specWarnPurifiedEssence		= mod:NewSpecialWarningMoveTo(221486, nil, nil, nil, 3, 7)
 
---Stage One: The Council of Elders
-----Gul'dan
-local timerRP						= mod:NewRPTimer(78)
-mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local timerLiquidHellfireCD			= mod:NewNextCountTimer(25, 206219, nil, nil, nil, 3)
-local timerFelEffluxCD				= mod:NewCDCountTimer(10.7, 206514, nil, nil, nil, 3)--10.7-13.5 (14-15 on normal)
-----Fel Lord Kuraz'mal
-mod:AddTimerLine(Kurazmal)
-local timerFelLordKurazCD			= mod:NewCastTimer(16, "ej13121", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
-local timerShatterEssenceCD			= mod:NewCDTimer(54, 206675, nil, "Tank", nil, 5, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)
-local timerFelObeliskCD				= mod:NewCDTimer(16, 206841, nil, nil, nil, 3)
-----Inquisitor Vethriz
-mod:AddTimerLine(Vethriz)
-local timerVethrizCD				= mod:NewCastTimer(25, "ej13124", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
-local timerGazeofVethrizCD			= mod:NewCDTimer(4.7, 206840, nil, nil, nil, 3)
-----D'zorykx the Trapper
-mod:AddTimerLine(Dzorykx)
-local timerDzorykxCD				= mod:NewCastTimer(35, "ej13129", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
-local timerSoulVortexCD				= mod:NewCDTimer(21, 206883, nil, nil, nil, 3)--34-36
---Stage Two: The Ritual of Aman'thul
-mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local timerTransition				= mod:NewStageTimer(19)
-local timerHandofGuldanCD			= mod:NewNextCountTimer(58.5, 212258, nil, nil, nil, 1, nil, nil, nil, mod:IsTank() and 2 or nil, 4)
-local timerBondsofFelCD				= mod:NewNextCountTimer(50, 206222, nil, nil, nil, 3, nil, nil, nil, 1, 4)
-local timerEyeofGuldanCD			= mod:NewNextCountTimer(60, 209270, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
---Stage Three: The Master's Power
-mod:AddTimerLine(SCENARIO_STAGE:format(3))
-local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, 15643, nil, nil, 3)
-local timerStormOfDestroyerCD		= mod:NewNextCountTimer(16, 161121, 196871, nil, nil, 3)
-local timerWellOfSouls				= mod:NewCastTimer(16, 206939, nil, nil, nil, 5)
-local timerBlackHarvestCD			= mod:NewNextCountTimer(83, 206744, nil, nil, nil, 2, nil, nil, nil, 3, 4)
---Mythic Only
-mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerWindsCD					= mod:NewCDCountTimer(39, 199446, nil, nil, nil, 2)
 local timerWilloftheDemonWithin		= mod:NewCastTimer(43, 211439, nil, nil, nil, 2)
 local timerParasiticWoundCD			= mod:NewCDTimer(36, 206847, nil, nil, nil, 3)
@@ -142,17 +137,18 @@ local timerVisionsofDarkTitan		= mod:NewCastTimer(9, 227008, nil, nil, nil, 2)
 local timerVisionsofDarkTitanCD		= mod:NewCDCountTimer(9, 227008, nil, nil, nil, 2, nil, nil, nil, 1, 6)
 local timerFlameCrashCD				= mod:NewCDCountTimer(20, 227071, nil, nil, nil, 3, nil, nil, nil, mod:IsTank() and 3 or nil, 6)
 local timerSummonNightorbCD			= mod:NewCDCountTimer(10.9, 227283, nil, nil, nil, 1, 225133)
+
+mod:AddInfoFrameOption(206310)
 --Shard
 mod:AddTimerLine(DBM_COMMON_L.ADDS)
+local specWarnManifestAzzinoth		= mod:NewSpecialWarningSwitchCount(221149, "-Healer", nil, nil, 1, 2)
+local specWarnBulwarkofAzzinoth		= mod:NewSpecialWarningSpell(221408, nil, nil, nil, 1)--Needs voice, but what?
+local specWarnPurifiedEssence		= mod:NewSpecialWarningMoveTo(221486, nil, nil, nil, 3, 7)
+
 local timerManifestAzzinothCD		= mod:NewCDCountTimer(10.9, 221149, nil, nil, nil, 1, 236237)
 local timerChaosSeedCD				= mod:NewCDTimer(10.9, 221336, nil, nil, nil, 3)
 local timerBulwarkofAzzinothCD		= mod:NewCDTimer(10.9, 221408, nil, nil, nil, 6)
 local timerPurifiedEssence			= mod:NewCastTimer(4, 221486, nil, nil, nil, 2)
-
-mod:AddRangeFrameOption(8, 221606)
-mod:AddSetIconOption("SetIconOnBondsOfFlames", 221783, true)
-mod:AddSetIconOption("SetIconOnBondsOfFel", 206222, true)
-mod:AddInfoFrameOption(206310)
 
 mod.vb.addsDied = 0
 mod.vb.liquidHellfireCast = 0

@@ -29,50 +29,49 @@ mod:RegisterEventsInCombat(
 --]]
 --General
 local warnArcanoSlash				= mod:NewStackAnnounce(206641, 3, nil, "Tank")
---Cleaner
-local warnCleanerMode				= mod:NewCountAnnounce(206560, 2)
-local warnToxicSlice				= mod:NewSpellAnnounce(206788, 2)
-local warnSterilize					= mod:NewTargetAnnounce(208499, 3)
---Maniac
-local warnManiacMode				= mod:NewCountAnnounce(206557, 2)
-local warnArcingBonds				= mod:NewTargetAnnounce(208915, 3)
---Caretaker
-local warnCaretakerMode				= mod:NewCountAnnounce(206559, 2)
-local warnSucculentFeast			= mod:NewSpellAnnounce(207502, 1)
 
---General
 local specWarnArcaneSeepage			= mod:NewSpecialWarningMove(206488, nil, nil, nil, 1, 2)
 local specWarnArcanoSlash			= mod:NewSpecialWarningDefensive(206641, "Tank", nil, 2, 1, 2)
 local specWarnArcanoSlashTaunt		= mod:NewSpecialWarningTaunt(206641, nil, nil, nil, 1, 2)
---Cleaner
-local specWarnSterilize				= mod:NewSpecialWarningMoveAway(208499, nil, nil, nil, 1, 2)
-local yellSterilize					= mod:NewYell(208499)
-local specWarnCleansingRage			= mod:NewSpecialWarningSpell(206820, nil, nil, nil, 2, 2)
---Maniac
-local specWarnArcingBonds			= mod:NewSpecialWarningYou(208915, nil, nil, nil, 1, 2)--Change to Moveto warning if possible to know your link
-local specWarnAnnihilation			= mod:NewSpecialWarningDodge(207630, nil, nil, nil, 3, 6)--Hallion Style
---Caretaker
-local specWarnTidyUp				= mod:NewSpecialWarningDodge(207513, nil, nil, nil, 2, 2)--Maybe switch to mob name instead of "tidy up"
---Mythic
-local specWarnEchoDuder				= mod:NewSpecialWarningSwitchCustom(214880, nil, nil, nil, 1, 2)
 
---General
 local timerArcaneSlashCD			= mod:NewCDTimer(9, 206641, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerPhaseChange				= mod:NewNextTimer(45, 155005, nil, nil, nil, 6, nil, nil, nil, 1, 4)
 --Cleaner
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(13285))
+local warnCleanerMode				= mod:NewCountAnnounce(206560, 2)
+local warnToxicSlice				= mod:NewSpellAnnounce(206788, 2)
+local warnSterilize					= mod:NewTargetAnnounce(208499, 3)
+
+local specWarnSterilize				= mod:NewSpecialWarningMoveAway(208499, nil, nil, nil, 1, 2)
+local yellSterilize					= mod:NewYell(208499)
+local specWarnCleansingRage			= mod:NewSpecialWarningSpell(206820, nil, nil, nil, 2, 2)
+
 local timerToxicSliceCD				= mod:NewCDTimer(18, 206788, nil, nil, nil, 3)
 --local timerSterilizeCD				= mod:NewNextTimer(3, 208499, nil, nil, nil, 3)
 local timerCleansingRageCD			= mod:NewNextTimer(10, 206820, nil, nil, nil, 2)
 --Maniac
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(13281))
-local timerArcingBondsCD			= mod:NewCDTimer(5, 208924, nil, nil, nil, 3)--5.7-8
+local warnManiacMode				= mod:NewCountAnnounce(206557, 2)
+local warnArcingBonds				= mod:NewTargetAnnounce(208915, 3)
+
+local specWarnArcingBonds			= mod:NewSpecialWarningYou(208915, nil, nil, nil, 1, 2)--Change to Moveto warning if possible to know your link
+local specWarnAnnihilation			= mod:NewSpecialWarningDodge(207630, nil, nil, nil, 3, 6)--Hallion Style
+
+local timerArcingBondsCD			= mod:NewVarTimer("v5-8", 208924, nil, nil, nil, 3)--5.7-8
 local timerAnnihilationCD			= mod:NewCDTimer(20.3, 207630, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 --Caretaker
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(13282))
+local warnCaretakerMode				= mod:NewCountAnnounce(206559, 2)
+local warnSucculentFeast			= mod:NewSpellAnnounce(207502, 1)
+
+local specWarnTidyUp				= mod:NewSpecialWarningDodge(207513, nil, nil, nil, 2, 2)--Maybe switch to mob name instead of "tidy up"
+
 local timerTidyUpCD					= mod:NewNextTimer(10, 207513, nil, nil, nil, 1)
 local timerSucculentFeastCD			= mod:NewNextTimer(4.5, 207502, nil, nil, nil, 3)
+--Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
+local specWarnEchoDuder				= mod:NewSpecialWarningSwitchCustom(214880, nil, nil, nil, 1, 2)
+
 local timerEchoDuder				= mod:NewNextTimer(10, 214880, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 
 mod:AddRangeFrameOption(12, 208506)
@@ -173,7 +172,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnManiacMode:Show(self.vb.maniacCount)
 		timerToxicSliceCD:Stop("boss")--Must be stopped here too since first cleaner mode has no buff removal
 		timerArcaneSlashCD:Stop()
-		timerArcingBondsCD:Start(5)--Updated Jan 24, make sure it's ok consistently
+		timerArcingBondsCD:Start("v5-8")--Updated Jan 24, make sure it's ok consistently
 		timerArcaneSlashCD:Start(9)--Updated Jan 24, make sure it's ok consistently
 		timerAnnihilationCD:Start(nil, "boss")--20
 		timerPhaseChange:Stop()

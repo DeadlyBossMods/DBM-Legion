@@ -35,13 +35,6 @@ local yellShadowLick				= mod:NewYell(228253, nil, false, 2)
 local specWarnFrostLick				= mod:NewSpecialWarningYou(228248, false, nil, nil, 1)--Warning player they are stunned probably somewhat useful. Still can't do much about it.
 local yellFrostLick					= mod:NewYell(228248, nil, false, 2)
 local specWarnFrostLickDispel		= mod:NewSpecialWarningDispel(228248, "Healer", nil, nil, 1, 2)
---Mythic
-local specWarnFlamingFoam			= mod:NewSpecialWarningYou(228744, nil, nil, nil, 1)--228794 jump id
-local yellFlameFoam					= mod:NewPosYell(228744, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
-local specWarnBrineyFoam			= mod:NewSpecialWarningYou(228810, nil, nil, nil, 1)--228811 jump id
-local yellBrineyFoam				= mod:NewPosYell(228810, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
-local specWarnShadowyFoam			= mod:NewSpecialWarningYou(228818, nil, nil, nil, 1)
-local yellShadowyFoam				= mod:NewPosYell(228818, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
 --local timerLickCD					= mod:NewCDCountTimer(45, "ej14463", nil, nil, nil, 3, 228228)
 local timerLeashCD					= mod:NewNextTimer(45, 228201, nil, nil, nil, 6, 129417)
@@ -50,7 +43,14 @@ local timerFangsCD					= mod:NewCDCountTimer(20.5, 227514, nil, "Tank", nil, 5, 
 local timerBreathCD					= mod:NewCDCountTimer(20.5, 228187, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
 local timerLeapCD					= mod:NewCDCountTimer(22, 227883, nil, nil, nil, 3)
 local timerChargeCD					= mod:NewCDTimer(10.9, 227816, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
+--Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
+local specWarnFlamingFoam			= mod:NewSpecialWarningYou(228744, nil, nil, nil, 1)--228794 jump id
+local yellFlameFoam					= mod:NewPosYell(228744, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
+local specWarnBrineyFoam			= mod:NewSpecialWarningYou(228810, nil, nil, nil, 1)--228811 jump id
+local yellBrineyFoam				= mod:NewPosYell(228810, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
+local specWarnShadowyFoam			= mod:NewSpecialWarningYou(228818, nil, nil, nil, 1)
+local yellShadowyFoam				= mod:NewPosYell(228818, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 local timerVolatileFoamCD			= mod:NewCDCountTimer(15.4, 228824, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)
 
 local berserkTimer					= mod:NewBerserkTimer(300)

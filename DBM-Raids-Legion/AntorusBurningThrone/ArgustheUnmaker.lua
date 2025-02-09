@@ -58,11 +58,11 @@ local yellGiftofSea					= mod:NewPosYell(258647, L.SeaText)
 local specWarnGiftofSky				= mod:NewSpecialWarningYou(258646, nil, nil, nil, 1, 2)
 local yellGiftofSky					= mod:NewPosYell(258646, L.SkyText)
 
-local timerSweepingScytheCD			= mod:NewCDCountTimer(5.6, 248499, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--5.6-15.7
-local timerConeofDeathCD			= mod:NewCDCountTimer(19.4, 248165, nil, nil, nil, 3)--19.4-24
-local timerBlightOrbCD				= mod:NewCDCountTimer(22, 248317, nil, nil, nil, 3)--22-32
-local timerTorturedRageCD			= mod:NewCDCountTimer(13, 257296, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)--13-16
-local timerSkyandSeaCD				= mod:NewCDCountTimer(24.9, 255594, nil, nil, nil, 5)--24.9-27.8
+local timerSweepingScytheCD			= mod:NewVarCountTimer("v5.6-15.7", 248499, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--5.6-15.7
+local timerConeofDeathCD			= mod:NewVarCountTimer("v19.4-24", 248165, nil, nil, nil, 3)--19.4-24
+local timerBlightOrbCD				= mod:NewVarCountTimer("v22-32", 248317, nil, nil, nil, 3)--22-32
+local timerTorturedRageCD			= mod:NewVarCountTimer("v13-16", 257296, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)--13-16
+local timerSkyandSeaCD				= mod:NewVarCountTimer("v24.9-27.8", 255594, nil, nil, nil, 5)--24.9-27.8
 
 mod:AddSetIconOption("SetIconGift", 255594, true)--5 and 6
 --Stage one Mythic
@@ -436,7 +436,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self.vb.scytheCastCount == 3 then
 			self.vb.firstscytheSwap = true
 		end
-		timerSweepingScytheCD:Start(5.6, self.vb.scytheCastCount+1)
+		timerSweepingScytheCD:Start(nil, self.vb.scytheCastCount+1)
 	elseif spellId == 258039 then
 		timerDeadlyScytheCD:Start()
 	elseif spellId == 258838 then--Mythic Scythe
