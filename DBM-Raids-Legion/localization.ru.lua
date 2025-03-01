@@ -37,7 +37,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	SoakersText			=	"Soakers Assigned: %s"
+	SoakersText			=	"Назначенные поглощатели: %s"
 })
 
 ------------------
@@ -47,7 +47,7 @@ L= DBM:GetModLocalization(1750)
 
 L:SetMiscLocalization({
 	BrambleYell			= "Колючки рядом с " .. UnitName("player") .. "!",
-	BrambleMessage		= "Внимание: DBM не может определить за кем следуют колючки. Он предупреждает о цели спавна. Босс выбирает игрока и кидает в него колючки. После этого колючки выбирают новую цель, которую невозможно определить"
+	BrambleMessage		= "Внимание: DBM не может определить, за кем следуют колючки. Он предупреждает о цели спавна. Босс выбирает игрока и кидает в него колючки. После этого колючки выбирают новую цель, которую невозможно определить"
 })
 
 ------------------
@@ -56,7 +56,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1726)
 
 L:SetOptionLocalization({
-	InfoFrameFilterDream	= "Фильтровать игроков с $spell:206005 из информационного окна"
+	InfoFrameFilterDream	= "Фильтровать игроков с $spell:206005 из инфофрейма"
 })
 
 -------------
@@ -84,11 +84,11 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1829)
 
 L:SetTimerLocalization({
-	OrbsTimerText		= "След. Сфера (%d-%s)"
+	OrbsTimerText		= "След. Сферы (%d-%s)"
 })
 
 L:SetMiscLocalization({
-	phaseThree =	"Your efforts are for naught, mortals! Odyn will NEVER be free!",
+	phaseThree =	"Даже не надейтесь, смертные! Один НИКОГДА не обретет свободу!",
 	near =			"возле",
 	far =			"вдалеке",
 	multiple =		"Несколько"
@@ -110,8 +110,8 @@ L= DBM:GetModLocalization(1725)
 
 L:SetOptionLocalization({
 	InfoFrameBehavior	= "Установить информацию, которую инфофрейм показывает во время сражения",
-	TimeRelease			= "Показать игроков, поражённых 'Выдержкой времени'",
-	TimeBomb			= "Показать игроков, поражённых 'Часовой бомбой'"
+	TimeRelease			= "Показать игроков, поражённых $spell:206609",
+	TimeBomb			= "Показать игроков, поражённых $spell:206617"
 })
 
 ------------------
@@ -121,7 +121,7 @@ L= DBM:GetModLocalization(1762)
 
 L:SetMiscLocalization({
 	First				= "Первый",
-	Second		    = "Второй",
+	Second		    	= "Второй",
 	Third				= "Третий",
 	Adds1				= "Подчиненные! Идите сюда!",
 	Adds2				= "Покажи этим самозванцам, как драться!"
@@ -141,8 +141,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	MoveLeft			= "Двигайся влево",
-	MoveRight			= "Двигайся вправо"
+	MoveLeft			= "Двигайтесь влево",
+	MoveRight			= "Двигайтесь вправо"
 })
 
 ------------------
@@ -155,7 +155,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnStarLow				= "Показывать спецпредупреждение при низком уровне Плазменной сферы (около 25%)."
+	warnStarLow				= "Показывать спецпредупреждение при низком уровне Плазменной сферы (около ~25%)"
 })
 
 ------------------
@@ -183,9 +183,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	noCLEU4EchoRings		= "Let the waves of time crash over you!",
-	noCLEU4EchoOrbs			= "You'll find time can be quite volatile.",
-	prePullRP				= "I foresaw your coming, of course. The threads of fate that led you to this place. Your desperate attempt to stop the Legion."
+	noCLEU4EchoRings		= "Волны времени сметут вас!",
+	noCLEU4EchoOrbs			= "Время нестабильно - сейчас вы сами в этом убедитесь.",
+	prePullRP				= "Я предвидела ваш приход, нити судьбы, что привели вас сюда, и ваши жалкие попытки остановить Легион."
 })
 
 ------------------
@@ -194,8 +194,8 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1737)
 
 L:SetMiscLocalization({
-	mythicPhase3		= "Time to return the demon hunter's soul to his body... and deny the Legion's master a host!",
-	prePullRP			= "Ah yes, the heroes have arrived. So persistent. So confident. But your arrogance will be your undoing!"
+	mythicPhase3		= "Вернем душу Иллидана в тело... Владыка Легиона не должен его заполучить.",
+	prePullRP			= "О, а вот и наши герои. Такие самоуверенные. Именно это вас и погубит!"
 })
 
 -------------
@@ -213,7 +213,7 @@ L:SetGeneralLocalization({
 L= DBM:GetModLocalization(1861)
 
 L:SetOptionLocalization({
-	TauntOnPainSuccess	= "Таймеры синхронизации и предупреждение о таунте для применения 'Бремя боли' вместо «СТАРТ» (для некоторых мифических стратегий, где Вы специально позволяете бремени тикать один раз, в противном случае НЕ рекомендуется использовать эту опцию)"
+	TauntOnPainSuccess	= "Синхронизировать таймеры и предупреждение о таунте, чтобы $spell:230201 кастовало УСПЕХ вместо СТАРТ<br/>(для некоторых мифических стратегий, где Вы специально позволяете бремени тикать один раз, в противном случае НЕ рекомендуется использовать эту опцию)"
 })
 
 ---------------------------
@@ -222,7 +222,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1896)
 
 L:SetOptionLocalization({
-	IgnoreTemplarOn3Tank	= "Ignore Reanimated Templars for Bone Armor infoframe/announces/nameplates when using 3 or more tanks (do not change this mid combat, it will break counts)"
+	IgnoreTemplarOn3Tank	= "Игнорировать инфофреймы/предупреждения/индикаторы здоровья Оживленных храмовников для $spell:38882 при использовании 3-х или более танков (не меняйте это во время боя, иначе сломается счетчик)"
 })
 
 ---------------------------
@@ -235,7 +235,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	FallenAvatarDialog	= "The husk before you was once a vessel for the might of Sargeras. But this temple itself is our prize. The means by which we will reduce your world to cinders!"
+	FallenAvatarDialog	= "Когда-то эта оболочка была наполнена мощью самого Саргераса. Но нашей целью всегда был храм - с его помощью мы испепелим ваш мир!"
 })
 
 ---------------------------
@@ -244,7 +244,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1898)
 
 L:SetWarningLocalization({
-	warnSingularitySoon		= "Отбрасывание в %ds"
+	warnSingularitySoon		= "Отбрасывание через %d сек."
 })
 
 L:SetOptionLocalization({
@@ -252,7 +252,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Obelisklasers	= "Obelisk Lasers"
+	Obelisklasers	= "Лазерне Обелиски"
 })
 
 -------------
@@ -270,7 +270,7 @@ L:SetGeneralLocalization({
 L= DBM:GetModLocalization(1987)
 
 L:SetOptionLocalization({
-	SequenceTimers =	"Расположите таймеры восстановления на героической/мифической сложности с предыдущими применениями способностей, а не текущими, чтобы уменьшить беспорядок таймера за счет незначительной точности таймера (на 1-2 секунды раньше)"
+	SequenceTimers =	"Расположите таймеры восстановления на героической/мифической сложности с предыдущими применениями способностей, а не текущими, чтобы уменьшить беспорядок таймера за счет незначительной точности таймера (на 1-2 сек. раньше)"
 })
 
 ---------------------------
@@ -317,7 +317,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(2009)
 
 L:SetMiscLocalization({
-	DispelMe =		"Dispel Me!"
+	DispelMe =		"Развейте меня!"
 })
 
 ---------------------------
@@ -327,7 +327,7 @@ L= DBM:GetModLocalization(2004)
 
 L:SetOptionLocalization({
 	InfoFrame =	"Показать инфофрейм для обзора боя",
-	UseAddTime = "Всегда показывать таймеры того, что будет дальше, когда босс покидает фазу инициализации, а не скрывать их. (Если отключено, правильные таймеры возобновятся, когда босс снова станет активным, но может оставить небольшое предупреждение, если у каких-либо перезарядок осталось всего 1-2 секунды)"
+	UseAddTime = "Всегда показывать таймеры того, что будет дальше, когда босс покидает фазу инициализации, а не скрывать их.<br/>(Если отключено, правильные таймеры возобновятся, когда босс снова станет активным, но может оставить небольшое предупреждение, если у каких-либо перезарядок осталось всего 1-2 сек.)"
 })
 
 ---------------------------
@@ -345,12 +345,12 @@ L:SetOptionLocalization({
 	TwoMythicThreeNon	= "Меняться по 2 стака на эпохальной сложности, по 3 стака на других сложностях",--По умолчанию
 	TwoAlways			= "Всегда меняться по 2 стака независимо от сложности",
 	ThreeAlways			= "Всегда меняться по 3 стака независимо от сложности",
-	SetLighting			= "Automatically turn lighting setting to low when coven is engaged and restore on combat end",
-	InterruptBehavior	= "Установить режим прерывания для рейда (требуется лидер рейда)",
+	SetLighting			= "Автоматически изменять уровень освещения, когда задействован ковен, и восстанавливает его по окончании боя",
+	InterruptBehavior	= "Установить режим прерывания для рейда (нужны права лидера рейда)",
 	Three				= "Ротация из 3 человек ",--По умолчанию
 	Four				= "Ротация из 4 человек ",
 	Five				= "Ротация из 5 человек ",
-	IgnoreFirstKick		= "Если включена эта опция, то исключается самое первое прерывание в ротации (требуется лидер рейда)"
+	IgnoreFirstKick		= "Если эта опция включена, то исключается самое первое прерывание в ротации (нужны права лидера рейда)"
 })
 
 ---------------------------
@@ -359,15 +359,15 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1984)
 
 L:SetOptionLocalization({
-	ignoreThreeTank	= "Filter Rend/Foe Taunt special warnings when using 3 or more tanks (since DBM can't determine exact tanking rotation in this setup). If any tanks die and it drops to 2, filter auto disables",
-	skipMarked		= "Embers of Taeshalach that are already marked with skull cross or square will not be remarked when automarking activates."
+	ignoreThreeTank	= "Фильтровать спецпредупреждения для Кровопускания/Сокрушителя при использовании 3-х и более танков (так как DBM не может определить точную ротацию танкования в этой настройке)<br/>Если какой-либо танк погибнет и останется лишь 2 танка, фильтр автоматически отключится",
+	skipMarked		= "Угольки Тайшалака, уже отмеченные крестом, черепом или квадратом, не будут отмечены при активации автоматической маркировки"
 })
 
 L:SetMiscLocalization({
-	Foe			=	"Foe",
-	Rend		=	"Rend",
-	Tempest 	=	"Tempest",
-	Current		=	"Current:"
+	Foe			=	"Сокрушитель",
+	Rend		=	"Кровопускание",
+	Tempest 	=	"Буря",
+	Current		=	"Текущий:"
 })
 
 ---------------------------
@@ -376,7 +376,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(2031)
 
 L:SetTimerLocalization({
-	timerSargSentenceCD	= "Sentence CD (%s)"
+	timerSargSentenceCD	= "Восстановление Приговора (%s)"
 })
 
 L:SetOptionLocalization({
@@ -386,9 +386,9 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	SeaText		=	"{rt6} Скорость/верса",
 	SkyText		=	"{rt5} Крит/искусность",
-	Blight		=	"Blight",
-	Burst		=	"Burst",
-	Sentence	=	"Sentence",
+	Blight		=	"Гниль",
+	Burst		=	"Взрыв",
+	Sentence	=	"Приговор",
 	Bomb		=	"Бомба"
 })
 
