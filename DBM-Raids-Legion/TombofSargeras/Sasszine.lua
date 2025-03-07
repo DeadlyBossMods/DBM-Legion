@@ -197,7 +197,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self.vb.crashingWaveCount = self.vb.crashingWaveCount + 1
 		if self:IsMythic() and self.vb.phase == 3 then
 			local timer = p3MythicCrashingWave[self.vb.crashingWaveCount+1]
-			if timer then
+			if timer and timer > 0 then
 				timerCrashingWaveCD:Start(timer, self.vb.crashingWaveCount+1)
 			else
 				timerCrashingWaveCD:Start(30.9, self.vb.crashingWaveCount+1)

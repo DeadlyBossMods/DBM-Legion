@@ -243,7 +243,7 @@ function mod:SPELL_CAST_START(args)
 		local text = self.vb.orbCount % 2 == 0 and MELEE or RANGED
 		if self:IsMythic() then
 			local timer = phase3MythicOrbs[self.vb.orbCount]
-			if timer then
+			if timer and timer > 0 then
 				timerOrbOfCorrosionCD:Start(timer, self.vb.orbCount, text)
 			else
 				timerOrbOfCorrosionCD:Start(12, self.vb.orbCount, text)
@@ -372,7 +372,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			elseif self:IsMythic() then
 				if self.vb.phase == 3 then
 					local timer = phase3MythicTaint[self.vb.taintCount+1]
-					if timer then
+					if timer and timer > 0 then
 						timerTaintOfSeaCD:Start(timer)
 					else
 						timerTaintOfSeaCD:Start(11)--Assume rest are 11 until more data

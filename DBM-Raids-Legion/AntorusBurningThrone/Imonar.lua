@@ -181,7 +181,7 @@ function mod:SPELL_CAST_START(args)
 				timerShrapnalBlastCD:Start(26.7, self.vb.shrapnalCast+1)
 			elseif self.vb.phase == 5 then
 				local timer = mythicP5ShrapnalTimers[self.vb.shrapnalCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerShrapnalBlastCD:Start(timer, self.vb.shrapnalCast+1)
 				end
 			end

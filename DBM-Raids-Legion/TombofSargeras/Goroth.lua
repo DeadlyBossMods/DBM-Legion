@@ -115,7 +115,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			end
 		else
 			local timer = shatteringStarTimers[nextCount]
-			if timer then
+			if timer and timer > 0 then
 				timerShatteringStarCD:Start(timer, nextCount)
 			else
 				if self.vb.shatteringStarCount % 2 == 0 then

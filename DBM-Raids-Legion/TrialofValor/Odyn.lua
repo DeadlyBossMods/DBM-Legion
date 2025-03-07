@@ -238,7 +238,7 @@ function mod:SPELL_CAST_START(args)
 		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = dancingBladeTimers[self.vb.dancingBladeCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerDancingBladeCD:Start(timer)
 				end
 			elseif self:IsEasy() then
@@ -265,7 +265,7 @@ function mod:SPELL_CAST_START(args)
 		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = hornTimers[self.vb.hornCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerHornOfValorCD:Start(timer, self.vb.hornCast+1)
 				end
 			elseif self:IsEasy() then
@@ -303,7 +303,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = expelLightTimers[self.vb.expelLightCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerExpelLightCD:Start(timer)
 				end
 			elseif self:IsEasy() then
@@ -506,7 +506,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 		if self:GetStage(1) then
 			if self:IsMythic() then
 				local timer = shieldTimers[self.vb.shieldCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerShieldofLightCD:Start(timer, self.vb.shieldCast+1)
 				end
 			else

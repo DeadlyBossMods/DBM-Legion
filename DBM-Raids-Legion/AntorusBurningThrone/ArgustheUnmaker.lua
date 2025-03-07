@@ -222,7 +222,7 @@ local function startAnnihilationStuff(self, quiet)
 		specWarnEdgeofAnni:Play("watchstep")
 	end
 	local timer = edgeofAnni[self.vb.EdgeofObliteration+1]
-	if timer then
+	if timer and timer > 0 then
 		timerEdgeofAnniCD:Start(timer, self.vb.EdgeofObliteration+1)
 		self:Schedule(timer, startAnnihilationStuff, self, timer < 6)
 	end
@@ -233,7 +233,7 @@ local function checkForMissingSentence(self)
 	self:Unschedule(checkForMissingSentence)
 	self.vb.sentenceCount = self.vb.sentenceCount + 1
 	local timer = sargSentenceTimers[self.vb.sentenceCount+1]
-	if timer then
+	if timer and timer > 0 then
 		timerSargSentenceCD:Start(timer-10, self.vb.sentenceCount+1)--Timer minus 10 or next expected sentence cast
 		self:Schedule(timer, checkForMissingSentence, self)--10 seconds after expected sentence cast
 	end
@@ -354,7 +354,7 @@ function mod:SPELL_CAST_START(args)
 		warnTorturedRage:Show(self.vb.TorturedRage)
 		if self:IsMythic() and self.vb.phase == 3 then
 			local timer = torturedRage[self.vb.TorturedRage+1]
-			if timer then
+			if timer and timer > 0 then
 				timerTorturedRageCD:Start(timer, self.vb.TorturedRage+1)
 			end
 		else
@@ -684,7 +684,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			--self:Unschedule(checkForMissingSentence)
 			self.vb.sentenceCount = self.vb.sentenceCount + 1
 			local timer = sargSentenceTimers[self.vb.sentenceCount+1]
-			if timer then
+			if timer and timer > 0 then
 				timerSargSentenceCD:Start(timer, self.vb.sentenceCount+1)
 				--self:Schedule(timer+10, checkForMissingSentence, self)--Check for missing sentence event 10 seconds after expected to recover timer if all immuned
 			end
@@ -841,7 +841,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 			timerSargGazeCD:Start(59.7, self.vb.gazeCount+1)
 		elseif self.vb.phase == 3 then
 			local timer = sargGazeTimers[self.vb.gazeCount+1]
-			if timer then
+			if timer and timer > 0 then
 				timerSargGazeCD:Start(timer, self.vb.gazeCount+1)
 				self:Unschedule(ToggleRangeFinder)
 				self:Schedule(5, ToggleRangeFinder, self, true)--Call hide 2 seconds after rages go out, function will check player for debuff and decide

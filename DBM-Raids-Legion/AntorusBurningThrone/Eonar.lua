@@ -199,7 +199,7 @@ local function checkForDeadDestructor(self, forceStart)
 		local text = self:IsHeroic() and addCountToLocationHeroic["Dest"][self.vb.destructorCast+1] or self:IsNormal() and addCountToLocationNormal["Dest"][self.vb.destructorCast+1] or self:IsMythic() and addCountToLocationMythic["Dest"][self.vb.destructorCast+1] or self:IsLFR() and addCountToLocationLFR["Dest"][self.vb.destructorCast+1] or self.vb.destructorCast+1
 		timerDestructorCD:Start(forceStart, text)--Minus 10 for being 10 seconds after high alert, and minus 10 for wanting when it spawns not high alert cast
 		self:Schedule(forceStart+20, checkForDeadDestructor, self)--10 seconds after high alert
-	elseif timer then
+	elseif timer and timer > 0 then
 		local text = self:IsHeroic() and addCountToLocationHeroic["Dest"][self.vb.destructorCast+1] or self:IsNormal() and addCountToLocationNormal["Dest"][self.vb.destructorCast+1] or self:IsMythic() and addCountToLocationMythic["Dest"][self.vb.destructorCast+1] or self:IsLFR() and addCountToLocationLFR["Dest"][self.vb.destructorCast+1] or self.vb.destructorCast+1
 		timerDestructorCD:Start(timer-20, text)--Minus 10 for being 10 seconds after high alert, and minus 10 for wanting when it spawns not high alert cast
 		self:Schedule(timer, checkForDeadDestructor, self)--10 seconds after high alert
@@ -212,7 +212,7 @@ local function startBatsStuff(self)
 	warnWarpIn:Show(L.Bats)
 	warnWarpIn:Play("killmob")
 	local timer = self:IsMythic() and mythicBats[self.vb.batCast+1] or self:IsHeroic() and heroicBats[self.vb.batCast+1]
-	if timer then
+	if timer and timer > 0 then
 		timerBatsCD:Start(timer, self.vb.batCast+1)
 		self:Schedule(timer, startBatsStuff, self)
 	end
@@ -291,7 +291,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnFinalDoom:Play("specialsoon")
 		timerFinalDoom:Start()
 		local timer = finalDoomTimers[self.vb.finalDoomCast+1]
-		if timer then
+		if timer and timer > 0 then
 			timerFinalDoomCD:Start(timer, self.vb.finalDoomCast+1)
 		end
 	elseif spellId == 250701 and self:CheckInterruptFilter(args.sourceGUID, true) then
@@ -310,7 +310,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnWarpIn:Play("bigmob")
 			self.vb.obfuscatorCast = self.vb.obfuscatorCast + 1
 			local timer = self:IsMythic() and mythicObfuscators[self.vb.obfuscatorCast+1] or self:IsHeroic() and heroicObfuscators[self.vb.obfuscatorCast+1] or self:IsNormal() and normalObfuscators[self.vb.obfuscatorCast+1]
-			if timer then
+			if timer and timer > 0 then
 				local text = self:IsHeroic() and addCountToLocationHeroic["Obfu"][self.vb.obfuscatorCast+1] or self:IsNormal() and addCountToLocationNormal["Obfu"][self.vb.obfuscatorCast+1] or self:IsMythic() and addCountToLocationMythic["Obfu"][self.vb.obfuscatorCast+1] or self.vb.obfuscatorCast+1
 				timerObfuscatorCD:Start(timer, text)
 			end
@@ -324,7 +324,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnWarpIn:Play("bigmob")
 			self.vb.destructorCast = self.vb.destructorCast + 1
 			local timer = self:IsMythic() and mythicDestructors[self.vb.destructorCast+1] or self:IsHeroic() and heroicDestructors[self.vb.destructorCast+1] or self:IsNormal() and normalDestructors[self.vb.destructorCast+1] or self:IsLFR() and lfrDestructors2[self.vb.destructorCast+1]
-			if timer then
+			if timer and timer > 0 then
 				local text = self:IsHeroic() and addCountToLocationHeroic["Dest"][self.vb.destructorCast+1] or self:IsNormal() and addCountToLocationNormal["Dest"][self.vb.destructorCast+1] or self:IsMythic() and addCountToLocationMythic["Dest"][self.vb.destructorCast+1] or self:IsLFR() and addCountToLocationLFR["Dest"][self.vb.destructorCast+1] or self.vb.destructorCast+1
 				if not self:IsLFR() then--This work around doesn't work in LFR because if dps is slow LFR massively slows down spawns to help out
 					self:Schedule(timer+10, checkForDeadDestructor, self)
@@ -350,7 +350,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnWarpIn:Play("bigmob")
 			self.vb.purifierCast = self.vb.purifierCast + 1
 			local timer = self:IsMythic() and mythicPurifiers[self.vb.purifierCast+1] or self:IsHeroic() and heroicPurifiers[self.vb.purifierCast+1]
-			if timer then
+			if timer and timer > 0 then
 				local text = self:IsHeroic() and addCountToLocationHeroic["Pur"][self.vb.purifierCast+1] or self:IsNormal() and addCountToLocationNormal["Pur"][self.vb.purifierCast+1] or self:IsMythic() and addCountToLocationMythic["Pur"][self.vb.purifierCast+1] or self.vb.purifierCast+1
 				timerPurifierCD:Start(timer, text)
 			end
@@ -373,7 +373,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam(10, 4) then
 			self.vb.rainOfFelCount = self.vb.rainOfFelCount + 1
 			local timer = self:IsMythic() and mythicRainOfFelTimers[self.vb.rainOfFelCount+1] or self:IsHeroic() and heroicRainOfFelTimers[self.vb.rainOfFelCount+1] or self:IsNormal() and normalRainOfFelTimers[self.vb.rainOfFelCount+1]
-			if timer then
+			if timer and timer > 0 then
 				timerRainofFelCD:Start(timer, self.vb.rainOfFelCount+1)
 			end
 		end
@@ -484,7 +484,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 		specWarnSpearofDoom:Show()
 		specWarnSpearofDoom:Play("watchstep")
 		local timer = self:IsHeroic() and heroicSpearofDoomTimers[self.vb.spearCast+1]
-		if timer then
+		if timer and timer > 0 then
 			timerSpearofDoomCD:Start(timer, self.vb.spearCast+1)
 		end
 	end

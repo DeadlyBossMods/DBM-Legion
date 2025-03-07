@@ -177,7 +177,7 @@ local function handleMissingEmote(self)
 	timerRupturingSingularity:Start(7.7, self.vb.singularityCount)
 	if self:IsMythic() then
 		local timer = phase1point5MythicSingularityTimers[self.vb.singularityCount+1]
-		if timer then
+		if timer and timer > 0 then
 			self:Schedule(timer, handleMissingEmote, self)--Already scheduled on delay
 			timerRupturingSingularityCD:Start(timer-2, self.vb.singularityCount+1)
 		end
@@ -267,18 +267,18 @@ function mod:SPELL_CAST_START(args)
 			end
 		elseif self.vb.phase == 2 then
 			local timer = self:IsMythic() and phase2MythicArmageddonTimers[self.vb.armageddonCast+1] or self:IsNormal() and phase2NormalArmageddonTimers[self.vb.armageddonCast+1] or self:IsHeroic() and phase2HeroicArmageddonTimers[self.vb.armageddonCast+1] or self:IsLFR() and phase2LFRArmageddonTimers[self.vb.armageddonCast+1]
-			if timer then
+			if timer and timer > 0 then
 				timerArmageddonCD:Start(timer, self.vb.armageddonCast+1)
 			end
 		else--Phase 1
 			if self:IsMythic() then
 				local timer = phase1MythicArmageddonTimers[self.vb.armageddonCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerArmageddonCD:Start(timer, self.vb.armageddonCast+1)
 				end
 			elseif self:IsLFR() then
 				local timer = phase1LFRArmageddonTimers[self.vb.armageddonCast+1]
-				if timer then
+				if timer and timer > 0 then
 					timerArmageddonCD:Start(timer, self.vb.armageddonCast+1)
 				end
 			else
@@ -360,7 +360,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			if self.vb.phase == 1.5 then
 				if self:IsLFR() then
 					local timer = phase15LFRBurstingTimers[self.vb.burstingDreadCast+1]
-					if timer then
+					if timer and timer > 0 then
 						timerBurstingDreadflameCD:Start(timer, self.vb.burstingDreadCast+1)
 					end
 				else
@@ -377,18 +377,18 @@ function mod:SPELL_CAST_SUCCESS(args)
 			elseif self.vb.phase == 2 then
 				if self:IsMythic() then
 					local timer = phase2MythicBurstingTimers[self.vb.burstingDreadCast+1]
-					if timer then
+					if timer and timer > 0 then
 						timerBurstingDreadflameCD:Start(timer, self.vb.burstingDreadCast+1)
 					end
 				else
 					if self:IsLFR() then
 						local timer = phase2LFRBurstingTimers[self.vb.burstingDreadCast+1]
-						if timer then
+						if timer and timer > 0 then
 							timerBurstingDreadflameCD:Start(timer, self.vb.burstingDreadCast+1)
 						end
 					else
 						local timer = phase2HeroicBurstingTimers[self.vb.burstingDreadCast+1]
-						if timer then
+						if timer and timer > 0 then
 							timerBurstingDreadflameCD:Start(timer, self.vb.burstingDreadCast+1)
 						end
 					end
@@ -630,7 +630,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			end
 		elseif self.vb.phase == 2 then
 			local timer = self:IsMythic() and phase2MythicFocusedTimers[self.vb.focusedDreadCast+1] or self:IsHeroic() and phase2HeroicFocusedTimers[self.vb.focusedDreadCast+1] or self:IsNormal() and phase2NormalFocusedTimers[self.vb.focusedDreadCast+1]
-			if timer then
+			if timer and timer > 0 then
 				timerFocusedDreadflameCD:Start(timer, self.vb.focusedDreadCast+1)
 			end
 		else--Phase 3
@@ -678,7 +678,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 					specWarnRupturingSingularity:Play("carefly")
 				end
 				local timer = phase1point5MythicSingularityTimers[self.vb.singularityCount+1]
-				if timer then
+				if timer and timer > 0 then
 					self:Schedule(timer+2, handleMissingEmote, self)
 					timerRupturingSingularityCD:Start(timer, self.vb.singularityCount+1)
 				end
@@ -695,7 +695,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			specWarnRupturingSingularity:Show()
 			specWarnRupturingSingularity:Play("carefly")
 			local timer = self:IsMythic() and phase2MythicSingularityTimers[self.vb.singularityCount+1] or self:IsHeroic() and phase2HeroicSingularityTimers[self.vb.singularityCount+1] or self:IsNormal() and phase2NormalSingularityTimers[self.vb.singularityCount+1]
-			if timer then
+			if timer and timer > 0 then
 				timerRupturingSingularityCD:Start(timer, self.vb.singularityCount+1)
 			end
 		elseif self.vb.phase == 2.5 then--Second phase transition Mythic Only
@@ -711,7 +711,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			specWarnRupturingSingularity:Play("carefly")
 			if self:IsMythic() then
 				local timer = phase1MythicSingularityTimers[self.vb.singularityCount+1]
-				if timer then
+				if timer and timer > 0 then
 					timerRupturingSingularityCD:Start(timer, self.vb.singularityCount+1)
 				end
 			elseif self:IsEasy() then

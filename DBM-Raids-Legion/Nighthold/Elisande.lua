@@ -230,7 +230,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnEpochericOrb:Play("catchballs")
 		local nextCount = self.vb.orbCastCount + 1
 		local timer = self:IsMythic() and mythicOrbTimers[nextCount] or self:IsNormal() and normalOrbTimers[nextCount] or self:IsHeroic() and heroicOrbTimers[nextCount] or self:IsLFR() and lfrOrbTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerEpochericOrbCD:Start(timer, nextCount)
 		end
 	end
@@ -242,14 +242,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self.vb.burstCastCount = self.vb.burstCastCount + 1
 		local nextCount = self.vb.burstCastCount + 1
 		local timer = self:IsMythic() and mythicBurstTimers[nextCount] or self:IsNormal() and normalBurstTimers[nextCount] or self:IsHeroic() and heroicBurstTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerConflexiveBurstCD:Start(timer, nextCount)
 		end
 	elseif spellId == 210387 then
 		self.vb.tormentCastCount = self.vb.tormentCastCount + 1
 		local nextCount = self.vb.tormentCastCount + 1
 		local timer = self:IsMythic() and mythicTormentTimers[nextCount] or self:IsNormal() and normalTormentTimers[nextCount] or self:IsHeroic() and heroicTormentTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerPermaliativeTormentCD:Start(timer, nextCount)
 		end
 	elseif (spellId == 214278 or spellId == 214295) and self:AntiSpam(10, 2) then--Boss: 214278, Echo: 214295
@@ -261,7 +261,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			if nextCount > self.vb.totalbeamCasts then return end
 		end
 		local timer = self:IsMythic() and mythicBeamTimers[nextCount] or self:IsNormal() and normalBeamTimers[nextCount] or self:IsHeroic() and heroicBeamTimers[nextCount] or self:IsLFR() and lfrBeamTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerDelphuricBeamCD:Start(timer, nextCount)
 		end
 	elseif spellId == 209615 then
@@ -270,7 +270,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self.vb.orbCastCount = self.vb.orbCastCount + 1
 		local nextCount = self.vb.orbCastCount + 1
 		local timer = self:IsMythic() and mythicOrbTimers[nextCount] or self:IsNormal() and normalOrbTimers[nextCount] or self:IsHeroic() and heroicOrbTimers[nextCount] or self:IsLFR() and lfrOrbTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			specWarnEpochericOrb:Schedule(timer-10)
 			specWarnEpochericOrb:ScheduleVoice(timer-10, "catchballs")
 			timerEpochericOrbCD:Start(timer-10, nextCount)
@@ -499,7 +499,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		else
 			timer = self:IsNormal() and normalSlowElementalTimers[nextCount] or self:IsHeroic() and heroicSlowElementalTimers[nextCount] or self:IsLFR() and lfrSlowElementalTimers[nextCount]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerTimeElementalsCD:Start(timer, SLOW)
 		end
 	elseif (spellId == 209007 or spellId == 211616) and not self.vb.transitionActive then--Summon Time Elemental - Fast
@@ -515,7 +515,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		else
 			timer = self:IsNormal() and normalFastElementalTimers[nextCount] or self:IsHeroic() and heroicFastElementalTimers[nextCount]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerTimeElementalsCD:Start(timer, FAST)
 		end
 	elseif spellId == 208887 then--Summon Time Elementals (summons both of them, used at beginning of each phase)
@@ -531,7 +531,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			if nextCount > self.vb.totalsingularityCasts then return end--There won't be any more
 		end
 		local timer = self:IsMythic() and mythicSingularityTimers[nextCount] or self:IsNormal() and normalSingularityTimers[nextCount] or self:IsHeroic() and heroicSingularityTimers[nextCount] or self:IsLFR() and lfrSingularityTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerSpanningSingularityCD:Start(timer, nextCount)
 			if self:IsMythic() then
 				specWarnSpanningSingularityPre:Schedule(timer-5, DBM_COMMON_L.EDGE)
@@ -575,7 +575,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 			if nextCount > self.vb.totalRingCasts then return end--There won't be any more
 		end
 		local timer = self:IsMythic() and mythicRingTimers[nextCount] or self:IsNormal() and normalRingTimers[nextCount] or self:IsHeroic() and heroicRingTimers[nextCount] or self:IsLFR() and lfrRingTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerArcaneticRing:Start(timer-2, nextCount)
 		end
 	end
@@ -597,7 +597,7 @@ function mod:OnSync(msg, targetname)
 			if nextCount > self.vb.totalRingCasts then return end--There won't be any more
 		end
 		local timer = self:IsMythic() and mythicRingTimers[nextCount] or self:IsNormal() and normalRingTimers[nextCount] or self:IsHeroic() and heroicRingTimers[nextCount] or self:IsLFR() and lfrRingTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerArcaneticRing:Start(timer, nextCount)
 		end
 	elseif msg == "Orbs" and self:AntiSpam(15, 4) then
@@ -608,7 +608,7 @@ function mod:OnSync(msg, targetname)
 		specWarnEpochericOrb:Play("catchballs")
 		local nextCount = self.vb.orbCastCount + 1
 		local timer = self:IsMythic() and mythicOrbTimers[nextCount] or self:IsNormal() and normalOrbTimers[nextCount] or self:IsHeroic() and heroicOrbTimers[nextCount] or self:IsLFR() and lfrOrbTimers[nextCount]
-		if timer then
+		if timer and timer > 0 then
 			timerEpochericOrbCD:Start(timer, nextCount)
 		end
 	elseif msg == "SlowAddDied" then

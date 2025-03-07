@@ -336,7 +336,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnWorldDevouringForce:Show()
 		specWarnWorldDevouringForce:Play("farfromline")
 		local timer = worldDestroyingTimers[self.vb.worldDestroyingCount+1]
-		if timer then
+		if timer and timer > 0 then
 			timerWorldDevouringForceCD:Start(timer, self.vb.worldDestroyingCount+1)
 		end
 	end

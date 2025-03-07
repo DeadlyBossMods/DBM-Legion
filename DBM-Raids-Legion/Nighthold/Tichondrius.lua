@@ -231,7 +231,7 @@ function mod:SPELL_CAST_START(args)
 		else--Assume phase 3+ are same, for now since no further mechancis introduced
 			timer = P3SharedCastTimers[self.vb.seekerSwarmCast+1]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerSeekerSwarmCD:Start(timer, self.vb.seekerSwarmCast+1)
 		end
 		if DBM:UnitDebuff("player", carrionDebuff) then
@@ -287,7 +287,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timer = P3CarrionTimers[self.vb.carrionPlagueCast+1]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerCarrionPlagueCD:Start(timer, self.vb.carrionPlagueCast+1)
 		end
 	elseif spellId == 212794 then
@@ -300,7 +300,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timer = P3SharedCastTimers[self.vb.brandOfArgusCast+1]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerBrandOfArgusCD:Start(timer, self.vb.brandOfArgusCast+1)
 		end
 	elseif spellId == 208230 then
@@ -313,7 +313,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timer = P3SharedCastTimers[self.vb.feastOfBloodCast+1]
 		end
-		if timer then
+		if timer and timer > 0 then
 			timerFeastOfBloodCD:Start(timer, self.vb.feastOfBloodCast+1)
 		end
 	end

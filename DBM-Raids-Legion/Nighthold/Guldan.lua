@@ -336,7 +336,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnEyeofGuldan:Play("killmob")
 		if self:IsMythic() and self.vb.phase == 2 or self.vb.phase == 3 then
 			local timer = self:IsMythic() and p3EmpoweredEyeTimersMythic[self.vb.eyeCast+1] or self:IsEasy() and p3EmpoweredEyeTimersEasy[self.vb.eyeCast+1] or p3EmpoweredEyeTimers[self.vb.eyeCast+1]
-			if timer then
+			if timer and timer > 0 then
 				timerEyeofGuldanCD:Start(timer, self.vb.eyeCast+1)
 			end
 		else
@@ -366,7 +366,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnBlackHarvest:Show(self.vb.blackHarvestCast)
 		specWarnBlackHarvest:Play("aesoon")
 		local timer = self:IsMythic() and blackHarvestTimersMythic[self.vb.blackHarvestCast+1] or self:IsEasy() and blackHarvestTimersEasy[self.vb.blackHarvestCast+1] or blackHarvestTimers[self.vb.blackHarvestCast+1]
-		if timer then
+		if timer and timer > 0 then
 			timerBlackHarvestCD:Start(timer, self.vb.blackHarvestCast+1)
 		end
 		if self:IsMythic() then
@@ -482,7 +482,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			end
 		else
 			local timer = handofGuldanTimers[self.vb.handofGuldanCast+1]
-			if timer then
+			if timer and timer > 0 then
 				timerHandofGuldanCD:Start(timer, self.vb.handofGuldanCast+1)
 			end
 		end
@@ -725,7 +725,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		specWarnStormOfDestroyer:Show()
 		specWarnStormOfDestroyer:Play("watchstep")
 		local timer = self:IsMythic() and stormTimersMythic[self.vb.stormCast+1] or self:IsEasy() and stormTimersEasy[self.vb.stormCast+1] or stormTimers[self.vb.stormCast+1]
-		if timer then
+		if timer and timer > 0 then
 			timerStormOfDestroyerCD:Start(timer, self.vb.stormCast+1)
 		end
 	elseif spellId == 215736 then--Hand of Guldan (Fel Lord Kuraz'mal)
