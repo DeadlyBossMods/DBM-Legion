@@ -8,7 +8,7 @@ L= DBM:GetModLocalization(1738)
 
 L:SetOptionLocalization({
 	SetIconOnlyOnce2	= "Устанавливать метку только один раз за сканирование слизи, затем отключить, пока хотя бы одна не взорвется (экспериментально)",
-	InfoFrameBehavior	= "Информация, отображаемая в информационном окне во время боя",
+	InfoFrameBehavior	= "Информация, отображаемая в инфофрейме во время боя",
 	Fixates				= "Показывать игроков с Сосредоточением внимания",
 	Adds				= "Показывать количество для всех типов аддов"
 })
@@ -109,7 +109,7 @@ L:SetGeneralLocalization({
 L= DBM:GetModLocalization(1725)
 
 L:SetOptionLocalization({
-	InfoFrameBehavior	= "Установить информацию, которую инфофрейм показывает во время сражения",
+	InfoFrameBehavior	= "Показывать информацию, которую инфофрейм показывает во время сражения",
 	TimeRelease			= "Показывать игроков, поражённых $spell:206609",
 	TimeBomb			= "Показывать игроков, поражённых $spell:206617"
 })
@@ -178,8 +178,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	timerFastTimeBubble		= "Показывать таймер для пузырьков $spell:209166",
-	timerSlowTimeBubble		= "Показывать таймер для пузырьков $spell:209165"
+	timerFastTimeBubble		= "Отсчет времени до пузырьков $spell:209166",
+	timerSlowTimeBubble		= "Отсчет времени до пузырьков $spell:209165"
 })
 
 L:SetMiscLocalization({
@@ -340,7 +340,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	timerBossIncoming	= "Показывать таймер смены следующего босса",
+	timerBossIncoming	= "Отсчет времени до смены следующего босса",
 	TauntBehavior		= "Установить режим таунта для смены танков",
 	TwoMythicThreeNon	= "Меняться по 2 стака на эпохальной сложности, по 3 стака на других сложностях",--По умолчанию
 	TwoAlways			= "Всегда меняться по 2 стака независимо от сложности",
