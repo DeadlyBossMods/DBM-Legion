@@ -8,13 +8,13 @@ L= DBM:GetModLocalization(1738)
 
 L:SetOptionLocalization({
 	SetIconOnlyOnce2	= "Устанавливать метку только один раз за сканирование слизи, затем отключить, пока хотя бы одна не взорвется (экспериментально)",
-	InfoFrameBehavior	= "Информация, отображаемая в информационном окне во время боя",
-	Fixates				= "Показывать игроков с Сосредоточением внимания",
-	Adds				= "Показывать количество для всех типов аддов"
+	InfoFrameBehavior	= "Информация, отображаемая в инфофрейме во время боя",
+	Fixates				= "Показывать игроков, на которых $spell:210099",
+	Adds				= "Показывать количество мобов для всех типов аддов"
 })
 
 L:SetMiscLocalization({
-	AddSpawnNotice		= "As players overgear encounter, add spawns grow increasingly faster as encounter was designed by blizzard with auto pacing code. As such, if you overgear/overkill fight, take the add spawn timers with a grain of salt."
+	AddSpawnNotice		= "По мере того, как игроки имеют слишком высокий ilvl, появление дополнительных существ растёт всё быстрее, поскольку Blizzard разработала систему автоподстройки темпа боя. Поэтому, если Вы имеете слишком высокий ilvl или слишком много убийств, относитесь к таймерам появления дополнительных существ с долей скепсиса."
 })
 
 ---------------------------
@@ -23,8 +23,8 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1744)
 
 L:SetWarningLocalization({
-	warnWebOfPain		= ">%s< связан с >%s<",--Only this needs localizing
-	specWarnWebofPain	= "Вы связаны с >%s<"--Only this needs localizing
+	warnWebOfPain		= ">%s< связан с >%s<",
+	specWarnWebofPain	= "Вы связаны с >%s<"
 })
 
 ---------------------------
@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Отключите все предупреждения/стрелки/HUD, связанные с автоматическим поглощением, для 'Пристального взгляда'"
+	NoAutoSoaking2		= "Отключить все предупреждения/стрелки/HUD, связанные с автоматическим поглощением, для $spell:198006"
 })
 
 L:SetMiscLocalization({
@@ -46,8 +46,8 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1750)
 
 L:SetMiscLocalization({
-	BrambleYell			= "Колючки рядом с " .. UnitName("player") .. "!",
-	BrambleMessage		= "Внимание: DBM не может определить, за кем следуют колючки. Он предупреждает о цели спавна. Босс выбирает игрока и кидает в него колючки. После этого колючки выбирают новую цель, которую невозможно определить"
+	BrambleYell			= "Острые колючки РЯДОМ с " .. UnitName("player") .. "!",
+	BrambleMessage		= "Примечание: DBM не может определить, на ком на самом деле сосредоточены Острые колючки. Однако он предупреждает, кто является изначальной целью появления. Босс выбирает игрока и кидает в него Острые колючки. После этого Острые колючки выбирают ДРУГУЮ цель, которую невозможно определить"
 })
 
 ------------------
@@ -109,9 +109,9 @@ L:SetGeneralLocalization({
 L= DBM:GetModLocalization(1725)
 
 L:SetOptionLocalization({
-	InfoFrameBehavior	= "Установить информацию, которую инфофрейм показывает во время сражения",
-	TimeRelease			= "Показать игроков, поражённых $spell:206609",
-	TimeBomb			= "Показать игроков, поражённых $spell:206617"
+	InfoFrameBehavior	= "Показывать информацию, которую инфофрейм отображает во время сражения",
+	TimeRelease			= "Показывать игроков, поражённых $spell:206609",
+	TimeBomb			= "Показывать игроков, поражённых $spell:206617"
 })
 
 ------------------
@@ -133,7 +133,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1713)
 
 L:SetWarningLocalization({
-	warnSlamSoon		= "Обрыв моста через %ds"
+	warnSlamSoon		= "Обрыв моста через %d сек."
 })
 
 L:SetOptionLocalization({
@@ -164,7 +164,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1732)
 
 L:SetOptionLocalization({
-	ConjunctionYellFilter	= "Во время $spell:205408 отключить все другие сообщения SAY и просто спамить сообщение со знаком звезды, пока не закончится соединение"
+	ConjunctionYellFilter	= "Во время $spell:205408 отключить все другие сообщения SAY и просто спамить сообщение со звёздными знаками, пока не закончится $spell:205408"
 })
 
 ------------------
@@ -178,8 +178,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	timerFastTimeBubble		= "Показать таймер для пузырьков $spell:209166",
-	timerSlowTimeBubble		= "Показать таймер для пузырьков $spell:209165"
+	timerFastTimeBubble		= "Отсчет времени до пузырьков $spell:209166",
+	timerSlowTimeBubble		= "Отсчет времени до пузырьков $spell:209165"
 })
 
 L:SetMiscLocalization({
@@ -222,7 +222,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1896)
 
 L:SetOptionLocalization({
-	IgnoreTemplarOn3Tank	= "Игнорировать инфофреймы/предупреждения/индикаторы здоровья Оживленных храмовников для $spell:38882 при использовании 3-х или более танков (не меняйте это во время боя, иначе сломается счетчик)"
+	IgnoreTemplarOn3Tank	= "Игнорировать инфофреймы/предупреждения/индикаторы здоровья Оживленных храмовников для $spell:38882 при использовании 3-х или более танков<br/>(не изменяйте это во время боя, иначе сломается счетчик)"
 })
 
 ---------------------------
@@ -231,7 +231,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1873)
 
 L:SetOptionLocalization({
-	InfoFrame =	"Показать инфофрейм для обзора боя"
+	InfoFrame =	"Показывать инфофрейм для обзора боя"
 })
 
 L:SetMiscLocalization({
@@ -252,7 +252,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Obelisklasers	= "Лазерне Обелиски"
+	Obelisklasers	= "Обелиск Лазеры"
 })
 
 -------------
@@ -270,7 +270,7 @@ L:SetGeneralLocalization({
 L= DBM:GetModLocalization(1987)
 
 L:SetOptionLocalization({
-	SequenceTimers =	"Расположите таймеры восстановления на героической/мифической сложности с предыдущими применениями способностей, а не текущими, чтобы уменьшить беспорядок таймера за счет незначительной точности таймера (на 1-2 сек. раньше)"
+	SequenceTimers =	"Расположить таймеры восстановления в героическом/эпохальном режимах с предыдущими применениями способностей, а не текущими, чтобы уменьшить беспорядок таймера за счет незначительной точности таймера (на 1-2 сек. раньше)"
 })
 
 ---------------------------
@@ -279,10 +279,10 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(2025)
 
 L:SetTimerLocalization({
-	timerObfuscator		=	"Следующий Маскировщик (%s)",
-	timerDestructor 	=	"Следующий Разрушитель (%s)",
-	timerPurifier 		=	"Следующий Чистильщик (%s)",
-	timerBats	 		=	"Следующие Летучие мыши (%s)"
+	timerObfuscator		=	"След. Маскировщик (%s)",
+	timerDestructor 	=	"След. Разрушитель (%s)",
+	timerPurifier 		=	"След. Чистильщик (%s)",
+	timerBats	 		=	"След. Летучие мыши (%s)"
 })
 
 L:SetOptionLocalization({
@@ -326,7 +326,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(2004)
 
 L:SetOptionLocalization({
-	InfoFrame =	"Показать инфофрейм для обзора боя",
+	InfoFrame =	"Показывать инфофрейм для обзора боя",
 	UseAddTime = "Всегда показывать таймеры того, что будет дальше, когда босс покидает фазу инициализации, а не скрывать их.<br/>(Если отключено, правильные таймеры возобновятся, когда босс снова станет активным, но может оставить небольшое предупреждение, если у каких-либо перезарядок осталось всего 1-2 сек.)"
 })
 
@@ -340,13 +340,13 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	timerBossIncoming	= "Показать таймер смены следующего босса",
+	timerBossIncoming	= "Отсчет времени до смены следующего босса",
 	TauntBehavior		= "Установить режим таунта для смены танков",
 	TwoMythicThreeNon	= "Меняться по 2 стака на эпохальной сложности, по 3 стака на других сложностях",--По умолчанию
 	TwoAlways			= "Всегда меняться по 2 стака независимо от сложности",
 	ThreeAlways			= "Всегда меняться по 3 стака независимо от сложности",
 	SetLighting			= "Автоматически изменять уровень освещения, когда задействован ковен, и восстанавливает его по окончании боя",
-	InterruptBehavior	= "Установить режим прерывания для рейда (нужны права лидера рейда)",
+	InterruptBehavior	= "Установить режим прерываний для рейда (нужны права лидера рейда)",
 	Three				= "Ротация из 3 человек ",--По умолчанию
 	Four				= "Ротация из 4 человек ",
 	Five				= "Ротация из 5 человек ",
@@ -359,7 +359,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1984)
 
 L:SetOptionLocalization({
-	ignoreThreeTank	= "Фильтровать спецпредупреждения для Кровопускания/Сокрушителя при использовании 3-х и более танков (так как DBM не может определить точную ротацию танкования в этой настройке)<br/>Если какой-либо танк погибнет и останется лишь 2 танка, фильтр автоматически отключится",
+	ignoreThreeTank	= "Фильтровать спецпредупреждения для $spell:247079 и $spell:244291 при использовании 3-х и более танков (поскольку DBM не может определить точную ротацию танкования в этой настройке)<br/>Если какой-либо танк погибнет и останется лишь 2 танка, фильтр автоматически отключится",
 	skipMarked		= "Угольки Тайшалака, уже отмеченные крестом, черепом или квадратом, не будут отмечены при активации автоматической маркировки"
 })
 
@@ -376,7 +376,7 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(2031)
 
 L:SetTimerLocalization({
-	timerSargSentenceCD	= "Восстановление Приговора (%s)"
+	timerSargSentenceCD	= "Восст. Приговора (%s)"
 })
 
 L:SetOptionLocalization({
