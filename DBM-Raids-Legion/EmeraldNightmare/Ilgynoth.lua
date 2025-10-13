@@ -301,6 +301,7 @@ function mod:SPELL_CAST_START(args)
 					timer = self:IsMythic() and phase1MythicDeathglares[nextCount] or self:IsHeroic() and phase1HeroicDeathglares[nextCount] or phase1EasyDeathglares[nextCount]
 				end
 				if timer and timer > 0 then
+					timerDeathGlareCD:Stop()--Stop annoying timer errors on fastfowarded add spawns
 					timerDeathGlareCD:Start(timer)
 				end
 			end
@@ -324,6 +325,7 @@ function mod:SPELL_CAST_START(args)
 					timer = self:IsMythic() and phase1MythicCorruptors[nextCount] or self:IsHeroic() and phase1HeroicCorruptors[nextCount] or phase1EasyCorruptors[nextCount]
 				end
 				if timer and timer > 0 then
+					timerCorruptorTentacleCD:Stop()--Stop annoying timer errors on fastfowarded add spawns
 					timerCorruptorTentacleCD:Start(timer)
 				end
 			end
@@ -346,6 +348,7 @@ function mod:SPELL_CAST_START(args)
 		local nextCount = self.vb.deathBlossomCount + 1
 		local timer = self.vb.phase == 2 and phase2DeathBlossom[nextCount] or phase1DeathBlossom[nextCount]
 		if timer and timer > 0 then
+			timerDeathBlossomCD:Stop()--Stop annoying timer errors on fastfowarded add spawns
 			timerDeathBlossomCD:Start(timer, self.vb.deathBlossomCount+1)
 		end
 		local elapsed, total = timerNightmareHorrorCD:GetTime()
@@ -396,6 +399,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			self.vb.deathBlossomCount = 0
 			timerDeathBlossomCD:Start(80)
 		end
+		timerDeathGlareCD:Stop()
+		timerCorruptorTentacleCD:Stop()
+		timerNightmareHorrorCD:Stop()
 		timerDeathGlareCD:Start(21.5)
 		timerCorruptorTentacleCD:Start(45)
 		timerNightmareHorrorCD:Start(95)
@@ -579,7 +585,7 @@ end
 do
 	--This method is still 4 seconds faster than using Seeping Corruption
 	local NightmareHorror = DBM:EJ_GetSectionInfo(13188)
-	function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, targetname)
+	function mod:CHAT_MSG_RAID_BOSS_EMOTE(_, _, _, _, targetname)
 		if targetname == NightmareHorror then
 			specWarnNightmareHorror:Show()
 			specWarnNightmareHorror:Play("bigmob")
