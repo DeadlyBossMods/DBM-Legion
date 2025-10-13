@@ -10,7 +10,7 @@ mod:EnableWBEngageSync()--Enable syncing engage in outdoors
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 213420 213522 213532 213665 213625 213606",
+	"SPELL_CAST_START 213420 213522 213532 213665 213606",
 	"SPELL_AURA_APPLIED 213584 213625",
 	"SPELL_AURA_REMOVED 213625",
 	"UNIT_DIED"
@@ -42,7 +42,6 @@ local timerTentacleBashCD			= mod:NewCDTimer(15.9, 213420, nil, nil, nil, 3)--15
 --Reaver Jdorn
 local timerMaraudingMistsCD			= mod:NewCDTimer(10.8, 213665, nil, nil, nil, 2)--10-25
 --Soultrapper Mevra
-local timerExpelSoulCD				= mod:NewCDTimer(8.5, 213625, nil, nil, 2, 3)
 --local timerSoulRendCD				= mod:NewAITimer(51, 213606, nil, nil, nil, 3)
 
 --mod:AddReadyCheckOption(37462, false)--Unknown quest flag
@@ -75,8 +74,6 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 213665 and self:CheckInterruptFilter(args.sourceGUID, true) then
 		specWarnMaraudingMists:Show()
 		specWarnMaraudingMists:Play("runout")
-	elseif spellId == 213625 then
-		timerExpelSoulCD:Start()
 	elseif spellId == 213606 then
 		specWarnSoulRend:Show()
 		specWarnSoulRend:Play("watchstep")
@@ -115,7 +112,6 @@ function mod:UNIT_DIED(args)
 	elseif cid == 106982 then--Reaver Jdorn
 		timerMaraudingMistsCD:Stop()
 	elseif cid == 106984 then--Soultrapper Mevra
-		timerExpelSoulCD:Stop()
 --		timerSoulRendCD:Stop()
 	end
 end
