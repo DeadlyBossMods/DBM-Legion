@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 210264",
 	"SPELL_AURA_APPLIED 208431 206651 205771 209158 211802 209034 210451 224508 206005",
 	"SPELL_AURA_APPLIED_DOSE 206651 209158",
-	"SPELL_AURA_REMOVED 208431 211802 206651 209158 209034 210451 224508 206005",
+	"SPELL_AURA_REMOVED 208431 211802 224508 206005",
 	"UNIT_DIED",
 	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
@@ -84,41 +84,22 @@ local timerNightmareTentacleCD			= mod:NewCDTimer(20, "ej12977", nil, nil, nil, 
 
 mod:AddInfoFrameOption(-12970)
 mod:AddBoolOption("InfoFrameFilterDream", true)
-mod:AddRangeFrameOption(6, 208322)
 mod:AddSetIconOption("SetIconOnBlades", 206656)
 mod:AddSetIconOption("SetIconOnMeteor", 206308)
 
 local lurkingTimers = {17, 20.5, 41, 20.5, 20.5}--{13.6, 26.3, 47.4, 20.7, 25.9} old. TODO, get more data, if all but one are 20.5, just code smarter without table
 local corruptionName = DBM:EJ_GetSectionInfo(12970)
-local darkSoul, blackSoul, dreamDebuff, blackened = DBM:GetSpellName(206651), DBM:GetSpellName(209158), DBM:GetSpellName(206005), DBM:GetSpellName(205612)
+local dreamDebuff, blackened = DBM:GetSpellName(206005), DBM:GetSpellName(205612)
 local bladesTarget = {}
 local gatherTarget = {}
 local playerName = UnitName("player")
 local playerHasDream = false
-mod.vb.phase = 1
 mod.vb.lurkingCount = 0
 mod.vb.corruptionHorror = 0
 mod.vb.inconHorror = 0
 mod.vb.meteorCount = 0
 mod.vb.lastBonds = nil
 mod.vb.dreamCount = 0
-
-local function updateRangeFrame(self)
-	if not self.Options.RangeFrame then return end
-	if DBM:UnitDebuff("player", darkSoul) then
-		if self:IsEasy() then
-			DBM.RangeCheck:Show(15)
-		else
-			DBM.RangeCheck:Show(25)
-		end
-	elseif DBM:UnitDebuff("player", blackSoul) then
-		DBM.RangeCheck:Show(10)--10 for tainted discharge?
-	elseif self.vb.phase == 1 then--Maybe only show for ranged?
-		DBM.RangeCheck:Show(6)--Will be rounded up by 7.1+ restrictions
-	else
-		DBM.RangeCheck:Hide()
-	end
-end
 
 local function bondsWarning(self)
 	local previousTarget = nil
@@ -139,7 +120,7 @@ local function bondsWarning(self)
 end
 
 function mod:OnCombatStart(delay)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.lurkingCount = 0
 	self.vb.corruptionHorror = 0
 	self.vb.inconHorror = 0
@@ -160,7 +141,6 @@ function mod:OnCombatStart(delay)
 			DBM.InfoFrame:Show(8, "playerpower", 5, ALTERNATE_POWER_INDEX)
 		end
 	end
-	updateRangeFrame(self)
 end
 
 function mod:OnCombatEnd()
@@ -182,7 +162,7 @@ function mod:SPELL_CAST_START(args)
 			specWarnCorruptingNova:Play("aesoon")
 		end
 	elseif spellId == 209443 then
-		if self.vb.phase == 3 then
+		if self:GetStage(3) then
 			timerNightmareInfusionCD:Start(31.5)
 		else
 			timerNightmareInfusionCD:Start()
@@ -251,7 +231,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnDarkeningSoulYou:Show(amount)
 				specWarnDarkeningSoulYou:Play("stackhigh")
 			end
-			updateRangeFrame(self)
 		else
 			if amount >= 4 then
 				local filterWarning = false
@@ -280,7 +259,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnBlackeningSoulYou:Show(amount)
 				specWarnBlackeningSoulYou:Play("stackhigh")
 			end
-			updateRangeFrame(self)
 		else
 			if amount >= 4 then
 				local filterWarning = false
@@ -343,7 +321,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				local maxPower = UnitPowerMax("player", ALTERNATE_POWER_INDEX)
 				if maxPower > 0 then
 					local playerPower = UnitPower("player", ALTERNATE_POWER_INDEX) / maxPower * 100
-					if self.vb.phase == 3 and playerPower > 75 or playerPower > 55 then--Avoid it if corruption too high for it
+					if self:GetStage(3) and playerPower > 75 or playerPower > 55 then--Avoid it if corruption too high for it
 						specWarnCorruptionMeteorAway:Show()
 						specWarnCorruptionMeteorAway:Play("watchstep")
 					end
@@ -385,15 +363,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnBlades then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif spellId == 206651 then
-		if args:IsPlayer() then
-			updateRangeFrame(self)
-		end
-	elseif spellId == 209158 then
-		if args:IsPlayer() then
-			updateRangeFrame(self)
-		end
-	elseif spellId == 209034 or spellId == 210451 then
 	elseif spellId == 224508 then
 		if args:IsPlayer() then
 			yellMeteor:Cancel()
@@ -425,13 +394,13 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 206341 then--Corruption Meteor (casting not in combat log, targetting is finally but I trust this more for timer in case targetting can be gamed.)
 		self.vb.meteorCount = self.vb.meteorCount + 1
-		if self.vb.phase == 3 then
+		if self:GetStage(3) then
 			timerCorruptionMeteorCD:Start(35, self.vb.meteorCount+1)--35-38 in phase 3
 		else
 			timerCorruptionMeteorCD:Start(nil, self.vb.meteorCount+1)--Generally always 28
 		end
 	elseif spellId == 209000 then--Nightmare Blades (casting not in combat log)
-		if self.vb.phase == 3 then
+		if self:GetStage(3) then
 			timerNightmareBladesCD:Start(30)--Every 30 or so
 		else
 			timerNightmareBladesCD:Start()--Every 15.7 or so
@@ -447,23 +416,23 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			timerLurkingEruptionCD:Start(20.5, self.vb.lurkingCount+1)
 		end
 	elseif spellId == 226193 then--Xavius Energize Phase 2
-		self.vb.phase = 2
+		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")
 		timerNightmareBladesCD:Stop()
 		timerLurkingEruptionCD:Stop()
 		timerCorruptionHorrorCD:Stop()
+		timerNightmareInfusionCD:Stop()
 		timerBlackeningSoulCD:Start(7)
 		timerBondsOfTerrorCD:Start(14)
 		timerCorruptionMeteorCD:Start(21, 1)
 		timerCallOfNightmaresCD:Start(23, 1)
 		timerNightmareInfusionCD:Start(30)
-		updateRangeFrame(self)
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_ENERGIZE 208385"
 		)
 	elseif spellId == 226185 then--Xavius Energize Phase 3
-		self.vb.phase = 3
+		self:SetStage(3)
 		warnPhase3:Show()
 		warnPhase3:Play("pthree")
 		timerBlackeningSoulCD:Stop()

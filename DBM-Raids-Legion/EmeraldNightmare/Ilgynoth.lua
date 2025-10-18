@@ -57,7 +57,7 @@ local specWarnGroundSlam			= mod:NewSpecialWarningYou(208689, nil, nil, nil, 1, 
 local yellGroundSlam				= mod:NewYell(208689)
 local specWarnGroundSlamNear		= mod:NewSpecialWarningClose(208689, nil, nil, nil, 1, 2)
 --Stage Two: The Heart of Corruption
-local specWarnHeartPhaseBegin		= mod:NewSpecialWarningFades(209915, nil, nil, nil, 1)
+local specWarnHeartPhaseBegin		= mod:NewSpecialWarningFades(209915, nil, nil, nil, 1, 2)
 local specWarnCursedBlood			= mod:NewSpecialWarningMoveAway(215128, nil, nil, nil, 1, 2)
 local yellCursedBlood				= mod:NewFadesYell(215128)
 
@@ -485,6 +485,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 209915 then--Stuff of Nightmares
 		self.vb.insideActive = true
 		specWarnHeartPhaseBegin:Show()
+		specWarnHeartPhaseBegin:Play("phasechange")
 		timerDeathGlareCD:Stop()
 		timerCorruptorTentacleCD:Stop()
 		timerNightmareHorrorCD:Stop()
@@ -589,6 +590,7 @@ do
 		if targetname == NightmareHorror then
 			specWarnNightmareHorror:Show()
 			specWarnNightmareHorror:Play("bigmob")
+			timerNightmareHorrorCD:Stop()
 			if self:IsMythic() then
 				timerNightmareHorrorCD:Start(250)
 			else
