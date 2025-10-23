@@ -27,12 +27,9 @@ local specWarnFulminate				= mod:NewSpecialWarningRun(221164, "Melee", nil, nil,
 local specWarnCracklingSlice		= mod:NewSpecialWarningDodge(224510, "Tank", nil, nil, 1, 2)
 local specWarnArcaneEmanations		= mod:NewSpecialWarningDodge(231005, "Tank", nil, nil, 1, 2)
 local specWarnProtectiveShield		= mod:NewSpecialWarningMove(224510, "Tank", nil, nil, 1, 2)
-local specWarnRoilingFlame			= mod:NewSpecialWarningMove(222111, nil, nil, nil, 1, 2)
-local specWarnDisruptingEnergy		= mod:NewSpecialWarningMove(224572, nil, nil, nil, 1, 2)
-local specWarnStellarDust			= mod:NewSpecialWarningMove(225390, nil, nil, nil, 1, 2)
-local specWarnToxicChit				= mod:NewSpecialWarningMove(204744, nil, nil, nil, 1, 2)
-local specWarnInfiniteAbyss			= mod:NewSpecialWarningMove(224978, nil, nil, nil, 1, 2)
-local specWarnPoisonBrambles		= mod:NewSpecialWarningMove(225856, nil, nil, nil, 1, 2)
+
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(222111, nil, nil, nil, 1, 8)
+
 local specWarnArcWell				= mod:NewSpecialWarningSwitch(224246, "Dps", nil, nil, 1, 6)
 local specWarnCelestialBrand		= mod:NewSpecialWarningMoveAway(224560, nil, nil, nil, 1, 2)
 local yellCelestialBrand			= mod:NewYell(224560)
@@ -60,17 +57,17 @@ function mod:SPELL_CAST_START(args)
 		specWarnFulminate:Play("runout")
 	elseif spellId == 224510 and self:AntiSpam(3, 2) then
 		specWarnCracklingSlice:Show()
-		specWarnCracklingSlice:Play("shockwave")
-	elseif spellId == 231005 then
+		specWarnCracklingSlice:Play("frontal")
+	elseif spellId == 231005 and self:AntiSpam(3, 2) then
 		specWarnArcaneEmanations:Show()
-		specWarnArcaneEmanations:Play("shockwave")
+		specWarnArcaneEmanations:Play("frontal")
 --	elseif spellId == 143807 and self:CheckInterruptFilter(args.sourceGUID, false, true) then
 --		specWarnArcaneBlast:Show(args.sourceName)
 --		specWarnArcaneBlast:Play("kickcast")
-	elseif spellId == 231737 and self:AntiSpam(4, 4) then
+	elseif spellId == 231737 and self:AntiSpam(4, 2) then
 		specWarnNightwellDischarge:Show()
 		specWarnNightwellDischarge:Play("watchorb")
-	elseif spellId == 224440 then
+	elseif spellId == 224440 and self:AntiSpam(3, 4) then
 		specWarnCrushingStomp:Show()
 		specWarnCrushingStomp:Play("justrun")
 	end
@@ -79,10 +76,10 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if not self.Options.Enabled then return end
 	local spellId = args.spellId
-	if spellId == 225389 and self:AntiSpam(3, 3) then
+	if spellId == 225389 and self:AntiSpam(3, 1) then
 		specWarnProtectiveShield:Show()
 		specWarnProtectiveShield:Play("runout")
-	elseif spellId == 224246 then
+	elseif spellId == 224246 and self:AntiSpam(3, 5) and not (self:IsRemix() or self:IsTrivial()) then
 		specWarnArcWell:Show()
 		specWarnArcWell:Play("attacktotem")
 	end
@@ -99,24 +96,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnAnnihilatingOrb:Show(args.destName)
 		end
-	elseif spellId == 222111 and args:IsPlayer() then
-		specWarnRoilingFlame:Show()
-		specWarnRoilingFlame:Play("runaway")
-	elseif spellId == 224572 and args:IsPlayer() then
-		specWarnDisruptingEnergy:Show()
-		specWarnDisruptingEnergy:Play("runaway")
-	elseif spellId == 225390 and args:IsPlayer() then
-		specWarnStellarDust:Show()
-		specWarnStellarDust:Play("runaway")
-	elseif spellId == 204744 and args:IsPlayer() then
-		specWarnToxicChit:Show()
-		specWarnToxicChit:Play("runaway")
-	elseif spellId == 224978 and args:IsPlayer() then
-		specWarnInfiniteAbyss:Show()
-		specWarnInfiniteAbyss:Play("runaway")
-	elseif spellId == 225856 and args:IsPlayer() then
-		specWarnPoisonBrambles:Show()
-		specWarnPoisonBrambles:Play("runaway")
+	elseif (spellId == 222111 or spellId == 224572 or spellId == 225390 or spellId == 204744 or spellId == 224978 or spellId == 225856) and args:IsPlayer() and self:AntiSpam(3, 3) and not (self:IsRemix() or self:IsTrivial()) then
+		specWarnGTFO:Show(args.spellName)
+		specWarnGTFO:Play("watchfeet")
 	elseif spellId == 224632 then
 		specWarnHeavenlyCrash:Show(args.destName)
 		specWarnHeavenlyCrash:Play("gathershare")

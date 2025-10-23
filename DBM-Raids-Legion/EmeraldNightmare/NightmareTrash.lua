@@ -17,7 +17,7 @@ local specWarnUnstableDecay			= mod:NewSpecialWarningMoveAway(221028, nil, nil, 
 local yellUnstableDecay				= mod:NewYell(221028)
 local specWarnBefoulment			= mod:NewSpecialWarningMoveTo(222719, nil, nil, nil, 1, 2)
 local yellBefoulment				= mod:NewFadesYell(222719)
-local specWarnDarkLightning			= mod:NewSpecialWarningMove(223946, nil, nil, nil, 1, 2)
+local specWarnDarkLightning			= mod:NewSpecialWarningGTFO(223946, nil, nil, nil, 1, 8)
 
 mod:AddRangeFrameOption(10, 221028)
 
@@ -42,9 +42,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellBefoulment:Yell(15)
 			yellBefoulment:Countdown(15)
 		end
-	elseif spellId == 223946 and args:IsPlayer() then--No damage events for trash mod, this should be enough
-		specWarnDarkLightning:Show()
-		specWarnDarkLightning:Play("runaway")
+	elseif spellId == 223946 and args:IsPlayer() and self:AntiSpam(3, 2) and not self:IsRemix() then--No damage events for trash mod, this should be enough
+		specWarnDarkLightning:Show(args.spellName)
+		specWarnDarkLightning:Play("watchfeet")
 	end
 end
 --mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

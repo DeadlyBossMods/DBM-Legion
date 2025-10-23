@@ -63,7 +63,6 @@ local GenerateSoakAssignment
 do
 	local soakTable = {}
 	local UnitIsUnit = UnitIsUnit
-	local playerName = UnitName("player")
 	GenerateSoakAssignment = function(self, count, targetName)
 		table.wipe(soakTable)
 		local soakers = 0
@@ -143,6 +142,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnRoaringCacophony:Show(self.vb.roarCount)
 		specWarnRoaringCacophony:Play("aesoon")
 		if self:IsLFR() then
+			--37.7, 10.0???? maybe legion remix lfr is bugged and using non lfr timers?
 			--No echos, just every 40 seconds
 			timerRoaringCacophonyCD:Start(40, self.vb.roarCount + 1)
 		else

@@ -422,12 +422,12 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		timerNightmareBladesCD:Stop()
 		timerLurkingEruptionCD:Stop()
 		timerCorruptionHorrorCD:Stop()
-		timerNightmareInfusionCD:Stop()
 		timerBlackeningSoulCD:Start(7)
 		timerBondsOfTerrorCD:Start(14)
 		timerCorruptionMeteorCD:Start(21, 1)
 		timerCallOfNightmaresCD:Start(23, 1)
-		timerNightmareInfusionCD:Start(30)
+--		timerNightmareInfusionCD:Stop()
+--		timerNightmareInfusionCD:Start(30)--Cast instantly on staging now?
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_ENERGIZE 208385"
 		)
@@ -448,7 +448,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	elseif spellId == 226194 then--Writhing Deep
 		warnNightmareTentacles:Show()
 		timerNightmareTentacleCD:Start()
-	elseif spellId == 205843 and self:IsMythic() then
+	elseif spellId == 205843 and self:IsMythic() and not (self:IsRemix() or self:IsTrivial()) then
 		self.vb.dreamCount = self.vb.dreamCount + 1
 		local count = self.vb.dreamCount
 		specWarnDreaming:Show(count)

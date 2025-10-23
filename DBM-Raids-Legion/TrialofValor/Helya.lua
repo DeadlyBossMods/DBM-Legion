@@ -158,7 +158,7 @@ function mod:OnCombatStart(delay)
 		berserkTimer:Start(-delay)--11 Min confirmed
 	else
 		self.vb.lastTentacles = 9
-		timerBilewaterBreathCD:Start(12-delay, 1)
+		timerBilewaterBreathCD:Start(11.6-delay, 1)
 		timerTaintOfSeaCD:Start(19-delay)
 		timerOrbOfCorruptionCD:Start(29-delay, 1, RANGED)--START
 		timerTentacleStrikeCD:Start(36-delay, 1)
@@ -599,9 +599,11 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			timerAddsCD:Start(14)
 			timerFuryofMawCD:Start(36.5, 1)
 		end
-		self:RegisterShortTermEvents(
-			"UNIT_HEALTH boss1 boss2 boss3 boss4 boss5"
-		)
+		if not self:IsRemix() and not self:IsTrivial() then--Not accurate in remix or if overleveled, boss is taking way too much damage too fast
+			self:RegisterShortTermEvents(
+				"UNIT_HEALTH boss1 boss2 boss3 boss4 boss5"
+			)
+		end
 	elseif spellId == 228546 then--Helya (Phase 3, 6 seconds slower than yell)
 		self:UnregisterShortTermEvents()
 		self.vb.phase = 3
@@ -616,13 +618,13 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			timerCorruptedBreathCD:Start(10, 1)
 			timerFuryofMawCD:Start(35, 1)
 		elseif self:IsLFR() then
-			timerOrbOfCorrosionCD:Start(11, 1, RANGED)--Needs recheck
-			timerCorruptedBreathCD:Start(40, 1)--Needs recheck
-			timerFuryofMawCD:Start(90, 1)--Needs recheck
-		elseif self:IsNormal() then--May still be same as heroic with variation
-			timerOrbOfCorrosionCD:Start(12, 1, RANGED)--Needs recheck
+			timerOrbOfCorrosionCD:Start(15.8, 1, RANGED)
 			timerCorruptedBreathCD:Start(20.5, 1)
-			timerFuryofMawCD:Start(33, 1)--Needs more verification
+			timerFuryofMawCD:Start(34, 1)
+		elseif self:IsNormal() then--May still be same as heroic with variation
+			timerOrbOfCorrosionCD:Start(12, 1, RANGED)--Needs recheck (probably same as LFR)
+			timerCorruptedBreathCD:Start(20.5, 1)
+			timerFuryofMawCD:Start(33, 1)--Needs more verification (probably same as LFR)
 		else--Heroic
 			timerOrbOfCorrosionCD:Start(14, 1, RANGED)--Needs more verification
 			timerCorruptedBreathCD:Start(19.4, 1)

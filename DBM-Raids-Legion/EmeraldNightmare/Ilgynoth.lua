@@ -68,7 +68,7 @@ local timerCorruptorTentacleCD		= mod:NewCDTimer(220, "ej13191", nil, nil, nil, 
 local timerNightmareHorrorCD		= mod:NewCDTimer(280, "ej13188", nil, nil, nil, 1, 210289, nil, nil, nil, 1, 4)
 local timerEyeOfFateCD				= mod:NewCDTimer(10, 210984, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerNightmareishFuryCD		= mod:NewNextTimer(10.9, 215234, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerGroundSlamCD				= mod:NewNextTimer(20.5, 208689, nil, nil, nil, 3)
+local timerGroundSlamCD				= mod:NewCDTimer(20.5, 208689, nil, nil, nil, 3)
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerDeathBlossomCD			= mod:NewNextTimer(105, 218415, nil, nil, nil, 2, nil, DBM_COMMON_L.HEROIC_ICON, nil, 3, 4)
 local timerDeathBlossom				= mod:NewCastTimer(15, 218415, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON)
@@ -229,7 +229,7 @@ function mod:OnCombatStart(delay)
 	autoMarkBlocked = false
 	table.wipe(autoMarkFilter)
 	timerNightmareishFuryCD:Start(6-delay)
-	timerGroundSlamCD:Start(12-delay)
+	timerGroundSlamCD:Start(8.3-delay)
 	timerDeathGlareCD:Start(21.5-delay)
 	if self:IsMythic() then
 		self.vb.deathBlossomCount = 0
@@ -364,7 +364,8 @@ function mod:SPELL_CAST_START(args)
 		else
 			timerFinalTorpor:Start()
 		end
-	elseif spellId == 208689 and self:AntiSpam(2, 6) then
+	--Below code logic assumes spawned at same time and multiple synced up. that doesn't happen when you vastly overpower
+	elseif spellId == 208689 and self:AntiSpam(2, 6) and not self:IsRemix() and not self:IsTrivial() then
 		timerGroundSlamCD:Start()
 	end
 end
@@ -394,7 +395,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.insideActive = false
 		timerCursedBloodCD:Stop()
 		timerNightmareishFuryCD:Start(6.1)
-		timerGroundSlamCD:Start(12.1)
+		timerGroundSlamCD:Start(8.4)
 		if self:IsMythic() then
 			self.vb.deathBlossomCount = 0
 			timerDeathBlossomCD:Start(80)
