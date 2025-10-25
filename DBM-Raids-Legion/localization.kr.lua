@@ -194,8 +194,8 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1737)
 
 L:SetMiscLocalization({
-	mythicPhase3		= "악마사냥꾼의 영혼을 육신으로 돌려보내야 할 때요... 군단의 주인을 거부해야 하오!",
-	prePullRP			= "아, 그래, 영웅들이 납셨군. 아주 끈질겨... 자신감이 넘치고. 그 오만 때문에 파멸할 것이다!"
+	mythicPhase3			= "악마사냥꾼의 영혼을 육신으로 돌려보내야 할 때요... 군단의 주인을 거부해야 하오!",
+	prePullRP				= "아, 그래, 영웅들이 납셨군. 아주 끈질겨... 자신감이 넘치고. 그 오만 때문에 파멸할 것이다!"
 })
 
 -------------
@@ -207,13 +207,17 @@ L:SetGeneralLocalization({
 	name =	"밤의 요새 일반몹"
 })
 
+L:SetMiscLocalization({
+	firstHallDoor			= "이제 우리 모두의 운명이 이방인에게 달렸습니다... 바로 여러분에게요... 우리 여왕이 한 끔찍한 거래에서 우릴 해방시켜 주세요."
+})
+
 ---------------------------
 -- Mistress Sassz'ine --
 ---------------------------
 L= DBM:GetModLocalization(1861)
 
 L:SetOptionLocalization({
-	TauntOnPainSuccess	= "Sync timers and taunt warning to Burden of Pain cast SUCCESS instead of START (for certain mythic strats where you let burden tick once on purpose, otherwise it's NOT recommended to use this options)"--TRANSLATE
+	TauntOnPainSuccess	= "고통의 짐 시전 시작 대신 성공시 타이머 동기화 및 도발 경고 (짐을 일부러 한틱 맞는 신화 택틱이 있으며 이런 택틱을 쓰지 않는다면 본 설정의 사용을 권장하지 않습니다)"
 })
 
 ---------------------------
@@ -222,7 +226,7 @@ L:SetOptionLocalization({
 L= DBM:GetModLocalization(1896)
 
 L:SetOptionLocalization({
-	IgnoreTemplarOn3Tank	= "Ignore Reanimated Templars for Bone Armor infoframe/announces/nameplates when using 3 or more tanks (do not change this mid combat, it will break counts)"--TRANSLATE
+	IgnoreTemplarOn3Tank	= "탱커를 3명 이상 쓸 경우 되살아난 기사단원의 뼈껍질 방어구에 대한 정보 창/알림/이름표는 무시 (전투 중엔 이 설정을 바꾸지 마세요. 횟수 내역이 사라집니다)"
 })
 
 ---------------------------
