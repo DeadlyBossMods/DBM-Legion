@@ -421,7 +421,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		if self.vb.phase == 2 then
 			warnPhase2:Show()
 			warnPhase2:Play("ptwo")
-			timerAblatingExplosionCD:Start(22)--Verfied unchanged Dec 13 Heroic
+			timerAblatingExplosionCD:Start(14.6)--Changed from 22 to 14.6 at some point
 			if self:IsMythic() then--TODO: Fine tune these as they may be hit or miss by some seconds Hard to measure precise phase changes from WCL
 				timerEpochericOrbCD:Start(23.8, 1)
 				if self.vb.ringCastCount > 0 then

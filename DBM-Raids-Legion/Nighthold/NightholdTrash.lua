@@ -9,7 +9,8 @@ mod:RegisterEvents(
 	"SPELL_CAST_START 221164 224510 231005 231737 224440",
 	"SPELL_CAST_SUCCESS 225389 224246",
 	"SPELL_AURA_APPLIED 221344 222111 224572 225390 224632 224560 204744 224978 225856 223655 224982 225105 222079 225845",
-	"SPELL_AURA_APPLIED_DOSE 222079"
+	"SPELL_AURA_APPLIED_DOSE 222079",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 --TODO, add arcane blast when i remember to log/get spellID
@@ -28,7 +29,7 @@ local specWarnCracklingSlice		= mod:NewSpecialWarningDodge(224510, "Tank", nil, 
 local specWarnArcaneEmanations		= mod:NewSpecialWarningDodge(231005, "Tank", nil, nil, 1, 2)
 local specWarnProtectiveShield		= mod:NewSpecialWarningMove(224510, "Tank", nil, nil, 1, 2)
 
-local specWarnGTFO			= mod:NewSpecialWarningGTFO(222111, nil, nil, nil, 1, 8)
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(222111, nil, nil, nil, 1, 8)
 
 local specWarnArcWell				= mod:NewSpecialWarningSwitch(224246, "Dps", nil, nil, 1, 6)
 local specWarnCelestialBrand		= mod:NewSpecialWarningMoveAway(224560, nil, nil, nil, 1, 2)
@@ -47,6 +48,7 @@ local specWarnSearingWounds			= mod:NewSpecialWarningStack(222079, nil, 4, nil, 
 local specWarnSearingWoundsOther	= mod:NewSpecialWarningTaunt(222079, nil, nil, nil, 1, 2)
 local specWarnNightwellDischarge	= mod:NewSpecialWarningDodge(231737, nil, nil, nil, 1, 2)
 
+local timerRP						= mod:NewRPTimer(78)
 local timerSearingWounds			= mod:NewTargetTimer(20, 222079, nil, "Tank", nil, 5)
 
 function mod:SPELL_CAST_START(args)
@@ -165,3 +167,17 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+--"<12.51 20:01:03> [CHAT_MSG_MONSTER_YELL] Now the fate of my people rests in the hands of outsiders... all of you... to save us from the terrible bargain made by our queen.#First Arcanist Thalyssra###Fulminant##0#0##0#190#nil#0#false#false#false#false",
+--"<45.85 20:01:37> [CLEU] SPELL_CAST_SUCCESS#Player-5-0EA48B42#Omegalegion(100.0%-0.0%)##nil#261602#Stampwhistle#nil#nil#nil#nil#nil#nil",
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.firstHallDoor or msg:find(L.firstHallDoor) then
+		self:SendSync("HallDoorRP")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "HallDoorRP" then
+		timerRP:Start(33.3)
+	end
+end

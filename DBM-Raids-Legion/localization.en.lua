@@ -193,8 +193,8 @@ L:SetMiscLocalization({
 L= DBM:GetModLocalization(1737)
 
 L:SetMiscLocalization({
-	mythicPhase3		= "Time to return the demon hunter's soul to his body... and deny the Legion's master a host!",
-	prePullRP			= "Ah yes, the heroes have arrived. So persistent. So confident. But your arrogance will be your undoing!"
+	mythicPhase3			= "Time to return the demon hunter's soul to his body... and deny the Legion's master a host!",
+	prePullRP				= "Ah yes, the heroes have arrived. So persistent. So confident. But your arrogance will be your undoing!"
 })
 
 -------------
@@ -206,13 +206,17 @@ L:SetGeneralLocalization({
 	name =	"Nighthold Trash"
 })
 
+L:SetMiscLocalization({
+	firstHallDoor			= "Now the fate of my people rests in the hands of outsiders... all of you... to save us from the terrible bargain made by our queen."
+})
+
 ---------------------------
 -- Mistress Sassz'ine --
 ---------------------------
 L= DBM:GetModLocalization(1861)
 
 L:SetOptionLocalization({
-	TauntOnPainSuccess	= "Sync timers and taunt warning to Burden of Pain cast SUCCESS instead of START (for certain mythic strats where you let burden tick once on purpose, otherwise it's NOT recommended to use this options)"
+	TauntOnPainSuccess		= "Sync timers and taunt warning to Burden of Pain cast SUCCESS instead of START (for certain mythic strats where you let burden tick once on purpose, otherwise it's NOT recommended to use this options)"
 })
 
 ---------------------------
