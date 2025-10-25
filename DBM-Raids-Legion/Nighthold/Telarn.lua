@@ -297,7 +297,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnCoN then
 			self:SetIcon(args.destName, number)
 		end
-	elseif spellId == 218503 then
+	elseif spellId == 218503 and not (self:IsRemix() or self:IsTrivial()) then
 		local amount = args.amount or 1
 		if amount >= 5 then
 			if not DBM:UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") and self:AntiSpam(3, 1) then

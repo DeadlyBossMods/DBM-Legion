@@ -338,7 +338,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:Update()
 		end
-	elseif spellId == 208230 then
+	elseif spellId == 208230 and not (self:IsRemix() or self:IsTrivial()) then
 		if args:IsPlayer() then
 			specWarnFeastOfBlood:Show()
 			specWarnFeastOfBlood:Play("runout")

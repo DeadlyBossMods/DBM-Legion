@@ -217,7 +217,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnArcingBonds:Show()
 			specWarnArcingBonds:Play("linegather")
 		end
-	elseif spellId == 206641 then
+	elseif spellId == 206641 and not (self:IsRemix() or self:IsTrivial()) then
 		local amount = args.amount or 1
 		if amount >= 2 then
 			if not args:IsPlayer() and not UnitIsDeadOrGhost("player") then

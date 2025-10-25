@@ -227,7 +227,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
-	if spellId == 206677 then
+	if spellId == 206677 and not (self:IsRemix() or self:IsTrivial()) then
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1

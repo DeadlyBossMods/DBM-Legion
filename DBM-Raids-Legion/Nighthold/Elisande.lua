@@ -280,7 +280,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
-	if spellId == 209615 then
+	if spellId == 209615 and not (self:IsRemix() or self:IsTrivial()) then
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId) then
 			local amount = args.amount or 1
@@ -303,7 +303,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellDelphuricBeam:Yell()
 		end
 	elseif spellId == 209973 then
-		warnAblatingExplosion:Show(args.destName)
 		timerAblatingExplosion:Start(args.destName)
 		timerAblatingExplosionCD:Start()
 		if args:IsPlayer() then
@@ -316,9 +315,11 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self.Options.RangeFrame then
 				DBM.RangeCheck:Show(8)
 			end
-		else
+		elseif self:IsTank() then
 			specWarnAblationExplosion:Show(args.destName)
 			specWarnAblationExplosion:Play("tauntboss")
+		else
+			warnAblatingExplosion:Show(args.destName)
 		end
 	elseif spellId == 209598 then
 		self.vb.burstDebuffCount = self.vb.burstDebuffCount + 1

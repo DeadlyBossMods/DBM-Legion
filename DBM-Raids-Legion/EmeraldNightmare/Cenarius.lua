@@ -158,12 +158,11 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 213162 then
 		timerNightmareBlastCD:Start()
-		local targetName, uId, bossuid = self:GetBossTarget(104636, true)
+		local targetName, _, bossuid = self:GetBossTarget(104636, true)
 		if self:IsTanking("player", bossuid, nil, true) then
 			specWarnNightmareBlast:Show()
 			specWarnNightmareBlast:Play("defensive")
 		else
-			if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(30, targetName) then return end--You are not near current tank, you're probably 3rd tank on Adds that never taunts nightmare blast
 			specWarnNightmareBlastOther:Schedule(2, targetName)
 			specWarnNightmareBlastOther:ScheduleVoice(2, "tauntboss")
 		end
@@ -173,7 +172,6 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 214529 and not args:IsPlayer() then
-		if self:GetNumAliveTanks() >= 3 and not self:CheckNearby(21, args.destName) then return end--You are not near current tank, you're probably 3rd tank on Adds that never taunts nightmare blast
 		specWarnSpearOfNightmaresOther:Show(args.destName)
 		specWarnSpearOfNightmaresOther:Play("tauntboss")
 	elseif spellId == 211471 and self:AntiSpam(5, 1) then
