@@ -3,6 +3,7 @@
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Legion)|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (군단)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (Легион)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
@@ -16,6 +17,7 @@
 ## X-DBM-StatTypes: lfr,normal,heroic,mythic
 ## X-DBM-Mod-SubCategoriesID: 1712, 1676, 1530, 1648, 1520
 ## X-DBM-Mod-Name: Raids (Legion)
+## X-DBM-Mod-Name-koKR: 공격대 (군단)
 ## X-DBM-Mod-Name-ruRU: Рейды (Легион)
 ## X-DBM-Mod-Sort: 501
 ## X-DBM-Mod-MapID: 1712, 1676, 1530, 1648, 1520
