@@ -178,6 +178,6 @@ end
 
 function mod:OnSync(msg)
 	if msg == "HallDoorRP" then
-		timerRP:Start("v30.8-33.3")
+		timerRP:Start("v15.8-33.3")--Shortened in a hotfix ?
 	end
 end
