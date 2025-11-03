@@ -145,7 +145,6 @@ mod.vb.orbCastCount = 0
 mod.vb.burstCastCount = 0
 mod.vb.burstDebuffCount = 0
 mod.vb.singularityCount = 1
-mod.vb.phase = 1
 mod.vb.transitionActive = false
 --Saved Information for echos
 mod.vb.totalRingCasts = 0
@@ -161,7 +160,7 @@ function mod:OnCombatStart(delay)
 	self.vb.ringCastCount = 0
 	self.vb.burstDebuffCount = 0
 	self.vb.singularityCount = 1--First one on pull doesn't have an event so have to skip it in count
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.transitionActive = false
 	self.vb.totalRingCasts = 0
 	self.vb.totalbeamCasts = 0
@@ -255,7 +254,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif (spellId == 214278 or spellId == 214295) and self:AntiSpam(10, 2) then--Boss: 214278, Echo: 214295
 		self.vb.beamCastCount = self.vb.beamCastCount + 1
 		local nextCount = self.vb.beamCastCount + 1
-		if self.vb.phase == 2 then
+		if self:GetStage(2) then
 			self.vb.totalbeamCasts = self.vb.totalbeamCasts + 1
 		else
 			if nextCount > self.vb.totalbeamCasts then return end
@@ -391,7 +390,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 211647 then--Time Stop
 		self.vb.transitionActive = true
-		self.vb.phase = self.vb.phase + 1
+		self:SetStage(0)
 		--self.vb.firstElementals = false
 		self.vb.slowElementalCount = 0
 		self.vb.fastElementalCount = 0
@@ -419,7 +418,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		else
 			timerTimeElementalsCD:Start(17, FAST)--Updated Jan 18 (17-18)
 		end
-		if self.vb.phase == 2 then
+		if self:GetStage(2) then
 			warnPhase2:Show()
 			warnPhase2:Play("ptwo")
 			timerAblatingExplosionCD:Start(14.6)--Changed from 22 to 14.6 at some point
@@ -442,7 +441,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 				timerEpochericOrbCD:Start(27, 1)
 				timerDelphuricBeamCD:Start(72, 1)--Cast SUCCESS
 			end
-		elseif self.vb.phase == 3 then
+		elseif self:GetStage(3) then
 			warnPhase3:Show()
 			warnPhase3:Play("pthree")
 			self.vb.burstCastCount = 0
@@ -481,7 +480,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	elseif spellId == 208863 then
 		self.vb.transitionActive = false
 		if self:IsMythic() then
-			if self.vb.phase == 3 then
+			if self:GetStage(3) then
 				berserkTimer:Start(194)
 			else
 				berserkTimer:Start(199)
@@ -496,7 +495,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		local timer
 		local nextCount = self.vb.slowElementalCount+1
 		if self:IsMythic() then
-			timer = self.vb.phase == 1 and mythicP1SlowElementalTimers[nextCount] or self.vb.phase == 2 and mythicP2SlowElementalTimers[nextCount] or mythicP3SlowElementalTimers[nextCount]
+			timer = self:GetStage(1) and mythicP1SlowElementalTimers[nextCount] or self:GetStage(2) and mythicP2SlowElementalTimers[nextCount] or mythicP3SlowElementalTimers[nextCount]
 		else
 			timer = self:IsNormal() and normalSlowElementalTimers[nextCount] or self:IsHeroic() and heroicSlowElementalTimers[nextCount] or self:IsLFR() and lfrSlowElementalTimers[nextCount]
 		end
@@ -512,7 +511,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		local timer
 		local nextCount = self.vb.fastElementalCount+1
 		if self:IsMythic() then
-			timer = self.vb.phase == 1 and mythicP1FastElementalTimers[nextCount] or self.vb.phase == 2 and mythicP2FastElementalTimers[nextCount] or mythicP3FastElementalTimers[nextCount]
+			timer = self:GetStage(1) and mythicP1FastElementalTimers[nextCount] or self:GetStage(2) and mythicP2FastElementalTimers[nextCount] or mythicP3FastElementalTimers[nextCount]
 		else
 			timer = self:IsNormal() and normalFastElementalTimers[nextCount] or self:IsHeroic() and heroicFastElementalTimers[nextCount]
 		end
@@ -526,7 +525,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		specWarnSpanningSingularity:Show()
 		specWarnSpanningSingularity:Play("watchstep")
 		local nextCount = self.vb.singularityCount + 1
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			self.vb.totalsingularityCasts = self.vb.totalsingularityCasts + 1
 		else
 			if nextCount > self.vb.totalsingularityCasts then return end--There won't be any more
@@ -548,7 +547,7 @@ end
 --CHAT_MSG_MONSTER_YELL is faster than CHAT_MSG_RAID_BOSS_EMOTE but emote doesn't require localizing, so emote exists purely as backup.
 ---"<441.20 14:04:16> [CHAT_MSG_MONSTER_YELL] Let the waves of time crash over you!#Echo of Elisande#####0#0##0#962#nil#0#false#false#false#false", -- [7359]
 --It's now possible to do this with secondary event but it's 2 seconds slower so it should only be used as a backup with this as ideal primary still
-function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
+function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if (msg == L.noCLEU4EchoRings or msg:find(L.noCLEU4EchoRings)) then
 		self:SendSync("ArcaneticRing")--Syncing to help unlocalized clients
 	elseif (msg == L.noCLEU4EchoOrbs or msg:find(L.noCLEU4EchoOrbs)) then
@@ -556,7 +555,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_SAY(msg, npc, _, _, target)
+function mod:CHAT_MSG_MONSTER_SAY(msg)
 	if (msg == L.prePullRP or msg:find(L.prePullRP)) and self:LatencyCheck() then
 		self:SendSync("ElisandeRP")
 	end
@@ -564,13 +563,13 @@ end
 
 --Backup to above yell, it's 2 seconds slower but works without localizing
 --"<228.48 22:48:56> [CHAT_MSG_RAID_BOSS_EMOTE] |TInterface\\Icons\\Spell_Mage_ArcaneOrb.blp:20|t |cFFFF0000|Hspell:228877|h[Arcanetic Rings]|h|
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg:find("spell:228877") and self:AntiSpam(5, 1) then
 		self.vb.ringCastCount = self.vb.ringCastCount + 1
 		specWarnArcaneticRing:Show()
 		specWarnArcaneticRing:Play("watchorb")
 		local nextCount = self.vb.ringCastCount + 1
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			self.vb.totalRingCasts = self.vb.totalRingCasts + 1
 		else
 			if nextCount > self.vb.totalRingCasts then return end--There won't be any more
@@ -582,7 +581,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 	end
 end
 
-function mod:OnSync(msg, targetname)
+function mod:OnSync(msg)
 	if msg == "ElisandeRP" and self:AntiSpam(10, 6) then
 		timerRP:Start()
 	end
@@ -592,7 +591,7 @@ function mod:OnSync(msg, targetname)
 		specWarnArcaneticRing:Show()
 		specWarnArcaneticRing:Play("watchorb")
 		local nextCount = self.vb.ringCastCount + 1
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			self.vb.totalRingCasts = self.vb.totalRingCasts + 1
 		else
 			if nextCount > self.vb.totalRingCasts then return end--There won't be any more

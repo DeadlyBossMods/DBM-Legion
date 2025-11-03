@@ -102,7 +102,6 @@ mod:AddInfoFrameOption(205408)--really needs a "various" option
 mod:AddBoolOption("ConjunctionYellFilter", true)
 
 mod.vb.StarSigns = 0
-mod.vb.phase = 1
 mod.vb.icyEjectionCount = 0
 mod.vb.felEjectionCount = 0
 mod.vb.frostNovaCount = 0
@@ -217,13 +216,13 @@ local function updateRangeFrame(self, force)
 	if not self.Options.RangeFrame then return end
 	if DBM:UnitDebuff("player", icyEjectionDebuff) or DBM:UnitDebuff("player", coronalEjectionDebuff) then
 		DBM.RangeCheck:Show(8)
-	elseif self.vb.phase == 2 and self:IsTank() then--Spread for iceburst
+	elseif self:GetStage(2) and self:IsTank() then--Spread for iceburst
 		DBM.RangeCheck:Show(6)
 	elseif DBM:UnitDebuff("Player", gravPullDebuff) or DBM:UnitDebuff("player", voidEjectionDebuff) or force or self.vb.StarSigns > 0 then
 		DBM.RangeCheck:Show(5)
 	elseif DBM:UnitDebuff("player", abZeroDebuff) then
 		DBM.RangeCheck:Show(8, chilledFilter)
-	elseif self.vb.phase == 2 and self:IsMelee() then--Avoid tanks iceburst
+	elseif self:GetStage(2) and self:IsMelee() then--Avoid tanks iceburst
 		DBM.RangeCheck:Show(6, tankFilter)
 	else
 		DBM.RangeCheck:Hide()
@@ -254,7 +253,7 @@ function mod:OnCombatStart(delay)
 	voidWarned = false
 	playerAffected = false
 	self.vb.StarSigns = 0
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.isPhaseChanging = false
 	if self:IsMythic() then
 		self.vb.grandConCount = 0
@@ -285,11 +284,11 @@ function mod:SPELL_CAST_START(args)
 		specWarnConjunction:Show()
 		specWarnConjunction:Play("scatter")
 		local timers
-		if self.vb.phase == 1 then
+		if self:GetStage(1) then
 			timers = ps1Grand[self.vb.grandConCount+1]
-		elseif self.vb.phase == 2 then
+		elseif self:GetStage(2) then
 			timers = ps2Grand[self.vb.grandConCount+1]
-		elseif self.vb.phase == 3 then
+		elseif self:GetStage(3) then
 			timers = ps3Grand[self.vb.grandConCount+1]
 		else
 			timers = ps4Grand[self.vb.grandConCount+1]
@@ -570,7 +569,7 @@ mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 --However, this is more robust since unique spellids for each phase is better than same used for all 3
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 222130 then--Phase 2 Conversation
-		self.vb.phase = 2
+		self:SetStage(2)
 		self.vb.isPhaseChanging = true
 		self.vb.frostNovaCount = 0
 		self.vb.icyEjectionCount = 0
@@ -589,7 +588,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			timerIcyEjectionCD:Start(23.3, 1)
 		end
 	elseif spellId == 222133 then--Phase 3 Conversation
-		self.vb.phase = 3
+		self:SetStage(3)
 		self.vb.isPhaseChanging = true
 		self.vb.felEjectionCount = 0
 		self.vb.felNovaCount = 0
@@ -611,7 +610,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 			end
 		end
 	elseif spellId == 222134 then--Phase 4 Conversation
-		self.vb.phase = 4
+		self:SetStage(4)
 		self.vb.isPhaseChanging = true
 		self.vb.voidNovaCount = 0
 		--self.vb.voidEjectionCount = 0

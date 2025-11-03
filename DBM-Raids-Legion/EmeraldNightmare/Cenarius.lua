@@ -72,7 +72,6 @@ mod:AddRangeFrameOption(8, 211471)
 mod:AddSetIconOption("SetIconOnWisps", "ej13348", false, 5)
 mod:AddInfoFrameOption(210279)
 
-mod.vb.phase = 1
 mod.vb.addsCount = 0
 mod.vb.sisterCount = 0
 local scornedWarned = false
@@ -90,7 +89,7 @@ end
 function mod:OnCombatStart(delay)
 	scornedWarned = false
 	table.wipe(seenMobs)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.addsCount = 0
 	self.vb.sisterCount = 0
 	timerForcesOfNightmareCD:Start(7.2-delay, 1)--7.2-8.6
@@ -147,7 +146,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 214529 then
 		timerSpearOfNightmaresCD:Start()
-		local targetName, uId, bossuid = self:GetBossTarget(104636, true)
+		local _, _, bossuid = self:GetBossTarget(104636, true)
 		if self:IsTanking("player", bossuid, nil, true) then
 			specWarnSpearOfNightmares:Show()
 			specWarnSpearOfNightmares:Play("defensive")
@@ -279,7 +278,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		end
 		timerNightmareBramblesCD:Start()
 	elseif spellId == 217368 then--Overwhelming Nightmare (Phase 2)
-		self.vb.phase = 2
+		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")
 		timerForcesOfNightmareCD:Stop()

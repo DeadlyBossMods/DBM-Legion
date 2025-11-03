@@ -57,7 +57,7 @@ local unbalancedName, focusedGazeName, rendFlesh, overWhelm, momentum = DBM:GetS
 --(Tanks are welcome to help of course but it doesn't assign them because it's difficult to tell which ones are busy, tanks will make that call themselves.
 --This of course means auto assigning will fail to assign enough if too many soaked last one by accident
 --However, This is smartest way to do it anyways, it'll automatically use two different groups by this logic. It won't assign people who went last time.
---Reasoning: If I simply assign half raid to one and other half to other it doesn't factor in someone that got hit by ome they shouldn't have.
+--Reasoning: If I simply assign half raid to one and other half to other it doesn't factor in someone that got hit by one they shouldn't have.
 --This way, it'll ensure it assigns enough available soakers when possible, even when names shift groups as fight progresses. (Deaths/battle rezes, boss targetting)
 local GenerateSoakAssignment
 do
@@ -72,7 +72,7 @@ do
 		DBM:Debug("Raid size: "..raidCount..". Soakers: "..soakerCount..". Soaker Half: "..soakerHalf)
 		for i = 1, raidCount do
 			local unitID = "raid"..i
-			if not DBM:UnitDebuff(unitID, unbalancedName) and not DBM:UnitDebuff(unitID, focusedGazeName) and not self:IsTanking(unitID) then
+			if not DBM:UnitDebuff(unitID, unbalancedName, focusedGazeName) and not self:IsTanking(unitID) then
 				soakers = soakers + 1
 				soakTable[#soakTable+1] = DBM:GetUnitFullName(unitID)
 				if UnitIsUnit("player", unitID) then

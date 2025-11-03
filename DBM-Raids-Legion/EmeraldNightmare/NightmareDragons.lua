@@ -385,8 +385,8 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 end
 
 --"<38.03 01:01:06> [CHAT_MSG_RAID_BOSS_EMOTE] |TInterface\\Icons\\sha_ability_rogue_envelopingshadows_nightmare:20|tA Lumbering Mindgorger forms in the mists of The Hinterlands!#Ysondre#####0#0##0#1
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, targetname)
-	if msg:find("sha_ability_rogue_envelopingshadows_nightmare") then
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+	if msg:find("sha_ability_rogue_envelopingshadows_nightmare") and self:AntiSpam(5, 3) then
 		specWarnLumberingMindgorger:Show()
 		specWarnLumberingMindgorger:Play("bigmob")
 	end

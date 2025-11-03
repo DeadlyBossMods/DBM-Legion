@@ -46,7 +46,6 @@ local specWarnWebofPain				= mod:NewSpecialWarning("specWarnWebofPain", nil, nil
 local specWarnGatheringClouds		= mod:NewSpecialWarningSpell(212707, nil, nil, nil, 1, 2)
 local specWarnDarkStorm				= mod:NewSpecialWarningMoveTo(210948, nil, nil, nil, 1, 2)
 local specWarnTwistingShadows		= mod:NewSpecialWarningMoveAway(210864, nil, nil, nil, 1, 2)
-local specWarnTwistingShadowsMove	= mod:NewSpecialWarningMove(210864, nil, nil, nil, 1, 2)--For expires. visual is WAY off from debuff, if you wait for visual you'll die to this
 local yellTwistingShadows			= mod:NewFadesYell(210864)
 local specWarnRazorWing				= mod:NewSpecialWarningDodge(210547, nil, nil, nil, 3, 2)
 local specWarnRakingTalon			= mod:NewSpecialWarningDefensive(215582, nil, nil, nil, 1, 2)

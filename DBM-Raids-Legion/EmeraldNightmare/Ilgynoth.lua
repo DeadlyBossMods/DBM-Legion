@@ -85,7 +85,6 @@ mod:AddRangeFrameOption(8, 215128)
 mod:AddInfoFrameOption(210099)
 mod:AddDropdownOption("InfoFrameBehavior", {"Fixates", "Adds"}, "Fixates", "misc", nil, 210099)
 
-mod.vb.phase = 1
 mod.vb.insideActive = false
 mod.vb.DominatorCount = 0
 mod.vb.CorruptorCount = 0
@@ -216,7 +215,7 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(addsTable)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.insideActive = false
 	self.vb.DominatorCount = 0
 	self.vb.CorruptorCount = 0
@@ -295,7 +294,7 @@ function mod:SPELL_CAST_START(args)
 				warnDeathglareTentacle:Show(self.vb.DeathglareSpawn)
 				local nextCount = self.vb.DeathglareSpawn + 1
 				local timer
-				if self.vb.phase == 2 then
+				if self:GetStage(2) then
 					timer = self:IsMythic() and phase2MythicDeathglares[nextCount] or phase2ComboDeathglares[nextCount]
 				else
 					timer = self:IsMythic() and phase1MythicDeathglares[nextCount] or self:IsHeroic() and phase1HeroicDeathglares[nextCount] or phase1EasyDeathglares[nextCount]
@@ -319,7 +318,7 @@ function mod:SPELL_CAST_START(args)
 				warnCorruptorTentacle:Show(self.vb.CorruptorSpawn)
 				local nextCount = self.vb.CorruptorSpawn + 1
 				local timer
-				if self.vb.phase == 2 then
+				if self:GetStage(2) then
 					timer = self:IsMythic() and phase2MythicCorruptors[nextCount] or phase2Corruptors[nextCount]
 				else
 					timer = self:IsMythic() and phase1MythicCorruptors[nextCount] or self:IsHeroic() and phase1HeroicCorruptors[nextCount] or phase1EasyCorruptors[nextCount]
@@ -346,7 +345,7 @@ function mod:SPELL_CAST_START(args)
 		warnDeathBlossom:Show()
 		timerDeathBlossom:Start()
 		local nextCount = self.vb.deathBlossomCount + 1
-		local timer = self.vb.phase == 2 and phase2DeathBlossom[nextCount] or phase1DeathBlossom[nextCount]
+		local timer = self:GetStage(2) and phase2DeathBlossom[nextCount] or phase1DeathBlossom[nextCount]
 		if timer and timer > 0 then
 			timerDeathBlossomCD:Stop()--Stop annoying timer errors on fastfowarded add spawns
 			timerDeathBlossomCD:Start(timer, self.vb.deathBlossomCount+1)
@@ -406,7 +405,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerDeathGlareCD:Start(21.5)
 		timerCorruptorTentacleCD:Start(45)
 		timerNightmareHorrorCD:Start(95)
-		self.vb.phase = self.vb.phase + 1
+		self:SetStage(0)
 		self.vb.DeathglareSpawn = 0
 		self.vb.CorruptorSpawn = 0
 	elseif spellId == 210099 then--Ooze Fixate
@@ -451,14 +450,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam(3, 4) then
 			timerNightmareishFuryCD:Start()
 		end
-		--Hopefully this has a boss unitID
-		for i = 1, 5 do
-			local bossUnitID = "boss"..i
-			if UnitExists(bossUnitID) and UnitGUID(bossUnitID) == args.sourceGUID and self:IsTanking("player", bossUnitID, nil, true) then--We are highest threat target
-				specWarnNightmarishFury:Show()
-				specWarnNightmarishFury:Play("defensive")
-				break
-			end
+		if self:IsTanking("player", nil, nil, true, args.sourceGUID) then--We are highest threat target
+			specWarnNightmarishFury:Show()
+			specWarnNightmarishFury:Play("defensive")
 		end
 	elseif spellId == 215128 then
 		warnCursedBlood:CombinedShow(0.5, args.destName)--Multi target assumed
@@ -532,8 +526,8 @@ end
 function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find("spell:208689") then
 		specWarnGroundSlam:Show()
-		yellGroundSlam:Yell()
 		specWarnGroundSlam:Play("targetyou")
+		yellGroundSlam:Yell()
 	end
 end
 
