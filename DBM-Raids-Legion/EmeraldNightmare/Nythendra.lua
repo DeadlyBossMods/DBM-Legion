@@ -159,7 +159,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnVolatileRot:Show()
 			specWarnVolatileRot:Play("runout")
-			local _, _, _, _, duration, expires = DBM:UnitDebuff("player", args.spellName)
+			local _, _, _, _, _, expires = DBM:UnitDebuff("player", args.spellName)
 			if expires then
 				local remaining = expires-GetTime()
 				yellVolatileRot:Schedule(remaining-1, 1)
