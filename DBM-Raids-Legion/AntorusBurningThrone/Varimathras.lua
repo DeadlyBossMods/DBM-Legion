@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(1983, "DBM-Raids-Legion", 1, 946)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(122366)
 mod:SetEncounterID(2069)
 --mod:SetBossHPInfoToHighest()

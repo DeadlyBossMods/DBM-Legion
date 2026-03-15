@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 local DBM_COMMON_L = DBM_COMMON_L
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(124445)
 mod:SetEncounterID(2075)
 --mod:SetBossHPInfoToHighest()

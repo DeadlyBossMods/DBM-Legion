@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(1861, "DBM-Raids-Legion", 2, 875)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(115767)--116328 Vellius, 115795 Abyss Stalker, 116329/116843 Sarukel
 mod:SetEncounterID(2037)
 mod:SetUsedIcons(1, 2, 3, 4)

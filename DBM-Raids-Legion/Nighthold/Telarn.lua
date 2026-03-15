@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(1761, "DBM-Raids-Legion", 3, 786)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(104528)--109042
 mod:SetEncounterID(1886)
 mod:SetUsedIcons(6, 5, 4, 3, 2, 1)

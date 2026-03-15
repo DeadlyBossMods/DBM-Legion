@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(1704, "DBM-Raids-Legion", 5, 768)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(102679)--Ysondre, 102683 (Emeriss), 102682 (Lethon), 102681 (Taerar)
 mod:SetEncounterID(1854)
 mod:SetUsedIcons(8, 7, 6, 5, 4, 3, 2, 1)

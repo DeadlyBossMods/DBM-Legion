@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(2011, "DBM-BrokenIsles", 2, 822)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(124625)
 mod:SetEncounterID(2083)
 mod:EnableWBEngageSync()--Enable syncing engage in outdoors

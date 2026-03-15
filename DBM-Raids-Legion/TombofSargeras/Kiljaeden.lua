@@ -2,6 +2,7 @@ local mod	= DBM:NewMod(1898, "DBM-Raids-Legion", 2, 875)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(117269)--121227 Illiden? 121193 Shadowsoul
 mod:SetEncounterID(2051)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
