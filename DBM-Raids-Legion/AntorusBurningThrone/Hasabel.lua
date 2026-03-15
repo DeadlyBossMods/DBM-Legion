@@ -147,8 +147,6 @@ function mod:OnCombatStart(delay)
 	timerFelstormBarrageCD:Start(25.2-delay)
 end
 
-function mod:OnCombatEnd()
-end
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
