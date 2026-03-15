@@ -81,7 +81,6 @@ local berserkTimer					= mod:NewBerserkTimer(360)
 
 --mod:AddSetIconOption("SetIconOnShield", 228270, true)
 --mod:AddInfoFrameOption(227503, true)
---mod:AddRangeFrameOption("5/8/15")
 mod:AddNamePlateOption("NPAuraOnSicklyFixate", 241600)
 mod:AddNamePlateOption("NPAuraOnDrivenAssault", 234016)
 mod:AddSetIconOption("SetIconOnWavemender", "ej14555", true, 5)

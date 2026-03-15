@@ -83,7 +83,6 @@ local berserkTimer					= mod:NewBerserkTimer(480)
 mod:AddSetIconOption("SetIconOnHydraShot", 230139, true)
 mod:AddBoolOption("TauntOnPainSuccess", false)
 --mod:AddInfoFrameOption(227503, true)
---mod:AddRangeFrameOption("5/8/15")
 
 mod.vb.phase = 1
 mod.vb.crashingWaveCount = 0

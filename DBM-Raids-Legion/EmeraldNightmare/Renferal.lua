@@ -74,7 +74,6 @@ local timerViolentWindsCD			= mod:NewNextTimer(40.5, 218124, nil, nil, nil, 5, n
 
 local berserkTimer					= mod:NewBerserkTimer(540)
 
---mod:AddRangeFrameOption("5")--Add range frame to Necrotic Debuff if detecting it actually works with FindDebuff()
 mod:AddSetIconOption("SetIconOnWeb", 215307)
 mod:AddSetIconOption("SetIconOnWinds", 218124)
 

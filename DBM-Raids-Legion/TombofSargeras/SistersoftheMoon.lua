@@ -91,7 +91,6 @@ local berserkTimer					= mod:NewBerserkTimer(660)
 
 mod:AddSetIconOption("SetIconOnIncorpShot", 236305, true)
 mod:AddInfoFrameOption(233263, true)
---mod:AddRangeFrameOption("5/8/15")
 
 mod.vb.phase = 1
 mod.vb.twilightGlaiveCount = 0
