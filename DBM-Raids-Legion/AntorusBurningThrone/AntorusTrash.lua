@@ -35,7 +35,6 @@ local specWarnPunishingFlame			= mod:NewSpecialWarningRun(246209, "Melee", nil, 
 local specWarnAnnihilation				= mod:NewSpecialWarningSpell(245807, nil, nil, nil, 2, 2)
 --local specWarnShadowBoltVolley		= mod:NewSpecialWarningInterrupt(243171, "HasInterrupt", nil, nil, 1, 2)
 
-mod:AddRangeFrameOption(10, 249297)
 
 function mod:SPELL_CAST_START(args)
 	if not self.Options.Enabled then return end
@@ -95,9 +94,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFlamesofReorig:Show()
 			specWarnFlamesofReorig:Play("runout")
 			yellFlamesofReorig:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 	end
 end
@@ -113,10 +109,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 254122 then
 		if args:IsPlayer() then
 			yellCloudofConfuseFades:Cancel()
-		end
-	elseif spellId == 249297 then
-		if args:IsPlayer() and self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
 		end
 	end
 end

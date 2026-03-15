@@ -36,7 +36,6 @@ local timerGoBangCD				= mod:NewCDTimer(24.4, 216817, nil, "Tank", nil, 5, nil, 
 local timerGoBangStarts			= mod:NewTargetTimer(12, 216817, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 --mod:AddReadyCheckOption(37460, false)
-mod:AddRangeFrameOption(8, 216432)
 
 function mod:BoomTarget(targetname, uId)
 	if not targetname then return end
@@ -65,15 +64,9 @@ function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
 
 	end
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(8)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -108,9 +101,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnGoBangYou:Show()
 			specWarnGoBangYou:Play("runout")
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(25)
-			end
 		else
 			specWarnGoBangSwap:Show(args.destName)
 			specWarnGoBangSwap:Play("tauntboss")
@@ -122,10 +112,5 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 216817 then
 		timerGoBangStarts:Stop(args.destName)
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
-		end
 	end
 end

@@ -13,10 +13,10 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 244625 246505 253040 245227",
-	"SPELL_CAST_SUCCESS 244722 244892 245227 253037 245174",
-	"SPELL_AURA_APPLIED 244737 244892 253015 244172",
+	"SPELL_CAST_SUCCESS 244722 244892 245227 253037",
+	"SPELL_AURA_APPLIED 244737 244892 244172",
 	"SPELL_AURA_APPLIED_DOSE 244892 244172",
-	"SPELL_AURA_REMOVED 244737 253015",
+	"SPELL_AURA_REMOVED 244737",
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3"
@@ -59,7 +59,6 @@ local specWarnFusillade					= mod:NewSpecialWarningMoveTo(244625, nil, nil, nil,
 local timerShockGrenadeCD				= mod:NewCDTimer(14.7, 244737, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)
 local timerFusilladeCD					= mod:NewNextCountTimer(29.3, 244625, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 
-mod:AddRangeFrameOption(8, 244737)
 ----Chief Engineer Ishkar
 mod:AddTimerLine(Ishkar)
 local warnEntropicMine					= mod:NewSpellAnnounce(245161, 2)
@@ -117,9 +116,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -193,9 +189,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnShockGrenade:Play("runout")
 			yellShockGrenade:Yell()
 			yellShockGrenadeFades:Countdown(5, 3)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 	elseif spellId == 244892 then
 		local uId = DBM:GetRaidUnitId(args.destName)
@@ -243,9 +236,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 244737 then
 		if args:IsPlayer() then
 			yellShockGrenadeFades:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
 		end
 	end
 end

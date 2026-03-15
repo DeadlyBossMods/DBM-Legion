@@ -13,7 +13,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 237725 238999 243982 240910 241983 239932",
 	"SPELL_CAST_SUCCESS 236378 236710 237590 236498 238502 238430 238999 241564",
-	"SPELL_AURA_APPLIED 239932 236378 236710 237590 236498 236597 241721 245509 243536 243624",
+	"SPELL_AURA_APPLIED 236378 236710 237590 236498 236597 241721 245509 243536 243624",
 	"SPELL_AURA_APPLIED_DOSE 245509",
 	"SPELL_AURA_REFRESH 241721",
 	"SPELL_AURA_REMOVED 236378 236710 237590 236498 241721 239932 241983 244834 243536",
@@ -116,7 +116,6 @@ mod:AddSetIconOption("SetIconOnFocusedDread", 238502, true)
 mod:AddSetIconOption("SetIconOnBurstingDread", 238430, false)
 mod:AddSetIconOption("SetIconOnEruptingReflection", 236710, true)
 mod:AddInfoFrameOption(239154, true)
-mod:AddRangeFrameOption("5/10")--238502/239253
 
 mod.vb.phase = 1
 mod.vb.shadowSoulsRemaining = 5--Need real number
@@ -217,9 +216,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -347,9 +343,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif spellId == 236498 then--Malignant Shadow Reflection (Stage 2)
 
 	elseif spellId == 238502 then
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
 		if self.Options.SetIconOnFocusedDread then
 			self:SetIcon(args.destName, 0)
 		end
@@ -646,9 +639,6 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
 		end
 		if not self:IsEasy() then--TODO, this isn't mentioned in intermission, only in phase 2+ version. Investigate
 			specWarnFocusedDreadflame:ScheduleVoice(1, "range5")
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(5, nil, nil, nil, nil, 6)
-			end
 		end
 		if target then
 			target = DBM:GetUnitFullName(target) or target

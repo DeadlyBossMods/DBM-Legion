@@ -59,7 +59,6 @@ mod:AddSetIconOption("SetIconOnFoam", "ej14535", true)
 mod:AddBoolOption("YellActualRaidIcon", false)
 mod:AddBoolOption("FilterSameColor", true)
 mod:AddInfoFrameOption(228824, true)
-mod:AddRangeFrameOption(5, 228824)
 
 mod.vb.fangCast = 0
 mod.vb.breathCast = 0
@@ -133,18 +132,12 @@ function mod:OnCombatStart(delay)
 		else
 			berserkTimer:Start(-delay)
 		end
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(5)
-		end
 	else
 		berserkTimer:Start(420-delay)
 	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end

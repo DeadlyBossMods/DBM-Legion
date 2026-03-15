@@ -13,7 +13,7 @@ mod.syncThreshold = 30
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 210931 209471 208697 208929 208689 210781 208685 218415 223121",
-	"SPELL_CAST_SUCCESS 210984 215128 209387 208929",
+	"SPELL_CAST_SUCCESS 210984 209387 208929",
 	"SPELL_AURA_APPLIED 209915 210099 210984 215234 215128 212886",
 	"SPELL_AURA_APPLIED_DOSE 210984",
 	"SPELL_AURA_REMOVED 209915 215128 208929",
@@ -81,7 +81,6 @@ local timerCursedBloodCD			= mod:NewNextTimer(15, 215128, nil, nil, nil, 3)
 mod:AddSetIconOption("SetIconOnSpew", 208929, false, 6)
 mod:AddSetIconOption("SetIconOnOoze", "ej13186", false)
 mod:AddBoolOption("SetIconOnlyOnce2", true)
-mod:AddRangeFrameOption(8, 215128)
 mod:AddInfoFrameOption(210099)
 mod:AddDropdownOption("InfoFrameBehavior", {"Fixates", "Adds"}, "Fixates", "misc", nil, 210099)
 
@@ -258,9 +257,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -464,9 +460,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellCursedBlood:Schedule(7, 1)
 			yellCursedBlood:Schedule(6, 2)
 			yellCursedBlood:Schedule(5, 3)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 	elseif spellId == 212886 and args:IsPlayer() and self:AntiSpam(2, 1) then
 		specWarnNightmareCorruption:Show()
@@ -488,9 +481,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerCursedBloodCD:Start()
 	elseif spellId == 215128 and args:IsPlayer() then
 		yellCursedBlood:Cancel()
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
 	elseif spellId == 208929 and self.Options.SetIconOnSpew then
 		self:SetIcon(args.destName, 0)
 	end

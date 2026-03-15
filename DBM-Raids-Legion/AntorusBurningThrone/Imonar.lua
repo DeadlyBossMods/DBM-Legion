@@ -34,7 +34,6 @@ local warnPhase							= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2
 
 local berserkTimer						= mod:NewBerserkTimer(420)
 
-mod:AddRangeFrameOption("5/10")
 --Stage One: Attack Force
 local warnShocklance					= mod:NewStackAnnounce(247367, 2, nil, "Tank")
 local warnSleepCanister					= mod:NewTargetAnnounce(247552, 2)
@@ -80,28 +79,6 @@ mod.vb.sleepCanisterIcon = 1
 local mythicP5ShrapnalTimers = {15, 15.8, 14.5, 12, 10}--Doesn't seem right, seems health based?
 local empoweredPulseTargets = {}
 
-local debuffFilter
-local playerSleepDebuff = false
-do
-	debuffFilter = function(uId)
-		if DBM:UnitDebuff(uId, 250006) then
-			return true
-		end
-	end
-end
-
-local function updateRangeFrame(self)
-	if not self.Options.RangeFrame then return end
-	if playerSleepDebuff then
-		DBM.RangeCheck:Show(10)--There are no 15 yard items that are actually 15 yard, this will round to 18 :\
-	elseif DBM:UnitDebuff("player", 250006) then
-		DBM.RangeCheck:Show(5)
-	elseif self.vb.empoweredPulseActive > 0 then--Spread for Horn of Valor
-		DBM.RangeCheck:Show(5, debuffFilter)
-	else
-		DBM.RangeCheck:Hide()
-	end
-end
 
 local updateInfoFrame
 do
@@ -146,9 +123,6 @@ end
 
 function mod:OnCombatEnd()
 	table.wipe(empoweredPulseTargets)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -273,10 +247,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 247565 then
 		warnSlumberGas:CombinedShow(0.3, args.destName)
-		if args:IsPlayer() then
-			playerSleepDebuff = false
-			updateRangeFrame(self)
-		end
 	elseif spellId == 250006 then
 		self.vb.empoweredPulseActive = self.vb.empoweredPulseActive + 1
 		warnEmpoweredPulseGrenade:CombinedShow(0.3, args.destName)
@@ -285,7 +255,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnEmpPulseGrenade:Play("range5")
 			yellEmpPulseGrenade:Yell()
 		end
-		updateRangeFrame(self)
 		if not tContains(empoweredPulseTargets, args.destName) then
 			table.insert(empoweredPulseTargets, args.destName)
 		end
@@ -345,7 +314,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 250006 then
 		self.vb.empoweredPulseActive = self.vb.empoweredPulseActive - 1
 		tDeleteItem(empoweredPulseTargets, args.destName)
-		updateRangeFrame(self)
 		if self.Options.SetIconOnEmpPulse2 then
 			self:SetIcon(args.destName, 0)
 		end
@@ -373,8 +341,6 @@ function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find("spell:254244") then
 		specWarnSleepCanister:Show()
 		specWarnSleepCanister:Play("runout")
-		playerSleepDebuff = true
-		updateRangeFrame(self)
 	end
 end
 

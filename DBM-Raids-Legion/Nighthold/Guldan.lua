@@ -15,9 +15,9 @@ mod:SetWipeTime(30)
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 206219 206220 206514 206675 206840 207938 104534 208545 209270 211152 208672 206744 206883 206221 206222 221783 211439 220957 227008 221408 221486",
 	"SPELL_CAST_SUCCESS 206222 206221 221783 212258 227008 221336 221486",
-	"SPELL_AURA_APPLIED 206219 206220 209011 206354 206384 209086 208903 211162 221891 208802 221606 221603 221785 221784 212686 227427 206516 206847 206983 206458 227009 206310",
-	"SPELL_AURA_APPLIED_DOSE 211162 208802",
-	"SPELL_AURA_REMOVED 209011 206354 206384 209086 221603 221785 221784 212686 221606 206847 206458 206310",
+	"SPELL_AURA_APPLIED 209011 206354 206384 209086 221891 208802 221606 227427 206516 206847 206983 206458 227009 206310",
+	"SPELL_AURA_APPLIED_DOSE 208802",
+	"SPELL_AURA_REMOVED 209011 206354 206384 209086 221603 221785 221784 212686 221606 206847 206310",
 --	"SPELL_DAMAGE",
 --	"SPELL_MISSED",
 	"UNIT_DIED",
@@ -112,7 +112,6 @@ local timerWellOfSouls				= mod:NewCastTimer(16, 206939, nil, nil, nil, 5)
 local timerBlackHarvestCD			= mod:NewNextCountTimer(83, 206744, nil, nil, nil, 2, nil, nil, nil, 3, 4)
 
 mod:AddSetIconOption("SetIconOnBondsOfFlames", 221783, true)
-mod:AddRangeFrameOption(8, 221606)
 --Mythic Only
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local warnParasiticWound			= mod:NewTargetAnnounce(206847, 3)
@@ -241,9 +240,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -578,12 +574,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnBondsOfFlames and count < 9 then
 			self:SetIcon(args.destName, count)--Should start at icon 4 and go up from there (because icons 1-3 are used by bonds of fel)
 		end
-	elseif spellId == 221603 or spellId == 221785 or spellId == 221784 or spellId == 212686 then--4 different duration versions of Flames of sargeras?
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
-		end
 	elseif spellId == 206516 then--The Eye of Aman'Thul (phase 1 buff)
 		self:SetStage(1.5)
 		timerLiquidHellfireCD:Stop()
@@ -666,11 +656,6 @@ function mod:SPELL_AURA_REMOVED(args)
 			table.wipe(flamesIcons)
 		end
 	elseif spellId == 221603 or spellId == 221785 or spellId == 221784 or spellId == 212686 then--4 different duration versions of Flames of sargeras?
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
 		if self.Options.SetIconOnBondsOfFlames then
 			self:SetIcon(args.destName, 0)
 		end

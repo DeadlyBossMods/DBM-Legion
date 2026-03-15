@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 228012 228028 228162 231350 227629",
 	"SPELL_AURA_APPLIED 228029 227807 227959 227626 228918 227490 227491 227498 227499 227500 231311 231342 231344 231345 231346 229579 229580 229581 229582 229583 229584",
 	"SPELL_AURA_APPLIED_DOSE 227626",
-	"SPELL_AURA_REMOVED 228029 227807 227959 227490 227491 227498 227499 227500 231311 231342 231344 231345 231346 229584",
+	"SPELL_AURA_REMOVED 227490 227491 227498 227499 227500 229584",
 	"SPELL_PERIODIC_DAMAGE 228007 228683",
 	"SPELL_PERIODIC_MISSED 228007 228683",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
@@ -29,7 +29,6 @@ mod:RegisterEventsInCombat(
 local hymdall = DBM:EJ_GetSectionInfo(14005)
 local hyrja = DBM:EJ_GetSectionInfo(14006)
 
-mod:AddRangeFrameOption("5/8/15")
 --Stage 1: Halls of Valor was merely a set back
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnRevivify					= mod:NewCastAnnounce(228171, 4)
@@ -108,36 +107,13 @@ mod.vb.dancingBladeCast = 0
 mod.vb.brandActive = false
 local drawTable = {}
 local playerProtected = false
+local protected = DBM:GetSpellName(229584)
 --Mythic Timers
 local dancingBladeTimers = {15.0, 20.1, 19.9, 25.0, 20.0}
 local hornTimers = {8.1, 22.0, 20.0, 35.0}
 local shieldTimers = {20.0, 20.0, 33.0, 22.0, 20.0}
 local expelLightTimers = {25.0, 20.0, 15.0, 30.0, 20.0}
 
-local debuffFilter
-local playerDebuff = nil
-local spellName, protected, expelLight, stormOfJustice = DBM:GetSpellName(231311), DBM:GetSpellName(229584), DBM:GetSpellName(228028), DBM:GetSpellName(227807)
-do
-	debuffFilter = function(uId)
-		if not playerDebuff then return true end
-		if not DBM:UnitDebuff(uId, playerDebuff) then
-			return true
-		end
-	end
-end
-
-local function updateRangeFrame(self)
-	if not self.Options.RangeFrame then return end
-	if self.vb.brandActive then
-		DBM.RangeCheck:Show(15, debuffFilter)--There are no 15 yard items that are actually 15 yard, this will round to 18 :\
-	elseif DBM:UnitDebuff("player", expelLight) or DBM:UnitDebuff("player", stormOfJustice) then
-		DBM.RangeCheck:Show(8)
-	elseif self.vb.hornCasting then--Spread for Horn of Valor
-		DBM.RangeCheck:Show(5)
-	else
-		DBM.RangeCheck:Hide()
-	end
-end
 
 local updateInfoFrame
 do
@@ -191,7 +167,6 @@ function mod:OnCombatStart(delay)
 	self.vb.dancingBladeCast = 0
 	self.vb.brandActive = false
 	table.wipe(drawTable)
-	playerDebuff = nil
 	if self:IsMythic() then
 		timerHornOfValorCD:Start(8-delay, 1)
 		timerDancingBladeCD:Start(15-delay)
@@ -219,9 +194,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -284,7 +256,6 @@ function mod:SPELL_CAST_START(args)
 		else
 			timerHornOfValorCD:Start(30, self.vb.hornCast+1)--Need more data
 		end
-		updateRangeFrame(self)
 	elseif spellId == 228171 and self:AntiSpam(2, 2) then
 		warnRevivify:Show()
 	elseif spellId == 231013 then
@@ -297,7 +268,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 228012 then
 		self.vb.hornCasting = false
-		updateRangeFrame(self)
 	elseif spellId == 228028 then
 		self.vb.expelLightCast = self.vb.expelLightCast + 1
 		if self:GetStage(1) then
@@ -328,7 +298,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 	elseif spellId == 231350 then
 		self.vb.brandActive = false
-		updateRangeFrame(self)
 	elseif spellId == 227629 and self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -342,7 +311,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnExpelLight:Show()
 			specWarnExpelLight:Play("runout")
 			yellExpelLight:Yell()
-			updateRangeFrame(self)
 		end
 	elseif spellId == 227807 or spellId == 227959 then--Add and non add version
 		warnStormofJustice:CombinedShow(0.3, args.destName)
@@ -350,7 +318,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnStormofJustice:Show()
 			specWarnStormofJustice:Play("runout")
 			yellStormofJustice:Yell()
-			updateRangeFrame(self)
 		end
 	elseif spellId == 227626 then
 		local amount = args.amount or 1
@@ -425,7 +392,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 231311 or spellId == 231342 or spellId == 231344 or spellId == 231345 or spellId == 231346 then--Runic Brand (Phase 3 Mythic)
 		if args:IsPlayer() then
-			playerDebuff = spellId
 			if spellId == 231311 then--Purple K (NE)
 				specWarnRunicBrand:Show("|TInterface\\Icons\\Boss_OdunRunes_Purple.blp:12:12|t")
 				specWarnRunicBrand:Play("mm3")
@@ -447,7 +413,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnRunicBrand:Play("mm4")
 				yellRunicBrand:Yell(4, args.spellName, 4)
 			end
-			updateRangeFrame(self)
 		end
 	elseif spellId == 229584 and args:IsPlayer() then
 		playerProtected = true
@@ -460,25 +425,13 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
-	if spellId == 228029 then
-		if args:IsPlayer() then
-			updateRangeFrame(self)
-		end
-	elseif spellId == 227807 or spellId == 227959 then--Add and non add version
-		if args:IsPlayer() then
-			updateRangeFrame(self)
-		end
-	elseif spellId == 227490 or spellId == 227491 or spellId == 227498 or spellId == 227499 or spellId == 227500 then--Branded (Draw Power Runes)
+	if spellId == 227490 or spellId == 227491 or spellId == 227498 or spellId == 227499 or spellId == 227500 then--Branded (Draw Power Runes)
 		drawTable[spellId] = nil
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:Update()
 		end
 		if self.Options.NPAuraOnBranded then
 			DBM.Nameplate:Hide(true, args.sourceGUID, spellId)
-		end
-	elseif spellId == 231311 or spellId == 231342 or spellId == 231344 or spellId == 231345 or spellId == 231346 then--Branded (Draw Power Runes)
-		if args:IsPlayer() then
-			playerDebuff = nil
 		end
 	elseif spellId == 229584 and args:IsPlayer() then
 		playerProtected = false

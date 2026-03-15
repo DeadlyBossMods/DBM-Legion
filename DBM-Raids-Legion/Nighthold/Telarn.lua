@@ -84,7 +84,6 @@ local timerSummonChaosSpheresCD		= mod:NewNextTimer(35, 223034, nil, nil, nil, 1
 local timerCollapseofNightCD		= mod:NewNextTimer(35, 223437, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, not mod:IsTank() and 3 or nil, 4)
 local timerChaotiSpheresofNatureCD	= mod:NewNextTimer(35, 223219, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 
-mod:AddRangeFrameOption(8, 218807)
 mod:AddSetIconOption("SetIconOnCoN", 218807, true)
 
 mod.vb.CoNIcon = 1
@@ -164,9 +163,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.NPAuraOnFixate then
 		DBM.Nameplate:Hide(false, nil, nil, nil, true, true)
 	end
@@ -290,9 +286,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCoN:Show(self:IconNumToString(number))
 			yellCoN:Yell(self:IconNumToString(number), number, number)
 			specWarnCoN:Play("targetyou")
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8, noCoN, nil, nil, true)
-			end
 		end
 		if self.Options.SetIconOnCoN then
 			self:SetIcon(args.destName, number)
@@ -443,11 +436,6 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 218809 then
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
 		if self.Options.SetIconOnCoN then
 			self:SetIcon(args.destName, 0)
 		end

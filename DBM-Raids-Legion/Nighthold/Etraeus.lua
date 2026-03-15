@@ -13,8 +13,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 205408 206949 206517 207720 207439 216909",
 	"SPELL_CAST_SUCCESS 206464 206936 205649 207143 205984 214335 214167 221875",
-	"SPELL_AURA_APPLIED 206464 205429 216344 216345 205445 205984 214335 214167 206585 206936 205649 207143 206398",
-	"SPELL_AURA_REMOVED 206464 205429 216344 216345 205445 205984 214335 214167 206585 206936 205649 207143",
+	"SPELL_AURA_APPLIED 206464 205429 216344 216345 205445 205984 214335 214167 206936 205649 207143 206398",
+	"SPELL_AURA_REMOVED 205429 216344 216345 205445 205984 214335 214167 206936 205649",
 	"SPELL_SUMMON 207813",
 --	"SPELL_PERIODIC_DAMAGE 206398",
 --	"SPELL_PERIODIC_MISSED 206398",
@@ -43,7 +43,6 @@ local yellGravitationalPull			= mod:NewFadesYell(205984)
 local timerGravPullCD				= mod:NewCDTimer(28, 205984, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local berserkTimer					= mod:NewBerserkTimer(463)
 
-mod:AddRangeFrameOption("5/8")
 --Stage One: The Dome of Observation
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnCoronalEjection			= mod:NewTargetAnnounce(206464, 2)
@@ -212,22 +211,6 @@ do
 	end
 end
 
-local function updateRangeFrame(self, force)
-	if not self.Options.RangeFrame then return end
-	if DBM:UnitDebuff("player", icyEjectionDebuff) or DBM:UnitDebuff("player", coronalEjectionDebuff) then
-		DBM.RangeCheck:Show(8)
-	elseif self:GetStage(2) and self:IsTank() then--Spread for iceburst
-		DBM.RangeCheck:Show(6)
-	elseif DBM:UnitDebuff("Player", gravPullDebuff) or DBM:UnitDebuff("player", voidEjectionDebuff) or force or self.vb.StarSigns > 0 then
-		DBM.RangeCheck:Show(5)
-	elseif DBM:UnitDebuff("player", abZeroDebuff) then
-		DBM.RangeCheck:Show(8, chilledFilter)
-	elseif self:GetStage(2) and self:IsMelee() then--Avoid tanks iceburst
-		DBM.RangeCheck:Show(6, tankFilter)
-	else
-		DBM.RangeCheck:Hide()
-	end
-end
 
 --This function went from pretty to ugly but it should work
 local function showConjunction(self)
@@ -267,9 +250,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -296,7 +276,6 @@ function mod:SPELL_CAST_START(args)
 		if timers then
 			timerConjunctionCD:Start(timers, self.vb.grandConCount+1)
 		end
-		updateRangeFrame(self, true)
 		self:Schedule(4.5, showConjunction, self)
 		table.wipe(crabs)
 		table.wipe(dragons)
@@ -442,7 +421,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if self.vb.StarSigns == 1 then
-			updateRangeFrame(self)
 			if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
 				DBM.InfoFrame:Show(15, "function", updateInfoFrame, false, true)
 			end
@@ -452,11 +430,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnCoronalEjection:Show()
 			specWarnCoronalEjection:Play("runout")
-			updateRangeFrame(self)
 		end
 	elseif spellId == 205984 or spellId == 214335 or spellId == 214167 then
 		if args:IsPlayer() then
-			updateRangeFrame(self)
 			local _, _, _, _, duration, expires = DBM:UnitDebuff("player", args.spellName)
 			if expires then
 				local remaining = expires-GetTime()
@@ -466,14 +442,11 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellGravitationalPull:Schedule(remaining-3, 3)
 			end
 		end
-	elseif spellId == 206585 then
-		updateRangeFrame(self)
 	elseif spellId == 206936 then
 		warnIcyEjection:CombinedShow(0.5, args.destName)--If only one, move this to else rule to filter from player
 		if args:IsPlayer() then
 			specWarnIcyEjection:Show()
 			specWarnIcyEjection:Play("runout")
-			updateRangeFrame(self)
 			if self.Options.ConjunctionYellFilter and self.vb.conActive then return end--No ejection yells during conjunction
 			yellIcyEjection:Schedule(9, 1)
 			yellIcyEjection:Schedule(8, 2)
@@ -514,9 +487,6 @@ function mod:SPELL_AURA_REMOVED(args)
 			timerConjunction:Stop()
 			playerAffected = false
 		end
-		if self.vb.StarSigns == 0 then
-			updateRangeFrame(self)
-		end
 		if spellId == 205429 then--Crab
 			tDeleteItem(crabs, args.destName)
 		elseif spellId == 216344 then--Dragon
@@ -528,22 +498,13 @@ function mod:SPELL_AURA_REMOVED(args)
 		end
 	elseif spellId == 205984 or spellId == 214335 or spellId == 214167 then
 		if args:IsPlayer() then
-			updateRangeFrame(self)
 			yellGravitationalPull:Cancel()
 		end
-	elseif spellId == 206585 then
-		updateRangeFrame(self)
-	elseif spellId == 206464 and args:IsPlayer() then
-		updateRangeFrame(self)
 	elseif spellId == 206936 and args:IsPlayer() then
 		yellIcyEjection:Cancel()
-		updateRangeFrame(self)
 	elseif spellId == 205649 and args:IsPlayer() then
 		yellFelEjectionFade:Cancel()
 		warnFelEjectionPuddle:Cancel()
-		updateRangeFrame(self)
-	elseif spellId == 207143 and args:IsPlayer() then
-		updateRangeFrame(self)
 	end
 end
 
@@ -643,15 +604,8 @@ do
 			voidWarned = true
 			specWarnVoidEjection:Show()
 			specWarnVoidEjection:Play("runout")
-			--yellScornedTouch:Yell()
-			--if self.Options.RangeFrame then
-			--	DBM.RangeCheck:Show(8)
-			--end
 		elseif not hasDebuff and voidWarned then
 			voidWarned = false
-			--if self.Options.RangeFrame then
-			--	DBM.RangeCheck:Hide()
-			--end
 		end
 	end
 end

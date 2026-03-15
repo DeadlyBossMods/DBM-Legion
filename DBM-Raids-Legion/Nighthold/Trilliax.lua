@@ -11,11 +11,11 @@ mod:SetHotfixNoticeRev(15058)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 206788 208924 207513 207502 215062 206641 214672 206820",
+	"SPELL_CAST_START 206788 207513 207502 215062 206641 214672 206820",
 	"SPELL_CAST_SUCCESS 206560 206557 206559 206641",
 	"SPELL_AURA_APPLIED 211615 208910 208915 206641 207327",
 	"SPELL_AURA_APPLIED_DOSE 206641",
-	"SPELL_AURA_REMOVED 208499 206560 207327",
+	"SPELL_AURA_REMOVED 206560 207327",
 	"SPELL_PERIODIC_DAMAGE 206488",
 	"SPELL_PERIODIC_MISSED 206488",
 	"UNIT_DIED",
@@ -74,7 +74,6 @@ local specWarnEchoDuder				= mod:NewSpecialWarningSwitchCustom(214880, nil, nil,
 
 local timerEchoDuder				= mod:NewNextTimer(10, 214880, nil, nil, nil, 1, nil, DBM_COMMON_L.HEROIC_ICON)
 
-mod:AddRangeFrameOption(12, 208506)
 mod:AddInfoFrameOption(214573, false)
 mod:AddNamePlateOption("NPAuraOnCleansing", 207327)
 
@@ -115,9 +114,6 @@ end
 
 function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -207,9 +203,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnSterilize:Show()
 			specWarnSterilize:Play("scatter")
 			yellSterilize:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(12)
-			end
 		end
 	elseif spellId == 208910 or spellId == 208915 then--Searing Bonds (two IDs for paired off links)
 		warnArcingBonds:CombinedShow(0.5, args.destName)
@@ -250,13 +243,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
-	if spellId == 208499 then--Post debuff
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
-	elseif spellId == 206560 then--Cleaner Mode (45 seconds)
+	if spellId == 206560 then--Cleaner Mode (45 seconds)
 		timerToxicSliceCD:Stop("boss")
 	elseif spellId == 207327 then
 		if self.Options.NPAuraOnCleansing and not bombTexture then

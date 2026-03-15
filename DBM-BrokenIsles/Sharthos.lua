@@ -25,22 +25,15 @@ local timerBreathCD				= mod:NewCDTimer(18.4, 215821, nil, "Tank", 2, 5, nil, DB
 local timerFearCD				= mod:NewCDTimer(34.3, 216044, nil, nil, nil, 1)--34.3-65
 
 --mod:AddReadyCheckOption(37460, false)
-mod:AddRangeFrameOption(5, 216043)--Range unknown, journal nor spell tooltip say.
 
 function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
 		timerBreathCD:Start(16-delay)
 		timerFearCD:Start(60-delay)
 	end
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(5)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)

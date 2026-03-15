@@ -12,7 +12,6 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 213420 213522 213532 213665 213606",
 	"SPELL_AURA_APPLIED 213584 213625",
-	"SPELL_AURA_REMOVED 213625",
 	"UNIT_DIED"
 )
 
@@ -45,7 +44,6 @@ local timerMaraudingMistsCD			= mod:NewCDTimer(10.8, 213665, nil, nil, nil, 2)--
 --local timerSoulRendCD				= mod:NewAITimer(51, 213606, nil, nil, nil, 3)
 
 --mod:AddReadyCheckOption(37462, false)--Unknown quest flag
-mod:AddRangeFrameOption(8, 213665)
 
 function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
@@ -54,9 +52,6 @@ function mod:OnCombatStart(delay, yellTriggered)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -90,16 +85,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 213625 and args:IsPlayer() then
 		specWarnExpelSoul:Show()
 		specWarnExpelSoul:Play("runout")
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8)
-		end
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellId
-	if spellId == 213625 and args:IsPlayer() and self.Options.RangeFrame  then
-		DBM.RangeCheck:Hide()
 	end
 end
 

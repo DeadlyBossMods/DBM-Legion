@@ -12,7 +12,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 244969 240277",
-	"SPELL_CAST_SUCCESS 246220 244399 245294 246919 244294",
+	"SPELL_CAST_SUCCESS 244399 245294 246919 244294",
 	"SPELL_AURA_APPLIED 246220 244410 246919 246965",--246897
 	"SPELL_AURA_REMOVED 246220 244410 246919",
 --	"SPELL_PERIODIC_DAMAGE",
@@ -44,7 +44,6 @@ local timerSpecialCD					= mod:NewNextSpecialTimer(20, nil, nil, nil, nil, 3, ni
 
 mod:AddSetIconOption("SetIconOnDecimation", 244410, true)
 mod:AddSetIconOption("SetIconOnBombardment", 246220, true)
-mod:AddRangeFrameOption("7/17")
 --Decimator
 mod:AddTimerLine(Decimator)
 local specWarnDecimation				= mod:NewSpecialWarningMoveAway(244410, nil, nil, nil, 1, 2)
@@ -64,33 +63,6 @@ mod.vb.phase = 1
 mod.vb.lastCannon = 1--Anniilator 1 decimator 2
 mod.vb.annihilatorHaywire = false
 
-local debuffFilter
-local updateRangeFrame
-do
-	debuffFilter = function(uId)
-		if DBM:UnitDebuff(uId, 244410, 246919, 246220) then
-			return true
-		end
-	end
-	updateRangeFrame = function(self)
-		if not self.Options.RangeFrame then return end
-		if self.vb.deciminationActive > 0 then
-			if DBM:UnitDebuff("player", 244410, 246919) then
-				DBM.RangeCheck:Show(17)--Show Everyone
-			else
-				DBM.RangeCheck:Show(17, debuffFilter)--Show only those affected by debuff
-			end
-		elseif self.vb.FelBombardmentActive > 0 then
-			if DBM:UnitDebuff("player", 246220) then
-				DBM.RangeCheck:Show(7)--Will round to 8
-			else
-				DBM.RangeCheck:Show(7, debuffFilter)
-			end
-		else
-			DBM.RangeCheck:Hide()
-		end
-	end
-end
 
 function mod:OnCombatStart(delay)
 	self.vb.deciminationActive = 0
@@ -103,9 +75,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -166,7 +135,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnFelBombardment:Show(args.destName)
 		end
-		updateRangeFrame(self)
 		if self.Options.SetIconOnBombardment then
 			self:SetIcon(args.destName, 7, 13)
 		end
@@ -184,7 +152,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnDecimation then
 			self:SetIcon(args.destName, self.vb.deciminationActive)
 		end
-		updateRangeFrame(self)
 	elseif spellId == 246965 then--Haywire (Annihilator)
 		self.vb.annihilatorHaywire = true
 	end
@@ -197,7 +164,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if args:IsPlayer() then
 			yellFelBombardment:Cancel()
 		end
-		updateRangeFrame(self)
 		--if self.Options.SetIconOnBombardment then
 			--self:SetIcon(args.destName, 0)
 		--end
@@ -209,7 +175,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.SetIconOnDecimation then
 			self:SetIcon(args.destName, 0)
 		end
-		updateRangeFrame(self)
 	end
 end
 

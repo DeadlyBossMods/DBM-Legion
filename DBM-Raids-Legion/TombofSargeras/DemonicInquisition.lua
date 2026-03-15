@@ -76,7 +76,6 @@ local berserkTimer					= mod:NewBerserkTimer(720)--482 in log, rounding to 8 eve
 mod:AddSetIconOption("SetIconOnQuills", 233431, true)
 mod:AddSetIconOption("SetIconOnAnguish", 233983, true)
 mod:AddInfoFrameOption(233104, true)
-mod:AddRangeFrameOption(8, 233983)
 
 mod.vb.burstCount = 0
 mod.vb.scytheCount = 0
@@ -174,9 +173,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -270,9 +266,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnEchoingAnguish:Show()
 			specWarnEchoingAnguish:Play("runout")
 			yellEchoingAnguish:Yell(currentIcon, args.spellName, currentIcon)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 		if self.Options.SetIconOnAnguish then
 			self:SetIcon(args.destName, currentIcon)
@@ -311,11 +304,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerBoneSaw:Stop()
 		timerBoneSawCD:Start()
 	elseif spellId == 233983 then
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
 		if self.Options.SetIconOnAnguish then
 			self:SetIcon(args.destName, 0)
 		end

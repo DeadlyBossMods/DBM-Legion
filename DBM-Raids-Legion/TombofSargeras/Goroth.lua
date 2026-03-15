@@ -54,7 +54,6 @@ local timerRainofBrimstone				= mod:NewCastTimer(8, 238587, 87701, nil, nil, 5, 
 
 --mod:AddSetIconOption("SetIconOnShield", 228270, true)
 --mod:AddInfoFrameOption(227503, true)
-mod:AddRangeFrameOption("10/25")
 
 local infernalSpike, tankDebuff = DBM:GetSpellName(233021), DBM:GetSpellName(234264)
 local cometTable = {}
@@ -83,9 +82,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -147,15 +143,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBurningArmor:Show()
 			specWarnBurningArmor:Play("runout")
 			timerBurningArmor:Start()
-			if self.Options.RangeFrame then
-				if self:IsEasy() then
-					DBM.RangeCheck:Show(10)
-				elseif self:IsHeroic() then
-					DBM.RangeCheck:Show(25)--Will round up to 30
-				else
-					DBM.RangeCheck:Show(40)
-				end
-			end
 		else
 			local _, _, _, _, _, expires = DBM:UnitDebuff("player", tankDebuff)
 			if expires then
@@ -175,9 +162,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellCrashingComet:Yell(5)
 			yellCrashingComet:Countdown(spellId)
 			timerCrashingComet:Start()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 	end
 end
@@ -193,16 +177,10 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 231363 then
 		if args:IsPlayer() then
 			timerBurningArmor:Stop()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
 		end
 	elseif spellId == 232249 and args:IsPlayer() then
 		yellCrashingComet:Cancel()
 		timerCrashingComet:Stop()
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
 	end
 end
 

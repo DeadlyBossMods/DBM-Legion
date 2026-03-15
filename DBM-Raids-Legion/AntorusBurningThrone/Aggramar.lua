@@ -59,7 +59,6 @@ local timerWakeofFlameCD				= mod:NewCDTimer(24.3, 244693, nil, nil, nil, 3, nil
 
 mod:AddSetIconOption("SetIconOnBlaze2", 254452, false)--Both off by default, both conflit with one another
 mod:AddInfoFrameOption(244688, true)
-mod:AddRangeFrameOption("6", nil, "Ranged")
 mod:AddBoolOption("ignoreThreeTank", true)
 --Stage Two: Champion of Sargeras
 local specWarnFlare						= mod:NewSpecialWarningDodge(245983, "-Melee", nil, 2, 2, 2)
@@ -293,9 +292,6 @@ function mod:OnCombatStart(delay)
 		timerTaeshalachTechCD:Start(35-delay, 1)
 	end
 	--Everyone should lose spread except tanks which should stay stacked. Maybe melee are safe too?
-	if self.Options.RangeFrame and not self:IsTank() then
-		DBM.RangeCheck:Show(6)
-	end
 	if self.Options.NPAuraOnPresence then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 		self:RegisterOnUpdateHandler(function(self)
@@ -337,9 +333,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -528,9 +521,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnAdds then
 			self:ScheduleMethod(2, "ScanForMobs", 122532, 1, 1, 5, nil, 12, "SetIconOnAdds", nil, self.Options.skipMarked)
 		end
-		if self.Options.RangeFrame and not self:IsTank() then
-			DBM.RangeCheck:Hide()
-		end
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:Hide()
 		end
@@ -568,9 +558,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		elseif self.vb.phase == 3 then
 			warnPhase:Play("pthree")
 			timerFlareCD:Start(self:IsMythic() and 8 or 10)
-		end
-		if self.Options.RangeFrame and not self:IsTank() then
-			DBM.RangeCheck:Show(6)
 		end
 	elseif spellId == 244903 or spellId == 247091 then--Purification/Catalyzed
 		if self.Options.NPAuraOnPresence then

@@ -48,7 +48,6 @@ local timerChronoPartCD				= mod:NewCDTimer(5, 206607, nil, "Tank", nil, 5, nil,
 local timerBigAddCD					= mod:NewNextCountTimer(30, 206700, nil, nil, nil, 1, nil, nil, nil, 1, 4)--Switch to waning time particle when section info known
 local timerNextPhase				= mod:NewStageTimer(74)--Used anywhere phase change is NOT immediately after power overwhelming
 
-mod:AddRangeFrameOption(10, 206617)
 mod:AddInfoFrameOption(206610)
 mod:AddDropdownOption("InfoFrameBehavior", {"TimeRelease", "TimeBomb"}, "TimeRelease", "misc", nil, 206610)
 
@@ -91,9 +90,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -126,9 +122,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnTimeBomb:CombinedShow(0.5, args.destName)
 		if args:IsPlayer() then
 			updateTimeBomb(self)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 		if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() and self.Options.InfoFrameBehavior == "TimeBomb" then
 			DBM.InfoFrame:SetHeader(args.spellName)
@@ -156,9 +149,6 @@ function mod:SPELL_AURA_REMOVED(args)
 			specWarnTimeBomb:CancelVoice()
 			timerTimeBomb:Stop()
 			yellTimeBomb:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
 		end
 		if self.Options.InfoFrame and self.vb.timeBombDebuffCount == 0 and self.Options.InfoFrameBehavior == "TimeBomb" then
 			DBM.InfoFrame:Hide()

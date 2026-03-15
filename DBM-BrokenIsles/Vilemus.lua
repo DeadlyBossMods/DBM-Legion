@@ -30,7 +30,6 @@ local timerFelBreathCD			= mod:NewCDTimer(13.4, 247731, nil, nil, nil, 3)
 local timerStompCD				= mod:NewCDTimer(14.6, 247733, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)--15-35?
 
 mod:AddReadyCheckOption(49196, false)
-mod:AddRangeFrameOption(8, 247739)--Mainly to ensure tanks are far enough from eachother. any dumb melee don't matter.
 
 local tankFilter
 do
@@ -45,15 +44,9 @@ function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
 
 	end
-	if self.Options.RangeFrame and self:IsTank() then
-		DBM.RangeCheck:Show(8, tankFilter)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)

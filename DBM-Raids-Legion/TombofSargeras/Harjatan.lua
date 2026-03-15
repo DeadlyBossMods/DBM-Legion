@@ -12,9 +12,9 @@ mod.respawnTime = 29
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 232174 231904 234194 240319 241590",
+	"SPELL_CAST_START 232174 231904 234194 241590",
 	"SPELL_CAST_SUCCESS 231854 231729 234129",
-	"SPELL_AURA_APPLIED 231998 231729 231904 234016 241600 233429 232061",
+	"SPELL_AURA_APPLIED 231998 231729 231904 234016 241600 232061",
 	"SPELL_AURA_APPLIED_DOSE 231998",
 	"SPELL_AURA_REMOVED 233429 234016 241600",
 	"SPELL_AURA_REMOVED_DOSE 233429",
@@ -111,9 +111,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
---	if self.Options.RangeFrame then
---		DBM.RangeCheck:Hide()
---	end
+
 --	if self.Options.InfoFrame then
 --		DBM.InfoFrame:Hide()
 --	end

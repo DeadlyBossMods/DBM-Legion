@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 248499 258039 258838 252729 252616 256388 258029 255826",
 	"SPELL_AURA_APPLIED 248499 248396 250669 251570 255199 253021 255496 255496 255478 252729 252616 255433 255430 255429 255425 255422 255419 255418 258647 258646 257869 257931 257966 258838",
 	"SPELL_AURA_APPLIED_DOSE 248499 258039 258838",
-	"SPELL_AURA_REMOVED 250669 251570 255199 253021 255496 255496 255478 255433 255430 255429 255425 255422 255419 255418 248499 258039 257966 258647 258646 258838 248396 257869",
+	"SPELL_AURA_REMOVED 250669 251570 255199 253021 255496 255496 255478 255433 255430 255429 255425 255422 255419 255418 248499 258039 257966 258647 258646 258838 248396",
 	"SPELL_INTERRUPT",
 	"SPELL_PERIODIC_DAMAGE 248167",
 	"SPELL_PERIODIC_MISSED 248167",
@@ -79,7 +79,6 @@ local yellSargFearCombo				= mod:NewComboYell(257931, 5782)
 
 local timerSargGazeCD				= mod:NewCDCountTimer(35.2, 258068, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, 1, 4)
 
-mod:AddRangeFrameOption(5, 257869)
 --Stage Two: The Protector Redeemed
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local warnSoulburst					= mod:NewTargetAnnounce(250669, 2)
@@ -166,7 +165,6 @@ mod.vb.sentenceCount = 0
 mod.vb.gazeCount = 0
 mod.vb.scytheCastCount = 0
 mod.vb.firstscytheSwap = false
-mod.vb.rangeCheckNoTouchy = false
 --P3 Mythic Timers
 local torturedRage = {40, 40, 50, 30, 35, 10, 8, 35, 10, 8, 35}--3 timers from method video not logs, verify by logs to improve accuracy
 local sargSentenceTimers = {53, 56.9, 60, 53, 53}--1 timer from method video not logs, verify by logs to improve accuracy
@@ -200,16 +198,10 @@ local function fearCheck(self)
 end
 
 local function ToggleRangeFinder(self, hide)
-	if self:IsTank() or not self.Options.RangeFrame then return end--Tanks don't get rage
+	if self:IsTank() then return end--Tanks don't get rage
 	if not hide then
 		specWarnSargGaze:Show()
 		specWarnSargGaze:Play("range5")
-		DBM.RangeCheck:Show(5)
-		self.vb.rangeCheckNoTouchy = true--Prevent SPELL_AURA_REMOVED of revious rage closing range finder during window we're expecting next rage
-	end
-	if hide and not DBM:UnitDebuff("player", 257869) then
-		DBM.RangeCheck:Hide()
-		self.vb.rangeCheckNoTouchy = false
 	end
 end
 
@@ -305,7 +297,6 @@ function mod:OnCombatStart(delay)
 	self.vb.gazeCount = 0
 	self.vb.scytheCastCount = 0
 	self.vb.firstscytheSwap = false
-	self.vb.rangeCheckNoTouchy = false
 	timerSweepingScytheCD:Start(5.5-delay, 1)
 	timerSkyandSeaCD:Start(10.1-delay, 1)
 	timerTorturedRageCD:Start(12-delay, 1)
@@ -332,9 +323,6 @@ function mod:OnCombatEnd()
 	end
 	if self.Options.NPAuraOnInevitability or self.Options.NPAuraOnCosmosSword or self.Options.NPAuraOnEternalBlades or self.Options.NPAuraOnVulnerability then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)
-	end
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
 	end
 end
 
@@ -779,10 +767,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		end
 	elseif spellId == 248396 and args:IsPlayer() then
 		yellSoulblightFades:Cancel()
-	elseif spellId == 257869 then
-		if args:IsPlayer() and self.Options.RangeFrame and not self.vb.rangeCheckNoTouchy then
-			DBM.RangeCheck:Hide()
-		end
 	end
 end
 

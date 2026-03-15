@@ -14,7 +14,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 227967 228390 228565 228032 228854 227903 228056 228619 228633",
 	"SPELL_CAST_SUCCESS 228300 228519 228854",
 	"SPELL_AURA_APPLIED 229119 227982 193367 228519 232488 228054 230267",
-	"SPELL_AURA_REMOVED 193367 229119 230267 228300 228054",
+	"SPELL_AURA_REMOVED 193367 229119 228300 228054",
 	"SPELL_PERIODIC_DAMAGE 227998",
 	"SPELL_PERIODIC_MISSED 227998",
 	"UNIT_DIED",
@@ -83,7 +83,6 @@ local timerFetidRotCD				= mod:NewCDTimer(13, 193367, nil, nil, nil, 3)
 local timerLanternofDarknessCD		= mod:NewNextTimer(25, 228619, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerGiveNoQuarterCD			= mod:NewNextTimer(6, 228633, nil, nil, nil, 3)
 
-mod:AddRangeFrameOption(5, 193367)
 mod:AddInfoFrameOption(193367)
 --Stage Three: Helheim's Last Stand
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
@@ -167,9 +166,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -348,9 +344,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellFetidRot:Schedule(remaining-2, 2)
 				yellFetidRot:Schedule(remaining-3, 3)
 			end
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(5)
-			end
 		end
 		if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() and not self:IsLFR() then
 			DBM.InfoFrame:SetHeader(args.spellName)
@@ -407,9 +400,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		self.vb.rottedPlayers = self.vb.rottedPlayers - 1
 		if args:IsPlayer() then
 			yellFetidRot:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
 		end
 		if self.vb.rottedPlayers == 0 and self.Options.InfoFrame then
 			DBM.InfoFrame:Hide()

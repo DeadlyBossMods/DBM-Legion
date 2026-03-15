@@ -31,32 +31,16 @@ local timerPestilenceCD				= mod:NewCDTimer(14.2, 233614, nil, nil, nil, 3)
 local timerShadowBarrageCD			= mod:NewCDTimer(16.7, 234452, nil, nil, nil, 2)
 
 --mod:AddReadyCheckOption(37460, false)
-mod:AddRangeFrameOption(8, 233568)
 local PanicDebuff = DBM:GetSpellName(233568)
-
-local debuffFilter
-do
-	debuffFilter = function(uId)
-		if DBM:UnitDebuff(uId, PanicDebuff) then
-			return true
-		end
-	end
-end
 
 function mod:OnCombatStart(delay, yellTriggered)
 	PanicDebuff = DBM:GetSpellName(233568)
 	if yellTriggered then
 
 	end
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(8, debuffFilter)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)

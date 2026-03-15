@@ -12,8 +12,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 217966 217986 217893",
 	"SPELL_CAST_SUCCESS 217877",
-	"SPELL_AURA_APPLIED 217563 217877 217831 217834",
-	"SPELL_AURA_REMOVED 217877",
+	"SPELL_AURA_APPLIED 217877",
 	"SPELL_PERIODIC_DAMAGE 217907",
 	"SPELL_PERIODIC_MISSED 217907",
 	"UNIT_SPELLCAST_SUCCEEDED"
@@ -38,7 +37,6 @@ local timerHowlingGaleCD		= mod:NewCDTimer(13.8, 217966, nil, nil, nil, 2)
 local timerArcaneDesolationCD	= mod:NewCDTimer(12.2, 217986, nil, nil, nil, 2)
 
 mod:AddReadyCheckOption(43193, false)
-mod:AddRangeFrameOption(10, 217877)
 
 mod.vb.specialCast = 0
 
@@ -50,9 +48,6 @@ function mod:OnCombatStart(delay, yellTriggered)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -93,20 +88,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specBurningBomb:Show()
 			specBurningBomb:Play("targetyou")
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
-		end
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellId
-	if spellId == 217877 then
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
 		end
 	end
 end

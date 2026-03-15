@@ -19,7 +19,6 @@ local specWarnBefoulment			= mod:NewSpecialWarningMoveTo(222719, nil, nil, nil, 
 local yellBefoulment				= mod:NewFadesYell(222719)
 local specWarnDarkLightning			= mod:NewSpecialWarningGTFO(223946, nil, nil, nil, 1, 8)
 
-mod:AddRangeFrameOption(10, 221028)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if not self.Options.Enabled then return end
@@ -30,9 +29,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnUnstableDecay:Show()
 			specWarnUnstableDecay:Play("runout")
 			yellUnstableDecay:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 	--"<40.43 21:42:49> [CLEU] SPELL_AURA_APPLIED#Creature-0-3779-1520-17549-111354-000061CEF4#Taintheart Befouler#Player-3693-08EE23F3#Chiivesdh#222719#Befoulment#DEBUFF#nil", -- [914]
 	elseif spellId == 222719 then
@@ -51,9 +47,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
-	if spellId == 221028 and args:IsPlayer() and self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	elseif spellId == 222719 and args:IsPlayer() then
+	if spellId == 222719 and args:IsPlayer() then
 		yellBefoulment:Cancel()
 	end
 end

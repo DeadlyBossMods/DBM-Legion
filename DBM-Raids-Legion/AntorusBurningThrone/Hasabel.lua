@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 244016 244383 244613 244949 244849 245050 245118 245075",
 	"SPELL_AURA_APPLIED_DOSE 244016",
 	"SPELL_AURA_REFRESH 244016",
-	"SPELL_AURA_REMOVED 244383 244613 244849 245118 245075",
+	"SPELL_AURA_REMOVED 244383 244613 244849 245118",
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_DIED",
@@ -57,7 +57,6 @@ local timerTransportPortalCD			= mod:NewCDTimer(41.2, 244677, nil, nil, nil, 1)-
 
 --local berserkTimer					= mod:NewBerserkTimer(600)
 
-mod:AddRangeFrameOption("8/10")
 mod:AddBoolOption("ShowAllPlatforms", false)
 --Platform: Xoroth
 mod:AddTimerLine(Xoroth)
@@ -111,24 +110,6 @@ mod.vb.firstPortal = false
 local playerPlatform = 1--1 Nexus, 2 Xoroth, 3 Rancora, 4 Nathreza
 local mindFog, aegisFlames, felMiasma = DBM:GetSpellName(245099), DBM:GetSpellName(244383), DBM:GetSpellName(244826)
 
-local updateRangeFrame
-do
-	local function debuffFilter(uId)
-		if DBM:UnitDebuff(uId, 244613, 245075, 244849) then
-			return true
-		end
-	end
-	updateRangeFrame = function(self)
-		if not self.Options.RangeFrame then return end
-		if DBM:UnitDebuff("player", 244849) then
-			DBM.RangeCheck:Show(10)
-		elseif DBM:UnitDebuff("player", 244613, 245118, 245075) then
-			DBM.RangeCheck:Show(8)
-		else
-			DBM.RangeCheck:Show(10, debuffFilter)
-		end
-	end
-end
 
 local function updateAllTimers(self, ICD)
 	DBM:Debug("updateAllTimers running", 3)
@@ -167,9 +148,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -282,7 +260,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnEverburningFlames:Show(mindFog)
 			yellEverburningFlames:Countdown(10)
-			updateRangeFrame(self)
 		end
 	elseif spellId == 244849 then--Caustic Slime
 		warnCausticSlime:CombinedShow(1, args.destName)
@@ -293,20 +270,17 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnCausticSlimeLFR:Show()
 			end
 			yellCausticSlime:Countdown(20)
-			updateRangeFrame(self)
 		end
 	elseif spellId == 245118 then--Cloying Shadows
 		warnCloyingShadows:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
 			specWarnCloyingShadows:Show()
 			yellCloyingShadows:Countdown(30)
-			updateRangeFrame(self)
 		end
 	elseif spellId == 245075 then
 		warnHungeringGloom:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
 			specWarnHungeringGloom:Show(felMiasma)
-			updateRangeFrame(self)
 		end
 	elseif spellId == 244949 then--Felsilk Wrap
 		if args:IsPlayer() then
@@ -341,21 +315,14 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 244613 then--Everburning Flames
 		if args:IsPlayer() then
 			yellEverburningFlames:Cancel()
-			updateRangeFrame(self)
 		end
 	elseif spellId == 244849 then--Caustic Slime
 		if args:IsPlayer() then
 			yellCausticSlime:Cancel()
-			updateRangeFrame(self)
 		end
 	elseif spellId == 245118 then--Cloying Shadows
 		if args:IsPlayer() then
 			yellCloyingShadows:Cancel()
-			--updateRangeFrame(self)
-		end
-	elseif spellId == 245075 then--Hungering Gloom
-		if args:IsPlayer() then
-			updateRangeFrame(self)
 		end
 	end
 end

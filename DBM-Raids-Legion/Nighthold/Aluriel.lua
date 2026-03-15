@@ -105,7 +105,6 @@ local timerFelLashCD				= mod:NewNextCountTimer(25, 230403, nil, nil, nil, 2, ni
 
 local berserkTimer					= mod:NewBerserkTimer(600)--480
 
-mod:AddRangeFrameOption("8")
 mod:AddSetIconOption("SetIconOnFrozenTempest", 213083, true, 5)
 mod:AddSetIconOption("SetIconOnSearingDetonate", 213275, true, 0)
 mod:AddSetIconOption("SetIconOnBurstOfFlame", 213760, true, 5)
@@ -123,15 +122,6 @@ local annihilateTimers = {8.0, 45.0, 40.0, 44.0, 38.0, 37.0, 33.0, 47.0, 41.0, 4
 local mythicAnnihilateTimers = {8, 46, 30, 37, 35, 43, 27, 37, 41, 37, 35, 43, 27}
 local felLashTimers = {21, 10.9, 6, 11, 6}
 local searingDetonateIcons = {}
-
-local debuffFilter
-do
-	debuffFilter = function(uId)
-		if DBM:UnitDebuff(uId, MarkOfFrostDebuff) or DBM:UnitDebuff(uId, SearingBrandDebuff) then
-			return true
-		end
-	end
-end
 
 local function findSearingMark(self)
 	if DBM:UnitDebuff("player", SearingBrandDebuff) then
@@ -171,9 +161,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -288,9 +275,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				timerFirePhaseCD:Start(85)
 			end
 		end
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8, debuffFilter)
-		end
 		if self.Options.InfoFrame and not self:IsLFR() then
 			DBM.InfoFrame:SetHeader(frostBitten)
 			DBM.InfoFrame:Show(6, "playerdebuffstacks", frostBitten)
@@ -344,11 +328,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnArcaneDetonate:ScheduleVoice(35, "watchorb")
 			timerAnimateArcaneCD:Start(51.9)
 			timerFrostPhaseCD:Start(70)
-		end
-		if self.Options.RangeFrame and self:IsRanged() then
-			DBM.RangeCheck:Show(8)--Show everyone for better arcane orb spread
-		else--Melee, kill range frame this phase
-			DBM.RangeCheck:Hide()
 		end
 	elseif spellId == 212531 then--Mark of Frost (5sec Targetting Debuff)
 		warnMarkOfFrostChosen:CombinedShow(0.5, args.destName)
@@ -451,14 +430,8 @@ function mod:UNIT_AURA()
 	local hasDebuff = DBM:UnitDebuff("player", MarkOfFrostDebuff) or DBM:UnitDebuff("player", SearingBrandDebuff)
 	if hasDebuff and not rangeShowAll then--Has 1 or more debuff, show all players on range frame
 		rangeShowAll = true
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8)
-		end
 	elseif not hasDebuff and rangeShowAll then--No debuffs, only show those that have debuffs
 		rangeShowAll = false
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8, debuffFilter)
-		end
 	end
 end
 

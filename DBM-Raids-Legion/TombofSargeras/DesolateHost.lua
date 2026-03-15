@@ -85,7 +85,6 @@ local berserkTimer					= mod:NewBerserkTimer(480)
 
 mod:AddSetIconOption("SoulIcon", 236459, true)
 mod:AddInfoFrameOption(235621, true)
-mod:AddRangeFrameOption(10, 236459)
 mod:AddNamePlateOption("NPAuraOnBonecageArmor", 236513)
 mod:AddBoolOption("IgnoreTemplarOn3Tank", true)
 
@@ -181,9 +180,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -277,9 +273,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnSoulbind:Show()
 			specWarnSoulbind:Play("targetyou")
 			yellSoulbind:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 		if self.Options.SoulIcon then
 			self:SetIcon(args.destName, self.vb.soulIcon)
@@ -349,9 +342,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 235732 then
 		playersInSpirit[#playersInSpirit+1] = args.destName
 		tDeleteItem(playersNotInSpirit, args.destName)
-		if args:IsPlayer() then--Only show people not in spirit realm
-			DBM.RangeCheck:Show(8, regularFilter)
-		end
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
@@ -361,9 +351,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 236459 then
 		if self.Options.SoulIcon then
 			self:SetIcon(args.destName, 0)
-		end
-		if self.Options.RangeFrame and args:IsPlayer() then
-			DBM.RangeCheck:Hide()
 		end
 	elseif spellId == 235924 then
 		if args:IsPlayer() then
@@ -386,9 +373,6 @@ function mod:SPELL_AURA_REMOVED(args)
 	elseif spellId == 235732 then
 		playersNotInSpirit[#playersNotInSpirit+1] = args.destName
 		tDeleteItem(playersInSpirit, args.destName)
-		if args:IsPlayer() then--Only show people in spirit realm
-			DBM.RangeCheck:Show(8, spiritFilter)
-		end
 	elseif spellId == 238570 then--Tormented Cries
 		timerTormentedCriesCD:Start(58, self.vb.tormentedCriesCast+1)
 	end

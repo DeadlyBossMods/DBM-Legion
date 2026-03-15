@@ -68,7 +68,6 @@ local timerTouchofLifeCD			= mod:NewCDTimer(15, 211368, nil, nil, nil, 4, nil, D
 local timerRottenBreathCD			= mod:NewCDTimer(24.3, 211192, nil, nil, nil, 3)
 local timerDisiccatingStompCD		= mod:NewCDTimer(32, 211073, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
 
-mod:AddRangeFrameOption(8, 211471)
 mod:AddSetIconOption("SetIconOnWisps", "ej13348", false, 5)
 mod:AddInfoFrameOption(210279)
 
@@ -109,9 +108,6 @@ end
 
 function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	--DBM:AddMsg(L.BrambleMessage)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
@@ -229,9 +225,6 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 				self.vb.sisterCount = self.vb.sisterCount + 1
 				timerScornedTouchCD:Start(4.5, GUID)
 				timerTouchofLifeCD:Start(6, GUID)
-				if self.Options.RangeFrame then
-					DBM.RangeCheck:Show(8)
-				end
 			elseif cid == 105494 then--Rotten Drake
 				timerRottenBreathCD:Start(18.1, GUID)
 			elseif cid == 105468 then--Nightmare Ancient
@@ -247,9 +240,7 @@ function mod:UNIT_DIED(args)
 		self.vb.sisterCount = self.vb.sisterCount - 1
 		timerTouchofLifeCD:Stop(args.destGUID)
 		timerScornedTouchCD:Stop(args.destGUID)
-		if self.Options.RangeFrame and self.vb.sisterCount == 0 and not DBM:UnitDebuff("player", debuffName) then--Do to shitty spellInfo code, it'll fail to hide first time
-			DBM.RangeCheck:Hide()
-		end
+
 	elseif cid == 105494 then--Rotten Drake
 		--This is safer method to cancel it but if more than 1 drake is up it may in rare cases break scan for 2nd drake
 		self:BossUnitTargetScannerAbort()
@@ -313,14 +304,8 @@ do
 			specWarnScornedTouch:Play("runout")
 			yellScornedTouch:Yell()
 			scornedWarned = true
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		elseif not hasDebuff and scornedWarned then
 			scornedWarned = false
-			if self.Options.RangeFrame and self.vb.sisterCount == 0 then
-				DBM.RangeCheck:Hide()
-			end
 		end
 	end
 end

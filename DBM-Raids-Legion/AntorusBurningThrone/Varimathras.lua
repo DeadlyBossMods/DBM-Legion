@@ -12,7 +12,7 @@ mod.respawnTime = 29
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 243960 244093 243999 257644 122366",
+	"SPELL_CAST_SUCCESS 243960 244093 243999 257644",
 	"SPELL_AURA_APPLIED 243961 244042 244094 248732 243968 243977 243980 243973",
 	"SPELL_AURA_REMOVED 244042 244094",
 	"SPELL_PERIODIC_DAMAGE 244005 248740",
@@ -67,7 +67,6 @@ local berserkTimer						= mod:NewBerserkTimer(390)
 mod:AddSetIconOption("SetIconOnMarkedPrey", 244042, true)
 mod:AddSetIconOption("SetIconEmbrace", 244094, true)
 --mod:AddInfoFrameOption(239154, true)
-mod:AddRangeFrameOption("8/10")
 
 mod.vb.currentTorment = 0--Can't antispam, cause it'll just break if someone dies and gets brezzed
 mod.vb.totalEmbrace = 0
@@ -85,15 +84,9 @@ function mod:OnCombatStart(delay)
 		timerNecroticEmbraceCD:Start(35-delay)
 	end
 	berserkTimer:Start(310-delay)--Confirmed normal/heroic/mythic
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(8)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 --	if self.Options.InfoFrame then
 --		DBM.InfoFrame:Hide()
 --	end
@@ -157,9 +150,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				end
 				yellNecroticEmbrace:Yell(self.vb.totalEmbrace, icon, icon)
 				yellNecroticEmbraceFades:Countdown(6, 3, icon)
-				if self.Options.RangeFrame then
-					DBM.RangeCheck:Show(10)
-				end
 			end
 		else
 			warnNecroticEmbrace:CombinedShow(0.5, args.destName)--Combined message because even if it starts on 1, people are gonna fuck it up
@@ -208,9 +198,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		if args:IsPlayer() then
 			playerAffected = false
 			yellNecroticEmbraceFades:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 		if self.Options.SetIconEmbrace then
 			self:SetIcon(args.destName, 0)

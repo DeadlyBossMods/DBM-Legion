@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 244057 244056",
 	"SPELL_CAST_SUCCESS 244072 251445 245098",
 	"SPELL_AURA_APPLIED 244768 248815 254429 248819 244054 244055 251356",
-	"SPELL_AURA_REMOVED 244768 248815 254429 248819 251356",
+	"SPELL_AURA_REMOVED 248815 254429 248819",
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2"
@@ -33,7 +33,6 @@ local timerFocusingPower				= mod:NewCastTimer(15, 251356, nil, nil, nil, 6)
 --local berserkTimer					= mod:NewBerserkTimer(600)
 
 --mod:AddInfoFrameOption(239154, true)
-mod:AddRangeFrameOption("5/8")
 mod:AddBoolOption("SequenceTimers", false)
 --F'harg
 mod:AddTimerLine(Fharg)
@@ -148,15 +147,9 @@ function mod:OnCombatStart(delay)
 			--Weight not even cast
 		end
 	end
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(5)--Molten Touch (assumed)
-	end
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 --	if self.Options.InfoFrame then
 --		DBM.InfoFrame:Hide()
 --	end
@@ -235,9 +228,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnEnflamed:Show()
 			specWarnEnflamed:Play("scatter")
 			yellEnflamed:Countdown(4)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 	elseif spellId == 248819 then--Siphoned
 		warnSiphoned:CombinedShow(0.3, args.destName)
@@ -245,9 +235,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnSiphoned:Show(DBM_COMMON_L.ALLY)
 			specWarnSiphoned:Play("gathershare")
 			yellSiphoned:Countdown(4)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(8)
-			end
 		end
 	elseif spellId == 254429 then
 		warnWeightofDarkness:CombinedShow(0.3, args.destName)
@@ -281,16 +268,10 @@ function mod:SPELL_AURA_REMOVED(args)
 	if spellId == 248815 then--Enflamed
 		if args:IsPlayer() then
 			yellEnflamed:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(5)
-			end
 		end
 	elseif spellId == 248819 then--Siphoned
 		if args:IsPlayer() then
 			yellSiphoned:Cancel()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(5)
-			end
 		end
 	elseif spellId == 254429 then
 		if self.Options.SetIconOnWeightofDarkness2 then

@@ -42,7 +42,6 @@ local timerSlamCD					= mod:NewNextCountTimer(30, 205862, nil, nil, nil, 3, nil,
 
 local berserkTimer					= mod:NewBerserkTimer(360)--technically not a berserk, but raid instantly wipes during final bridge smash, at 6 minutes.
 
-mod:AddRangeFrameOption(5, 206351)
 mod:AddSetIconOption("SetIconOnAdds", "ej12914", true, 5)
 mod:AddArrowOption("ArrowOnBeam3", 205368, true, 3)
 
@@ -122,9 +121,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -189,9 +185,6 @@ function mod:SPELL_CAST_START(args)
 		if not mobGUIDs[args.sourceGUID] then
 			mobGUIDs[args.sourceGUID] = true
 			self.vb.burningEmbers = self.vb.burningEmbers + 1
-			if self.Options.RangeFrame and not DBM.RangeCheck:IsShown() then
-				DBM.RangeCheck:Show(5)
-			end
 			if self.Options.SetIconOnAdds then
 				self:ScanForMobs(args.sourceGUID, 0, 8, 8, nil, 15, "SetIconOnAdds")
 			end
@@ -275,9 +268,6 @@ function mod:UNIT_DIED(args)
 	if cid == 104262 then--Burning Ember
 		self.vb.burningEmbers = self.vb.burningEmbers - 1
 		mobGUIDs[args.destGUID] = nil
-		if self.Options.RangeFrame and self.vb.burningEmbers == 0 then
-			DBM.RangeCheck:Hide()
-		end
 	end
 end
 

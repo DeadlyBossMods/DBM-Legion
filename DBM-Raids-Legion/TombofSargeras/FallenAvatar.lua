@@ -89,7 +89,6 @@ local berserkTimer					= mod:NewBerserkTimer(420)
 mod:AddSetIconOption("SetIconOnShadowyBlades", 236571, true)
 mod:AddSetIconOption("SetIconOnDarkMark", 239739, true)
 mod:AddBoolOption("InfoFrame", true)
-mod:AddRangeFrameOption(10, 236571)
 local abilitiesonCD = {
 	[239207] = true,--Touch of Sargeras
 	[239132] = true,--Rupture Realities
@@ -237,9 +236,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -491,9 +487,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 				timerShadowyBladesCD:Start(30)
 				self:Schedule(30, setabilityStatus, self, 236571, 0)--Set ready to use when CD expires
 			end
-		end
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(10, nil, nil, nil, nil, 5)
 		end
 	end
 end
