@@ -71,12 +71,12 @@ local warnPhase2					= mod:NewPhaseAnnounce(2, 2)
 local specWarnOdynsTest				= mod:NewSpecialWarningCount(227626, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.stack:format(5, 159515), nil, 1, 2)
 local specWarnOdynsTestOther		= mod:NewSpecialWarningTaunt(227626, nil, nil, nil, 1, 2)
 local specWarnShatterSpears			= mod:NewSpecialWarningDodge(231013, false, nil, 2, 2, 2)--Every 8 seconds, so off by default
-local specWarnHyrja					= mod:NewSpecialWarningSwitch("ej14006", nil, nil, nil, 1, 2)
-local specWarnHymall				= mod:NewSpecialWarningSwitch("ej14005", nil, nil, nil, 1, 2)
+local specWarnHyrja					= mod:NewSpecialWarningSwitch(-14006, nil, nil, nil, 1, 2)
+local specWarnHymall				= mod:NewSpecialWarningSwitch(-14005, nil, nil, nil, 1, 2)
 
 local timerSpearCD					= mod:NewNextTimer(8, 227697, nil, nil, nil, 3)
-local timerHymdallCD				= mod:NewNextTimer(70, "ej14005", nil, nil, nil, 1, 228012, DBM_COMMON_L.DAMAGE_ICON)
-local timerHyrjaCD					= mod:NewNextTimer(70, "ej14006", nil, nil, nil, 1, 228270, DBM_COMMON_L.DAMAGE_ICON)
+local timerHymdallCD				= mod:NewNextTimer(70, -14005, nil, nil, nil, 1, 228012, DBM_COMMON_L.DAMAGE_ICON)
+local timerHyrjaCD					= mod:NewNextTimer(70, -14006, nil, nil, nil, 1, 228270, DBM_COMMON_L.DAMAGE_ICON)
 --Stage 3: Odyn immitates lei shen
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local warnPhase3					= mod:NewPhaseAnnounce(3, 2)

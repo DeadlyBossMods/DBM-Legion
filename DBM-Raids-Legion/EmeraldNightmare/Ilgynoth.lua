@@ -33,11 +33,11 @@ local warnNightmareGaze				= mod:NewSpellAnnounce(210931, 3, nil, false)--Someth
 local warnFixate					= mod:NewTargetAnnounce(210099, 2, nil, false)--Spammy so default off
 local warnNightmareExplosion		= mod:NewCastAnnounce(209471, 3)
 local warnEyeOfFate					= mod:NewStackAnnounce(210984, 2, nil, "Tank")
-local warnCorruptorTentacle			= mod:NewCountAnnounce("ej13191", 2, 208929)
+local warnCorruptorTentacle			= mod:NewCountAnnounce(-13191, 2, 208929)
 local warnSpewCorruption			= mod:NewTargetAnnounce(208929, 3, nil, true, 2)
 local warnSpewCorruptionSoon		= mod:NewSoonAnnounce(208929, 3)
 local warnGroundSlam				= mod:NewTargetAnnounce(208689, 2)--Figure this out later
-local warnDeathglareTentacle		= mod:NewCountAnnounce("ej13190", 2, 208697)
+local warnDeathglareTentacle		= mod:NewCountAnnounce(-13190, 2, 208697)
 local warnDeathBlossom				= mod:NewCastAnnounce(218415, 4)
 --Stage Two: The Heart of Corruption
 local warnCursedBlood				= mod:NewTargetAnnounce(215128, 3)
@@ -45,15 +45,15 @@ local warnCursedBlood				= mod:NewTargetAnnounce(215128, 3)
 --Stage One: The Ruined Ground
 local specWarnNightmareCorruption	= mod:NewSpecialWarningMove(212886, nil, nil, nil, 1, 2)
 local specWarnFixate				= mod:NewSpecialWarningMoveTo(210099, nil, nil, nil, 1, 2)
-local specWarnNightmareHorror		= mod:NewSpecialWarningSwitch("ej13188", "-Healer", nil, nil, 1, 2)--spellId for summon 210289
+local specWarnNightmareHorror		= mod:NewSpecialWarningSwitch(-13188, "-Healer", nil, nil, 1, 2)--spellId for summon 210289
 local specWarnEyeOfFate				= mod:NewSpecialWarningStack(210984, nil, 2, nil, nil, 1, 6)
 local specWarnEyeOfFateOther		= mod:NewSpecialWarningTaunt(210984, nil, nil, nil, 1, 2)
 local specWarnMindFlay				= mod:NewSpecialWarningInterrupt(208697, "HasInterrupt", nil, 2, 1, 2)
---local specWarnCorruptorTentacle		= mod:NewSpecialWarningSwitch("ej13191", false, nil, nil, 1)
+--local specWarnCorruptorTentacle		= mod:NewSpecialWarningSwitch(-13191, false, nil, nil, 1)
 local specWarnSpewCorruption		= mod:NewSpecialWarningRun(208929, nil, nil, nil, 4, 2)
 local yellSpewCorruption			= mod:NewYell(208929)
 local specWarnNightmarishFury		= mod:NewSpecialWarningDefensive(215234, "Tank", nil, nil, 3, 2)
-local specWarnDominatorTentacle		= mod:NewSpecialWarningSwitch("ej13189", "-Healer", nil, 2, 1)
+local specWarnDominatorTentacle		= mod:NewSpecialWarningSwitch(-13189, "-Healer", nil, 2, 1)
 local specWarnGroundSlam			= mod:NewSpecialWarningYou(208689, nil, nil, nil, 1, 2)
 local yellGroundSlam				= mod:NewYell(208689)
 local specWarnGroundSlamNear		= mod:NewSpecialWarningClose(208689, nil, nil, nil, 1, 2)
@@ -64,9 +64,9 @@ local yellCursedBlood				= mod:NewFadesYell(215128)
 
 --Stage One: The Ruined Ground
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local timerDeathGlareCD				= mod:NewCDTimer(220, "ej13190", nil, nil, nil, 1, 208697)
-local timerCorruptorTentacleCD		= mod:NewCDTimer(220, "ej13191", nil, nil, nil, 1, 208929)
-local timerNightmareHorrorCD		= mod:NewCDTimer(280, "ej13188", nil, nil, nil, 1, 210289, nil, nil, nil, 1, 4)
+local timerDeathGlareCD				= mod:NewCDTimer(220, -13190, nil, nil, nil, 1, 208697)
+local timerCorruptorTentacleCD		= mod:NewCDTimer(220, -13191, nil, nil, nil, 1, 208929)
+local timerNightmareHorrorCD		= mod:NewCDTimer(280, -13188, nil, nil, nil, 1, 210289, nil, nil, nil, 1, 4)
 local timerEyeOfFateCD				= mod:NewCDTimer(10, 210984, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
 local timerNightmareishFuryCD		= mod:NewNextTimer(10.9, 215234, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerGroundSlamCD				= mod:NewCDTimer(20.5, 208689, nil, nil, nil, 3)
@@ -80,7 +80,7 @@ local timerFinalTorpor				= mod:NewCastTimer(90, 223121, nil, nil, nil, 6, nil, 
 local timerCursedBloodCD			= mod:NewNextTimer(15, 215128, nil, nil, nil, 3)
 
 mod:AddSetIconOption("SetIconOnSpew", 208929, false, 6)
-mod:AddSetIconOption("SetIconOnOoze", "ej13186", false)
+mod:AddSetIconOption("SetIconOnOoze", -13186, false)
 mod:AddBoolOption("SetIconOnlyOnce2", true)
 mod:AddInfoFrameOption(210099)
 mod:AddDropdownOption("InfoFrameBehavior", {"Fixates", "Adds"}, "Fixates", "misc", nil, 210099)

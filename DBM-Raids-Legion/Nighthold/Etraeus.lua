@@ -78,7 +78,7 @@ local timerFelNovaCD				= mod:NewCDCountTimer(25, 206517, nil, nil, nil, 2, nil,
 mod:AddTimerLine(SCENARIO_STAGE:format(4))
 --local warnVoidEjection				= mod:NewTargetAnnounce(207143, 2)
 
-local specWarnThing					= mod:NewSpecialWarningSwitch("ej13057", "Tank", nil, 2, 1, 2)
+local specWarnThing					= mod:NewSpecialWarningSwitch(-13057, "Tank", nil, 2, 1, 2)
 local specWarnWitnessVoid			= mod:NewSpecialWarningLookAway(207720, nil, nil, nil, 1, 2)
 local specWarnVoidEjection			= mod:NewSpecialWarningMoveAway(207143, nil, nil, nil, 1, 2)--Should this be a move away, does void burst do any damage?
 local specWarnVoidNova				= mod:NewSpecialWarningSpell(207439, nil, nil, nil, 2, 2)

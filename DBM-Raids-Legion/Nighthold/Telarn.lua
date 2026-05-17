@@ -32,7 +32,7 @@ mod:RegisterEventsInCombat(
 --or self:IsMythic() and self.vb.phase == 1--Ready to go in case my theory is correct
 local berserkTimer					= mod:NewBerserkTimer(480)
 
-mod:AddSetIconOption("SetIconOnNaturalist", "ej13684", true, 5)
+mod:AddSetIconOption("SetIconOnNaturalist", -13684, true, 5)
 --Stage 1: The High Botanist
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnRecursiveStrikes			= mod:NewStackAnnounce(218503, 2, nil, "Tank")
@@ -43,7 +43,7 @@ local warnParasiticFixate			= mod:NewTargetAnnounce(218342, 4, nil, false)--Spam
 
 local specWarnRecursiveStrikes		= mod:NewSpecialWarningTaunt(218503, nil, nil, nil, 1, 2)
 local specWarnControlledChaos		= mod:NewSpecialWarningDodge(218438, nil, nil, nil, 2, 2)
-local specWarnLasher				= mod:NewSpecialWarningSwitch("ej13699", "RangedDps", nil, 2, 1, 2)
+local specWarnLasher				= mod:NewSpecialWarningSwitch(-13699, "RangedDps", nil, 2, 1, 2)
 local yellParasiticFetter			= mod:NewYell(218304)
 local specWarnParasiticFetter		= mod:NewSpecialWarningClose(218304, nil, nil, nil, 1, 2)
 local specWarnParasiticFixate		= mod:NewSpecialWarningRun(218342, nil, nil, nil, 4, 2)
