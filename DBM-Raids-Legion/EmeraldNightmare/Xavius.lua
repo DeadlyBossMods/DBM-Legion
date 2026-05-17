@@ -41,14 +41,14 @@ local warnNightmareInfusion				= mod:NewSpellAnnounce(209443, 4, nil, "Tank")
 local warnBondsOfTerror					= mod:NewTargetAnnounce(209034, 2)
 --Stage Three: Darkness and stuff
 local warnPhase3						= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
-local warnNightmareTentacles			= mod:NewSpellAnnounce("ej12977", 3, 93708)
+local warnNightmareTentacles			= mod:NewSpellAnnounce(-12977, 3, 93708)
 
 local specWarnDescentIntoMadness		= mod:NewSpecialWarningYou(208431)
 local yellDescentIntoMadness			= mod:NewFadesYell(208431)
 local specWarnDreaming					= mod:NewSpecialWarningCount(205843, nil, nil, nil, 1, 2)--Mythic
 --Stage One: The Decent Into Madness
 local specWarnNightmareBlades			= mod:NewSpecialWarningMoveAway(206656, nil, nil, nil, 1, 2)
-local specWarnCorruptionHorror			= mod:NewSpecialWarningSwitchCount("ej12973", "-Healer", nil, nil, 1, 2)
+local specWarnCorruptionHorror			= mod:NewSpecialWarningSwitchCount(-12973, "-Healer", nil, nil, 1, 2)
 local specWarnCorruptingNova			= mod:NewSpecialWarningSpell(207830, nil, nil, nil, 2, 2)
 local specWarnDarkeningSoulYou			= mod:NewSpecialWarningStack(206651, nil, 3, nil, 2, 1, 6)
 local specWarnDarkeningSoulOther		= mod:NewSpecialWarningTaunt(206651, nil, nil, nil, 1, 2)
@@ -62,7 +62,7 @@ local specWarnCorruptionMeteorAway		= mod:NewSpecialWarningDodge(206308, "-Tank"
 local specWarnCorruptionMeteorTo		= mod:NewSpecialWarningMoveTo(206308, "-Tank", nil, nil, 1, 2)--Has dream, definitely should help
 local specWarnBlackeningSoulYou			= mod:NewSpecialWarningStack(209158, nil, 3, nil, 2, 1, 6)
 local specWarnBlackeningSoulOther		= mod:NewSpecialWarningTaunt(209158, nil, nil, nil, 1, 2)
-local specWarnInconHorror				= mod:NewSpecialWarningSwitchCount("ej13162", "-Healer", nil, nil, 1, 2)
+local specWarnInconHorror				= mod:NewSpecialWarningSwitchCount(-13162, "-Healer", nil, nil, 1, 2)
 
 --Stage One: The Decent Into Madness
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
@@ -81,7 +81,7 @@ local timerNightmareInfusionCD			= mod:NewCDTimer(61.5, 209443, nil, "Tank", nil
 local timerCallOfNightmaresCD			= mod:NewCDTimer(40, 205588, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON, nil, 1, 4)
 --Stage Three: Darkness and stuff
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
-local timerNightmareTentacleCD			= mod:NewCDTimer(20, "ej12977", nil, nil, nil, 1, 93708)--226194 is an icon consideration now
+local timerNightmareTentacleCD			= mod:NewCDTimer(20, -12977, nil, nil, nil, 1, 93708)--226194 is an icon consideration now
 
 mod:AddInfoFrameOption(-12970)
 mod:AddBoolOption("InfoFrameFilterDream", true)

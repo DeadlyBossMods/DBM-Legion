@@ -54,7 +54,7 @@ mod:AddTimerLine(Kurazmal)
 local specWarnShatterEssence		= mod:NewSpecialWarningDefensive(206675, nil, nil, nil, 3, 2)
 local specWarnFelObelisk			= mod:NewSpecialWarningDodge(229945, nil, nil, nil, 1, 2)
 
-local timerFelLordKurazCD			= mod:NewCastTimer(16, "ej13121", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerFelLordKurazCD			= mod:NewCastTimer(16, -13121, nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerShatterEssenceCD			= mod:NewCDTimer(54, 206675, nil, "Tank", nil, 5, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)
 local timerFelObeliskCD				= mod:NewCDTimer(16, 206841, nil, nil, nil, 3)
 ----Inquisitor Vethriz
@@ -62,7 +62,7 @@ mod:AddTimerLine(Vethriz)
 local warnGazeofVethriz				= mod:NewSpellAnnounce(206840, 3)
 local warnShadowblink				= mod:NewSpellAnnounce(207938, 2)
 
-local timerVethrizCD				= mod:NewCastTimer(25, "ej13124", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerVethrizCD				= mod:NewCastTimer(25, -13124, nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerGazeofVethrizCD			= mod:NewCDTimer(4.7, 206840, nil, nil, nil, 3)
 ----D'zorykx the Trapper
 mod:AddTimerLine(Dzorykx)
@@ -72,7 +72,7 @@ local warnAnguishedSpirits			= mod:NewSpellAnnounce(208545, 2)
 local specWarnSoulVortex			= mod:NewSpecialWarningSpell(206883, nil, nil, nil, 2, 2)
 local yellSoulVortex				= mod:NewYell(206883)
 
-local timerDzorykxCD				= mod:NewCastTimer(35, "ej13129", nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
+local timerDzorykxCD				= mod:NewCastTimer(35, -13129, nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerSoulVortexCD				= mod:NewCDTimer(21, 206883, nil, nil, nil, 3)--34-36
 --Stage Two: The Ritual of Aman'thul
 mod:AddTimerLine(SCENARIO_STAGE:format(2))

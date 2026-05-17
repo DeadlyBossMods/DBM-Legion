@@ -34,7 +34,7 @@ local Erodus = DBM:EJ_GetSectionInfo(16130)
 --]]
 --General
 mod:AddTimerLine(GENERAL)
-local warnOutofPod						= mod:NewTargetNoFilterAnnounce("ej16098", 2, 244141)
+local warnOutofPod						= mod:NewTargetNoFilterAnnounce(-16098, 2, 244141)
 local warnExploitWeakness				= mod:NewStackAnnounce(244892, 2, nil, "Tank")
 local warnPsychicAssault				= mod:NewStackAnnounce(244172, 3, nil, "-Tank", 2)
 

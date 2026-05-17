@@ -37,7 +37,7 @@ local specWarnFrostLick				= mod:NewSpecialWarningYou(228248, false, nil, nil, 1
 local yellFrostLick					= mod:NewYell(228248, nil, false, 2)
 local specWarnFrostLickDispel		= mod:NewSpecialWarningDispel(228248, "Healer", nil, nil, 1, 2)
 
---local timerLickCD					= mod:NewCDCountTimer(45, "ej14463", nil, nil, nil, 3, 228228)
+--local timerLickCD					= mod:NewCDCountTimer(45, -14463, nil, nil, nil, 3, 228228)
 local timerLeashCD					= mod:NewNextTimer(45, 228201, nil, nil, nil, 6, 129417)
 local timerLeash					= mod:NewBuffActiveTimer(30, 228201, nil, nil, nil, 6)
 local timerFangsCD					= mod:NewCDCountTimer(20.5, 227514, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)--20.5-23
@@ -56,7 +56,7 @@ local timerVolatileFoamCD			= mod:NewCDCountTimer(15.4, 228824, nil, nil, nil, 3
 
 local berserkTimer					= mod:NewBerserkTimer(300)
 
-mod:AddSetIconOption("SetIconOnFoam", "ej14535", true)
+mod:AddSetIconOption("SetIconOnFoam", -14535, true)
 mod:AddBoolOption("YellActualRaidIcon", false)
 mod:AddBoolOption("FilterSameColor", true)
 mod:AddInfoFrameOption(228824, true)

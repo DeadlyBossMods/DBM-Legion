@@ -52,7 +52,7 @@ local warnNightmareBlast			= mod:NewSpellAnnounce(203153, 2)
 --local specWarnDefiledSpirit		= mod:NewSpecialWarningYou(207573)--Unused, bug?
 --local yellSpirit					= mod:NewYell(207573)--Unused, bug?
 local specWarnDefiledVines			= mod:NewSpecialWarningDispel(207573, "Healer", nil, nil, 1, 2)
-local specWarnLumberingMindgorger	= mod:NewSpecialWarningSwitch("ej13460", "-Dps", nil, nil, 1, 2)
+local specWarnLumberingMindgorger	= mod:NewSpecialWarningSwitch(-13460, "-Dps", nil, nil, 1, 2)
 local specWarnCollapsingNightmare	= mod:NewSpecialWarningInterrupt(214540, "HasInterrupt", nil, nil, 1, 2)
 
 local timerNightmareBlastCD			= mod:NewCDTimer(15, 203153, nil, "-Tank", nil, 3)--15-20

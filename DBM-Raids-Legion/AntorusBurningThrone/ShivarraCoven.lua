@@ -101,7 +101,7 @@ mod:AddSetIconOption("SetIconOnCosmicGlare", 250757, true)
 mod:AddBoolOption("IgnoreFirstKick", false)
 --Torment of the Titans
 mod:AddTimerLine(torment)
-local specWarnTormentofTitans			= mod:NewSpecialWarningSpell("ej16138", nil, nil, nil, 1, 7)
+local specWarnTormentofTitans			= mod:NewSpecialWarningSpell(-16138, nil, nil, nil, 1, 7)
 
 ----Activations timers
 local timerMachinationsofAmanThulCD		= mod:NewCastTimer(85, 250335, nil, nil, nil, 6, nil, nil, nil, 1, 5)
