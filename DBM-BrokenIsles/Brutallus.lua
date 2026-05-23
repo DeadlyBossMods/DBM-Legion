@@ -16,9 +16,9 @@ mod:RegisterEventsInCombat(
 )
 
 --NOTE, rupture and Embers can target scan but only give 1 of multiple targets, so for time being it's being omitted
-local specWarnMeteorSlash		= mod:NewSpecialWarningSpell(233484, nil, nil, nil, 2, 2)
-local specWarnCrashingEmbers	= mod:NewSpecialWarningDodge(233515, nil, nil, nil, 2, 2)
-local specWarnRupture			= mod:NewSpecialWarningDodge(233566, nil, nil, nil, 2, 2)
+local specWarnMeteorSlash		= mod:NewSpecialWarningSpell(233484, nil, nil, nil, 2, 2, nil, nil, "gathershare")
+local specWarnCrashingEmbers	= mod:NewSpecialWarningDodge(233515, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnRupture			= mod:NewSpecialWarningDodge(233566, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 local timerMeteorSlashCD		= mod:NewCDTimer(18.3, 233484, nil, nil, nil, 5)--18.3-19.6 (might also be 17.2)
 local timerCrashingEmbersCD		= mod:NewCDTimer(17.2, 233515, nil, nil, nil, 3)--17.2-19.6

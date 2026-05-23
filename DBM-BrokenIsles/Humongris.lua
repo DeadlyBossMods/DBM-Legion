@@ -22,12 +22,12 @@ local warnIceFist				= mod:NewTargetAnnounce(216432, 3)
 local warnSnow					= mod:NewSpellAnnounce(216467, 3)
 local warnFireBoom				= mod:NewTargetAnnounce(216428, 2)
 
-local specWarnFireBoom			= mod:NewSpecialWarningMoveAway(216428, nil, nil, nil, 1, 2)
-local specWarnFireBoomNear		= mod:NewSpecialWarningClose(216428, nil, nil, nil, 1, 2)
-local specWarnIceFist			= mod:NewSpecialWarningMoveAway(216432, nil, nil, nil, 1, 2)
-local specWarnStomp				= mod:NewSpecialWarningSpell(216430, nil, nil, nil, 2, 2)
-local specWarnGoBangYou			= mod:NewSpecialWarningMoveAway(216817, nil, nil, nil, 3, 2)
-local specWarnGoBangSwap		= mod:NewSpecialWarningTaunt(216817, nil, nil, nil, 1, 2)
+local specWarnFireBoom			= mod:NewSpecialWarningMoveAway(216428, nil, nil, nil, 1, 2, nil, nil, "runout")
+local specWarnFireBoomNear		= mod:NewSpecialWarningClose(216428, nil, nil, nil, 1, 2, nil, nil, "watchstep")
+local specWarnIceFist			= mod:NewSpecialWarningMoveAway(216432, nil, nil, nil, 1, 2, nil, nil, "runout")
+local specWarnStomp				= mod:NewSpecialWarningSpell(216430, nil, nil, nil, 2, 2, nil, nil, "carefly")
+local specWarnGoBangYou			= mod:NewSpecialWarningMoveAway(216817, nil, nil, nil, 3, 2, nil, nil, "runout")
+local specWarnGoBangSwap		= mod:NewSpecialWarningTaunt(216817, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerFireBoomCD			= mod:NewCDTimer(14, 216428, nil, nil, nil, 3)
 local timerStompCD				= mod:NewCDTimer(28.8, 216430, nil, nil, nil, 2)--28-37

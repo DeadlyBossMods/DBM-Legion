@@ -22,18 +22,18 @@ local warnCloudofConfuse				= mod:NewTargetAnnounce(254122, 4)
 local warnFlamesofReorig				= mod:NewTargetAnnounce(249297, 4, nil, false, 2)--Can be spammy if handled poorly
 local warnSoulburn						= mod:NewTargetAnnounce(253600, 3)
 
-local specWarnDemolish					= mod:NewSpecialWarningYou(252760, nil, nil, nil, 1, 2)
+local specWarnDemolish					= mod:NewSpecialWarningYou(252760, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellDemolish						= mod:NewYell(252760)
 local yellDemolishFades					= mod:NewShortFadesYell(252760)
 local specWarnCloudofConfuse			= mod:NewSpecialWarningYou(254122, nil, nil, nil, 1, 2)
 local yellCloudofConfuse				= mod:NewYell(254122)
 local yellCloudofConfuseFades			= mod:NewShortFadesYell(254122)
-local specWarnFlamesofReorig			= mod:NewSpecialWarningYou(249297, nil, nil, nil, 3, 2)
+local specWarnFlamesofReorig			= mod:NewSpecialWarningYou(249297, nil, nil, nil, 3, 2, nil, nil, "runout")
 local yellFlamesofReorig				= mod:NewYell(249297)
-local specWarnSoulburn					= mod:NewSpecialWarningMoveAway(253600, nil, nil, nil, 1, 2)
+local specWarnSoulburn					= mod:NewSpecialWarningMoveAway(253600, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellSoulburn						= mod:NewYell(253600)
-local specWarnPunishingFlame			= mod:NewSpecialWarningRun(246209, "Melee", nil, nil, 4, 2)
-local specWarnAnnihilation				= mod:NewSpecialWarningSpell(245807, nil, nil, nil, 2, 2)
+local specWarnPunishingFlame			= mod:NewSpecialWarningRun(246209, "Melee", nil, nil, 4, 2, nil, nil, "justrun")
+local specWarnAnnihilation				= mod:NewSpecialWarningSpell(245807, nil, nil, nil, 2, 2, nil, nil, "helpsoak")
 --local specWarnShadowBoltVolley		= mod:NewSpecialWarningInterrupt(243171, "HasInterrupt", nil, nil, 1, 2)
 
 

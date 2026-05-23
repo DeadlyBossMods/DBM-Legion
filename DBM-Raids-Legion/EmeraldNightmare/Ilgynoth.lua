@@ -43,22 +43,22 @@ local warnDeathBlossom				= mod:NewCastAnnounce(218415, 4)
 local warnCursedBlood				= mod:NewTargetAnnounce(215128, 3)
 
 --Stage One: The Ruined Ground
-local specWarnNightmareCorruption	= mod:NewSpecialWarningMove(212886, nil, nil, nil, 1, 2)
-local specWarnFixate				= mod:NewSpecialWarningMoveTo(210099, nil, nil, nil, 1, 2)
-local specWarnNightmareHorror		= mod:NewSpecialWarningSwitch(-13188, "-Healer", nil, nil, 1, 2)--spellId for summon 210289
-local specWarnEyeOfFate				= mod:NewSpecialWarningStack(210984, nil, 2, nil, nil, 1, 6)
-local specWarnEyeOfFateOther		= mod:NewSpecialWarningTaunt(210984, nil, nil, nil, 1, 2)
-local specWarnMindFlay				= mod:NewSpecialWarningInterrupt(208697, "HasInterrupt", nil, 2, 1, 2)
+local specWarnNightmareCorruption	= mod:NewSpecialWarningMove(212886, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnFixate				= mod:NewSpecialWarningMoveTo(210099, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnNightmareHorror		= mod:NewSpecialWarningSwitch(-13188, "-Healer", nil, nil, 1, 2, nil, nil, "bigmob")--spellId for summon 210289
+local specWarnEyeOfFate				= mod:NewSpecialWarningStack(210984, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnEyeOfFateOther		= mod:NewSpecialWarningTaunt(210984, nil, nil, nil, 1, 2, nil, nil, "changemt")
+local specWarnMindFlay				= mod:NewSpecialWarningInterrupt(208697, "HasInterrupt", nil, 2, 1, 2, nil, nil, "kickcast")
 --local specWarnCorruptorTentacle		= mod:NewSpecialWarningSwitch(-13191, false, nil, nil, 1)
-local specWarnSpewCorruption		= mod:NewSpecialWarningRun(208929, nil, nil, nil, 4, 2)
+local specWarnSpewCorruption		= mod:NewSpecialWarningRun(208929, nil, nil, nil, 4, 2, nil, nil, "runout")
 local yellSpewCorruption			= mod:NewYell(208929)
-local specWarnNightmarishFury		= mod:NewSpecialWarningDefensive(215234, "Tank", nil, nil, 3, 2)
+local specWarnNightmarishFury		= mod:NewSpecialWarningDefensive(215234, "Tank", nil, nil, 3, 2, nil, nil, "defensive")
 local specWarnDominatorTentacle		= mod:NewSpecialWarningSwitch(-13189, "-Healer", nil, 2, 1)
-local specWarnGroundSlam			= mod:NewSpecialWarningYou(208689, nil, nil, nil, 1, 2)
+local specWarnGroundSlam			= mod:NewSpecialWarningYou(208689, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellGroundSlam				= mod:NewYell(208689)
-local specWarnGroundSlamNear		= mod:NewSpecialWarningClose(208689, nil, nil, nil, 1, 2)
+local specWarnGroundSlamNear		= mod:NewSpecialWarningClose(208689, nil, nil, nil, 1, 2, nil, nil, "watchwave")
 --Stage Two: The Heart of Corruption
-local specWarnHeartPhaseBegin		= mod:NewSpecialWarningFades(209915, nil, nil, nil, 1, 2)
+local specWarnHeartPhaseBegin		= mod:NewSpecialWarningFades(209915, nil, nil, nil, 1, 2, nil, nil, "phasechange")
 local specWarnCursedBlood			= mod:NewSpecialWarningMoveAway(215128, nil, nil, nil, 1, 2)
 local yellCursedBlood				= mod:NewFadesYell(215128)
 

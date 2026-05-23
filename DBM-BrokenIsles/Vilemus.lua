@@ -21,9 +21,9 @@ mod:RegisterEventsInCombat(
 local warnDrain					= mod:NewStackAnnounce(247742, 2, nil, false, 2)
 local warnFelBreath				= mod:NewSpellAnnounce(247731, 2)
 
-local specWarnDrain				= mod:NewSpecialWarningStack(247742, nil, 6, nil, nil, 1, 2)--Tanking
-local specWarnDrainTaunt		= mod:NewSpecialWarningTaunt(247742, nil, nil, nil, 1, 2)--Not tanking and clear
-local specWarnStomp				= mod:NewSpecialWarningSpell(247733, nil, nil, nil, 2, 2)
+local specWarnDrain				= mod:NewSpecialWarningStack(247742, nil, 6, nil, nil, 1, 2, nil, nil, "stackhigh")--Tanking
+local specWarnDrainTaunt		= mod:NewSpecialWarningTaunt(247742, nil, nil, nil, 1, 2, nil, nil, "tauntboss")--Not tanking and clear
+local specWarnStomp				= mod:NewSpecialWarningSpell(247733, nil, nil, nil, 2, 2, nil, nil, "carefly")
 --local specWarnGTFO			= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
 
 local timerDrainCD				= mod:NewCDTimer(15.9, 247739, nil, "Melee", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--15-20

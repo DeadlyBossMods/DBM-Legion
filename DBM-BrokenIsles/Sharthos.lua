@@ -18,9 +18,9 @@ mod:RegisterEventsInCombat(
 )
 
 --NANI? which breath is right event?
-local specWarnBreath			= mod:NewSpecialWarningSpell(215821, "Tank", nil, nil, 1, 2)
-local specWarnBurningEarth		= mod:NewSpecialWarningMove(215876, nil, nil, nil, 1, 2)
-local specWarnFear				= mod:NewSpecialWarningSpell(216044, nil, nil, nil, 2, 2)
+local specWarnBreath			= mod:NewSpecialWarningSpell(215821, "Tank", nil, nil, 1, 2, nil, nil, "breathsoon")
+local specWarnBurningEarth		= mod:NewSpecialWarningMove(215876, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnFear				= mod:NewSpecialWarningSpell(216044, nil, nil, nil, 2, 2, nil, nil, "fearsoon")
 
 local timerBreathCD				= mod:NewCDTimer(18.4, 215821, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)--18.4-23
 local timerFearCD				= mod:NewCDTimer(34.3, 216044, nil, nil, nil, 1)--34.3-65

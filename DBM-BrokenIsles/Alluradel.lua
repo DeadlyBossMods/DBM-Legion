@@ -20,9 +20,9 @@ local warnBeguilingCharm			= mod:NewTargetAnnounce(247549, 4)
 local warnFelLash					= mod:NewSpellAnnounce(247604, 2)
 local warnHeartBreaker				= mod:NewTargetAnnounce(247517, 2, nil, "Healer")
 
-local specWarnBeguilingCharm		= mod:NewSpecialWarningLookAway(247549, nil, nil, nil, 3, 2)
-local specWarnSadist				= mod:NewSpecialWarningCount(247544, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.stack:format(12, 159515), nil, 1, 2)
-local specWarnSadistOther			= mod:NewSpecialWarningTaunt(247544, nil, nil, nil, 1, 2)
+local specWarnBeguilingCharm		= mod:NewSpecialWarningLookAway(247549, nil, nil, nil, 3, 2, nil, nil, "turnaway")
+local specWarnSadist				= mod:NewSpecialWarningCount(247544, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.stack:format(12, 159515), nil, 1, 2, nil, nil, "changemt")
+local specWarnSadistOther			= mod:NewSpecialWarningTaunt(247544, nil, nil, nil, 1, 2, nil, nil, "changemt")
 
 local timerBeguilingCharmCD			= mod:NewCDTimer(34.1, 247549, nil, nil, nil, 2, nil, DBM_COMMON_L.IMPORTANT_ICON, nil, 1, 4)
 local timerFelLashCD				= mod:NewCDTimer(31.1, 247604, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)

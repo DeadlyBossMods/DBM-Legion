@@ -43,13 +43,13 @@ local Nathreza = DBM:EJ_GetSectionInfo(15802)
 mod:AddTimerLine(Nexus)
 local warnRealityTear					= mod:NewStackAnnounce(244016, 2, nil, "Tank")
 
-local specWarnRealityTear				= mod:NewSpecialWarningStack(244016, nil, 2, nil, nil, 1, 6)
-local specWarnRealityTearOther			= mod:NewSpecialWarningTaunt(244016, nil, nil, nil, 1, 2)
-local specWarnTransportPortal			= mod:NewSpecialWarningSwitch(244677, "-Healer", nil, 2, 1, 2)
-local specWarnCollapsingWorld			= mod:NewSpecialWarningCount(243983, nil, nil, nil, 2, 2)
-local specWarnFelstormBarrage			= mod:NewSpecialWarningDodge(244000, nil, nil, nil, 2, 2)
-local specWarnFieryDetonation			= mod:NewSpecialWarningInterrupt(244709, "HasInterrupt", nil, 2, 1, 2)
-local specWarnHowlingShadows			= mod:NewSpecialWarningInterrupt(245504, "HasInterrupt", nil, nil, 1, 2)
+local specWarnRealityTear				= mod:NewSpecialWarningStack(244016, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnRealityTearOther			= mod:NewSpecialWarningTaunt(244016, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnTransportPortal			= mod:NewSpecialWarningSwitch(244677, "-Healer", nil, 2, 1, 2, nil, nil, "killmob")
+local specWarnCollapsingWorld			= mod:NewSpecialWarningCount(243983, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnFelstormBarrage			= mod:NewSpecialWarningDodge(244000, nil, nil, nil, 2, 2, nil, nil, "farfromline")
+local specWarnFieryDetonation			= mod:NewSpecialWarningInterrupt(244709, "HasInterrupt", nil, 2, 1, 2, nil, nil, "kickcast")
+local specWarnHowlingShadows			= mod:NewSpecialWarningInterrupt(245504, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerRealityTearCD				= mod:NewCDTimer(12.1, 244016, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerCollapsingWorldCD			= mod:NewCDTimer(32.9, 243983, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 3)--32.9-41
@@ -66,8 +66,8 @@ local warnAegisofFlames					= mod:NewTargetAnnounce(244383, 3, nil, nil, nil, ni
 local warnAegisofFlamesEnded			= mod:NewEndAnnounce(244383, 1)
 local warnEverburningFlames				= mod:NewTargetAnnounce(244613, 2, nil, false)
 
-local specWarnFlamesofXoroth			= mod:NewSpecialWarningInterrupt(244607, "HasInterrupt", nil, nil, 1, 2)
-local specWarnSupernova					= mod:NewSpecialWarningDodge(244598, nil, nil, nil, 2, 2)
+local specWarnFlamesofXoroth			= mod:NewSpecialWarningInterrupt(244607, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnSupernova					= mod:NewSpecialWarningDodge(244598, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 local specWarnEverburningFlames			= mod:NewSpecialWarningMoveTo(244613, nil, nil, nil, 1)--No voice yet
 local yellEverburningFlames				= mod:NewFadesYell(244613)
 
@@ -80,7 +80,7 @@ local warnCausticSlime					= mod:NewTargetAnnounce(244849, 2, nil, false)
 
 local specWarnFelSilkWrap				= mod:NewSpecialWarningYou(244949, nil, nil, nil, 1, 2)
 local yellFelSilkWrap					= mod:NewYell(244949)
-local specWarnFelSilkWrapOther			= mod:NewSpecialWarningSwitch(244949, "Dps", nil, nil, 1, 2)
+local specWarnFelSilkWrapOther			= mod:NewSpecialWarningSwitch(244949, "Dps", nil, nil, 1, 2, nil, nil, "changetarget")
 local specWarnLeechEssence				= mod:NewSpecialWarningSpell(244915, nil, nil, nil, 1, 2)--Don't know what to do for voice yet til strat divised
 local specWarnCausticSlime				= mod:NewSpecialWarningMoveTo(244849, nil, nil, nil, 1)--No voice yet
 local specWarnCausticSlimeLFR			= mod:NewSpecialWarningMoveAway(244849, nil, nil, nil, 1)--No voice yet
@@ -96,7 +96,7 @@ local warnDelusions						= mod:NewTargetAnnounce(245050, 2, nil, "Healer")
 local warnCloyingShadows				= mod:NewTargetAnnounce(245118, 2, nil, false)
 local warnHungeringGloom				= mod:NewTargetAnnounce(245075, 2, nil, false)
 
-local specWarnDelusions					= mod:NewSpecialWarningYou(245050, nil, nil, nil, 1, 2)
+local specWarnDelusions					= mod:NewSpecialWarningYou(245050, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 --local specWarnCorrupt					= mod:NewSpecialWarningInterrupt(245040, "HasInterrupt", nil, nil, 1, 2)
 local specWarnCloyingShadows			= mod:NewSpecialWarningYou(245118, nil, nil, nil, 1)--No voice yet (you warning for now, since it's secondary debuff you move to fel miasma)
 local yellCloyingShadows				= mod:NewFadesYell(245118)

@@ -44,15 +44,15 @@ local timerRP						= mod:NewRPTimer(78)
 --Stage One: The Council of Elders
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 ----Gul'dan
-local specWarnLiquidHellfire		= mod:NewSpecialWarningDodge(206219, nil, nil, nil, 1, 2)
-local specWarnFelEfflux				= mod:NewSpecialWarningDodge(206514, nil, nil, nil, 1, 12)
+local specWarnLiquidHellfire		= mod:NewSpecialWarningDodge(206219, nil, nil, nil, 1, 2, nil, nil, "watchstep")
+local specWarnFelEfflux				= mod:NewSpecialWarningDodge(206514, nil, nil, nil, 1, 12, nil, nil, "flamejet")
 
 local timerLiquidHellfireCD			= mod:NewNextCountTimer(25, 206219, nil, nil, nil, 3)
 local timerFelEffluxCD				= mod:NewCDCountTimer(10.7, 206514, nil, nil, nil, 3)--10.7-13.5 (14-15 on normal)
 ----Fel Lord Kuraz'mal
 mod:AddTimerLine(Kurazmal)
-local specWarnShatterEssence		= mod:NewSpecialWarningDefensive(206675, nil, nil, nil, 3, 2)
-local specWarnFelObelisk			= mod:NewSpecialWarningDodge(229945, nil, nil, nil, 1, 2)
+local specWarnShatterEssence		= mod:NewSpecialWarningDefensive(206675, nil, nil, nil, 3, 2, nil, nil, "defensive")
+local specWarnFelObelisk			= mod:NewSpecialWarningDodge(229945, nil, nil, nil, 1, 2, nil, nil, "watchstep")
 
 local timerFelLordKurazCD			= mod:NewCastTimer(16, -13121, nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
 local timerShatterEssenceCD			= mod:NewCDTimer(54, 206675, nil, "Tank", nil, 5, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)
@@ -69,7 +69,7 @@ mod:AddTimerLine(Dzorykx)
 local warnSoulVortex				= mod:NewTargetAnnounce(206883, 3)
 local warnAnguishedSpirits			= mod:NewSpellAnnounce(208545, 2)
 
-local specWarnSoulVortex			= mod:NewSpecialWarningSpell(206883, nil, nil, nil, 2, 2)
+local specWarnSoulVortex			= mod:NewSpecialWarningSpell(206883, nil, nil, nil, 2, 2, nil, nil, "runout")
 local yellSoulVortex				= mod:NewYell(206883)
 
 local timerDzorykxCD				= mod:NewCastTimer(35, -13129, nil, nil, nil, 1, 212258, nil, nil, mod:IsTank() and 2 or nil, 4)
@@ -80,12 +80,12 @@ local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 local warnBondsofFel				= mod:NewTargetAnnounce(206222, 3)
 local warnEmpBondsofFel				= mod:NewTargetAnnounce(209086, 4)
 
-local specWarnBondsofFel			= mod:NewSpecialWarningYou(206222, nil, nil, nil, 1, 2)
-local specWarnBondsofFelTank		= mod:NewSpecialWarningTaunt(206222, nil, nil, nil, 1, 2)
+local specWarnBondsofFel			= mod:NewSpecialWarningYou(206222, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnBondsofFelTank		= mod:NewSpecialWarningTaunt(206222, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local yellBondsofFel				= mod:NewPosYell(206222)
-local specWarnHandofGuldan			= mod:NewSpecialWarningSwitch(212258, "-Healer", nil, nil, 1, 2)
-local specWarnEyeofGuldan			= mod:NewSpecialWarningSwitchCount(209270, "Dps", nil, nil, 1, 2)
-local specWarnCarrionWave			= mod:NewSpecialWarningInterrupt(208672, "HasInterrupt", nil, nil, 1, 2)
+local specWarnHandofGuldan			= mod:NewSpecialWarningSwitch(212258, "-Healer", nil, nil, 1, 2, nil, nil, "bigmob")
+local specWarnEyeofGuldan			= mod:NewSpecialWarningSwitchCount(209270, "Dps", nil, nil, 1, 2, nil, nil, "killmob")
+local specWarnCarrionWave			= mod:NewSpecialWarningInterrupt(208672, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerTransition				= mod:NewStageTimer(19)
 local timerHandofGuldanCD			= mod:NewNextCountTimer(58.5, 212258, nil, nil, nil, 1, nil, nil, nil, mod:IsTank() and 2 or nil, 4)
@@ -100,12 +100,12 @@ local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
 local warnSoulSiphon				= mod:NewTargetAnnounce(221891, 3, nil, "Healer")
 local warnFlamesofSargeras			= mod:NewTargetAnnounce(221606, 4)
 
-local specWarnStormOfDestroyer		= mod:NewSpecialWarningDodge(161121, nil, nil, nil, 2, 2)
-local specWarnSoulCorrosion			= mod:NewSpecialWarningStack(208802, nil, 5, nil, nil, 1, 6)--stack guessed
-local specWarnBlackHarvest			= mod:NewSpecialWarningCount(206744, nil, nil, nil, 2, 2)
-local specWarnFlamesOfSargeras		= mod:NewSpecialWarningMoveAway(221606, nil, nil, nil, 3, 2)
+local specWarnStormOfDestroyer		= mod:NewSpecialWarningDodge(161121, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnSoulCorrosion			= mod:NewSpecialWarningStack(208802, nil, 5, nil, nil, 1, 6, nil, nil, "stackhigh")--stack guessed
+local specWarnBlackHarvest			= mod:NewSpecialWarningCount(206744, nil, nil, nil, 2, 2, nil, nil, "aesoon")
+local specWarnFlamesOfSargeras		= mod:NewSpecialWarningMoveAway(221606, nil, nil, nil, 3, 2, nil, nil, "runout")
 local yellFlamesofSargeras			= mod:NewPosYell(221606, 15643)
-local specWarnFlamesOfSargerasTank	= mod:NewSpecialWarningTaunt(221606, nil, nil, nil, 1, 2)
+local specWarnFlamesOfSargerasTank	= mod:NewSpecialWarningTaunt(221606, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, 15643, nil, nil, 3)
 local timerStormOfDestroyerCD		= mod:NewNextCountTimer(16, 161121, 196871, nil, nil, 3)
@@ -119,14 +119,14 @@ local warnParasiticWound			= mod:NewTargetAnnounce(206847, 3)
 local warnShadowyGaze				= mod:NewTargetAnnounce(206983, 3)
 local warnWounded					= mod:NewSpellAnnounce(227009, 1)
 
-local specWarnWilloftheDemonWithin	= mod:NewSpecialWarningSpell(211439, nil, nil, nil, 1, 2)
-local specWarnParasiticWound		= mod:NewSpecialWarningMoveAway(206847, nil, nil, nil, 3, 2)
+local specWarnWilloftheDemonWithin	= mod:NewSpecialWarningSpell(211439, nil, nil, nil, 1, 2, nil, nil, "carefly")
+local specWarnParasiticWound		= mod:NewSpecialWarningMoveAway(206847, nil, nil, nil, 3, 2, nil, nil, "scatter")
 local yellParasiticWound			= mod:NewYell(206847, 36469)
 local yellParasiticWoundFades		= mod:NewFadesYell(206847, 36469)
 --local specWarnShearedSoul			= mod:NewSpecialWarningYou(206458, nil, nil, nil, 1)
-local specWarnSoulsever				= mod:NewSpecialWarningCount(220957, nil, nil, nil, 3, 2)--Needs voice, but what?
-local specWarnVisionsofDarkTitan	= mod:NewSpecialWarningMoveTo(227008, nil, nil, nil, 3, 7)
-local specWarnSummonNightorb		= mod:NewSpecialWarningCount(227283, "Dps", nil, nil, 1, 2)
+local specWarnSoulsever				= mod:NewSpecialWarningCount(220957, nil, nil, nil, 3, 2, nil, nil, "defensive")--Needs voice, but what?
+local specWarnVisionsofDarkTitan	= mod:NewSpecialWarningMoveTo(227008, nil, nil, nil, 3, 7, nil, nil, "movetimebubble")
+local specWarnSummonNightorb		= mod:NewSpecialWarningCount(227283, "Dps", nil, nil, 1, 2, nil, nil, "mobsoon")
 
 local timerWindsCD					= mod:NewCDCountTimer(39, 199446, nil, nil, nil, 2)
 local timerWilloftheDemonWithin		= mod:NewCastTimer(43, 211439, nil, nil, nil, 2)
@@ -141,9 +141,9 @@ local timerSummonNightorbCD			= mod:NewCDCountTimer(10.9, 227283, nil, nil, nil,
 mod:AddInfoFrameOption(206310)
 --Shard
 mod:AddTimerLine(DBM_COMMON_L.ADDS)
-local specWarnManifestAzzinoth		= mod:NewSpecialWarningSwitchCount(221149, "-Healer", nil, nil, 1, 2)
+local specWarnManifestAzzinoth		= mod:NewSpecialWarningSwitchCount(221149, "-Healer", nil, nil, 1, 2, nil, nil, "bigmob")
 local specWarnBulwarkofAzzinoth		= mod:NewSpecialWarningSpell(221408, nil, nil, nil, 1)--Needs voice, but what?
-local specWarnPurifiedEssence		= mod:NewSpecialWarningMoveTo(221486, nil, nil, nil, 3, 7)
+local specWarnPurifiedEssence		= mod:NewSpecialWarningMoveTo(221486, nil, nil, nil, 3, 7, nil, nil, "movetimebubble")
 
 local timerManifestAzzinothCD		= mod:NewCDCountTimer(10.9, 221149, nil, nil, nil, 1, 236237)
 local timerChaosSeedCD				= mod:NewCDTimer(10.9, 221336, nil, nil, nil, 3)

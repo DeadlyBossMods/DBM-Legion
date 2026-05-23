@@ -33,13 +33,13 @@ mod:RegisterEvents(
 local warnTemporalisis				= mod:NewSpellAnnounce(209595, 3)
 local warnCompressedTime			= mod:NewSpellAnnounce(209590, 3)
 
-local specWarnTimeElementals		= mod:NewSpecialWarningSwitchCount(208887, "-Healer", DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.switch:format(208887), nil, 1, 2)
+local specWarnTimeElementals		= mod:NewSpecialWarningSwitchCount(208887, "-Healer", DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.switch:format(208887), nil, 1, 2, nil, nil, "bigmob")
 ----Recursive Elemental
 --local specWarnCompressedTime		= mod:NewSpecialWarningDodge(209590)--Unused?
-local specWarnRecursion				= mod:NewSpecialWarningInterrupt(209620, "HasInterrupt", nil, nil, 1, 2)
-local specWarnBlast					= mod:NewSpecialWarningInterrupt(221864, "HasInterrupt", nil, nil, 1, 2)
+local specWarnRecursion				= mod:NewSpecialWarningInterrupt(209620, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnBlast					= mod:NewSpecialWarningInterrupt(221864, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 --local specWarnExoRelease			= mod:NewSpecialWarningInterrupt(209568, "HasInterrupt", nil, nil, 1, 2)
-local specWarnExpedite				= mod:NewSpecialWarningInterrupt(209617, "HasInterrupt", nil, nil, 1, 2)
+local specWarnExpedite				= mod:NewSpecialWarningInterrupt(209617, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerRP						= mod:NewRPTimer(68)
 local timerLeaveNightwell			= mod:NewCastTimer(9.8, 208863, nil, nil, nil, 6)
@@ -51,11 +51,11 @@ local berserkTimer					= mod:NewBerserkTimer(240)
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnAblation					= mod:NewStackAnnounce(209615, 2, nil, "Tank")
 
-local specWarnArcaneticRing			= mod:NewSpecialWarningDodge(208807, nil, nil, nil, 2, 5)
-local specWarnAblation				= mod:NewSpecialWarningTaunt(209615, nil, nil, nil, 1, 2)
+local specWarnArcaneticRing			= mod:NewSpecialWarningDodge(208807, nil, nil, nil, 2, 5, nil, nil, "watchorb")
+local specWarnAblation				= mod:NewSpecialWarningTaunt(209615, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local specWarnSpanningSingularityPre= mod:NewSpecialWarningMoveTo(209168, "RangedDps", nil, 2, 1, 7)
-local specWarnSpanningSingularity	= mod:NewSpecialWarningDodge(209168, nil, nil, nil, 2, 2)
-local specWarnSingularityGTFO		= mod:NewSpecialWarningMove(209168, "-Tank", nil, 2, 1, 2)
+local specWarnSpanningSingularity	= mod:NewSpecialWarningDodge(209168, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnSingularityGTFO		= mod:NewSpecialWarningMove(209168, "-Tank", nil, 2, 1, 2, nil, nil, "runaway")
 
 local timerArcaneticRing			= mod:NewNextCountTimer(6, 208807, nil, nil, nil, 2, nil, nil, nil, 1, 4)
 --local timerAblationCD				= mod:NewCDTimer(4.8, 209615, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -66,11 +66,11 @@ local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 local warnDelphuricBeam				= mod:NewTargetAnnounce(214278, 3)
 local warnAblatingExplosion			= mod:NewTargetAnnounce(209973, 3)
 
-local specWarnDelphuricBeam			= mod:NewSpecialWarningYou(214278, nil, nil, nil, 1, 2)
+local specWarnDelphuricBeam			= mod:NewSpecialWarningYou(214278, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellDelphuricBeam				= mod:NewYell(214278, nil, false)--off by default, because yells last longer than 3-4 seconds so yells from PERVIOUS beam are not yet gone when new beam is cast.
-local specWarnEpochericOrb			= mod:NewSpecialWarningSpell(210022, "-Tank", nil, 2, 1, 12)
-local specWarnAblationExplosion		= mod:NewSpecialWarningTaunt(209615, nil, nil, nil, 1, 2)
-local specWarnAblationExplosionOut	= mod:NewSpecialWarningMoveAway(209615, nil, nil, nil, 1, 2)
+local specWarnEpochericOrb			= mod:NewSpecialWarningSpell(210022, "-Tank", nil, 2, 1, 12, nil, nil, "catchballs")
+local specWarnAblationExplosion		= mod:NewSpecialWarningTaunt(209615, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnAblationExplosionOut	= mod:NewSpecialWarningMoveAway(209615, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellAblatingExplosion			= mod:NewFadesYell(209973)
 
 local timerDelphuricBeamCD			= mod:NewNextCountTimer(16, 214278, nil, nil, nil, 3)
@@ -84,9 +84,9 @@ local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
 local warnPermaliativeTorment		= mod:NewTargetAnnounce(210387, 3, nil, "Healer")
 local warnConflexiveBurst			= mod:NewTargetAnnounce(209598, 4)
 
-local specWarnConflexiveBurst		= mod:NewSpecialWarningYou(209598, nil, nil, nil, 1, 2)
-local specWarnConflexiveBurstTank	= mod:NewSpecialWarningTaunt(209598, nil, nil, nil, 1, 2)
-local specWarnAblativePulse			= mod:NewSpecialWarningInterrupt(209971, "Tank", nil, 2, 1, 2)
+local specWarnConflexiveBurst		= mod:NewSpecialWarningYou(209598, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnConflexiveBurstTank	= mod:NewSpecialWarningTaunt(209598, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnAblativePulse			= mod:NewSpecialWarningInterrupt(209971, "Tank", nil, 2, 1, 2, nil, nil, "kickcast")
 
 local timerConflexiveBurstCD		= mod:NewNextCountTimer(100, 209597, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 --local timerAblativePulseCD			= mod:NewCDTimer(9.6, 209971, nil, "Tank", nil, 4, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.INTERRUPT_ICON)--12 now?

@@ -36,7 +36,7 @@ local Taerar = DBM:EJ_GetSectionInfo(12774)
 local warnSlumberingNightmare		= mod:NewTargetAnnounce(203110, 4, nil, false)--An option to announce fuckups
 local warnBreath					= mod:NewSpellAnnounce(203028, 2)
 
-local specWarnMark					= mod:NewSpecialWarningStack(-12809, nil, 7, nil, 2, 1, 6)
+local specWarnMark					= mod:NewSpecialWarningStack(-12809, nil, 7, nil, 2, 1, 6, nil, nil, "stackhigh")
 local specWarnDragon				= mod:NewSpecialWarningTarget(204720, "Tank", nil, nil, 1, 2)
 
 local timerMarkCD					= mod:NewNextTimer(7, -12809, 28836, false, 2, 3, 203102)--Now off by default, to further reduce timer clutter, plus sometimes it's wrong because in rare cases the dragons desync for some reason
@@ -51,9 +51,9 @@ local warnNightmareBlast			= mod:NewSpellAnnounce(203153, 2)
 --local specWarnNightmareBlast		= mod:NewSpecialWarningSpell(203153, nil, nil, nil, 2)
 --local specWarnDefiledSpirit		= mod:NewSpecialWarningYou(207573)--Unused, bug?
 --local yellSpirit					= mod:NewYell(207573)--Unused, bug?
-local specWarnDefiledVines			= mod:NewSpecialWarningDispel(207573, "Healer", nil, nil, 1, 2)
-local specWarnLumberingMindgorger	= mod:NewSpecialWarningSwitch(-13460, "-Dps", nil, nil, 1, 2)
-local specWarnCollapsingNightmare	= mod:NewSpecialWarningInterrupt(214540, "HasInterrupt", nil, nil, 1, 2)
+local specWarnDefiledVines			= mod:NewSpecialWarningDispel(207573, "Healer", nil, nil, 1, 2, nil, nil, "helpdispel")
+local specWarnLumberingMindgorger	= mod:NewSpecialWarningSwitch(-13460, "-Dps", nil, nil, 1, 2, nil, nil, "bigmob")
+local specWarnCollapsingNightmare	= mod:NewSpecialWarningInterrupt(214540, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerNightmareBlastCD			= mod:NewCDTimer(15, 203153, nil, "-Tank", nil, 3)--15-20
 local timerDefiledSpiritCD			= mod:NewCDTimer(33.2, 207573, nil, nil, nil, 3)
@@ -62,10 +62,10 @@ mod:AddTimerLine(Emeriss)
 local warnVolatileInfection			= mod:NewTargetAnnounce(203787, 3)
 local warnEssenceOfCorruption		= mod:NewSpellAnnounce(205298, 2)
 
-local specWarnVolatileInfection		= mod:NewSpecialWarningMoveAway(203787, nil, nil, nil, 1, 2)
+local specWarnVolatileInfection		= mod:NewSpecialWarningMoveAway(203787, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellVolatileInfection			= mod:NewYell(203787)
-local specWarnCorruptedBurst		= mod:NewSpecialWarningDodge(203817, "Melee", nil, nil, 1, 2)
-local specWarnCorruption			= mod:NewSpecialWarningInterrupt(205300, "HasInterrupt", nil, nil, 1, 2)
+local specWarnCorruptedBurst		= mod:NewSpecialWarningDodge(203817, "Melee", nil, nil, 1, 2, nil, nil, "watchstep")
+local specWarnCorruption			= mod:NewSpecialWarningInterrupt(205300, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerVolatileInfectionCD		= mod:NewCDTimer(45.4, 203787, nil, "-Tank", 2, 3)
 local timerEssenceOfCorruptionCD	= mod:NewNextTimer(30, 205298, nil, nil, nil, 1)
@@ -77,7 +77,7 @@ mod:AddTimerLine(Lethon)
 local warnGloom						= mod:NewSpellAnnounce(205329, 2)
 local warnShadowBurst				= mod:NewTargetAnnounce(204040, 3)
 
-local specWarnSiphonSpirit			= mod:NewSpecialWarningSwitch(203888, "Dps", nil, nil, 3, 2)
+local specWarnSiphonSpirit			= mod:NewSpecialWarningSwitch(203888, "Dps", nil, nil, 3, 2, nil, nil, "killspirit")
 local specWarnShadowBurst			= mod:NewSpecialWarningYou(204040, nil, nil, nil, 1, 2)
 local yellShadowBurst				= mod:NewFadesYell(204040, nil, false, 2)
 
@@ -85,8 +85,8 @@ local timerSiphonSpiritCD			= mod:NewNextTimer(49.9, 203888, nil, nil, nil, 1, n
 local timerShadowBurstCD			= mod:NewNextTimer(14.5, 204040, nil, nil, nil, 3)--Air
 --Taerar
 mod:AddTimerLine(Taerar)
-local specWarnShadesOfTaerar		= mod:NewSpecialWarningSwitch(204100, "Tank", nil, nil, 1, 2)
-local specWarnBellowingRoar			= mod:NewSpecialWarningSpell(204078, nil, nil, nil, 2, 6)
+local specWarnShadesOfTaerar		= mod:NewSpecialWarningSwitch(204100, "Tank", nil, nil, 1, 2, nil, nil, "mobsoon")
+local specWarnBellowingRoar			= mod:NewSpecialWarningSpell(204078, nil, nil, nil, 2, 6, nil, nil, "fearsoon")
 
 local timerShadesOfTaerarCD			= mod:NewNextTimer(48.5, 204100, nil, "-Healer", nil, 1, nil, nil, nil, 1, 4)
 local timerSeepingFogCD				= mod:NewCDTimer(15.5, 205341, nil, false, 2, 3, 24814)--Spawn pretty often, and timers don't help dodge, so now off by default

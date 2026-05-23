@@ -37,8 +37,8 @@ local warnStarSignHunter			= mod:NewTargetAnnounce(216345, 2)--Green
 local warnStarSignWolf				= mod:NewTargetAnnounce(205445, 2)--Red
 local warnGravitationalPull			= mod:NewTargetAnnounce(205984, 3, nil, "Tank")
 
-local specWarnGravitationalPull		= mod:NewSpecialWarningYou(205984, nil, nil, nil, 3, 2)
-local specWarnGravitationalPullOther= mod:NewSpecialWarningTaunt(205984, nil, nil, nil, 1, 2)
+local specWarnGravitationalPull		= mod:NewSpecialWarningYou(205984, nil, nil, nil, 3, 2, nil, nil, "targetyou")
+local specWarnGravitationalPullOther= mod:NewSpecialWarningTaunt(205984, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local yellGravitationalPull			= mod:NewFadesYell(205984)
 
 local timerGravPullCD				= mod:NewCDTimer(28, 205984, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -48,16 +48,16 @@ local berserkTimer					= mod:NewBerserkTimer(463)
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warnCoronalEjection			= mod:NewTargetAnnounce(206464, 2)
 
-local specWarnCoronalEjection		= mod:NewSpecialWarningMoveAway(206464, nil, nil, nil, 1, 2)
+local specWarnCoronalEjection		= mod:NewSpecialWarningMoveAway(206464, nil, nil, nil, 1, 2, nil, nil, "runout")
 
 --local timerCoronalEjectionCD		= mod:NewCDTimer(16, 206464, nil, nil, nil, 3)--CD is not known, always push phase 2 before this is cast 2nd time
 --Stage Two: Absolute Zero
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local warnIcyEjection				= mod:NewTargetAnnounce(206936, 2)
 
-local specWarnIcyEjection			= mod:NewSpecialWarningMoveAway(206936, nil, nil, nil, 1, 2)
+local specWarnIcyEjection			= mod:NewSpecialWarningMoveAway(206936, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellIcyEjection				= mod:NewFadesYell(206936)
-local specWarnFrigidNova			= mod:NewSpecialWarningSpell(206949, nil, nil, nil, 2, 2)--maybe change to MoveTo warning
+local specWarnFrigidNova			= mod:NewSpecialWarningSpell(206949, nil, nil, nil, 2, 2, nil, nil, "gathershare")--maybe change to MoveTo warning
 
 local timerIcyEjectionCD			= mod:NewCDCountTimer(16, 206936, nil, nil, nil, 3)
 local timerFrigidNovaCD				= mod:NewCDCountTimer(61.5, 206949, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
@@ -66,11 +66,11 @@ mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local warnFelEjection				= mod:NewTargetAnnounce(205649, 2)
 local warnFelEjectionPuddle			= mod:NewCountAnnounce(205649, 2)
 
-local specWarnFelEjection			= mod:NewSpecialWarningMoveAway(205649, nil, nil, nil, 1, 2)
+local specWarnFelEjection			= mod:NewSpecialWarningMoveAway(205649, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellFelEjection				= mod:NewYell(205649)
 local yellFelEjectionFade			= mod:NewFadesYell(205649)
-local specWarnFelNova				= mod:NewSpecialWarningRun(206517, nil, nil, nil, 4, 2)
-local specWarnFelFlame				= mod:NewSpecialWarningMove(206398, nil, nil, nil, 1, 2)
+local specWarnFelNova				= mod:NewSpecialWarningRun(206517, nil, nil, nil, 4, 2, nil, nil, "justrun")
+local specWarnFelFlame				= mod:NewSpecialWarningMove(206398, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerFelEjectionCD			= mod:NewCDCountTimer(16, 205649, nil, nil, nil, 3)
 local timerFelNovaCD				= mod:NewCDCountTimer(25, 206517, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
@@ -78,11 +78,11 @@ local timerFelNovaCD				= mod:NewCDCountTimer(25, 206517, nil, nil, nil, 2, nil,
 mod:AddTimerLine(SCENARIO_STAGE:format(4))
 --local warnVoidEjection				= mod:NewTargetAnnounce(207143, 2)
 
-local specWarnThing					= mod:NewSpecialWarningSwitch(-13057, "Tank", nil, 2, 1, 2)
-local specWarnWitnessVoid			= mod:NewSpecialWarningLookAway(207720, nil, nil, nil, 1, 2)
-local specWarnVoidEjection			= mod:NewSpecialWarningMoveAway(207143, nil, nil, nil, 1, 2)--Should this be a move away, does void burst do any damage?
-local specWarnVoidNova				= mod:NewSpecialWarningSpell(207439, nil, nil, nil, 2, 2)
-local specWarnWorldDevouringForce	= mod:NewSpecialWarningDodge(216909, nil, nil, nil, 3, 2)
+local specWarnThing					= mod:NewSpecialWarningSwitch(-13057, "Tank", nil, 2, 1, 2, nil, nil, "bigmob")
+local specWarnWitnessVoid			= mod:NewSpecialWarningLookAway(207720, nil, nil, nil, 1, 2, nil, nil, "turnaway")
+local specWarnVoidEjection			= mod:NewSpecialWarningMoveAway(207143, nil, nil, nil, 1, 2, nil, nil, "runout")--Should this be a move away, does void burst do any damage?
+local specWarnVoidNova				= mod:NewSpecialWarningSpell(207439, nil, nil, nil, 2, 2, nil, nil, "aesoon")
+local specWarnWorldDevouringForce	= mod:NewSpecialWarningDodge(216909, nil, nil, nil, 3, 2, nil, nil, "farfromline")
 
 local timerWitnessVoid				= mod:NewCastTimer(4, 207720, nil, nil, nil, 2)
 local timerWitnessVoidCD			= mod:NewCDTimer(13, 207720, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
@@ -91,8 +91,8 @@ local timerVoidNovaCD				= mod:NewCDCountTimer(74, 207439, nil, nil, nil, 2)--On
 local timerWorldDevouringForceCD	= mod:NewCDCountTimer(42, 216909, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.HEROIC_ICON, nil, 1, 6)
 --Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
-local specWarnConjunction			= mod:NewSpecialWarningMoveAway(205408, nil, nil, nil, 3, 2)
-local specWarnConjunctionSign		= mod:NewSpecialWarningYouPos(205408, nil, nil, nil, 1, 12)
+local specWarnConjunction			= mod:NewSpecialWarningMoveAway(205408, nil, nil, nil, 3, 2, nil, nil, "scatter")
+local specWarnConjunctionSign		= mod:NewSpecialWarningYouPos(205408, nil, nil, nil, 1, 12, nil, nil, "finddragon")
 local yellConjunctionSign			= mod:NewPosYell(205408, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
 local timerConjunctionCD			= mod:NewCDCountTimer(16, 205408, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON, nil, 3, 10)

@@ -23,9 +23,9 @@ mod:RegisterEventsInCombat(
 local warnIncitePanic				= mod:NewSpellAnnounce(233568, 2, nil, false)--Off cause fuckups may result in heavy spam
 local warnShadowBarrage				= mod:NewSpellAnnounce(234452, 2)
 
-local specWarnIncitePanic			= mod:NewSpecialWarningYou(233568, nil, nil, nil, 2, 2)
-local specWarnIncitePanicNear		= mod:NewSpecialWarningClose(233568, nil, nil, nil, 1, 2)
-local specWarnVirulentInfection		= mod:NewSpecialWarningMove(233850, nil, nil, nil, 1, 2)
+local specWarnIncitePanic			= mod:NewSpecialWarningYou(233568, nil, nil, nil, 2, 2, nil, nil, "scatter")
+local specWarnIncitePanicNear		= mod:NewSpecialWarningClose(233568, nil, nil, nil, 1, 2, nil, nil, "scatter")
+local specWarnVirulentInfection		= mod:NewSpecialWarningMove(233850, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerIncitePanicCD			= mod:NewCDTimer(14.6, 233568, nil, nil, nil, 1)
 local timerPestilenceCD				= mod:NewCDTimer(14.2, 233614, nil, nil, nil, 3)

@@ -25,15 +25,15 @@ local warnExpelOrbDestro			= mod:NewTargetCountAnnounce(205344, 4)
 local warnSlamSoon					= mod:NewAnnounce("warnSlamSoon", 4, 205862, nil, nil, true)
 local warnSlam						= mod:NewCountAnnounce(205862, 2)--Regular slams don't need special warn, only bridge smashing ones
 
-local specWarnSearingBrand			= mod:NewSpecialWarningStack(206677, nil, 4, nil, 2, 1, 6)--Lets go with 4 for now
-local specWarnSearingBrandOther		= mod:NewSpecialWarningTaunt(206677, nil, nil, nil, 1, 2)
-local specWarnFelBeam				= mod:NewSpecialWarningDodge(205368, nil, nil, nil, 2, 2)
-local specWarnOrbDestro				= mod:NewSpecialWarningMoveAway(205344, nil, nil, nil, 3, 2)
+local specWarnSearingBrand			= mod:NewSpecialWarningStack(206677, nil, 4, nil, 2, 1, 6, nil, nil, "stackhigh")--Lets go with 4 for now
+local specWarnSearingBrandOther		= mod:NewSpecialWarningTaunt(206677, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnFelBeam				= mod:NewSpecialWarningDodge(205368, nil, nil, nil, 2, 2, nil, nil, "moveleft")
+local specWarnOrbDestro				= mod:NewSpecialWarningMoveAway(205344, nil, nil, nil, 3, 2, nil, nil, "runout")
 local yellOrbDestro					= mod:NewFadesYell(205344)
-local specWarnBurningPitch			= mod:NewSpecialWarningCount(205420, nil, nil, nil, 2, 6)
-local specWarnSlam					= mod:NewSpecialWarningRun(205862, nil, nil, nil, 4, 2)
-local specWarnFelBlast				= mod:NewSpecialWarningInterrupt(209017, false, nil, 2, 1, 2)
-local specWarnFelBurst				= mod:NewSpecialWarningInterrupt(206351, "HasInterrupt", nil, nil, 1, 2)
+local specWarnBurningPitch			= mod:NewSpecialWarningCount(205420, nil, nil, nil, 2, 6, nil, nil, "helpsoak")
+local specWarnSlam					= mod:NewSpecialWarningRun(205862, nil, nil, nil, 4, 2, nil, nil, "helpsoak")
+local specWarnFelBlast				= mod:NewSpecialWarningInterrupt(209017, false, nil, 2, 1, 2, nil, nil, "kickcast")
+local specWarnFelBurst				= mod:NewSpecialWarningInterrupt(206351, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerSearingBrand				= mod:NewTargetTimer(20, 206677, nil, "Tank", nil, 5)
 local timerFelBeamCD				= mod:NewNextCountTimer(16, 205368, 173303, nil, nil, 3)--Short text "Beam"

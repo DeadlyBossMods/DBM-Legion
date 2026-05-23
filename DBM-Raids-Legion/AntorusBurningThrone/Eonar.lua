@@ -49,9 +49,9 @@ local warnRainofFel						= mod:NewTargetCountAnnounce(248332, 2)
 local warnWarpIn						= mod:NewTargetAnnounce(246888, 3, nil, nil, nil, nil, nil, 2, true)
 local warnLifeForce						= mod:NewCountAnnounce(250048, 1)
 
-local specWarnSpearofDoom				= mod:NewSpecialWarningDodge(248789, nil, nil, nil, 2, 2)
+local specWarnSpearofDoom				= mod:NewSpecialWarningDodge(248789, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 --local yellSpearofDoom					= mod:NewYell(248789)
-local specWarnRainofFel					= mod:NewSpecialWarningMoveAway(248332, nil, nil, 2, 1, 2)
+local specWarnRainofFel					= mod:NewSpecialWarningMoveAway(248332, nil, nil, 2, 1, 2, nil, nil, "scatter")
 local yellRainofFel						= mod:NewYell(248332)
 local yellRainofFelFades				= mod:NewShortFadesYell(248332)
 
@@ -61,7 +61,7 @@ local timerRainofFelCD					= mod:NewCDCountTimer(61, 248332, nil, nil, nil, 3)
 mod:AddInfoFrameOption(nil, true)
 --Adds
 mod:AddTimerLine(DBM_COMMON_L.ADDS)
-local specWarnSwing						= mod:NewSpecialWarningDodge(250701, "MeleeDps", nil, nil, 1, 2)
+local specWarnSwing						= mod:NewSpecialWarningDodge(250701, "MeleeDps", nil, nil, 1, 2, nil, nil, "watchstep")
 --local yellBurstingDreadflame			= mod:NewPosYell(238430, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 --local specWarnMalignantAnguish		= mod:NewSpecialWarningInterrupt(236597, "HasInterrupt")
 --local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
@@ -74,14 +74,14 @@ local timerBatsCD						= mod:NewTimer(90, "timerBats", 242080, nil, nil, 1, DBM_
 mod:AddNamePlateOption("NPAuraOnPurification", 250074)
 --Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
-local specWarnFinalDoom					= mod:NewSpecialWarningCount(249121, "-Tank", nil, nil, 1, 2)
-local specWarnArcaneBuildup				= mod:NewSpecialWarningMoveAway(250693, nil, nil, nil, 1, 2)
+local specWarnFinalDoom					= mod:NewSpecialWarningCount(249121, "-Tank", nil, nil, 1, 2, nil, nil, "specialsoon")
+local specWarnArcaneBuildup				= mod:NewSpecialWarningMoveAway(250693, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellArcaneBuildup					= mod:NewYell(250693)
 local yellArcaneBuildupFades			= mod:NewShortFadesYell(250693)
-local specWarnBurningEmbers				= mod:NewSpecialWarningMoveAway(250691, nil, nil, nil, 1, 2)
+local specWarnBurningEmbers				= mod:NewSpecialWarningMoveAway(250691, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellBurningEmbers					= mod:NewYell(250691)
 local yellBurningEmbersFades			= mod:NewShortFadesYell(250691)
-local specWarnFoulSteps					= mod:NewSpecialWarningStack(250140, nil, 12, nil, nil, 1, 6)--Fine tune
+local specWarnFoulSteps					= mod:NewSpecialWarningStack(250140, nil, 12, nil, nil, 1, 6, nil, nil, "stackhigh")--Fine tune
 
 local timerFinalDoom					= mod:NewCastTimer(50, 249121, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 2, 5)
 local timerFinalDoomCD					= mod:NewCDCountTimer(90, 249121, nil, nil, nil, 4, nil, DBM_COMMON_L.HEROIC_ICON, nil, 1, 5)

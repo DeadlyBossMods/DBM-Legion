@@ -22,10 +22,10 @@ mod:RegisterEventsInCombat(
 local warnSow					= mod:NewStackAnnounce(247495, 2, nil, "Tank")
 local warnDeathField			= mod:NewSpellAnnounce(247632, 2)
 
-local specReap					= mod:NewSpecialWarningSpell(247492, "Tank", nil, nil, 1, 2)
-local specWarnSow				= mod:NewSpecialWarningStack(247495, nil, 2, nil, nil, 1, 6)
-local specWarnSowOther			= mod:NewSpecialWarningTaunt(247495, nil, nil, nil, 1, 2)
-local specSeedsofChaos			= mod:NewSpecialWarningSpell(247585, "-Tank", nil, nil, 1, 12)
+local specReap					= mod:NewSpecialWarningSpell(247492, "Tank", nil, nil, 1, 2, nil, nil, "shockwave")
+local specWarnSow				= mod:NewSpecialWarningStack(247495, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnSowOther			= mod:NewSpecialWarningTaunt(247495, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specSeedsofChaos			= mod:NewSpecialWarningSpell(247585, "-Tank", nil, nil, 1, 12, nil, nil, "runoverflowers")
 --local specWarnDeathField		= mod:NewSpecialWarningDodge(247632, nil, nil, nil, 2, 2)
 
 local timerReapCD				= mod:NewCDTimer(18.7, 247492, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--18-25

@@ -22,9 +22,9 @@ local warnMothersEmbrace		= mod:NewTargetAnnounce(219045, 3)
 local warnMothersEmbraceFail	= mod:NewTargetAnnounce(219068, 4)
 local warnGaseousBreath			= mod:NewSpellAnnounce(219254, 2)
 
-local specWarnFelGeyser			= mod:NewSpecialWarningDodge(218823, nil, nil, nil, 2, 2)
-local specWarnImpishFlames		= mod:NewSpecialWarningDefensive(218888, "Tank", nil, nil, 1, 2)
-local specWarnMothersEmbrace	= mod:NewSpecialWarningDispel(219045, "Healer", nil, nil, 1, 2)
+local specWarnFelGeyser			= mod:NewSpecialWarningDodge(218823, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnImpishFlames		= mod:NewSpecialWarningDefensive(218888, "Tank", nil, nil, 1, 2, nil, nil, "breathsoon")
+local specWarnMothersEmbrace	= mod:NewSpecialWarningDispel(219045, "Healer", nil, nil, 1, 2, nil, nil, "helpdispel")
 
 local timerFelGeyserCD			= mod:NewAITimer(16, 218823, nil, nil, nil, 2)
 local timerImpishFlamesCD		= mod:NewCDTimer(22, 218888, nil, "Tank", nil, 5)

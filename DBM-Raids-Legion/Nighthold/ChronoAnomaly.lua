@@ -32,12 +32,12 @@ local warnChronometricPart			= mod:NewStackAnnounce(206607, 3, nil, "Tank")
 local warnPowerOverwhelmingStack	= mod:NewStackAnnounce(219823, 2)
 local warnTemporalCharge			= mod:NewTargetAnnounce(212099, 1)
 
-local specWarnTemporalOrbs			= mod:NewSpecialWarningDodge(219815, nil, nil, nil, 2, 2)
-local specWarnPowerOverwhelming		= mod:NewSpecialWarningSpell(211927, nil, nil, 2, 2, 2)
+local specWarnTemporalOrbs			= mod:NewSpecialWarningDodge(219815, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnPowerOverwhelming		= mod:NewSpecialWarningSpell(211927, nil, nil, 2, 2, 2, nil, nil, "aesoon")
 local specWarnTimeBomb				= mod:NewSpecialWarningMoveAway(206617, nil, nil, 2, 3, 2)--When close to expiring, not right away
 local yellTimeBomb					= mod:NewFadesYell(206617)
-local specWarnWarp					= mod:NewSpecialWarningInterrupt(207228, "HasInterrupt", nil, nil, 1, 2)
-local specWarnBigAdd				= mod:NewSpecialWarningSwitch(-13022, "-Healer", nil, nil, 1, 2)--Switch to waning time particle when section info known
+local specWarnWarp					= mod:NewSpecialWarningInterrupt(207228, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnBigAdd				= mod:NewSpecialWarningSwitch(-13022, "-Healer", nil, nil, 1, 2, nil, nil, "bigmobsoon")--Switch to waning time particle when section info known
 
 local timerTemporalOrbsCD			= mod:NewNextCountTimer(30, 219815, nil, nil, nil, 2)
 local timerPowerOverwhelmingCD		= mod:NewNextCountTimer(60, 211927, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)

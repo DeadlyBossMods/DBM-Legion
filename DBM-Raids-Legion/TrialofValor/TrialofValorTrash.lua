@@ -10,9 +10,9 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 228845 228371 228395"
 )
 
-local specWarnShatterboneShield		= mod:NewSpecialWarningReflect(228845, nil, nil, nil, 1, 2)
-local specWarnBreathOfDread			= mod:NewSpecialWarningMove(228371, nil, nil, nil, 1, 2)
-local specWarnBindSpirit			= mod:NewSpecialWarningDispel(228395, "MagicDispeller", nil, nil, 1, 2)
+local specWarnShatterboneShield		= mod:NewSpecialWarningReflect(228845, nil, nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnBreathOfDread			= mod:NewSpecialWarningMove(228371, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnBindSpirit			= mod:NewSpecialWarningDispel(228395, "MagicDispeller", nil, nil, 1, 2, nil, nil, "dispelnow")
 
 function mod:SPELL_AURA_APPLIED(args)
 	if not self.Options.Enabled then return end

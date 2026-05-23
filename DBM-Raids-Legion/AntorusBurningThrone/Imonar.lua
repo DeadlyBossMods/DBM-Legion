@@ -40,12 +40,12 @@ local warnShocklance					= mod:NewStackAnnounce(247367, 2, nil, "Tank")
 local warnSleepCanister					= mod:NewTargetAnnounce(247552, 2)
 local warnSlumberGas					= mod:NewTargetAnnounce(247565, 3)
 
-local specWarnShocklance				= mod:NewSpecialWarningTaunt(247367, nil, nil, nil, 1, 2)
-local specWarnSleepCanister				= mod:NewSpecialWarningYou(247552, nil, nil, nil, 1, 2)
+local specWarnShocklance				= mod:NewSpecialWarningTaunt(247367, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnSleepCanister				= mod:NewSpecialWarningYou(247552, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellSleepCanister					= mod:NewPosYell(247552, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 local yellSleepCanisterStun				= mod:NewYell(255029, L.DispelMe)--Auto yell when safe to dispel (no players within 10 yards)
-local specWarnSleepCanisterNear			= mod:NewSpecialWarningClose(247552, nil, nil, nil, 1, 2)
-local specWarnPulseGrenade				= mod:NewSpecialWarningDodge(247376, nil, nil, nil, 1, 2)
+local specWarnSleepCanisterNear			= mod:NewSpecialWarningClose(247552, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnPulseGrenade				= mod:NewSpecialWarningDodge(247376, nil, nil, nil, 1, 2, nil, nil, "watchstep")
 local yellStasisTrap					= mod:NewYell(247641, L.DispelMe)
 
 local timerShocklanceCD					= mod:NewCDTimer(4, 247367, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--4-5.1
@@ -56,9 +56,9 @@ mod:AddSetIconOption("SetIconOnSleepCanister", 247552, true)
 --Stage Two: Contract to Kill
 local warnSever							= mod:NewStackAnnounce(247687, 2, nil, "Tank")
 
-local specWarnSever						= mod:NewSpecialWarningTaunt(247687, nil, nil, nil, 1, 2)
-local specWarnChargedBlastsUnknown		= mod:NewSpecialWarningSpell(247716, nil, nil, nil, 2, 2)
-local specWarnShrapnalBlast				= mod:NewSpecialWarningDodge(247923, nil, nil, nil, 1, 2)
+local specWarnSever						= mod:NewSpecialWarningTaunt(247687, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnChargedBlastsUnknown		= mod:NewSpecialWarningSpell(247716, nil, nil, nil, 2, 2, nil, nil, "farfromline")
+local specWarnShrapnalBlast				= mod:NewSpecialWarningDodge(247923, nil, nil, nil, 1, 2, nil, nil, "watchstep")
 
 local timerSeverCD						= mod:NewCDTimer(7.2, 247687, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerChargedBlastsCD				= mod:NewCDTimer(18.2, 247716, nil, nil, nil, 3, nil, nil, nil, 3, 4)
@@ -66,7 +66,7 @@ local timerShrapnalBlastCD				= mod:NewCDCountTimer(13.3, 247923, nil, nil, nil,
 --Stage Three/Five: The Perfect Weapon
 local warnEmpoweredPulseGrenade			= mod:NewTargetAnnounce(250006, 3)
 
-local specWarnEmpPulseGrenade			= mod:NewSpecialWarningMoveAway(250006, nil, nil, nil, 1, 2)
+local specWarnEmpPulseGrenade			= mod:NewSpecialWarningMoveAway(250006, nil, nil, nil, 1, 2, nil, nil, "range5")
 local yellEmpPulseGrenade				= mod:NewYell(250006)
 
 

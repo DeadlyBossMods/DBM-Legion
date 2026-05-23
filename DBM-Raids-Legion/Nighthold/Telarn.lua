@@ -41,13 +41,13 @@ local warnSummonChaosSpheres		= mod:NewSpellAnnounce(223034, 2)
 local warnParasiticFetter			= mod:NewTargetAnnounce(218304, 3)
 local warnParasiticFixate			= mod:NewTargetAnnounce(218342, 4, nil, false)--Spammy if things go to shit, so off by default
 
-local specWarnRecursiveStrikes		= mod:NewSpecialWarningTaunt(218503, nil, nil, nil, 1, 2)
-local specWarnControlledChaos		= mod:NewSpecialWarningDodge(218438, nil, nil, nil, 2, 2)
-local specWarnLasher				= mod:NewSpecialWarningSwitch(-13699, "RangedDps", nil, 2, 1, 2)
+local specWarnRecursiveStrikes		= mod:NewSpecialWarningTaunt(218503, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnControlledChaos		= mod:NewSpecialWarningDodge(218438, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnLasher				= mod:NewSpecialWarningSwitch(-13699, "RangedDps", nil, 2, 1, 2, nil, nil, "killmob")
 local yellParasiticFetter			= mod:NewYell(218304)
-local specWarnParasiticFetter		= mod:NewSpecialWarningClose(218304, nil, nil, nil, 1, 2)
-local specWarnParasiticFixate		= mod:NewSpecialWarningRun(218342, nil, nil, nil, 4, 2)
-local specWarnSolarCollapse			= mod:NewSpecialWarningDodge(218148, nil, nil, nil, 2, 2)
+local specWarnParasiticFetter		= mod:NewSpecialWarningClose(218304, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnParasiticFixate		= mod:NewSpecialWarningRun(218342, nil, nil, nil, 4, 2, nil, nil, "targetyou")
+local specWarnSolarCollapse			= mod:NewSpecialWarningDodge(218148, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 local timerControlledChaosCD		= mod:NewNextTimer(35, 218438, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
 local timerParasiticFetterCD		= mod:NewNextTimer(35, 218304, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON, nil, not mod:IsTank() and 2 or nil, 4)--Technically can also be made add timer instead of targetted
@@ -61,7 +61,7 @@ local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 local warnFlare						= mod:NewSpellAnnounce(218806, 2, nil, "Tank")
 local warnPlasmaSpheres				= mod:NewSpellAnnounce(218774, 2)
 
-local specwarnStarLow				= mod:NewSpecialWarning("warnStarLow", "Tank|Healer", nil, nil, 2, 2)--aesoon?
+local specwarnStarLow				= mod:NewSpecialWarning("warnStarLow", "Tank|Healer", nil, nil, 2, 2, nil, nil, nil, nil, "aesoon")--aesoon?
 
 local timerPlasmaSpheresCD			= mod:NewNextTimer(55, 218774, nil, nil, nil, 1)
 local timerFlareCD					= mod:NewCDTimer(8.5, 218806, nil, "Melee", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Exception to 35, 40, 50 rule
@@ -73,8 +73,8 @@ local warnCoN						= mod:NewTargetAnnounce(218809, 4)
 local warnGraceofNature				= mod:NewSoonAnnounce(218927, 4, nil, "Tank")
 local warnChaosSpheresOfNature		= mod:NewSpellAnnounce(223219, 4)
 
-local specWarnGraceOfNature			= mod:NewSpecialWarningMove(218927, "Tank", nil, nil, 3, 2)
-local specWarnCoN					= mod:NewSpecialWarningYouPos(218809, nil, nil, nil, 1, 5)
+local specWarnGraceOfNature			= mod:NewSpecialWarningMove(218927, "Tank", nil, nil, 3, 2, nil, nil, "bossout")
+local specWarnCoN					= mod:NewSpecialWarningYouPos(218809, nil, nil, nil, 1, 5, nil, nil, "targetyou")
 local yellCoN						= mod:NewPosYell(218809)
 
 local timerToxicSporesCD			= mod:NewCDTimer(8, 219049, nil, nil, nil, 3)--Exception to 35, 40, 50 rule

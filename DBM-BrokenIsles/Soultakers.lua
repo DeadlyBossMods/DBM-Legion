@@ -27,13 +27,13 @@ local warnMaraudingMists			= mod:NewCastAnnounce(213665, 3)
 --Soultrapper Mevra
 
 --Captain Hring
-local specWarnCursedCrew			= mod:NewSpecialWarningSwitch(213522, "-Healer", nil, nil, 1, 2)
+local specWarnCursedCrew			= mod:NewSpecialWarningSwitch(213522, "-Healer", nil, nil, 1, 2, nil, nil, "killmob")
 --Reaver Jdorn
 local specWarnScuttle				= mod:NewSpecialWarningYou(213584, nil, nil, nil, 1, 2)
-local specWarnExpelSoul				= mod:NewSpecialWarningMoveAway(213625, nil, nil, nil, 1, 2)
-local specWarnMaraudingMists		= mod:NewSpecialWarningRun(213665, "Melee", nil, nil, 4, 2)
+local specWarnExpelSoul				= mod:NewSpecialWarningMoveAway(213625, nil, nil, nil, 1, 2, nil, nil, "runout")
+local specWarnMaraudingMists		= mod:NewSpecialWarningRun(213665, "Melee", nil, nil, 4, 2, nil, nil, "runout")
 --Soultrapper Mevra
-local specWarnSoulRend				= mod:NewSpecialWarningDodge(213606, nil, nil, nil, 2, 2)
+local specWarnSoulRend				= mod:NewSpecialWarningDodge(213606, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 --Captain Hring
 local timerTentacleBashCD			= mod:NewCDTimer(15.9, 213420, nil, nil, nil, 3)--15.9-31.8

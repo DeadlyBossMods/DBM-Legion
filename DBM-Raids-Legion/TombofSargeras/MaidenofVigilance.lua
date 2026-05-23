@@ -39,17 +39,17 @@ local warnEssenceFragments			= mod:NewSpellAnnounce(236061, 2)
 --Stage One: Divide and Conquer
 --local specWarnInfusion				= mod:NewSpecialWarningSpell(235271, nil, nil, nil, 2, 2)
 local yellInfusion					= mod:NewPosYell(235271, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
-local specWarnFelInfusion			= mod:NewSpecialWarningYouPos(235240, nil, nil, nil, 1, 7)
-local specWarnLightInfusion			= mod:NewSpecialWarningYouPos(235213, nil, nil, nil, 1, 7)
-local specWarnUnstableSoul			= mod:NewSpecialWarningMoveTo(235117, nil, nil, nil, 3, 7)
+local specWarnFelInfusion			= mod:NewSpecialWarningYouPos(235240, nil, nil, nil, 1, 7, nil, nil, "felinfusion")
+local specWarnLightInfusion			= mod:NewSpecialWarningYouPos(235213, nil, nil, nil, 1, 7, nil, nil, "lightinfusion")
+local specWarnUnstableSoul			= mod:NewSpecialWarningMoveTo(235117, nil, nil, nil, 3, 7, nil, nil, "defensive")
 local yellUnstableSoul				= mod:NewShortFadesYell(235117)--While learning the fight this will be spammy, but also nessesary
-local specWarnLightHammer			= mod:NewSpecialWarningCount(241635, nil, nil, nil, 2, 2)
-local specWarnFelhammer				= mod:NewSpecialWarningCount(241636, nil, nil, nil, 2, 2)
-local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
+local specWarnLightHammer			= mod:NewSpecialWarningCount(241635, nil, nil, nil, 2, 2, nil, nil, "shockwave")
+local specWarnFelhammer				= mod:NewSpecialWarningCount(241636, nil, nil, nil, 2, 2, nil, nil, "shockwave")
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2, nil, nil, "runaway")
 --Stage Two
-local specWarnWrathofCreators		= mod:NewSpecialWarningInterrupt(234891, "HasInterrupt", nil, nil, 1, 2)
+local specWarnWrathofCreators		= mod:NewSpecialWarningInterrupt(234891, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 --
-local specWarnSpontFrag				= mod:NewSpecialWarningCount(239153, false, nil, nil, 2, 2)
+local specWarnSpontFrag				= mod:NewSpecialWarningCount(239153, false, nil, nil, 2, 2, nil, nil, "watchstep")
 --local yellSpontFrag					= mod:NewShortYell(239153)
 
 

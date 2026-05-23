@@ -41,8 +41,8 @@ local torment = DBM:EJ_GetSectionInfo(16138)
 --All
 local warnActivated						= mod:NewTargetAnnounce(118212, 3, 78740, nil, nil, nil, nil, nil, true)
 
-local specWarnGTFO						= mod:NewSpecialWarningGTFO(245634, nil, nil, nil, 1, 2)
-local specWarnActivated					= mod:NewSpecialWarningSwitchCustom(118212, "Tank", nil, 2, 3, 2)
+local specWarnGTFO						= mod:NewSpecialWarningGTFO(245634, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnActivated					= mod:NewSpecialWarningSwitchCustom(118212, "Tank", nil, 2, 3, 2, nil, nil, "changetarget")
 
 local timerBossIncoming					= mod:NewTimer(61, "timerBossIncoming", nil, nil, nil, 1)
 --local berserkTimer					= mod:NewBerserkTimer(600)
@@ -52,9 +52,9 @@ local warnFieryStrike					= mod:NewStackAnnounce(244899, 2, nil, "Tank")
 local warnWhirlingSaber					= mod:NewSpellAnnounce(245627, 2)
 local warnFulminatingPulse				= mod:NewTargetAnnounce(253520, 3)
 
-local specWarnFieryStrike				= mod:NewSpecialWarningStack(244899, nil, 2, nil, nil, 1, 6)
-local specWarnFieryStrikeOther			= mod:NewSpecialWarningTaunt(244899, nil, nil, nil, 1, 2)
-local specWarnFulminatingPulse			= mod:NewSpecialWarningMoveAway(253520, nil, nil, nil, 1, 2)
+local specWarnFieryStrike				= mod:NewSpecialWarningStack(244899, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnFieryStrikeOther			= mod:NewSpecialWarningTaunt(244899, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnFulminatingPulse			= mod:NewSpecialWarningMoveAway(253520, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellFulminatingPulse				= mod:NewFadesYell(253520)
 
 local timerFieryStrikeCD				= mod:NewCDTimer(10.5, 244899, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -64,8 +64,8 @@ local timerFulminatingPulseCD			= mod:NewNextTimer(40.1, 253520, nil, nil, nil, 
 mod:AddSetIconOption("SetIconOnFulminatingPulse2", 253520, false)
 --Asara, Mother of Night
 mod:AddTimerLine(Asara)
-local specWarnShadowBlades				= mod:NewSpecialWarningDodge(246329, nil, nil, nil, 2, 2)
-local specWarnStormofDarkness			= mod:NewSpecialWarningCount(252861, nil, nil, nil, 2, 2)
+local specWarnShadowBlades				= mod:NewSpecialWarningDodge(246329, nil, nil, nil, 2, 2, nil, nil, "watchwave")
+local specWarnStormofDarkness			= mod:NewSpecialWarningCount(252861, nil, nil, nil, 2, 2, nil, nil, "findshelter")
 
 local timerShadowBladesCD				= mod:NewCDTimer(27.6, 246329, nil, nil, nil, 3)
 local timerStormofDarknessCD			= mod:NewNextCountTimer(56.8, 252861, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON, nil, 3, 4)--57+
@@ -74,11 +74,11 @@ mod:AddTimerLine(Diima)
 local warnChilledBlood					= mod:NewTargetAnnounce(245586, 2)
 local warnFlashFreeze					= mod:NewStackAnnounce(245518, 2, nil, "Tank")
 
-local specWarnFlashfreeze				= mod:NewSpecialWarningStack(245518, nil, 2, nil, nil, 1, 6)
-local specWarnFlashfreezeOther			= mod:NewSpecialWarningTaunt(245518, nil, nil, nil, 1, 2)
+local specWarnFlashfreeze				= mod:NewSpecialWarningStack(245518, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnFlashfreezeOther			= mod:NewSpecialWarningTaunt(245518, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local yellFlashfreeze					= mod:NewYell(245518, nil, false)
-local specWarnChilledBlood				= mod:NewSpecialWarningTarget(245586, "Healer", nil, nil, 1, 2)
-local specWarnOrbofFrost				= mod:NewSpecialWarningDodge(253650, nil, nil, nil, 1, 12)
+local specWarnChilledBlood				= mod:NewSpecialWarningTarget(245586, "Healer", nil, nil, 1, 2, nil, nil, "healall")
+local specWarnOrbofFrost				= mod:NewSpecialWarningDodge(253650, nil, nil, nil, 1, 12, nil, nil, "iceorbmove")
 
 local timerFlashFreezeCD				= mod:NewCDTimer(10.1, 245518, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerChilledBloodCD				= mod:NewNextTimer(25.4, 245586, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
@@ -90,8 +90,8 @@ mod:AddInfoFrameOption(245586, true)
 mod:AddTimerLine(Thuraya)
 local warnCosmicGlare					= mod:NewTargetAnnounce(250757, 3)
 
-local specWarnTouchoftheCosmos			= mod:NewSpecialWarningInterruptCount(250648, "HasInterrupt", nil, nil, 1, 2)
-local specWarnCosmicGlare				= mod:NewSpecialWarningYou(250757, nil, nil, nil, 1, 2)
+local specWarnTouchoftheCosmos			= mod:NewSpecialWarningInterruptCount(250648, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kick")
+local specWarnCosmicGlare				= mod:NewSpecialWarningYou(250757, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellCosmicGlare					= mod:NewYell(250757)
 local yellCosmicGlareFades				= mod:NewShortFadesYell(250757)
 
@@ -101,7 +101,7 @@ mod:AddSetIconOption("SetIconOnCosmicGlare", 250757, true)
 mod:AddBoolOption("IgnoreFirstKick", false)
 --Torment of the Titans
 mod:AddTimerLine(torment)
-local specWarnTormentofTitans			= mod:NewSpecialWarningSpell(-16138, nil, nil, nil, 1, 7)
+local specWarnTormentofTitans			= mod:NewSpecialWarningSpell(-16138, nil, nil, nil, 1, 7, nil, nil, "runtoedge")
 
 ----Activations timers
 local timerMachinationsofAmanThulCD		= mod:NewCastTimer(85, 250335, nil, nil, nil, 6, nil, nil, nil, 1, 5)

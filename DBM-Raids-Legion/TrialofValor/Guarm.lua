@@ -25,17 +25,17 @@ local warnFangs						= mod:NewCountAnnounce(227514, 2)
 local warnShadowLick				= mod:NewTargetAnnounce(228253, 2, nil, "Healer")
 local warnFrostLick					= mod:NewTargetAnnounce(228248, 3)
 
-local specWarnBreath				= mod:NewSpecialWarningCount(228187, nil, nil, nil, 1, 2)
+local specWarnBreath				= mod:NewSpecialWarningCount(228187, nil, nil, nil, 1, 2, nil, nil, "breathsoon")
 local specWarnLeap					= mod:NewSpecialWarningCount(227883, nil, nil, nil, 2)
-local specWarnCharge				= mod:NewSpecialWarningDodge(227816, nil, nil, nil, 2, 2)
+local specWarnCharge				= mod:NewSpecialWarningDodge(227816, nil, nil, nil, 2, 2, nil, nil, "chargemove")
 local specWarnBerserk				= mod:NewSpecialWarningSpell(227883, nil, nil, nil, 3)
-local specWarnFlameLick				= mod:NewSpecialWarningMoveAway(228228, nil, nil, nil, 1, 2)
+local specWarnFlameLick				= mod:NewSpecialWarningMoveAway(228228, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellFlameLick					= mod:NewYell(228228, nil, false, 2)
 local specWarnShadowLick			= mod:NewSpecialWarningYou(228253, false, nil, nil, 1)--Not sure warning player is helpful
 local yellShadowLick				= mod:NewYell(228253, nil, false, 2)
 local specWarnFrostLick				= mod:NewSpecialWarningYou(228248, false, nil, nil, 1)--Warning player they are stunned probably somewhat useful. Still can't do much about it.
 local yellFrostLick					= mod:NewYell(228248, nil, false, 2)
-local specWarnFrostLickDispel		= mod:NewSpecialWarningDispel(228248, "Healer", nil, nil, 1, 2)
+local specWarnFrostLickDispel		= mod:NewSpecialWarningDispel(228248, "Healer", nil, nil, 1, 2, nil, nil, "helpdispel")
 
 --local timerLickCD					= mod:NewCDCountTimer(45, -14463, nil, nil, nil, 3, 228228)
 local timerLeashCD					= mod:NewNextTimer(45, 228201, nil, nil, nil, 6, 129417)

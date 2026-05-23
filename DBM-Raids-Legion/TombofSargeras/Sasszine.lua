@@ -41,21 +41,21 @@ local warnBefoulingInk				= mod:NewTargetAnnounce(232916, 2, nil, false)--Option
 local warnPhase3					= mod:NewPhaseAnnounce(3, 2, nil, nil, nil, nil, nil, 2)
 
 --General Stuff
-local specWarnHydraShot				= mod:NewSpecialWarningYouPos(230139, nil, nil, nil, 1, 2)
+local specWarnHydraShot				= mod:NewSpecialWarningYouPos(230139, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellHydraShot					= mod:NewShortPosYell(230139)
 local yellHydraShotFades			= mod:NewIconFadesYell(230139)
-local specWarnBurdenofPain			= mod:NewSpecialWarningYou(230201, nil, nil, nil, 1, 2)
-local specWarnBurdenofPainTaunt		= mod:NewSpecialWarningTaunt(230201, nil, nil, 2, 3, 2)
+local specWarnBurdenofPain			= mod:NewSpecialWarningYou(230201, nil, nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnBurdenofPainTaunt		= mod:NewSpecialWarningTaunt(230201, nil, nil, 2, 3, 2, nil, nil, "tauntboss")
 local yellBurdenofPain				= mod:NewYell(230201, 214893)
-local specWarnDreadShark			= mod:NewSpecialWarningDodge(239436, nil, nil, nil, 3, 2)
+local specWarnDreadShark			= mod:NewSpecialWarningDodge(239436, nil, nil, nil, 3, 2, nil, nil, "watchstep")
 --Stage One: Ten Thousand Fangs
-local specWarnSlicingTornado		= mod:NewSpecialWarningDodge(232722, nil, nil, nil, 2, 2)
-local specWarnThunderingShock		= mod:NewSpecialWarningDodge(230362, nil, nil, nil, 2, 7)
+local specWarnSlicingTornado		= mod:NewSpecialWarningDodge(232722, nil, nil, nil, 2, 2, nil, nil, "watchwave")
+local specWarnThunderingShock		= mod:NewSpecialWarningDodge(230362, nil, nil, nil, 2, 7, nil, nil, "helpdispel")
 local specWarnThunderingShockDispel	= mod:NewSpecialWarningDispel(230362, "Healer", nil, nil, 1, 2)
-local specWarnConsumingHunger		= mod:NewSpecialWarningMoveTo(230384, nil, nil, nil, 1, 7)
+local specWarnConsumingHunger		= mod:NewSpecialWarningMoveTo(230384, nil, nil, nil, 1, 7, nil, nil, "movetojelly")
 --Stage Two: Terrors of the Deep
-local specWarnDevouringMaw			= mod:NewSpecialWarningCount(234621, nil, nil, nil, 2, 7)
-local specWarnCrashingWave			= mod:NewSpecialWarningDodge(232827, nil, nil, nil, 3, 2)
+local specWarnDevouringMaw			= mod:NewSpecialWarningCount(234621, nil, nil, nil, 2, 7, nil, nil, "inktoshark")
+local specWarnCrashingWave			= mod:NewSpecialWarningDodge(232827, nil, nil, nil, 3, 2, nil, nil, "chargemove")
 --Mythic
 local specWarnDeliciousBufferfish	= mod:NewSpecialWarningYou(239375, nil, nil, nil, 1, 2)
 local yellDeliciousBufferfish		= mod:NewFadesYell(239375, DBM_CORE_L.AUTO_YELL_CUSTOM_FADE)

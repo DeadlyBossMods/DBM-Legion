@@ -37,14 +37,14 @@ local warnRed						= mod:NewSpellAnnounce(214661, 2)
 local warnGreen						= mod:NewSpellAnnounce(214652, 2)
 local warnBlue						= mod:NewSpellAnnounce(204292, 2)
 
-local specWarnTether				= mod:NewSpecialWarningYou(204531, nil, nil, nil, 1, 12)
-local specWarnArcanoslash			= mod:NewSpecialWarningDefensive(204275, "Tank", nil, nil, 1, 2)
-local specWarnCallofScorp			= mod:NewSpecialWarningSwitch(204372, "Tank", nil, nil, 1, 2)--Determine common strat for dps switching
-local specWarnFocusedBlast			= mod:NewSpecialWarningDodge(204471, nil, nil, nil, 2, 2)
-local specWarnShockwave				= mod:NewSpecialWarningMoveTo(204316, nil, nil, nil, 3, 2)
+local specWarnTether				= mod:NewSpecialWarningYou(204531, nil, nil, nil, 1, 12, nil, nil, "breakchain")
+local specWarnArcanoslash			= mod:NewSpecialWarningDefensive(204275, "Tank", nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnCallofScorp			= mod:NewSpecialWarningSwitch(204372, "Tank", nil, nil, 1, 2, nil, nil, "killmob")--Determine common strat for dps switching
+local specWarnFocusedBlast			= mod:NewSpecialWarningDodge(204471, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnShockwave				= mod:NewSpecialWarningMoveTo(204316, nil, nil, nil, 3, 2, nil, nil, "findshelter")
 local specWarnVulnerableStarted		= mod:NewSpecialWarningSwitch(204459, false, nil, nil, 1)
 local specWarnVulnerableOver		= mod:NewSpecialWarningEnd(204459, false, nil, nil, 1)--Special warning because anything that came off cd during stun, is being cast immediately
-local specWarnToxicChit				= mod:NewSpecialWarningMove(204744, nil, nil, nil, 1, 2)
+local specWarnToxicChit				= mod:NewSpecialWarningMove(204744, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerArcanoslashCD			= mod:NewCDTimer(9.6, 204275, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerCallofScorpidCD			= mod:NewVarTimer("v20.3-22", 204372, 88879, nil, nil, 1, nil, nil, nil, 2, 4)--20-22 Unless delayed by shockwave/stun then as high as 40

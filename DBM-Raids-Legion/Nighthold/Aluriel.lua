@@ -46,32 +46,32 @@ local warnArmageddon				= mod:NewAddsLeftAnnounce(213568, 2)
 --Mythic
 local warnFelSoul					= mod:NewSpellAnnounce(230951, 3)
 
-local specWarnAnnihilate			= mod:NewSpecialWarningCount(212492, "Tank", nil, nil, 3, 2)
-local specWarnAnnihilateOther		= mod:NewSpecialWarningTaunt(212492, nil, nil, nil, 1, 2)
+local specWarnAnnihilate			= mod:NewSpecialWarningCount(212492, "Tank", nil, nil, 3, 2, nil, nil, "defensive")
+local specWarnAnnihilateOther		= mod:NewSpecialWarningTaunt(212492, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 --Debuffs
-local specWarnMarkOfFrost			= mod:NewSpecialWarningYou(212531, nil, nil, nil, 1, 2)
+local specWarnMarkOfFrost			= mod:NewSpecialWarningYou(212531, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellMarkofFrost				= mod:NewYell(212531)
-local specWarnFrostbitten			= mod:NewSpecialWarningStack(212647, nil, 6, nil, nil, 1, 6)
-local specWarnSearingBrand			= mod:NewSpecialWarningMoveAway(213148, nil, nil, nil, 1, 2)
+local specWarnFrostbitten			= mod:NewSpecialWarningStack(212647, nil, 6, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnSearingBrand			= mod:NewSpecialWarningMoveAway(213148, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local specWarnSearingBrandDodge		= mod:NewSpecialWarningDodge(213148, nil, nil, nil, 2, 6)
-local specWarnArcaneOrb				= mod:NewSpecialWarningDodge(213519, nil, nil, nil, 2, 2)
+local specWarnArcaneOrb				= mod:NewSpecialWarningDodge(213519, nil, nil, nil, 2, 2, nil, nil, "watchorb")
 --Detonates
-local specWarnFrostdetonate			= mod:NewSpecialWarningMoveAway(212735, nil, nil, nil, 3, 2)
+local specWarnFrostdetonate			= mod:NewSpecialWarningMoveAway(212735, nil, nil, nil, 3, 2, nil, nil, "runout")
 local yellFrostDetonate				= mod:NewYell(212735, 29870)--29870 "Detonate" short name
-local specWarnFireDetonate			= mod:NewSpecialWarningMoveAway(213275, nil, nil, nil, 3, 2)
+local specWarnFireDetonate			= mod:NewSpecialWarningMoveAway(213275, nil, nil, nil, 3, 2, nil, nil, "runout")
 local yellFireDetonate				= mod:NewYell(213275, 29870)--29870 "Detonate" short name
-local specWarnArcaneDetonate		= mod:NewSpecialWarningDodge(213390, nil, nil, nil, 3, 2)
+local specWarnArcaneDetonate		= mod:NewSpecialWarningDodge(213390, nil, nil, nil, 3, 2, nil, nil, "watchorb")
 --GTFOs
-local specWarnPoolOfFrost			= mod:NewSpecialWarningMove(212736, nil, nil, nil, 1, 2)
-local specWarnBurningGround			= mod:NewSpecialWarningMove(213278, nil, nil, nil, 1, 2)
-local specWarnArcaneFog				= mod:NewSpecialWarningMove(213504, nil, nil, nil, 1, 2)--Fog and orbs combined for simplicity
-local specWarnFelStomp				= mod:NewSpecialWarningMove(230414, nil, nil, nil, 1, 2)--Mythic
+local specWarnPoolOfFrost			= mod:NewSpecialWarningMove(212736, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnBurningGround			= mod:NewSpecialWarningMove(213278, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnArcaneFog				= mod:NewSpecialWarningMove(213504, nil, nil, nil, 1, 2, nil, nil, "runaway")--Fog and orbs combined for simplicity
+local specWarnFelStomp				= mod:NewSpecialWarningMove(230414, nil, nil, nil, 1, 2, nil, nil, "runaway")--Mythic
 --Animates
-local specWarnAnimateFrost			= mod:NewSpecialWarningSwitch(213853, "-Healer", nil, nil, 1, 2)--Currently spell ID does not contain "animate" in name, which makes warning confusing. Hopefully blizzard fixes
-local specWarnAnimateFire			= mod:NewSpecialWarningSwitch(213567, "-Healer", nil, nil, 1, 2)
-local specWarnAnimateArcane			= mod:NewSpecialWarningSwitch(213564, "-Healer", nil, nil, 1, 2)
+local specWarnAnimateFrost			= mod:NewSpecialWarningSwitch(213853, "-Healer", nil, nil, 1, 2, nil, nil, "mobsoon")--Currently spell ID does not contain "animate" in name, which makes warning confusing. Hopefully blizzard fixes
+local specWarnAnimateFire			= mod:NewSpecialWarningSwitch(213567, "-Healer", nil, nil, 1, 2, nil, nil, "mobsoon")
+local specWarnAnimateArcane			= mod:NewSpecialWarningSwitch(213564, "-Healer", nil, nil, 1, 2, nil, nil, "mobsoon")
 --Mythic
-local specWarnDecimate				= mod:NewSpecialWarningSpell(230504, nil, nil, nil, 1, 2)
+local specWarnDecimate				= mod:NewSpecialWarningSpell(230504, nil, nil, nil, 1, 2, nil, nil, "carefly")
 local specWarnFelLash				= mod:NewSpecialWarningSoon(230403, nil, nil, nil, 1, 2)
 
 local timerFrostPhaseCD				= mod:NewNextTimer(80, 213864, nil, nil, nil, 6)

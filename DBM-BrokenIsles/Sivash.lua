@@ -18,9 +18,9 @@ mod:RegisterEventsInCombat(
 local warnSubmerge					= mod:NewTargetAnnounce(241433, 2)
 local warnSummonHonorGuard			= mod:NewSpellAnnounce(233968, 3)
 
-local specWarnTidalWave				= mod:NewSpecialWarningDodge(233996, nil, nil, nil, 2, 2)
-local specWarnSubmerge				= mod:NewSpecialWarningDodge(241433, nil, nil, nil, 1, 2)
-local specWarnSubmergeNear			= mod:NewSpecialWarningClose(241433, nil, nil, nil, 1, 2)
+local specWarnTidalWave				= mod:NewSpecialWarningDodge(233996, nil, nil, nil, 2, 2, nil, nil, "watchwave")
+local specWarnSubmerge				= mod:NewSpecialWarningDodge(241433, nil, nil, nil, 1, 2, nil, nil, "watchstep")
+local specWarnSubmergeNear			= mod:NewSpecialWarningClose(241433, nil, nil, nil, 1, 2, nil, nil, "watchstep")
 
 local timerTidalWaveCD				= mod:NewCDTimer(20.6, 233996, nil, nil, nil, 3)--20.6-24.7
 local timerSummonHonorGuardCD		= mod:NewCDTimer(24, 233968, nil, nil, nil, 1)--24-25

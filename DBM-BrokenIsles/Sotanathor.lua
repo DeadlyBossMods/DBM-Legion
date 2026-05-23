@@ -18,12 +18,12 @@ mod:RegisterEventsInCombat(
 
 local warnSeedofDestruction		= mod:NewTargetAnnounce(247437, 4)
 
-local specSilence				= mod:NewSpecialWarningSpell(247698, nil, nil, nil, 2, 2)
-local specWarnSoulCleave		= mod:NewSpecialWarningSpell(247410, "Melee", nil, nil, 1, 12)
+local specSilence				= mod:NewSpecialWarningSpell(247698, nil, nil, nil, 2, 2, nil, nil, "specialsoon")
+local specWarnSoulCleave		= mod:NewSpecialWarningSpell(247410, "Melee", nil, nil, 1, 12, nil, nil, "tauntboss")
 local specWarnClovenSoul		= mod:NewSpecialWarningTaunt(247444, nil, nil, nil, 1, 5)
 
-local specWarnWakeofDestruction	= mod:NewSpecialWarningSpell(247432, nil, nil, nil, 2, 2)--Used for both warnings that trigger it
-local specWarnSeedofDestruction	= mod:NewSpecialWarningYou(247437, nil, nil, nil, 3, 4)
+local specWarnWakeofDestruction	= mod:NewSpecialWarningSpell(247432, nil, nil, nil, 2, 2, nil, nil, "watchwave")--Used for both warnings that trigger it
+local specWarnSeedofDestruction	= mod:NewSpecialWarningYou(247437, nil, nil, nil, 3, 4, nil, nil, "runout")
 
 local timerSilenceCD			= mod:NewCDTimer(24.4, 247698, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
 local timerSoulCleaveCD			= mod:NewCDTimer(25.5, 247410, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)

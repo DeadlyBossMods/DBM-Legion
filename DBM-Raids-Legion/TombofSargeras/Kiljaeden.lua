@@ -48,38 +48,38 @@ local warnTearRift					= mod:NewCountAnnounce(243982, 2)--Positive message color
 local warnDarknessofStuffEnded		= mod:NewEndAnnounce(238999, 1)
 
 --Stage One: The Betrayer
-local specWarnFelclaws				= mod:NewSpecialWarningDefensive(239932, nil, nil, nil, 1, 2)
-local specWarnFelclawsOther			= mod:NewSpecialWarningTaunt(239932, nil, nil, nil, 1, 2)
-local specWarnRupturingSingularity	= mod:NewSpecialWarningSoon(235059, nil, nil, nil, 3, 2)
-local specWarnArmageddon			= mod:NewSpecialWarningCount(240910, nil, nil, nil, 2, 2)
-local specWarnSRWailing				= mod:NewSpecialWarningYou(236378, nil, nil, nil, 1, 2)
+local specWarnFelclaws				= mod:NewSpecialWarningDefensive(239932, nil, nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnFelclawsOther			= mod:NewSpecialWarningTaunt(239932, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnRupturingSingularity	= mod:NewSpecialWarningSoon(235059, nil, nil, nil, 3, 2, nil, nil, "carefly")
+local specWarnArmageddon			= mod:NewSpecialWarningCount(240910, nil, nil, nil, 2, 2, nil, nil, "helpsoak")
+local specWarnSRWailing				= mod:NewSpecialWarningYou(236378, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellSRWailing					= mod:NewFadesYell(236378, 236075)--Keep name in tank one for now
-local specWarnSRErupting			= mod:NewSpecialWarningYouPos(236710, nil, nil, nil, 1, 2)
+local specWarnSRErupting			= mod:NewSpecialWarningYouPos(236710, nil, nil, nil, 1, 2, nil, nil, "gathershare")
 local yellSRErupting				= mod:NewIconFadesYell(236710, 243160)
-local specWarnLingeringEruption		= mod:NewSpecialWarningDodge(243536, nil, nil, nil, 2, 2)
-local specWarnLingeringWail			= mod:NewSpecialWarningDefensive(243624, nil, nil, nil, 1, 2)
+local specWarnLingeringEruption		= mod:NewSpecialWarningDodge(243536, nil, nil, nil, 2, 2, nil, nil, "watchorb")
+local specWarnLingeringWail			= mod:NewSpecialWarningDefensive(243624, nil, nil, nil, 1, 2, nil, nil, "defensive")
 local yellLingeringWail				= mod:NewShortYell(243624, nil, false)
-local specWarnSorrowfulWail			= mod:NewSpecialWarningRun(241564, "Melee", nil, nil, 4, 2)
+local specWarnSorrowfulWail			= mod:NewSpecialWarningRun(241564, "Melee", nil, nil, 4, 2, nil, nil, "runout")
 --Intermission: Eternal Flame
-local specWarnFocusedDreadflame		= mod:NewSpecialWarningYou(238502, nil, nil, nil, 1, 2)
+local specWarnFocusedDreadflame		= mod:NewSpecialWarningYou(238502, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellFocusedDreadflame			= mod:NewShortYell(238502)
 local yellFocusedDreadflameFades	= mod:NewFadesYell(238502)
-local specWarnFocusedDreadflameOther= mod:NewSpecialWarningTarget(238502, nil, nil, nil, 1, 2)
-local specWarnBurstingDreadflame	= mod:NewSpecialWarningMoveAway(238430, nil, nil, nil, 1, 2)
+local specWarnFocusedDreadflameOther= mod:NewSpecialWarningTarget(238502, nil, nil, nil, 1, 2, nil, nil, "helpsoak")
+local specWarnBurstingDreadflame	= mod:NewSpecialWarningMoveAway(238430, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellBurstingDreadflame		= mod:NewShortPosYell(238430)
 local yellBurstingDreadflameFades	= mod:NewShortFadesYell(238430, nil, false)
 --Stage Two: Reflected Souls
-local specWarnSRHopeless			= mod:NewSpecialWarningYou(237590, nil, nil, 2, 3, 2)
+local specWarnSRHopeless			= mod:NewSpecialWarningYou(237590, nil, nil, 2, 3, 2, nil, nil, "targetyou")
 local yellSRHopeless				= mod:NewShortFadesYell(237590, 237724)
-local specWarnSRMalignant			= mod:NewSpecialWarningYou(236498, nil, nil, nil, 1, 2)
+local specWarnSRMalignant			= mod:NewSpecialWarningYou(236498, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellSRMalignant				= mod:NewShortFadesYell(236498)
-local specWarnMalignantAnguish		= mod:NewSpecialWarningInterrupt(236597, "HasInterrupt")
+local specWarnMalignantAnguish		= mod:NewSpecialWarningInterrupt(236597, "HasInterrupt", nil, nil, nil, nil, nil, nil, "kickcast")
 --Intermission: Deceiver's Veil
 
 --Stage Three: Darkness of A Thousand Souls
-local specWarnDarknessofSouls		= mod:NewSpecialWarningMoveTo(238999, nil, nil, nil, 3, 2)
-local specWarnObelisk				= mod:NewSpecialWarningCount(239785, nil, nil, nil, 2, 2)
-local specWarnFlamingOrbSpawn		= mod:NewSpecialWarningDodgeCount(239253, nil, nil, nil, 2, 2)--Spawn warning
+local specWarnDarknessofSouls		= mod:NewSpecialWarningMoveTo(238999, nil, nil, nil, 3, 2, nil, nil, "findshelter")
+local specWarnObelisk				= mod:NewSpecialWarningCount(239785, nil, nil, nil, 2, 2, nil, nil, "farfromline")
+local specWarnFlamingOrbSpawn		= mod:NewSpecialWarningDodgeCount(239253, nil, nil, nil, 2, 2, nil, nil, "watchstep")--Spawn warning
 
 --Stage One: The Betrayer
 mod:AddTimerLine(SCENARIO_STAGE:format(1))

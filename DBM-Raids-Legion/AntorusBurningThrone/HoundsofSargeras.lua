@@ -42,10 +42,10 @@ local warnDesolateGaze					= mod:NewTargetAnnounce(244768, 3)
 local warnEnflamedCorruption			= mod:NewSpellAnnounce(244057, 3)
 local warnEnflamed						= mod:NewTargetAnnounce(248815, 3, nil, false, 2)
 
-local specWarnMoltenTouch				= mod:NewSpecialWarningDodge(244072, nil, nil, nil, 2, 2)
-local specWarnDesolateGaze				= mod:NewSpecialWarningYou(244768, nil, nil, nil, 1, 2)
+local specWarnMoltenTouch				= mod:NewSpecialWarningDodge(244072, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnDesolateGaze				= mod:NewSpecialWarningYou(244768, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellDesolateGaze					= mod:NewYell(244768)
-local specWarnEnflamed					= mod:NewSpecialWarningYou(248815, nil, nil, nil, 1, 2)
+local specWarnEnflamed					= mod:NewSpecialWarningYou(248815, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellEnflamed						= mod:NewShortFadesYell(248815)
 
 local timerBurningMawCD					= mod:NewCDTimer(10.1, 251448, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--usually 11 but some pulls it's 10
@@ -59,11 +59,11 @@ local warnWeightofDarkness				= mod:NewTargetAnnounce(254429, 3)
 local warnSiphonCorruption				= mod:NewSpellAnnounce(244056, 3)
 local warnSiphoned						= mod:NewTargetAnnounce(248819, 3, nil, false, 2)
 
-local specWarnComsumingSphere			= mod:NewSpecialWarningDodge(244131, nil, nil, nil, 2, 2)
-local specWarnWeightOfDarkness			= mod:NewSpecialWarningMoveTo(254429, nil, nil, nil, 1, 2)
+local specWarnComsumingSphere			= mod:NewSpecialWarningDodge(244131, nil, nil, nil, 2, 2, nil, nil, "watchorb")
+local specWarnWeightOfDarkness			= mod:NewSpecialWarningMoveTo(254429, nil, nil, nil, 1, 2, nil, nil, "gathershare")
 local yellWeightOfDarkness				= mod:NewYell(254429)
 local yellWeightOfDarknessFades			= mod:NewShortFadesYell(254429)
-local specWarnSiphoned					= mod:NewSpecialWarningMoveTo(248819, nil, nil, nil, 1, 2)
+local specWarnSiphoned					= mod:NewSpecialWarningMoveTo(248819, nil, nil, nil, 1, 2, nil, nil, "gathershare")
 local yellSiphoned						= mod:NewShortFadesYell(248819)
 
 local timerCorruptingMawCD				= mod:NewCDTimer(10.1, 251447, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--usually 11 but some pulls it's 10
@@ -74,8 +74,8 @@ local timerSiphonCorruptionCD			= mod:NewCDTimer(77, 244056, nil, nil, nil, 3)
 mod:AddSetIconOption("SetIconOnWeightofDarkness2", 254429, false)
 --Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
-local specWarnFlameTouched				= mod:NewSpecialWarningYouPos(244054, nil, nil, nil, 3, 8, 4)
-local specWarnShadowtouched				= mod:NewSpecialWarningYouPos(244055, nil, nil, nil, 3, 8, 4)
+local specWarnFlameTouched				= mod:NewSpecialWarningYouPos(244054, nil, nil, nil, 3, 8, 4, nil, "firerun")
+local specWarnShadowtouched				= mod:NewSpecialWarningYouPos(244055, nil, nil, nil, 3, 8, 4, nil, "shadowrun")
 local yellTouched						= mod:NewPosYell(244054, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)--NOTE, this will be impmroperly grouped with flame touched even though ti's used for both
 
 mod.vb.WeightDarkIcon = 1

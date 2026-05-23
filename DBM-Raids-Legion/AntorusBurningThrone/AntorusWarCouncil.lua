@@ -39,10 +39,10 @@ local warnExploitWeakness				= mod:NewStackAnnounce(244892, 2, nil, "Tank")
 local warnPsychicAssault				= mod:NewStackAnnounce(244172, 3, nil, "-Tank", 2)
 
 --local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
-local specWarnExploitWeakness			= mod:NewSpecialWarningTaunt(244892, nil, nil, nil, 1, 2)
-local specWarnPsychicAssaultStack		= mod:NewSpecialWarningStack(244172, nil, 10, nil, nil, 1, 6)
-local specWarnPsychicAssault			= mod:NewSpecialWarningMove(244172, nil, nil, nil, 3, 2)--Two diff warnings cause we want to upgrade to high priority at 19+ stacks
-local specWarnAssumeCommand				= mod:NewSpecialWarningSwitch(253040, "Tank", nil, nil, 1, 2)
+local specWarnExploitWeakness			= mod:NewSpecialWarningTaunt(244892, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnPsychicAssaultStack		= mod:NewSpecialWarningStack(244172, nil, 10, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnPsychicAssault			= mod:NewSpecialWarningMove(244172, nil, nil, nil, 3, 2, nil, nil, "otherout")--Two diff warnings cause we want to upgrade to high priority at 19+ stacks
+local specWarnAssumeCommand				= mod:NewSpecialWarningSwitch(253040, "Tank", nil, nil, 1, 2, nil, nil, "targetchange")
 
 local timerExploitWeaknessCD			= mod:NewCDTimer(8.5, 244892, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 3)
 local timerAssumeCommandCD				= mod:NewNextTimer(90, 245227, nil, nil, nil, 6, nil, nil, nil, 2, 4)
@@ -52,10 +52,10 @@ local timerAssumeCommandCD				= mod:NewNextTimer(90, 245227, nil, nil, nil, 6, n
 mod:AddTimerLine(Svirax)
 local warnShockGrenade					= mod:NewTargetAnnounce(244737, 3, nil, false, 2)
 
-local specWarnShockGrenade				= mod:NewSpecialWarningMoveAway(244737, nil, nil, nil, 1, 2)
+local specWarnShockGrenade				= mod:NewSpecialWarningMoveAway(244737, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellShockGrenade					= mod:NewShortYell(244737)
 local yellShockGrenadeFades				= mod:NewShortFadesYell(244737)
-local specWarnFusillade					= mod:NewSpecialWarningMoveTo(244625, nil, nil, nil, 1, 5)
+local specWarnFusillade					= mod:NewSpecialWarningMoveTo(244625, nil, nil, nil, 1, 5, nil, nil, "findshield")
 
 local timerShockGrenadeCD				= mod:NewCDTimer(14.7, 244737, nil, nil, nil, 3, nil, DBM_COMMON_L.HEROIC_ICON)
 local timerFusilladeCD					= mod:NewNextCountTimer(29.3, 244625, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
@@ -72,15 +72,15 @@ mod:AddTimerLine(Erodus)
 --local warnSummonReinforcements			= mod:NewSpellAnnounce(245546, 2, nil, false, 2)
 local warnDemonicCharge					= mod:NewTargetAnnounce(253040, 2, nil, false, 2)
 
-local specWarnSummonReinforcements		= mod:NewSpecialWarningSwitch(245546, nil, nil, nil, 1, 2)
+local specWarnSummonReinforcements		= mod:NewSpecialWarningSwitch(245546, nil, nil, nil, 1, 2, nil, nil, "killmob")
 
 local timerSummonReinforcementsCD		= mod:NewNextTimer(8.4, 245546, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON, nil, 1, 4)
 
 mod:AddSetIconOption("SetIconOnAdds", 245546, true, 5)
 -------Adds
-local specWarnPyroblast					= mod:NewSpecialWarningInterrupt(246505, "HasInterrupt", nil, nil, 1, 2)
-local specWarnDemonicChargeYou			= mod:NewSpecialWarningYou(253040, nil, nil, nil, 1, 2)
-local specWarnDemonicCharge				= mod:NewSpecialWarningClose(253040, nil, nil, nil, 1, 2)
+local specWarnPyroblast					= mod:NewSpecialWarningInterrupt(246505, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnDemonicChargeYou			= mod:NewSpecialWarningYou(253040, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnDemonicCharge				= mod:NewSpecialWarningClose(253040, nil, nil, nil, 1, 2, nil, nil, "watchstep")
 local yellDemonicCharge					= mod:NewYell(253040)
 
 local felShield = DBM:GetSpellName(244910)

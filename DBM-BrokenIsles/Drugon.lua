@@ -22,10 +22,10 @@ mod:RegisterEventsInCombat(
 local warnAvalanche				= mod:NewTargetAnnounce(219542, 3)
 local warnSnowPlow				= mod:NewTargetAnnounce(219602, 4)
 
-local specWarnAvalanche			= mod:NewSpecialWarningYou(219542, nil, nil, nil, 1, 2)
-local specWarnSnowCrash			= mod:NewSpecialWarningDodge(219493, "Melee", nil, nil, 4, 2)
-local specWarnSnowPlow			= mod:NewSpecialWarningRun(219602, nil, nil, nil, 4, 2)
-local specWarnSnowPlowOver		= mod:NewSpecialWarningFades(219602, nil, nil, nil, 1, 2)
+local specWarnAvalanche			= mod:NewSpecialWarningYou(219542, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnSnowCrash			= mod:NewSpecialWarningDodge(219493, "Melee", nil, nil, 4, 2, nil, nil, "shockwave")
+local specWarnSnowPlow			= mod:NewSpecialWarningRun(219602, nil, nil, nil, 4, 2, nil, nil, "runaway")
+local specWarnSnowPlowOver		= mod:NewSpecialWarningFades(219602, nil, nil, nil, 1, 2, nil, nil, "safenow")
 
 local timerAvalancheCD			= mod:NewCDTimer(42.6, 219542, nil, nil, nil, 3)--May need larger sample, was quite variable
 local timerSnowCrashCD			= mod:NewCDTimer(19.4, 219493, nil, "Melee", nil, 2)--Seems to alternate 19.4 and 23.2 but world bosses can't be this complicated since they are often engaged in progress

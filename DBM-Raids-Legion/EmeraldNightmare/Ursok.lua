@@ -27,14 +27,14 @@ local warnFocusedGaze				= mod:NewTargetCountAnnounce(198006, 3)
 local warnBloodFrenzy				= mod:NewSpellAnnounce(198388, 4)
 local warnOverwhelm					= mod:NewStackAnnounce(197943, 2, nil, "Tank|Healer")
 
-local specWarnFocusedGaze			= mod:NewSpecialWarningYou(198006, nil, nil, nil, 1, 2)
-local specWarnFocusedGazeOther		= mod:NewSpecialWarningMoveTo(198006, nil, nil, nil, 1, 6)
+local specWarnFocusedGaze			= mod:NewSpecialWarningYou(198006, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnFocusedGazeOther		= mod:NewSpecialWarningMoveTo(198006, nil, nil, nil, 1, 6, nil, nil, "shareone")
 local yellFocusedGaze				= mod:NewPosYell(198006)
-local specWarnRoaringCacophony		= mod:NewSpecialWarningCount(197969, nil, nil, nil, 2, 2)--Don't know what voice to give it yet, aesoon used for now
-local specWarnMiasma				= mod:NewSpecialWarningMove(205611, nil, nil, nil, 1, 2)
-local specWarnRendFlesh				= mod:NewSpecialWarningDefensive(197942, "Tank", nil, nil, 3, 2)
-local specWarnRendFleshOther		= mod:NewSpecialWarningTaunt(197942, nil, nil, nil, 3, 2)
-local specWarnOverwhelmOther		= mod:NewSpecialWarningTaunt(197943, nil, nil, nil, 1, 2)
+local specWarnRoaringCacophony		= mod:NewSpecialWarningCount(197969, nil, nil, nil, 2, 2, nil, nil, "aesoon")--Don't know what voice to give it yet, aesoon used for now
+local specWarnMiasma				= mod:NewSpecialWarningMove(205611, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnRendFlesh				= mod:NewSpecialWarningDefensive(197942, "Tank", nil, nil, 3, 2, nil, nil, "defensive")
+local specWarnRendFleshOther		= mod:NewSpecialWarningTaunt(197942, nil, nil, nil, 3, 2, nil, nil, "tauntboss")
+local specWarnOverwhelmOther		= mod:NewSpecialWarningTaunt(197943, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerFocusedGazeCD			= mod:NewNextCountTimer(40, 198006, nil, nil, nil, 3, nil, nil, nil, 1, 4)
 local timerRendFleshCD				= mod:NewNextCountTimer(20, 197942, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)

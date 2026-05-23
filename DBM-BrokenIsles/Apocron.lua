@@ -16,10 +16,10 @@ mod:RegisterEventsInCombat(
 
 local warnFelfireMissiles				= mod:NewTargetAnnounce(241498, 2)
 
-local specWarnQuake						= mod:NewSpecialWarningSpell(241458, nil, nil, nil, 2, 2)
-local specWarnFelfireMissiles			= mod:NewSpecialWarningMoveAway(241498, nil, nil, nil, 1, 2)
-local specWarnFelfireMissilesNear		= mod:NewSpecialWarningClose(241498, nil, nil, nil, 1, 2)
-local specWarnSear						= mod:NewSpecialWarningDefensive(241518, "Tank", nil, nil, 1, 2)
+local specWarnQuake						= mod:NewSpecialWarningSpell(241458, nil, nil, nil, 2, 2, nil, nil, "carefly")
+local specWarnFelfireMissiles			= mod:NewSpecialWarningMoveAway(241498, nil, nil, nil, 1, 2, nil, nil, "runout")
+local specWarnFelfireMissilesNear		= mod:NewSpecialWarningClose(241498, nil, nil, nil, 1, 2, nil, nil, "watchstep")
+local specWarnSear						= mod:NewSpecialWarningDefensive(241518, "Tank", nil, nil, 1, 2, nil, nil, "defensive")
 
 local timerQuakeCD						= mod:NewCDTimer(22.1, 241458, nil, nil, nil, 2)--22.1-25.6
 local timerFelfireMissilesCD			= mod:NewCDTimer(9.7, 241498, nil, nil, nil, 3)--9.7-14.6

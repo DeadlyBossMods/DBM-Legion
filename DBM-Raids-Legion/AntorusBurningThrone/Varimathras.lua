@@ -33,7 +33,7 @@ local warnTormentofFrost				= mod:NewSpellAnnounce(243976, 2, nil, nil, nil, nil
 local warnTormentofFel					= mod:NewSpellAnnounce(243979, 2, nil, nil, nil, nil, nil, 2)
 local warnTormentofShadows				= mod:NewSpellAnnounce(243974, 2, nil, nil, nil, nil, nil, 2)
 
-local specWarnGTFO						= mod:NewSpecialWarningGTFO(244005, nil, nil, nil, 1, 2)
+local specWarnGTFO						= mod:NewSpecialWarningGTFO(244005, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerTormentofFlamesCD			= mod:NewNextTimer(5, 243967, nil, nil, nil, 6)
 local timerTormentofFrostCD				= mod:NewNextTimer(61, 243976, nil, nil, nil, 6)
@@ -46,16 +46,16 @@ local warnMarkedPrey					= mod:NewTargetAnnounce(244042, 3)
 local warnNecroticEmbrace				= mod:NewTargetAnnounce(244094, 4)
 local warnEchoesofDoom					= mod:NewTargetAnnounce(248732, 3)
 
-local specWarnMisery					= mod:NewSpecialWarningYou(243961, nil, nil, nil, 1, 2)
-local specWarnMiseryTaunt				= mod:NewSpecialWarningTaunt(243961, nil, nil, nil, 1, 2)
-local specWarnDarkFissure				= mod:NewSpecialWarningDodge(243999, nil, nil, nil, 2, 2)
-local specWarnMarkedPrey				= mod:NewSpecialWarningYou(244042, nil, nil, 2, 1, 2)
+local specWarnMisery					= mod:NewSpecialWarningYou(243961, nil, nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnMiseryTaunt				= mod:NewSpecialWarningTaunt(243961, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnDarkFissure				= mod:NewSpecialWarningDodge(243999, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnMarkedPrey				= mod:NewSpecialWarningYou(244042, nil, nil, 2, 1, 2, nil, nil, "targetyou")
 local yellMarkedPrey					= mod:NewYell(244042)
 local yellMarkedPreyFades				= mod:NewShortFadesYell(244042)
-local specWarnNecroticEmbrace			= mod:NewSpecialWarningYouPos(244094, nil, nil, 3, 3, 2)
+local specWarnNecroticEmbrace			= mod:NewSpecialWarningYouPos(244094, nil, nil, 3, 3, 2, nil, nil, "targetyou")
 local yellNecroticEmbrace				= mod:NewPosYell(244094)
 local yellNecroticEmbraceFades			= mod:NewIconFadesYell(244094)
-local specWarnEchoesOfDoom				= mod:NewSpecialWarningYou(248732, nil, nil, nil, 1, 2)
+local specWarnEchoesOfDoom				= mod:NewSpecialWarningYou(248732, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellEchoesOfDoom					= mod:NewYell(248732)
 
 local timerShadowStrikeCD				= mod:NewCDTimer(8.5, 243960, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 3)--8.5-14 (most of time it's 9.7 or more, But lowest has to be used

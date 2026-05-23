@@ -32,11 +32,11 @@ local Decimator = DBM:EJ_GetSectionInfo(15915)
 local warnFelBombardment				= mod:NewTargetAnnounce(246220, 2)
 local warnDecimation					= mod:NewTargetAnnounce(244410, 4)
 
-local specWarnFelBombardment			= mod:NewSpecialWarningMoveAway(246220, nil, nil, nil, 1, 2)
+local specWarnFelBombardment			= mod:NewSpecialWarningMoveAway(246220, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellFelBombardment				= mod:NewFadesYell(246220)
-local specWarnFelBombardmentTaunt		= mod:NewSpecialWarningTaunt(246220, nil, nil, nil, 1, 2)
-local specWarnApocDrive					= mod:NewSpecialWarningSwitch(244152, nil, nil, nil, 1, 2)
-local specWarnEradication				= mod:NewSpecialWarningRun(244969, nil, nil, nil, 4, 2)
+local specWarnFelBombardmentTaunt		= mod:NewSpecialWarningTaunt(246220, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnApocDrive					= mod:NewSpecialWarningSwitch(244152, nil, nil, nil, 1, 2, nil, nil, "targetchange")
+local specWarnEradication				= mod:NewSpecialWarningRun(244969, nil, nil, nil, 4, 2, nil, nil, "justrun")
 --local specWarnGTFO					= mod:NewSpecialWarningGTFO(238028, nil, nil, nil, 1, 2)
 
 local timerFelBombardmentCD				= mod:NewNextTimer(20.7, 246220, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)
@@ -47,14 +47,14 @@ mod:AddSetIconOption("SetIconOnDecimation", 244410, true)
 mod:AddSetIconOption("SetIconOnBombardment", 246220, true)
 --Decimator
 mod:AddTimerLine(Decimator)
-local specWarnDecimation				= mod:NewSpecialWarningMoveAway(244410, nil, nil, nil, 1, 2)
+local specWarnDecimation				= mod:NewSpecialWarningMoveAway(244410, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellDecimation					= mod:NewShortYell(244410)
 local yellDecimationFades				= mod:NewShortFadesYell(244410)
 
 local timerDecimationCD					= mod:NewNextTimer(31.6, 244410, nil, nil, nil, 3, nil, nil, nil, 1, 4)
 --Annihilator
 mod:AddTimerLine(annihilator)
-local specWarnAnnihilation				= mod:NewSpecialWarningSpell(244761, nil, nil, nil, 1, 2)
+local specWarnAnnihilation				= mod:NewSpecialWarningSpell(244761, nil, nil, nil, 1, 2, nil, nil, "helpsoak")
 
 local timerAnnihilationCD				= mod:NewNextTimer(31.6, 244761, nil, nil, nil, 3, nil, nil, nil, 1, 4)
 

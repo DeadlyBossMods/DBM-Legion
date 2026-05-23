@@ -33,7 +33,7 @@ mod:RegisterEventsInCombat(
 --]]
 local warnPhase						= mod:NewPhaseChangeAnnounce()
 
-local specWarnGTFO					= mod:NewSpecialWarningGTFO(248167, nil, nil, nil, 1, 2)
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(248167, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerNextPhase				= mod:NewStageTimer(74)
 
@@ -48,15 +48,15 @@ local warnBlightOrb					= mod:NewCountAnnounce(248317, 2)
 local warnSoulblight				= mod:NewTargetAnnounce(248396, 2, nil, false, 2)
 local warnSkyandSea					= mod:NewTargetAnnounce(255594, 1)
 
-local specWarnSweepingScythe		= mod:NewSpecialWarningStack(248499, nil, 3, nil, nil, 1, 6)
-local specWarnSweepingScytheTaunt	= mod:NewSpecialWarningTaunt(248499, nil, nil, nil, 1, 2)
-local specWarnConeofDeath			= mod:NewSpecialWarningDodge(248165, nil, nil, nil, 1, 2)
-local specWarnSoulblight			= mod:NewSpecialWarningMoveAway(248396, nil, nil, nil, 1, 2)
+local specWarnSweepingScythe		= mod:NewSpecialWarningStack(248499, nil, 3, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnSweepingScytheTaunt	= mod:NewSpecialWarningTaunt(248499, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnConeofDeath			= mod:NewSpecialWarningDodge(248165, nil, nil, nil, 1, 2, nil, nil, "shockwave")
+local specWarnSoulblight			= mod:NewSpecialWarningMoveAway(248396, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellSoulblight				= mod:NewShortYell(248396, L.Blight)
 local yellSoulblightFades			= mod:NewShortFadesYell(248396)
-local specWarnGiftofSea				= mod:NewSpecialWarningYou(258647, nil, nil, nil, 1, 2)
+local specWarnGiftofSea				= mod:NewSpecialWarningYou(258647, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellGiftofSea					= mod:NewPosYell(258647, L.SeaText)
-local specWarnGiftofSky				= mod:NewSpecialWarningYou(258646, nil, nil, nil, 1, 2)
+local specWarnGiftofSky				= mod:NewSpecialWarningYou(258646, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellGiftofSky					= mod:NewPosYell(258646, L.SkyText)
 
 local timerSweepingScytheCD			= mod:NewVarCountTimer("v5.6-15.7", 248499, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--5.6-15.7
@@ -71,10 +71,10 @@ mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)--Mythic Stage 1
 local warnSargRage					= mod:NewTargetAnnounce(257869, 3)
 local warnSargFear					= mod:NewTargetAnnounce(257931, 3)
 
-local specWarnSargGaze				= mod:NewSpecialWarningPreWarn(258068, nil, 5, nil, nil, 1, 2, 4)
-local specWarnSargRage				= mod:NewSpecialWarningMoveAway(257869, nil, nil, nil, 3, 2, 4)
+local specWarnSargGaze				= mod:NewSpecialWarningPreWarn(258068, nil, 5, nil, nil, 1, 2, 4, nil, "range5")
+local specWarnSargRage				= mod:NewSpecialWarningMoveAway(257869, nil, nil, nil, 3, 2, 4, nil, "scatter")
 local yellSargRage					= mod:NewShortYell(257869, 6612)
-local specWarnSargFear				= mod:NewSpecialWarningMoveTo(257931, nil, nil, nil, 3, 2, 4)
+local specWarnSargFear				= mod:NewSpecialWarningMoveTo(257931, nil, nil, nil, 3, 2, 4, nil, "gathershare")
 local yellSargFear					= mod:NewShortYell(257931, 5782)
 local yellSargFearCombo				= mod:NewComboYell(257931, 5782)
 
@@ -86,15 +86,15 @@ local warnSoulburst					= mod:NewTargetAnnounce(250669, 2)
 local warnSoulbomb					= mod:NewTargetNoFilterAnnounce(251570, 3)
 local warnAvatarofAggra				= mod:NewTargetNoFilterAnnounce(255199, 1)
 
-local specWarnSoulburst				= mod:NewSpecialWarningYou(250669, nil, nil, nil, 1, 2)
+local specWarnSoulburst				= mod:NewSpecialWarningYou(250669, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellSoulburst					= mod:NewPosYell(250669, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 local yellSoulburstFades			= mod:NewIconFadesYell(250669)
-local specWarnSoulbomb				= mod:NewSpecialWarningYou(251570, nil, nil, nil, 1, 2)
-local specWarnSoulbombMoveTo		= mod:NewSpecialWarningMoveTo(251570, nil, nil, nil, 1, 2)
+local specWarnSoulbomb				= mod:NewSpecialWarningYou(251570, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnSoulbombMoveTo		= mod:NewSpecialWarningMoveTo(251570, nil, nil, nil, 1, 2, nil, nil, "helpsoak")
 local yellSoulbomb					= mod:NewPosYell(251570, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 local yellSoulbombFades				= mod:NewIconFadesYell(251570, 155188)
-local specWarnEdgeofObliteration	= mod:NewSpecialWarningSpell(255826, nil, nil, nil, 2, 2)
-local specWarnAvatarofAggra			= mod:NewSpecialWarningYou(255199, nil, nil, nil, 1, 2)
+local specWarnEdgeofObliteration	= mod:NewSpecialWarningSpell(255826, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnAvatarofAggra			= mod:NewSpecialWarningYou(255199, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 
 local timerSoulBombCD				= mod:NewNextTimer(42, 251570, nil, nil, nil, 3, nil, DBM_COMMON_L.TANK_ICON, nil, 3, 4)
 local timerSoulBurstCD				= mod:NewNextCountTimer("d42", 250669, nil, nil, nil, 3)
@@ -111,7 +111,7 @@ local warnCosmicBeaconCast			= mod:NewCastAnnounce(252616, 2)
 local warnCosmicBeacon				= mod:NewTargetAnnounce(252616, 2)
 local warnDiscsofNorg				= mod:NewCastAnnounce(252516, 1)
 
-local specWarnCosmicRay				= mod:NewSpecialWarningYou(252729, nil, nil, nil, 1, 2)
+local specWarnCosmicRay				= mod:NewSpecialWarningYou(252729, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellCosmicRay					= mod:NewYell(252729)
 
 local timerCosmicRayCD				= mod:NewCDTimer(19.9, 252729, nil, nil, nil, 3)--All adds seem to cast it at same time, so one timer for all
@@ -129,13 +129,13 @@ local warnSargSentence				= mod:NewTargetNoFilterAnnounce(257966, 3)
 local warnEdgeofAnni				= mod:NewCountAnnounce(258834, 4)
 local warnSoulRendingScythe			= mod:NewStackAnnounce(258838, 2, nil, "Tank")
 
-local specWarnSargSentence			= mod:NewSpecialWarningYou(257966, nil, nil, nil, 1, 2)
+local specWarnSargSentence			= mod:NewSpecialWarningYou(257966, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellSargSentence				= mod:NewShortYell(257966, L.Sentence)
 local yellSargSentenceFades			= mod:NewShortFadesYell(257966)
-local specWarnApocModule			= mod:NewSpecialWarningSwitchCount(258029, "Dps", nil, nil, 3, 2)--EVERYONE
-local specWarnEdgeofAnni			= mod:NewSpecialWarningDodgeCount(258834, nil, nil, nil, 2, 2)
-local specWarnSoulrendingScythe		= mod:NewSpecialWarningStack(258838, nil, 2, nil, nil, 1, 2)
-local specWarnSoulrendingScytheTaunt= mod:NewSpecialWarningTaunt(258838, nil, nil, nil, 1, 2)
+local specWarnApocModule			= mod:NewSpecialWarningSwitchCount(258029, "Dps", nil, nil, 3, 2, nil, nil, "killmob")--EVERYONE
+local specWarnEdgeofAnni			= mod:NewSpecialWarningDodgeCount(258834, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnSoulrendingScythe		= mod:NewSpecialWarningStack(258838, nil, 2, nil, nil, 1, 2, nil, nil, "stackhigh")
+local specWarnSoulrendingScytheTaunt= mod:NewSpecialWarningTaunt(258838, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerSoulrendingScytheCD		= mod:NewCDTimer(8.5, 258838, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 3)
 local timerSargSentenceCD			= mod:NewTimer(35.2, "timerSargSentenceCD", 257966, nil, nil, 3, DBM_COMMON_L.HEROIC_ICON)
@@ -145,10 +145,10 @@ mod:AddTimerLine(SCENARIO_STAGE:format(4))
 local warnGiftOfLifebinder			= mod:NewCastAnnounce(257619, 1)
 local warnDeadlyScythe				= mod:NewStackAnnounce(258039, 2, nil, "Tank")
 
-local specWarnEmberofRage			= mod:NewSpecialWarningDodge(257299, nil, nil, nil, 2, 2)
-local specWarnDeadlyScythe			= mod:NewSpecialWarningStack(258039, nil, 2, nil, nil, 1, 2)
-local specWarnDeadlyScytheTaunt		= mod:NewSpecialWarningTaunt(258039, nil, nil, nil, 1, 2)
-local specWarnReorgModule			= mod:NewSpecialWarningSwitchCount(256389, "RangedDps", nil, nil, 1, 2)--Ranged only?
+local specWarnEmberofRage			= mod:NewSpecialWarningDodge(257299, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnDeadlyScythe			= mod:NewSpecialWarningStack(258039, nil, 2, nil, nil, 1, 2, nil, nil, "stackhigh")
+local specWarnDeadlyScytheTaunt		= mod:NewSpecialWarningTaunt(258039, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnReorgModule			= mod:NewSpecialWarningSwitchCount(256389, "RangedDps", nil, nil, 1, 2, nil, nil, "killmob")--Ranged only?
 
 local timerDeadlyScytheCD			= mod:NewCDTimer(5.5, 258039, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerReorgModuleCD			= mod:NewCDCountTimer(48.1, 256389, nil, nil, nil, 1, nil, nil, nil, not mod:IsTank() and 2 or nil, 4)
