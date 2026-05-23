@@ -90,7 +90,7 @@ mod:AddInfoFrameOption(245586, true)
 mod:AddTimerLine(Thuraya)
 local warnCosmicGlare					= mod:NewTargetAnnounce(250757, 3)
 
-local specWarnTouchoftheCosmos			= mod:NewSpecialWarningInterruptCount(250648, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kick")
+local specWarnTouchoftheCosmos			= mod:NewSpecialWarningInterruptCount(250648, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kick1r")
 local specWarnCosmicGlare				= mod:NewSpecialWarningYou(250757, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellCosmicGlare					= mod:NewYell(250757)
 local yellCosmicGlareFades				= mod:NewShortFadesYell(250757)
