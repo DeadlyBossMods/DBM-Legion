@@ -128,7 +128,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.beamCount = self.vb.beamCount + 1
 		specWarnFelBeam:Show()
 		local nextCount = self.vb.beamCount + 1
-		local timerText = nextCount
+		local timerText = tostring(nextCount)
 		if self.vb.firstBeam == 2 then--First Beam Right
 			if self.vb.beamCount % 2 == 0 then--Coming from left (facing boss)
 				specWarnFelBeam:Play("moveright")
