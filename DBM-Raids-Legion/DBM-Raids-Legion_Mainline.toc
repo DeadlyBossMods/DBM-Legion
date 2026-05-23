@@ -21,7 +21,7 @@
 ## X-DBM-Mod-Name-ruRU: Рейды (Легион)
 ## X-DBM-Mod-Sort: 501
 ## X-DBM-Mod-MapID: 1712, 1676, 1530, 1648, 1520
-## X-DBM-Mod-MinCoreRevision: 20230617000000
+## X-DBM-Mod-MinCoreRevision: 20260522000000
 ## X-DBM-Mod-MinExpansion: 6
 ## X-Curse-Project-ID: 301324
 ## X-WoWI-ID: 24905
