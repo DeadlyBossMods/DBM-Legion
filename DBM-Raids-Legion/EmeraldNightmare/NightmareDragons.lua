@@ -33,14 +33,17 @@ local Taerar = DBM:EJ_GetSectionInfo(12774)
 --TODO, remove combined show from any warnings that are only one target
 --TODO, when timers are more finalized add countdowns to more things.
 --All
+DBM:RegisterAltSpellName(203028, 21131)--Corrupted Breath -> breath shortname
+DBM:RegisterAltSpellName(204078, 118699)--Bellowing Roar -> shortname
+
 local warnSlumberingNightmare		= mod:NewTargetAnnounce(203110, 4, nil, false)--An option to announce fuckups
 local warnBreath					= mod:NewSpellAnnounce(203028, 2)
 
 local specWarnMark					= mod:NewSpecialWarningStack(-12809, nil, 7, nil, 2, 1, 6, nil, nil, "stackhigh")
 local specWarnDragon				= mod:NewSpecialWarningTarget(204720, "Tank", nil, nil, 1, 2)
 
-local timerMarkCD					= mod:NewNextTimer(7, -12809, 28836, false, 2, 3, 203102)--Now off by default, to further reduce timer clutter, plus sometimes it's wrong because in rare cases the dragons desync for some reason
-local timerBreathCD					= mod:NewCDSourceTimer(27, 203028, 21131, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--27-34 for Ysondre, Cohorts 27-29.
+local timerMarkCD					= mod:NewNextTimer(7, -12809, nil, false, 2, 3, 203102)--Now off by default, to further reduce timer clutter, plus sometimes it's wrong because in rare cases the dragons desync for some reason
+local timerBreathCD					= mod:NewCDSourceTimer(27, 203028, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--27-34 for Ysondre, Cohorts 27-29.
 
 mod:AddInfoFrameOption(-12809)
 --Ysondre
@@ -90,7 +93,7 @@ local specWarnBellowingRoar			= mod:NewSpecialWarningSpell(204078, nil, nil, nil
 
 local timerShadesOfTaerarCD			= mod:NewNextTimer(48.5, 204100, nil, "-Healer", nil, 1, nil, nil, nil, 1, 4)
 local timerSeepingFogCD				= mod:NewCDTimer(15.5, 205341, nil, false, 2, 3, 24814)--Spawn pretty often, and timers don't help dodge, so now off by default
-local timerBellowingRoarCD			= mod:NewCDTimer(44.5, 204078, 118699, nil, nil, 2)--Air
+local timerBellowingRoarCD			= mod:NewCDTimer(44.5, 204078, nil, nil, nil, 2)--Air
 
 mod.vb.volatileInfectionIcon = 1
 mod.vb.alternateOozes = false

@@ -26,6 +26,8 @@ mod:RegisterEventsInCombat(
  or (ability.id = 232249 or ability.id = 231363 or ability.id = 233272) and type = "cast"
  or ability.name = "Rain of Brimstone"
 --]]
+DBM:RegisterAltSpellName(238587, 87701)--Rain of Brimstone -> meteor shortname
+
 local warnInfernalSpike					= mod:NewSpellAnnounce(233055, 1)
 local warnShatteringStar				= mod:NewTargetCountAnnounce(233272, 3)
 local warnCrashingComet					= mod:NewTargetAnnounce(232249, 4)
@@ -49,7 +51,7 @@ local timerBurningArmorCD				= mod:NewCDCountTimer(24.3, 231363, nil, "Tank", ni
 local timerBurningArmor					= mod:NewBuffFadesTimer(6, 231363, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON, nil, mod:IsTank() and 2 or nil, 4)
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local timerRainofBrimstoneCD			= mod:NewCDCountTimer(31, 238587, nil, nil, nil, 5, nil, DBM_COMMON_L.HEROIC_ICON)
-local timerRainofBrimstone				= mod:NewCastTimer(8, 238587, 87701, nil, nil, 5, nil, DBM_COMMON_L.HEROIC_ICON)
+local timerRainofBrimstone				= mod:NewCastTimer(8, 238587, nil, nil, nil, 5, nil, DBM_COMMON_L.HEROIC_ICON)
 
 --local berserkTimer					= mod:NewBerserkTimer(300)
 

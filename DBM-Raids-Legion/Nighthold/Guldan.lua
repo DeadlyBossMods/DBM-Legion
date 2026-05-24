@@ -40,6 +40,9 @@ local Kurazmal = DBM:EJ_GetSectionInfo(13121)
 local Vethriz = DBM:EJ_GetSectionInfo(13124)
 local Dzorykx = DBM:EJ_GetSectionInfo(13129)
 
+DBM:RegisterAltSpellName(221783, 15643)--Flames of Sargeras -> Flames
+DBM:RegisterAltSpellName(161121, 196871)--Storm of the Destroyer -> Storm
+
 local timerRP						= mod:NewRPTimer(78)
 --Stage One: The Council of Elders
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
@@ -107,8 +110,8 @@ local specWarnFlamesOfSargeras		= mod:NewSpecialWarningMoveAway(221606, nil, nil
 local yellFlamesofSargeras			= mod:NewPosYell(221606, 15643)
 local specWarnFlamesOfSargerasTank	= mod:NewSpecialWarningTaunt(221606, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
-local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, 15643, nil, nil, 3)
-local timerStormOfDestroyerCD		= mod:NewNextCountTimer(16, 161121, 196871, nil, nil, 3)
+local timerFlamesofSargerasCD		= mod:NewNextCountTimer("d58.5", 221783, nil, nil, nil, 3)
+local timerStormOfDestroyerCD		= mod:NewNextCountTimer(16, 161121, nil, nil, nil, 3)
 local timerWellOfSouls				= mod:NewCastTimer(16, 206939, nil, nil, nil, 5)
 local timerBlackHarvestCD			= mod:NewNextCountTimer(83, 206744, nil, nil, nil, 2, nil, nil, nil, 3, 4)
 

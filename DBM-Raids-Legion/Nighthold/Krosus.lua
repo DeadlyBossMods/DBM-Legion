@@ -21,6 +21,9 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 205368 or ability.id = 205370 or ability.id = 205420 or ability.id = 205361) and type = "begincast"
+DBM:RegisterAltSpellName(205368, 173303)--Fel Beam -> Beam
+DBM:RegisterAltSpellName(205344, DBM_COMMON_L.ORB)--Expel Orb of Destruction -> Orb
+
 local warnExpelOrbDestro			= mod:NewTargetCountAnnounce(205344, 4)
 local warnSlamSoon					= mod:NewAnnounce("warnSlamSoon", 4, 205862, nil, nil, true)
 local warnSlam						= mod:NewCountAnnounce(205862, 2)--Regular slams don't need special warn, only bridge smashing ones
@@ -29,15 +32,15 @@ local specWarnSearingBrand			= mod:NewSpecialWarningStack(206677, nil, 4, nil, 2
 local specWarnSearingBrandOther		= mod:NewSpecialWarningTaunt(206677, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local specWarnFelBeam				= mod:NewSpecialWarningDodge(205368, nil, nil, nil, 2, 2, nil, nil, "moveleft")
 local specWarnOrbDestro				= mod:NewSpecialWarningMoveAway(205344, nil, nil, nil, 3, 2, nil, nil, "runout")
-local yellOrbDestro					= mod:NewFadesYell(205344)
+local yellOrbDestro					= mod:NewFadesYell(205344, DBM_COMMON_L.ORB)
 local specWarnBurningPitch			= mod:NewSpecialWarningCount(205420, nil, nil, nil, 2, 6, nil, nil, "helpsoak")
 local specWarnSlam					= mod:NewSpecialWarningRun(205862, nil, nil, nil, 4, 2, nil, nil, "helpsoak")
 local specWarnFelBlast				= mod:NewSpecialWarningInterrupt(209017, false, nil, 2, 1, 2, nil, nil, "kickcast")
 local specWarnFelBurst				= mod:NewSpecialWarningInterrupt(206351, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerSearingBrand				= mod:NewTargetTimer(20, 206677, nil, "Tank", nil, 5)
-local timerFelBeamCD				= mod:NewNextCountTimer(16, 205368, 173303, nil, nil, 3)--Short text "Beam"
-local timerOrbDestroCD				= mod:NewNextCountTimer(16, 205344, DBM_COMMON_L.ORB, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)--Shor timer text "Orb"
+local timerFelBeamCD				= mod:NewNextCountTimer(16, 205368, nil, nil, nil, 3)--Short text "Beam"
+local timerOrbDestroCD				= mod:NewNextCountTimer(16, 205344, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)--Shor timer text "Orb"
 local timerBurningPitchCD			= mod:NewNextCountTimer(16, 205420, nil, nil, 2, 5)
 local timerSlamCD					= mod:NewNextCountTimer(30, 205862, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)
 

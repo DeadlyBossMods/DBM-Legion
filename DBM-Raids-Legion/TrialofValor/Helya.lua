@@ -36,6 +36,9 @@ or (ability.id = 228300 or ability.id = 228300) and type = "removebuff" or abili
 --TODO, more work with Corrupted Axion and Dark Hatred?
 --Stage One: Low Tide
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
+DBM:RegisterAltSpellName(227967, 21131)--Bilewater Breath -> tank breath shortname
+DBM:RegisterAltSpellName(228565, 21131)--Corrupted Breath -> tank breath shortname
+
 local warnOrbOfCorruption			= mod:NewTargetAnnounce(229119, 3)
 local warnTaintOfSea				= mod:NewTargetAnnounce(228054, 2)
 
@@ -50,9 +53,9 @@ local specWarnBilewaterCorrosion	= mod:NewSpecialWarningMove(227998, nil, nil, n
 local specWarnBilewaterSlimes		= mod:NewSpecialWarningSwitch(-14217, "Dps", nil, nil, 1, 2)
 local specWarnTentacleStrike		= mod:NewSpecialWarningTarget(228730, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.spell:format(228730), nil, 2)
 
-local timerOrbOfCorruptionCD		= mod:NewNextTimer(25, 229119, "OrbsTimerText", nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
+local timerOrbOfCorruptionCD		= mod:NewNextTimer(25, 229119, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 local timerTaintOfSeaCD				= mod:NewCDTimer(14.5, 228088, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)
-local timerBilewaterBreathCD		= mod:NewNextCountTimer(40, 227967, 21131, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--On for everyone though so others avoid it too
+local timerBilewaterBreathCD		= mod:NewNextCountTimer(40, 227967, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--On for everyone though so others avoid it too
 local timerTentacleStrikeCD			= mod:NewNextCountTimer(30, 228730, nil, nil, nil, 5)
 local timerTentacleStrike			= mod:NewCastSourceTimer(6, 228730, nil, nil, nil, 5)
 local timerExplodingOozes			= mod:NewCastTimer(20.5, 227992, nil, nil, nil, 2, nil, DBM_COMMON_L.DAMAGE_ICON, nil, 1, 4)
@@ -95,8 +98,8 @@ local specWarnCorruptedBreath		= mod:NewSpecialWarningCount(228565, nil, nil, ni
 local specWarnOrbOfCorrosion		= mod:NewSpecialWarningYou(230267, nil, nil, nil, 1, 5, nil, nil, "orbrun")
 local yellOrbOfCorrosion			= mod:NewShortPosYell(230267)
 
-local timerCorruptedBreathCD		= mod:NewCDCountTimer(40, 228565, 21131, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerOrbOfCorrosionCD			= mod:NewNextTimer(17, 230267, "OrbsTimerText", nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
+local timerCorruptedBreathCD		= mod:NewCDCountTimer(40, 228565, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerOrbOfCorrosionCD			= mod:NewNextTimer(17, 230267, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 local berserkTimer					= mod:NewBerserkTimer(660)
 
 local seenMobs = {}

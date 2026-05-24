@@ -33,6 +33,16 @@ ability.id = 230403 and type = "cast" or
 ability.id = 230951 and type = "removebuff" or ability.id = 230414
 --]]
 --Phases/General
+DBM:RegisterAltSpellName(212530, 160324)--Replicate: Mark of Frost -> Replicate
+DBM:RegisterAltSpellName(213182, 160324)--Replicate: Searing Brand -> Replicate
+DBM:RegisterAltSpellName(213852, 160324)--Replicate: Arcane Orb -> Replicate
+DBM:RegisterAltSpellName(212735, 29870)--Detonate: Mark of Frost -> Detonate
+DBM:RegisterAltSpellName(213275, 29870)--Detonate: Searing Brand -> Detonate
+DBM:RegisterAltSpellName(213390, 29870)--Detonate: Arcane Orb -> Detonate
+DBM:RegisterAltSpellName(213853, 124338)--Animate: Mark of Frost -> Animated
+DBM:RegisterAltSpellName(213567, 124338)--Animate: Searing Brand -> Animated
+DBM:RegisterAltSpellName(213564, 124338)--Animate: Arcane Orb -> Animated
+
 local warnFrostPhase				= mod:NewSpellAnnounce(213864, 2, nil, nil, nil, nil, nil, 2)
 local warnFirePhase					= mod:NewSpellAnnounce(213867, 2, nil, nil, nil, nil, nil, 2)
 local warnArcanePhase				= mod:NewSpellAnnounce(213869, 2, nil, nil, nil, nil, nil, 2)
@@ -53,7 +63,7 @@ local specWarnMarkOfFrost			= mod:NewSpecialWarningYou(212531, nil, nil, nil, 1,
 local yellMarkofFrost				= mod:NewYell(212531)
 local specWarnFrostbitten			= mod:NewSpecialWarningStack(212647, nil, 6, nil, nil, 1, 6, nil, nil, "stackhigh")
 local specWarnSearingBrand			= mod:NewSpecialWarningMoveAway(213148, nil, nil, nil, 1, 2, nil, nil, "scatter")
-local specWarnSearingBrandDodge		= mod:NewSpecialWarningDodge(213148, nil, nil, nil, 2, 6)
+--local specWarnSearingBrandDodge		= mod:NewSpecialWarningDodge(213148, nil, nil, nil, 2, 6)--Unused?
 local specWarnArcaneOrb				= mod:NewSpecialWarningDodge(213519, nil, nil, nil, 2, 2, nil, nil, "watchorb")
 --Detonates
 local specWarnFrostdetonate			= mod:NewSpecialWarningMoveAway(212735, nil, nil, nil, 3, 2, nil, nil, "runout")
@@ -83,17 +93,17 @@ local timerMarkOfFrostCD			= mod:NewNextTimer(16, 212531, nil, nil, nil, 3)
 local timerSearingBrandCD			= mod:NewNextTimer(16, 213148, nil, nil, nil, 3)
 local timerArcaneOrbCD				= mod:NewNextTimer(11.5, 213519, nil, nil, nil, 3)
 --Replicates
-local timerMarkOfFrostRepCD			= mod:NewNextTimer(16, 212530, 160324, nil, nil, 3)--Short name "Replicate"
-local timerSearingBrandRepCD		= mod:NewNextTimer(16, 213182, 160324, nil, nil, 3)--Short name "Replicate"
-local timerArcaneOrbRepCD			= mod:NewNextTimer(14.5, 213852, 160324, nil, nil, 3)--Short name "Replicate"
+local timerMarkOfFrostRepCD			= mod:NewNextTimer(16, 212530, nil, nil, nil, 3)--Short name "Replicate"
+local timerSearingBrandRepCD		= mod:NewNextTimer(16, 213182, nil, nil, nil, 3)--Short name "Replicate"
+local timerArcaneOrbRepCD			= mod:NewNextTimer(14.5, 213852, nil, nil, nil, 3)--Short name "Replicate"
 --Detonates
-local timerMarkOfFrostDetonateCD	= mod:NewNextTimer(16, 212735, 29870, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
-local timerSearingBrandDetonateCD	= mod:NewNextTimer(16, 213275, 29870, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
-local timerArcaneOrbDetonateCD		= mod:NewNextTimer(16, 213390, 29870, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
+local timerMarkOfFrostDetonateCD	= mod:NewNextTimer(16, 212735, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
+local timerSearingBrandDetonateCD	= mod:NewNextTimer(16, 213275, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
+local timerArcaneOrbDetonateCD		= mod:NewNextTimer(16, 213390, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.HEALER_ICON)--Short name "Detonate"
 --Animates
-local timerAnimateFrostCD			= mod:NewNextTimer(16, 213853, 124338, nil, nil, 1, 57612, DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
-local timerAnimateFireCD			= mod:NewNextTimer(16, 213567, 124338, nil, nil, 1, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
-local timerAnimateArcaneCD			= mod:NewNextTimer(16, 213564, 124338, nil, nil, 1, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.DAMAGE_ICON..DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
+local timerAnimateFrostCD			= mod:NewNextTimer(16, 213853, nil, nil, nil, 1, 57612, DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
+local timerAnimateFireCD			= mod:NewNextTimer(16, 213567, nil, nil, nil, 1, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
+local timerAnimateArcaneCD			= mod:NewNextTimer(16, 213564, nil, nil, nil, 1, nil, DBM_COMMON_L.DEADLY_ICON..DBM_COMMON_L.DAMAGE_ICON..DBM_COMMON_L.TANK_ICON)--"Animated" short name. Wrong tense but only short spell I can use
 --Animate Specials
 local timerArmageddon				= mod:NewCastTimer(33, 213568, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)
 --Mythic

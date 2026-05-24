@@ -26,6 +26,8 @@ mod:RegisterEventsInCombat(
 --TODO, infoframe for remaining tainted discharge maybe? Has to be combined with alt power infoframe
 --TODO, reverify mythic/LFR timers
 --Nightmare Corruption
+DBM:RegisterAltSpellName(206308, 57467)--Corruption Meteor -> Meteor
+
 local warnDescentIntoMadness			= mod:NewTargetAnnounce(208431, 4)
 local warnDream							= mod:NewYouAnnounce(206005, 1)
 local warnDreamOthers					= mod:NewTargetAnnounce(206005, 1)
@@ -57,7 +59,7 @@ local specWarnNightmareInfusionOther	= mod:NewSpecialWarningTaunt(209443, nil, n
 --Stage Two: From the Shadows
 local specWarnBondsOfTerror				= mod:NewSpecialWarningMoveTo(209034, nil, nil, nil, 1, 2, nil, nil, "linegather")
 local specWarnCorruptionMeteorYou		= mod:NewSpecialWarningYou(206308, nil, nil, nil, 1, 2, nil, nil, "targetyou")
-local yellMeteor						= mod:NewFadesYell(206308)
+local yellMeteor						= mod:NewFadesYell(206308, 57467)
 local specWarnCorruptionMeteorAway		= mod:NewSpecialWarningDodge(206308, "-Tank", nil, nil, 2, 2, nil, nil, "watchstep")--No dream, high corruption, dodge it. Subjective and defaults may be altered to off.
 local specWarnCorruptionMeteorTo		= mod:NewSpecialWarningMoveTo(206308, "-Tank", nil, nil, 1, 2, nil, nil, "gathershare")--Has dream, definitely should help
 local specWarnBlackeningSoulYou			= mod:NewSpecialWarningStack(209158, nil, 3, nil, 2, 1, 6, nil, nil, "stackhigh")
@@ -75,7 +77,7 @@ local timerTormentingSwipeCD			= mod:NewCDTimer(10, 224649, nil, "Tank", nil, 5,
 --Stage Two: From the Shadows
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
 local timerBondsOfTerrorCD				= mod:NewCDTimer(14.1, 209034, nil, "-Tank", 2, 3)
-local timerCorruptionMeteorCD			= mod:NewCDCountTimer(28, 206308, 57467, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, not mod:IsTank() and 3 or nil, 4)--Short text "meteor"
+local timerCorruptionMeteorCD			= mod:NewCDCountTimer(28, 206308, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, not mod:IsTank() and 3 or nil, 4)--Short text "meteor"
 local timerBlackeningSoulCD				= mod:NewCDTimer(7.2, 209158, nil, "Healer|Tank", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON..DBM_COMMON_L.TANK_ICON)
 local timerNightmareInfusionCD			= mod:NewCDTimer(61.5, 209443, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON, nil, 2, 4)--61.5-62.5
 local timerCallOfNightmaresCD			= mod:NewCDTimer(40, 205588, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON, nil, 1, 4)

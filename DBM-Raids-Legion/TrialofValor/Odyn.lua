@@ -32,6 +32,8 @@ local hyrja = DBM:EJ_GetSectionInfo(14006)
 
 --Stage 1: Halls of Valor was merely a set back
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
+DBM:RegisterAltSpellName(228918, 71466)--Stormforged Spear -> taunt shortname
+
 local warnRevivify					= mod:NewCastAnnounce(228171, 4)
 
 local specWarnBranded				= mod:NewSpecialWarningMoveTo(227503, nil, nil, nil, 3, 6, nil, nil, "mm2")
@@ -89,7 +91,7 @@ local specWarnStormforgedSpearOther	= mod:NewSpecialWarningTaunt(228918, nil, ni
 local specWarnCleansingFlame		= mod:NewSpecialWarningMove(228683, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerStormOfJusticeCD			= mod:NewNextTimer(10.9, 227807, nil, nil, nil, 3)
-local timerStormforgedSpearCD		= mod:NewNextTimer(10.9, 228918, 71466, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.DEADLY_ICON, nil, 2, 4)
+local timerStormforgedSpearCD		= mod:NewNextTimer(10.9, 228918, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.DEADLY_ICON, nil, 2, 4)
 --Mythic
 mod:AddTimerLine(ENCOUNTER_JOURNAL_SECTION_FLAG12)
 local specWarnRunicBrand			= mod:NewSpecialWarningYouPos(231297, nil, nil, 2, 3, 6, nil, nil, "mm2")

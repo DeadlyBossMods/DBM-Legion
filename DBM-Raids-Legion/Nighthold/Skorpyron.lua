@@ -31,6 +31,8 @@ mod:RegisterEventsInCombat(
 ability.id = 204292 and type = "summon" or
 ability.id = 204459
 --]]
+DBM:RegisterAltSpellName(204372, 88879)--Call of the Scorpid -> shortname
+
 local warnBrokenShard				= mod:NewSpellAnnounce(204292, 2, nil, false, 2)
 local warnVulnerable				= mod:NewTargetAnnounce(204459, 1)
 local warnRed						= mod:NewSpellAnnounce(214661, 2)
@@ -47,7 +49,7 @@ local specWarnVulnerableOver		= mod:NewSpecialWarningEnd(204459, false, nil, nil
 local specWarnToxicChit				= mod:NewSpecialWarningMove(204744, nil, nil, nil, 1, 2, nil, nil, "runaway")
 
 local timerArcanoslashCD			= mod:NewCDTimer(9.6, 204275, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerCallofScorpidCD			= mod:NewVarTimer("v20.3-22", 204372, 88879, nil, nil, 1, nil, nil, nil, 2, 4)--20-22 Unless delayed by shockwave/stun then as high as 40
+local timerCallofScorpidCD			= mod:NewVarTimer("v20.3-22", 204372, nil, nil, nil, 1, nil, nil, nil, 2, 4)--20-22 Unless delayed by shockwave/stun then as high as 40
 local timerShockwaveCD				= mod:NewVarTimer("v57.9-60", 204316, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, 1, 4)--58-60
 local timerFocusedBlastCD			= mod:NewVarTimer("v30.4-34", 204471, nil, nil, nil, 3, nil, nil, nil, 3, 4)--30-34 (32.8 NEW data)
 local timerVulnerable				= mod:NewBuffFadesTimer(15, 204459, nil, nil, nil, 6)

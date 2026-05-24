@@ -30,6 +30,8 @@ mod:RegisterEvents(
 
 --(ability.id = 209595 or ability.id = 208807 or ability.id = 228877 or ability.id = 210022 or ability.id = 209168) and type = "begincast" or (ability.id = 209597 or ability.id = 210387 or ability.id = 214278 or ability.id = 214295 or ability.id = 208863) and type = "cast"
 --Base
+DBM:RegisterAltSpellName(208887, 141872)--Summon Time Elementals -> Call Elemental
+
 local warnTemporalisis				= mod:NewSpellAnnounce(209595, 3)
 local warnCompressedTime			= mod:NewSpellAnnounce(209590, 3)
 
@@ -43,7 +45,7 @@ local specWarnExpedite				= mod:NewSpecialWarningInterrupt(209617, "HasInterrupt
 
 local timerRP						= mod:NewRPTimer(68)
 local timerLeaveNightwell			= mod:NewCastTimer(9.8, 208863, nil, nil, nil, 6)
-local timerTimeElementalsCD			= mod:NewNextSourceTimer(16, 208887, 141872, nil, nil, 1)--"Call Elemental" short text
+local timerTimeElementalsCD			= mod:NewNextSourceTimer(16, 208887, nil, nil, nil, 1)--"Call Elemental" short text
 local timerFastTimeBubble			= mod:NewTimer(35, "timerFastTimeBubble", 209166, nil, nil, 5)
 local timerSlowTimeBubble			= mod:NewTimer(70, "timerSlowTimeBubble", 209165, nil, nil, 5)
 local berserkTimer					= mod:NewBerserkTimer(240)
