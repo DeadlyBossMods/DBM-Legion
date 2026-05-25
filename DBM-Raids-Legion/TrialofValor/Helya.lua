@@ -50,7 +50,7 @@ local yellTaint						= mod:NewShortPosYell(228088, nil, false)
 local specWarnBilewaterBreath		= mod:NewSpecialWarningCount(227967, nil, nil, nil, 2, 2, nil, nil, "breathsoon")
 local specWarnBilewaterRedox		= mod:NewSpecialWarningTaunt(227982, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 local specWarnBilewaterCorrosion	= mod:NewSpecialWarningMove(227998, nil, nil, nil, 1, 2, nil, nil, "runaway")
-local specWarnBilewaterSlimes		= mod:NewSpecialWarningSwitch(-14217, "Dps", nil, nil, 1, 2)
+local specWarnBilewaterSlimes		= mod:NewSpecialWarningSwitch(-14217, "Dps", nil, nil, 1, 2, nil, nil, "killmob")
 local specWarnTentacleStrike		= mod:NewSpecialWarningTarget(228730, nil, DBM_CORE_L.AUTO_SPEC_WARN_OPTIONS.spell:format(228730), nil, 2)
 
 local timerOrbOfCorruptionCD		= mod:NewNextTimer(25, 229119, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON, nil, 3, 4)

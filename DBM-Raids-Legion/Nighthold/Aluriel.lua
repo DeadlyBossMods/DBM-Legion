@@ -82,7 +82,7 @@ local specWarnAnimateFire			= mod:NewSpecialWarningSwitch(213567, "-Healer", nil
 local specWarnAnimateArcane			= mod:NewSpecialWarningSwitch(213564, "-Healer", nil, nil, 1, 2, nil, nil, "mobsoon")
 --Mythic
 local specWarnDecimate				= mod:NewSpecialWarningSpell(230504, nil, nil, nil, 1, 2, nil, nil, "carefly")
-local specWarnFelLash				= mod:NewSpecialWarningSoon(230403, nil, nil, nil, 1, 2)
+local specWarnFelLash				= mod:NewSpecialWarningSoon(230403, nil, nil, nil, 1, 2, nil, nil, "gathershare")
 
 local timerFrostPhaseCD				= mod:NewNextTimer(80, 213864, nil, nil, nil, 6)
 local timerFirePhaseCD				= mod:NewNextTimer(85, 213867, nil, nil, nil, 6)

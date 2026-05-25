@@ -46,7 +46,7 @@ local warnSicklyFixate				= mod:NewTargetAnnounce(241600, 4)
 --Harjatan
 local specWarnJaggedAbrasion		= mod:NewSpecialWarningStack(231998, nil, 4, nil, nil, 1, 6, nil, nil, "stackhigh")
 local specWarnJaggedAbrasionOther	= mod:NewSpecialWarningTaunt(231998, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
-local specWarnUncheckedRage			= mod:NewSpecialWarningCount(231854, nil, nil, nil, 2, 2)
+local specWarnUncheckedRage			= mod:NewSpecialWarningCount(231854, nil, nil, nil, 2, 2, nil, nil, "gathershare")
 local specWarnDrenchingWaters		= mod:NewSpecialWarningMove(231768, nil, nil, nil, 1, 2, nil, nil, "runaway")
 local specWarnCommandingroar		= mod:NewSpecialWarningSwitch(232192, "-Healer", nil, nil, 1, 2, nil, nil, "killmob")
 local specWarnDrawIn				= mod:NewSpecialWarningSpell(232061, nil, nil, nil, 1, 2, nil, nil, "phasechange")

@@ -55,7 +55,7 @@ local warnAblation					= mod:NewStackAnnounce(209615, 2, nil, "Tank")
 
 local specWarnArcaneticRing			= mod:NewSpecialWarningDodge(208807, nil, nil, nil, 2, 5, nil, nil, "watchorb")
 local specWarnAblation				= mod:NewSpecialWarningTaunt(209615, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
-local specWarnSpanningSingularityPre= mod:NewSpecialWarningMoveTo(209168, "RangedDps", nil, 2, 1, 7)
+local specWarnSpanningSingularityPre= mod:NewSpecialWarningMoveTo(209168, "RangedDps", nil, 2, 1, 7, nil, nil, "runtoedge")
 local specWarnSpanningSingularity	= mod:NewSpecialWarningDodge(209168, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 local specWarnSingularityGTFO		= mod:NewSpecialWarningMove(209168, "-Tank", nil, 2, 1, 2, nil, nil, "runaway")
 

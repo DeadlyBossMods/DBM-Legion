@@ -47,7 +47,7 @@ local warnNightmareTentacles			= mod:NewSpellAnnounce(-12977, 3, 93708)
 
 local specWarnDescentIntoMadness		= mod:NewSpecialWarningYou(208431)
 local yellDescentIntoMadness			= mod:NewFadesYell(208431)
-local specWarnDreaming					= mod:NewSpecialWarningCount(205843, nil, nil, nil, 1, 2)--Mythic
+local specWarnDreaming					= mod:NewSpecialWarningCount(205843, nil, nil, nil, 1, 2, nil, nil, "stepring")--Mythic
 --Stage One: The Decent Into Madness
 local specWarnNightmareBlades			= mod:NewSpecialWarningMoveAway(206656, nil, nil, nil, 1, 2, nil, nil, "runout")
 local specWarnCorruptionHorror			= mod:NewSpecialWarningSwitchCount(-12973, "-Healer", nil, nil, 1, 2, nil, nil, "bigmob")

@@ -45,14 +45,14 @@ local specWarnCalcifiedQuills		= mod:NewSpecialWarningMoveAway(233431, nil, nil,
 local yellCalcifiedQuills			= mod:NewYell(233431)
 local specWarnAttackAtrigan			= mod:NewSpecialWarningSwitch(-14645, "Dps", nil, nil, 1, 2, nil, nil, "targetchange")
 local specWarnBoneSawMelee			= mod:NewSpecialWarningRun(233441, "Melee", nil, 2, 4, 2, nil, nil, "runout")
-local specWarnBoneSawEveryoneElse	= mod:NewSpecialWarningReflect(233441, "-Melee", nil, nil, 1, 2)
+local specWarnBoneSawEveryoneElse	= mod:NewSpecialWarningReflect(233441, "-Melee", nil, nil, 1, 2, nil, nil, "stopattack")
 --Belac
 local specWarnPangsofGuilt			= mod:NewSpecialWarningInterruptCount(239401, "HasInterrupt", nil, nil, 1, 3, nil, nil, "kick2r")
 local specWarnEchoingAnguish		= mod:NewSpecialWarningMoveAway(233983, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellEchoingAnguish			= mod:NewShortPosYell(233983)
 local specWarnAttackBelac			= mod:NewSpecialWarningSwitch(-14646, "Dps", nil, nil, 1, 2, nil, nil, "targetchange")
 local specWarnFelSquallMelee		= mod:NewSpecialWarningRun(235230, "Melee", nil, 2, 4, 2, nil, nil, "runout")
-local specWarnFelSquallEveryoneElse	= mod:NewSpecialWarningReflect(235230, "-Melee", nil, nil, 1, 2)
+local specWarnFelSquallEveryoneElse	= mod:NewSpecialWarningReflect(235230, "-Melee", nil, nil, 1, 2, nil, nil, "stopattack")
 local specWarnTormentingBurst		= mod:NewSpecialWarningCount(234015, nil, nil, nil, 2, 2, nil, nil, "aesoon")
 --Phase
 local specWarnSoulCorruption		= mod:NewSpecialWarningStack(248713, nil, 10, nil, nil, 1, 6, nil, nil, "stackhigh")--stack guessed
