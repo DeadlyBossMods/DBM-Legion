@@ -65,7 +65,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("EmeraldNightmareTrash")
 
 L:SetGeneralLocalization({
-	name =	"Трэш мобы Изумрудного кошмара"
+	name =	"Трэш: Изумрудный кошмар"
 })
 
 ---------------------------
@@ -100,7 +100,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("TrialofValorTrash")
 
 L:SetGeneralLocalization({
-	name =	"Трэш мобы Испытание Доблести"
+	name =	"Трэш: Испытание Доблести"
 })
 
 ---------------------------
@@ -204,7 +204,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("NightholdTrash")
 
 L:SetGeneralLocalization({
-	name =	"Трэш мобы Цитадель Ночи"
+	name =	"Трэш: Цитадель Ночи"
 })
 
 L:SetMiscLocalization({
@@ -265,7 +265,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("TombSargTrash")
 
 L:SetGeneralLocalization({
-	name =	"Трэш мобы Гробница Саргераса"
+	name =	"Трэш: Гробница Саргераса"
 })
 
 ---------------------------
@@ -402,5 +402,5 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("AntorusTrash")
 
 L:SetGeneralLocalization({
-	name =	"Трэш мобы Анторус, Пылающий Трон"
+	name =	"Трэш: Анторус, Пылающий Трон"
 })
