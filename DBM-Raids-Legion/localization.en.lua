@@ -32,7 +32,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Disable all auto soaking related warnings/arrows/HUDs for Focused Gaze"
+	NoAutoSoaking2		= "Disable all auto soaking related warnings/arrows for Focused Gaze"
 })
 
 L:SetMiscLocalization({

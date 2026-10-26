@@ -18,7 +18,7 @@ mod:RegisterEventsInCombat(
 
 --TODO, review warnings and promote/demote as needed. Especially MaraudingMists
 --TODO, do these get boss unit IDs? if so fix UNIT_SPELLCAST_INTERRUPTED
---TODO, see how scuttle works exactly and get some hud charge lines in there.
+--TODO, see how scuttle works exactly.
 --Captain Hring
 local warnTentacleBash				= mod:NewCastAnnounce(213420, 2)
 local warnShatterCrew				= mod:NewCastAnnounce(213532, 3)

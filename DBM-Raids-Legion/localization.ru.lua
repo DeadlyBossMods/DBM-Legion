@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Отключить все предупреждения/стрелки/HUD, связанные с автоматическим поглощением, для $spell:198006"
+	NoAutoSoaking2		= "Отключить все предупреждения/стрелки, связанные с автоматическим поглощением, для $spell:198006"
 })
 
 L:SetMiscLocalization({

@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "禁用所有專注凝視的自動分傷相關的警告/箭頭/HUDs"
+	NoAutoSoaking2		= "禁用所有專注凝視的自動分傷相關的警告/箭頭"
 })
 
 L:SetMiscLocalization({

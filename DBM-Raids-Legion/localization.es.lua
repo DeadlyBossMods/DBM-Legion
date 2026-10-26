@@ -32,7 +32,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Deshabilitar todos los avisos, flechas e indicadores en pantalla para $spell:198006"
+	NoAutoSoaking2		= "Deshabilitar todos los avisos y flechas para $spell:198006"
 })
 
 L:SetMiscLocalization({

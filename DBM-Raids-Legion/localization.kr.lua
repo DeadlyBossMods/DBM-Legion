@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "시선 집중 관련 경보/화살표/HUD의 모든 기능 사용 중단"
+	NoAutoSoaking2		= "시선 집중 관련 경보/화살표의 모든 기능 사용 중단"
 })
 
 L:SetMiscLocalization({

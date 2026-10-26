@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, actual timer data and verify spellIds
---TODO, use nameplate auras or HUDMap (since it is outdoors after all)
+--TODO, use nameplate auras (since it is outdoors after all)
 local warnIncitePanic				= mod:NewSpellAnnounce(233568, 2, nil, false)--Off cause fuckups may result in heavy spam
 local warnShadowBarrage				= mod:NewSpellAnnounce(234452, 2)
 

@@ -33,7 +33,7 @@ L:SetWarningLocalization({
 L= DBM:GetModLocalization(1667)
 
 L:SetOptionLocalization({
-	NoAutoSoaking2		= "Deaktiviere alle automatischen Abfangwarnungen/-pfeile/-HudMaps für Fokussierter Blick"
+	NoAutoSoaking2		= "Deaktiviere alle automatischen Abfangwarnungen/-pfeile für Fokussierter Blick"
 })
 
 L:SetMiscLocalization({
